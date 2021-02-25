@@ -5,7 +5,13 @@
 
 import confetti from 'canvas-confetti';
 
-confetti.create(document.getElementById('canvas'), {
-  resize: true,
-  useWorker: true,
-})({ particleCount: 200, spread: 200 });
+
+new RiveAnimation({
+  src: '/rive/mainello.riv',
+  canvas: document.querySelector('.c-mondrian__column-main-canvas'),
+  autoplay: true,
+  alignment: new CanvasAlignment({
+    fit: 'contain',
+    alignment: 'center',
+  }),
+})

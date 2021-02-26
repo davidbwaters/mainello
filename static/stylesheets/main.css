@@ -8,7 +8,6 @@ body {
 
 .c-mondrian {
   animation: mondrian-background 2s 5s both ease;
-
   background-image:
     linear-gradient(0deg, #141414, #141414);
   background-repeat: no-repeat;
@@ -24,16 +23,17 @@ body {
 }
 
 .c-mondrian__column {
-  animation: mondrian-background 2s 6s both ease;
+  /* animation: mondrian-cell-background 2s 6s both ease; */
   background-color: white;
-  background-repeat: no-repeat;
   background-position: top left;
+
 }
 
 .c-mondrian__column:nth-child(1) {
-  animation: mondrian-background-alt 2s 6s both ease;
+  animation: mondrian-cell-background-alt 2s 6s both ease;
   background-image:
     linear-gradient(0deg, #72b4ae, #72b4ae);
+  background-repeat: no-repeat;
   grid-column: 1 / span 2;
   grid-row: 1 / span 2;
 }
@@ -62,9 +62,21 @@ body {
 .c-mondrian__column:nth-child(6) {
   grid-column: 1 / span 2;
   grid-row: 3 / span 1;
-  background-image:
-    linear-gradient(0deg, #67a29d, #67a29d);
 }
+
+.c-mondrian__column:nth-child(6)::after {
+  animation:  fade-in 2s 5s both ease;
+  background-image:
+    url('/images/Wave-Pattern.svg');
+  background-position: top center;
+  background-repeat: repeat;
+  background-size: 10.5px 60px;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
 
 .c-mondrian__column:nth-child(7) {
   grid-column: 3 / span 1;
@@ -77,17 +89,40 @@ body {
 }
 
 .c-mondrian__column:nth-child(9) {
-  background-image:
-    linear-gradient(0deg, #67a29d, #67a29d);
   grid-column: 11 / span 4;
   grid-row: 2 / span 3;
 }
 
-.c-mondrian__column:nth-child(10) {
+.c-mondrian__column:nth-child(9)::after {
+  animation:  fade-in 2s 5s both ease;
   background-image:
-    linear-gradient(0deg, #8ec3be, #8ec3be);
+    url('/images/Wave-Pattern.svg');
+  background-position: top center;
+  background-repeat: repeat;
+  background-size: 10.5px 60px;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+
+.c-mondrian__column:nth-child(10) {
   grid-column: 15 / span 3;
   grid-row: 2 / span 1;
+}
+
+.c-mondrian__column:nth-child(10)::after {
+  animation:  fade-in 2s 5s both ease;
+  background-image:
+    url('/images/Shell-Dots.svg');
+  background-position: top center;
+  background-repeat: repeat;
+  background-size: 100px 46px;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .c-mondrian__column:nth-child(11) {
@@ -98,16 +133,37 @@ body {
 .c-mondrian__column:nth-child(12) {
   grid-column: 3 / span 1;
   grid-row: 4 / span 5;
+}
+
+.c-mondrian__column:nth-child(12)::after {
+  animation:  fade-in 2s 5s both ease;
   background-image:
-    linear-gradient(0deg, #8ec3be, #8ec3be);
+    url('/images/Shell-Dots.svg');
+  background-position: top center;
+  background-repeat: repeat;
+  background-size: 100px 46px;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .c-mondrian__column:nth-child(13) {
-  background-image:
-    linear-gradient(0deg, #67a29d, #67a29d);
   grid-column: 9 / span 2;
   grid-row: 8 / span 1;
+}
 
+.c-mondrian__column:nth-child(13)::after {
+  animation:  fade-in 2s 5s both ease;
+  background-image:
+    url('/images/Wave-Pattern.svg');
+  background-position: top center;
+  background-repeat: repeat;
+  background-size: 10.5px 60px;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .c-mondrian__column:nth-child(14) {
@@ -116,9 +172,10 @@ body {
 }
 
 .c-mondrian__column:nth-child(15) {
-  animation: mondrian-background-alt 2s 6s both ease;
+  animation: mondrian-cell-background-alt 2s 6s both ease;
   background-image:
     linear-gradient(0deg, #72b4ae, #72b4ae);
+  background-repeat: no-repeat;
   grid-column: 13 / span 2;
   grid-row: 5 / span 2;
 }
@@ -129,10 +186,22 @@ body {
 }
 
 .c-mondrian__column:nth-child(17) {
-  background-image:
-    linear-gradient(0deg, #8ec3be, #8ec3be);
   grid-column: 11 / span 2;
   grid-row: 9 / span 2;
+
+}
+
+.c-mondrian__column:nth-child(17)::after {
+  animation:  fade-in 2s 5s both ease;
+  background-image:
+    url('/images/Shell-Dots.svg');
+  background-position: top center;
+  background-repeat: repeat;
+  background-size: 100px 46px;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .c-mondrian__column:nth-child(18) {
@@ -171,10 +240,21 @@ body {
 }
 
 .c-mondrian__column:nth-child(25) {
-  background-image:
-    linear-gradient(0deg, #8ec3be, #8ec3be);
   grid-column: 6 / span 2;
   grid-row: 12 / span 2;
+}
+
+.c-mondrian__column:nth-child(25)::after {
+  animation:  fade-in 2s 5s both ease;
+  background-image:
+    url('/images/Shell-Dots.svg');
+  background-position: top center;
+  background-repeat: repeat;
+  background-size: 100px 46px;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .c-mondrian__column:nth-child(26) {
@@ -183,9 +263,10 @@ body {
 }
 
 .c-mondrian__column:nth-child(27) {
-  animation: mondrian-background-alt 2s 6s both ease;
+  animation: mondrian-cell-background-alt 2s 6s both ease;
   background-image:
     linear-gradient(0deg, #72b4ae, #72b4ae);
+  background-repeat: no-repeat;
   grid-column: 17 / span 1;
   grid-row: 5 / span 6;
 }
@@ -213,10 +294,12 @@ body {
 }
 
 .c-mondrian__column:nth-child(32) {
+  animation: mondrian-cell-background-alt 2s 6s both ease;
   grid-column: 5 / span 1;
   grid-row: 14 / span 1;
   background-image:
     linear-gradient(0deg, #72b4ae, #72b4ae);
+  background-repeat: no-repeat;
 }
 
 .c-mondrian__column:nth-child(33) {
@@ -272,11 +355,27 @@ body {
 
 .c-mondrian__column-main-canvas {
   height: auto;
-  transform: translatey(-19%) scale(1.18);
+  transform: translatey(-19.5%) scale(1.18);
   width: 100%;
 }
 
 @keyframes mondrian-background {
+  from {
+    background-color: #E7E7E7;
+    background-image:
+      linear-gradient(0deg, #141414, #141414);
+    background-size: 0% 100%;
+  }
+
+  to {
+    background-color: #DCD4D1;
+    background-image:
+      linear-gradient(0deg, #141414, #141414);
+    background-size: 100% 100%;
+  }
+}
+
+@keyframes mondrian-cell-background {
   from {
     background-size: 0% 100%;
   }
@@ -286,12 +385,23 @@ body {
   }
 }
 
-@keyframes mondrian-background-alt {
+@keyframes mondrian-cell-background-alt {
   from {
     background-size: 100% 0%;
   }
 
   to {
     background-size: 100% 100%;
+  }
+}
+
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }

@@ -13,7 +13,7 @@ body {
   background-repeat: no-repeat;
   display: grid;
   grid-auto-flow: row;
-  grid-gap: 1px;
+  grid-gap: 2px;
   grid-template-columns:
     4.4fr auto minmax(2.76vw, auto) minmax(14.3vw, auto) minmax(1.95vw, auto) minmax(5.05vw, auto) minmax(3.28vw, auto) minmax(4.01vw, auto) minmax(4.66vw, auto) minmax(13.23vw, auto) minmax(5.0898vw, auto) auto 3.63fr 9.29fr 8.31fr 7.45fr 3.83fr;
   grid-template-rows:
@@ -70,7 +70,7 @@ body {
     url('/images/Wave-Pattern.svg');
   background-position: top center;
   background-repeat: repeat;
-  background-size:15.75px 90px;
+  background-size: 16px 90px;
   content: '';
   display: block;
   height: 100%;
@@ -99,7 +99,7 @@ body {
     url('/images/Wave-Pattern.svg');
   background-position: top center;
   background-repeat: repeat;
-  background-size:15.75px 90px;
+  background-size: 16px 90px;
   content: '';
   display: block;
   height: 100%;
@@ -159,7 +159,7 @@ body {
     url('/images/Wave-Pattern.svg');
   background-position: top center;
   background-repeat: repeat;
-  background-size:15.75px 90px;
+  background-size: 16px 90px;
   content: '';
   display: block;
   height: 100%;

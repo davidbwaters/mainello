@@ -1,0 +1,56 @@
+<div class="c-intro">
+  <div class="o-gc-grid o-gc-grid--gap-medium">
+
+    {% for i in range(0, 12) -%}
+      <div class="c-intro__block"></div>
+    {%- endfor %}
+    {% for i in range(0, 64) -%}
+      <div class="c-intro__block u-hide-mobile-down"></div>
+    {%- endfor %}
+    {% for i in range(0, 60) -%}
+      <div class="c-intro__block u-hide-tablet-down"></div>
+    {%- endfor %}
+    <div class="c-sketch-animation">
+      <div class="c-sketch-animation__inner">
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.7/lottie.min.js"
+  integrity="sha512-HDCfX3BneBQMfloBfluMQe6yio+OfXnbKAbI0SnfcZ4YfZL670nc52Aue1bBhgXa+QdWsBdhMVR2hYROljf+Fg=="
+  crossorigin="anonymous"
+></script>
+
+<script>
+
+  const introWrapper = document.querySelector(
+    '.c-intro'
+  )
+  const animationWrapper = document.querySelector(
+    '.c-sketch-animation__inner'
+  )
+
+  const animation = lottie.loadAnimation({
+    container: animationWrapper,
+    renderer: 'svg',
+    loop: false,
+    autoplay: false,
+    path: 'animations/sketch.json'
+  })
+
+  lottie.setSpeed(1.5)
+  animation.play()
+
+  animation.onComplete = () => {
+    console.log('anim done')
+    introWrapper.style.opacity = 0
+
+    setTimeout(() => {
+      introWrapper.style.display = 'none'
+    },1200)
+  }
+
+</script>

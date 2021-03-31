@@ -1,27 +1,31 @@
-/** @type {import("snowpack").SnowpackUserConfig } */
+//
+//  snowpack config
+//
+
 module.exports = {
   mount: {
-    static: {url: '/', static: true},
-    src: {url: '/dist'},
+    build: { url: '/', static: true },
+    scripts: { url: '/scripts' },
+    stylesheets: { url: '/stylesheets' },
+    assets: { url: '/' }
   },
   plugins: [
-    /* ... */
+    [
+      '@snowpack/plugin-run-script',
+      {
+        cmd: 'eleventy',
+        watch: '$1 --watch',
+      },
+    ],
   ],
-  routes: [
-    /* Enable an SPA Fallback in development: */
-    // {"match": "routes", "src": ".*", "dest": "/index.html"},
-  ],
-  optimize: {
-    /* Example: Bundle your final build: */
-    // "bundle": true,
-  },
-  packageOptions: {
-    /* ... */
-  },
+  routes: [],
+  optimize: {},
+  packageOptions: {},
   devOptions: {
-    /* ... */
+    hmrDelay: 600,
   },
   buildOptions: {
-    /* ... */
+    clean: true,
+    out: 'dist'
   },
 };

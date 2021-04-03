@@ -1,0 +1,27 @@
+{% extends './base.njk' %}
+
+{% block preContent %}
+
+  {% include 'intro.njk' %}
+
+{% endblock %}
+
+    {% if css %}
+      <style>
+        {{ css | cssmin | safe }}
+      </style>
+    {% endif %}
+
+{% block content %}
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  {% if js %}
+    <script>
+      {{ js | jsmin | safe }}
+    </script>
+  {% endif %}
+
+{% endblock %}

@@ -41,18 +41,14 @@
   </head>
   <body>
 
-    {% include 'intro.njk' %}
+    {% block preContent %}
+    {% endblock %}
 
-    <main>
-      {% include 'navbar.njk' %}
-      {{ content | safe }}
-    </main>
+    {% include 'navbar.njk' %}
 
-    {% if js %}
-      <script>
-        {{ js | jsmin | safe }}
-      </script>
-    {% endif %}
+    {% block content %}
+    {% endblock %}
 
+    {{ content | safe }}
   </body>
 </html>

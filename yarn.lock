@@ -482,6 +482,13 @@ chokidar@^3.5.1:
   optionalDependencies:
     fsevents "~2.3.1"
 
+clean-css@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-5.1.2.tgz#6ea0da7286b4ddc2469a1b776e2461a5007eed54"
+  integrity sha512-QcaGg9OuMo+0Ds933yLOY+gHPWbxhxqF0HDexmToPf8pczvmvZGYzd+QqWp9/mkucAOKViI+dSFOqoZIvXbeBw==
+  dependencies:
+    source-map "~0.6.0"
+
 cli-spinners@^2.5.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/cli-spinners/-/cli-spinners-2.6.0.tgz#36c7dc98fb6a9a76bd6238ec3f77e2425627e939"
@@ -1448,6 +1455,11 @@ lodash@^4.17.10, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
+lottie-web@^5.7.7:
+  version "5.7.7"
+  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.7.7.tgz#077c705d5c82b33a421618c529fccebd69a111fd"
+  integrity sha512-dAUrMX5BRxP7dr+qDWzablhGY6SqXztCS46sW11wjuzExQKZl5GLX2yMGGqg4AkdjgfjetndcU+VR1xoLhlkpA==
+
 lru-cache@^4.1.5:
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.5.tgz#8bbe50ea85bed59bc9e33dcab8235ee9bcf443cd"
@@ -2317,7 +2329,7 @@ socket.io@2.4.0:
     socket.io-client "2.4.0"
     socket.io-parser "~3.4.0"
 
-source-map@^0.6.1:
+source-map@^0.6.1, source-map@~0.6.0:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==

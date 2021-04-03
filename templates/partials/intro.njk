@@ -3,7 +3,9 @@
   <div class="o-gc-grid o-gc-grid--gap-medium">
 
     {% for i in range(0, 11) -%}
-      <div class="c-intro__block"></div>
+      <div class="c-intro__block">
+        <div class="c-intro__block-inner"></div>
+      </div>
     {%- endfor %}
     <div class="c-sketch-animation">
       <div class="c-sketch-animation__inner">
@@ -16,67 +18,11 @@
 
 
 <script
-  src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.7/lottie.min.js"
-  integrity="sha512-HDCfX3BneBQMfloBfluMQe6yio+OfXnbKAbI0SnfcZ4YfZL670nc52Aue1bBhgXa+QdWsBdhMVR2hYROljf+Fg=="
-  crossorigin="anonymous"
-></script>
-
+  src="scripts/home.js"
+  type="module"
+>
+</script>
 
 <script>
-
-  document.body.style.position = 'fixed'
-
-  let introWrapper = document.querySelector(
-    '.c-intro'
-  )
-  let introBackground = document.querySelector(
-    '.c-intro__background'
-  )
-  let animationWrapper = document.querySelector(
-    '.c-sketch-animation__inner'
-  )
-
-  let backgroundAnimation = lottie.loadAnimation({
-    container: introBackground,
-    renderer: 'canvas',
-    loop: false,
-    autoplay: false,
-    path: 'animations/paint.json',
-    rendererSettings: {
-      preserveAspectRatio: 'none'
-    }
-  })
-
-  const animation = lottie.loadAnimation({
-    container: animationWrapper,
-    renderer: 'svg',
-    loop: false,
-    autoplay: false,
-    path: 'animations/sketch.json'
-  })
-
-  lottie.setSpeed(1.5)
-  backgroundAnimation.play()
-  backgroundAnimation.onComplete  = () => {
-
-    introWrapper.classList.add('is-transitioning-in')
-    setTimeout(() => {
-      animation.play()
-    }, 1000)
-  }
-
-
-  animation.onComplete = () => {
-
-    introWrapper.classList.remove('is-transitioning-in')
-    introWrapper.classList.add('is-transitioning-out')
-
-    setTimeout(() => {
-      //introWrapper.style.display = 'none'
-      document.body.style.position = ''
-    },1200)
-  }
-
-
 
 </script>

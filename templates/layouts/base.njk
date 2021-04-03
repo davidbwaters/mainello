@@ -32,6 +32,9 @@
     <link rel="stylesheet" href="stylesheets/base.css">
     <script type="module" src="scripts/app.js"></script>
 
+    {% block head %}
+    {% endblock %}
+
     {% if css %}
       <style>
         {{ css | cssmin | safe }}
@@ -45,10 +48,8 @@
     {% endblock %}
 
     {% include 'navbar.njk' %}
-
-    {% block content %}
-    {% endblock %}
-
-    {{ content | safe }}
+    <main>
+      {{ content | safe }}
+    </main>
   </body>
 </html>

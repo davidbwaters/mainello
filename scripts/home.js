@@ -78,30 +78,25 @@ backgroundAnimation.onComplete  = () => {
 
 animation.onComplete = () => {
 
+  gsap.to(introBlocks, {
+    duration: 0.8,
+    y: '-110%',
+    onComplete: () => {
+    }
+  })
+  gsap.to(introWrapper, {
+    duration: 0.8,
+    opacity: 0
+  })
+
 
   setTimeout(() => {
+    introWrapper.style.display = 'none'
+  }, 1200)
 
 
-    gsap.to(introBlocks, {
-      duration: 0.8,
-      y: '-110%',
-      onComplete: () => {
+  document.body.style.position = ''
 
-        gsap.to(introWrapper, {
-          duration: 0.8,
-          opacity: 0
-        })
-
-
-        setTimeout(() => {
-          introWrapper.style.display = 'none'
-        }, 1200)
-
-      }
-    })
-
-    document.body.style.position = ''
-  }, 0)
 }
 
 
@@ -129,6 +124,16 @@ let ringsSketch = (sketch) => {
       ringsCanvas.height
     )
 
+    function setSize() {
+      if (sketch.width < sketch.height) {
+        noiseScale = sketch.width * 0.12
+        maxRadius = sketch.width * 0.45
+      } else {
+        noiseScale = sketch.height * 0.12
+        maxRadius = sketch.height * 0.45
+      }
+    }
+
     sketch.windowResized = () => {
       ringsCanvas = ringsWrapper.getBoundingClientRect()
 
@@ -136,18 +141,13 @@ let ringsSketch = (sketch) => {
         ringsCanvas.width,
         ringsCanvas.height
       )
+
+      setSize()
     }
 
     canvas.parent('c-rings');
     sketch.pixelDensity(sketch.displayDensity())
-
-    if (sketch.width < sketch.height) {
-      noiseScale = sketch.width * 0.12
-      maxRadius = sketch.width * 0.35
-    } else {
-      noiseScale = sketch.height * 0.12
-      maxRadius = sketch.height * 0.35
-    }
+    setSize()
 
     minRadius = 0
     sketch.background(0)
@@ -198,60 +198,6 @@ let ringsSketch = (sketch) => {
     t += speed + velocity
   }
 
-  // Interaction with keyboard
-  sketch.keyPressed = () => {
-    if (sketch.keyCode== sketch.UP_ARROW) {
-      noiseScale += 50
-    } else if (sketch.keyCode== sketch.DOWN_ARROW) {
-      noiseScale -= 50
-    } else if (sketch.keyCode== sketch.LEFT_ARROW) {
-      minRadius -= 10
-    } else if (sketch.keyCode== sketch.RIGHT_ARROW) {
-      minRadius += 10
-    }
-
-    // Predefined settings
-    if (sketch.key == '1') {
-      noiseScale = -900
-      minRadius = 80
-    } else if (sketch.key == '2') {
-      noiseScale = -450
-      minRadius = 0
-    } else if (sketch.key == '3') {
-      noiseScale = 350
-      minRadius = -110
-    } else if (sketch.key == '4') {
-      noiseScale = 470
-      minRadius = -60
-    } else if (sketch.key == '5') {
-      noiseScale = 700
-      minRadius = -200
-    } else if (sketch.key == '0') {
-      noiseScale = 50
-      minRadius = 0
-    }
-  }
-
-  // Interaction with mouse/touch
-  sketch.mousePressed = () => {
-    if (sketch.mouseY < sketch.height / 3) {
-      noiseScale += 50
-    } else if (sketch.mouseY > (sketch.height / 3) * 2) {
-      noiseScale -= 50
-    } else if (
-      sketch.mouseY > sketch.height / 3 &&
-      sketch.mouseY < (sketch.height / 3) * 2 &&
-      sketch.mouseX < sketch.width / 2
-    ) {
-      minRadius -= 10
-    } else if (
-      sketch.mouseY > sketch.height / 3 &&
-      sketch.mouseY < (sketch.height / 3) * 2 &&
-      sketch.mouseX > sketch.width / 2
-    ) {
-      minRadius += 10
-    }
-  }
 }
 
 let rings = new p5(ringsSketch)

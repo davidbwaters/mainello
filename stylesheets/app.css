@@ -74,6 +74,7 @@
   font-family: 'Sohne', sans-serif;
   font-size: 16px;
   height: 100%;
+  overflow-y: scroll;
 }
 
 body {
@@ -89,7 +90,15 @@ main {
   min-height: 100%;
 }
 
+.u-bg-blur-primary-1 {
+  background-image: url(/images/bg-blur-primary-circle-1.svg);
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-size: 40% 100%;
+}
+
 /* text */
+
 h1 {
   font-size:
       calc(var(--font-size-large-4) * .5);
@@ -99,8 +108,7 @@ h1 {
 @media (min-width: 320px) {
 
   h1 {
-    font-size:
-      calc(var(--font-size-large-4) * .66);
+    font-size: var(--font-size-large-2);
     font-weight: var(--font-weight-normal);
   }
 }
@@ -108,7 +116,7 @@ h1 {
 @media (min-width: 768px) {
 
   h1 {
-    font-size: var(--font-size-large-4);
+    font-size: var(--font-size-large-3);
     font-weight: var(--font-weight-normal);
   }
 }

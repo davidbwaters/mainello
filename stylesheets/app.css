@@ -44,6 +44,20 @@
   --font-size-large-4: 3.5625rem;
   --font-size-large-5: 4.75rem;
 
+  --line-height-tiny: 1.4;
+  --line-height-small: 1.2;
+  --line-height-small-spaced: 1.6;
+  --line-height-normal: 1.4;
+  --line-height-normal-spaced: 1.6;
+  --line-hieght-large-1: 1.4;
+  --line-height-large-2: 1.0;
+  --line-height-large-3: 1.0;
+  --line-height-large-4: 1.0;
+  --line-height-large-5: 1.0;
+
+  --heading-normal-spacing: 4%;
+  --heading-large-spacing: 2%;
+
   --font-size-mono-small: .6875rem;
   --font-size-mono-normal: .875rem;
 
@@ -74,6 +88,7 @@
   font-family: 'Sohne', sans-serif;
   font-size: 16px;
   height: 100%;
+  line-height: 140%;
   overflow-y: scroll;
 }
 

@@ -12,11 +12,14 @@
 {% endblock %}
 
 
+{% block content %}
+  {{ content | safe }}
 
-{{ content | safe }}
+  {% include 'contact-fab.njk' %}
+{% endblock %}
 
-  {% if js %}
-    <script>
-      {{ js | jsmin | safe }}
-    </script>
-  {% endif %}
+{% if js %}
+  <script>
+    {{ js | jsmin | safe }}
+  </script>
+{% endif %}

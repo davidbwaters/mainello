@@ -85,8 +85,6 @@
 }
 
 
-
-
 /* navbar */
 
 .c-navbar {
@@ -95,8 +93,6 @@
   position: absolute;
   width: 100%;
 }
-
-
 
 @media (min-width: 320px) {
 
@@ -119,4 +115,11 @@
 .c-navbar__branding {
   display: inline-block;
   width: 80px;
+}
+
+
+/* contact fab */
+
+.c-contact-fab {
+  position: fixed;
 }

@@ -1,7 +1,0 @@
-{
-  "imports": {
-    "gsap": "./gsap.js",
-    "lottie-web": "./lottie-web.js",
-    "p5": "./p5.js"
-  }
-}

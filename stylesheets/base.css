@@ -121,5 +121,21 @@
 /* contact fab */
 
 .c-contact-fab {
+  background-image: url('/icons/mail.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  bottom: 1rem;
+  height: 7.5rem;
+  left: 1rem;
   position: fixed;
+  width: 7.5rem;
+}
+
+.c-contact-fab__spinning {
+  border-radius: 100rem;
+  fill: var(--color-eerie-black);
+  font-family: var(--font-mono);
+  font-size: 2.8rem;
+  letter-spacing: .6rem;
+  will-change: transform;
 }

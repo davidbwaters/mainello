@@ -7,8 +7,8 @@ console.log('♥️')
 import gsap from 'gsap'
 import scrollTrigger from 'gsap/ScrollTrigger'
 
-let rotateEl = document.querySelector('.c-contact-fab'),
-  rotateDuration = 10
+let rotateEl = document.querySelector('.c-contact-fab__spinning'),
+  rotateDuration = 16
 
 let rotate = gsap.to(rotateEl, {
   rotation: 360,
@@ -17,7 +17,7 @@ let rotate = gsap.to(rotateEl, {
     this.totalTime(rotateDuration * 100) // loop in reverse
   },
   repeat: -1,
-  ease: 'none'
+  ease: 'linear'
 })
 
 let scrollTop,

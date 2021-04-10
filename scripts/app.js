@@ -4,6 +4,29 @@
 
 console.log('♥️')
 
+import lottie from 'lottie-web'
+
+// nav menu
+
+const menuButton = document.querySelector(
+  '.c-navbar__menu-button'
+)
+
+const menuWrapper = document.querySelector(
+  '.c-nav-menu'
+)
+
+const animation = lottie.loadAnimation({
+  container: menuWrapper,
+  renderer: 'canvas',
+  loop: false,
+  autoplay: false,
+  path: 'animations/sketch.json'
+})
+
+
+// contact fab
+
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
@@ -62,3 +85,4 @@ gsap.set(rotateEl, {
   transformOrigin: 'center center',
   force3D: true
 })
+

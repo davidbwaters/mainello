@@ -107,6 +107,14 @@ main {
   height: 100%;
 }
 
+a {
+  cursor: pointer;
+}
+
+
+
+/ * backgrounds */
+
 .u-bg-blur-primary-1 {
   background-image: url(/images/bg-blur-primary-circle-1.svg);
   background-position: left bottom;
@@ -114,9 +122,11 @@ main {
   background-size: 40% 100%;
 }
 
+
+
 /* text */
 
-h1 {
+.u-heading-large {
   font-size:
       calc(var(--font-size-large-4) * .5);
   font-weight: var(--font-weight-normal);
@@ -124,7 +134,7 @@ h1 {
 
 @media (min-width: 320px) {
 
-  h1 {
+  .u-heading-large {
     font-size: var(--font-size-large-2);
     font-weight: var(--font-weight-normal);
   }
@@ -132,7 +142,7 @@ h1 {
 
 @media (min-width: 768px) {
 
-  h1 {
+  .u-heading-large {
     font-size: var(--font-size-large-3);
     font-weight: var(--font-weight-normal);
   }

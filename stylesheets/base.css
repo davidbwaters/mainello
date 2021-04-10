@@ -82,7 +82,7 @@
 
 
 .o-gc-grid--gap-tiny {
-  grid-gap: 1px;
+  grid-gap: 2px;
 }
 
 .o-gc-grid--gap-small {

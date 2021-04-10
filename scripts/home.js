@@ -198,7 +198,7 @@ let ringsSketch = (sketch) => {
 
     let velocity = sketch.abs(sketch.winMouseX - sketch.pwinMouseX) / 150
 
-    console.log(velocity)
+    //console.log(velocity)
 
     t += speed + velocity
   }

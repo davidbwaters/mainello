@@ -90,7 +90,7 @@
   font-family: 'Sohne', sans-serif;
   font-size: 16px;
   height: 100%;
-  line-height: 140%;
+  line-height: 1.4;
   overflow-y: scroll;
 }
 
@@ -103,8 +103,8 @@ body {
 }
 
 main {
-  display: grid;
-  min-height: 100%;
+  display: block;
+  height: 100%;
 }
 
 .u-bg-blur-primary-1 {

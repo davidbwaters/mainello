@@ -3,11 +3,12 @@
 //
 
 import gsap from 'gsap'
+import scrollTrigger from 'gsap'
 import lottie from 'lottie-web'
 import p5 from 'p5'
 
 
-// intro animation
+// intro animations
 
 document.body.style.position = 'fixed'
 
@@ -36,6 +37,9 @@ introBlocks = [
   animationWrapper
 ]
 
+
+// background animation
+
 let backgroundAnimation = lottie.loadAnimation({
   container: introBackground,
   renderer: 'canvas',
@@ -46,16 +50,6 @@ let backgroundAnimation = lottie.loadAnimation({
     preserveAspectRatio: 'none'
   }
 })
-
-const animation = lottie.loadAnimation({
-  container: animationWrapper,
-  renderer: 'canvas',
-  loop: false,
-  autoplay: false,
-  path: 'animations/sketch.json'
-})
-
-lottie.setSpeed(1.5)
 
 backgroundAnimation.play()
 
@@ -76,6 +70,18 @@ backgroundAnimation.onComplete  = () => {
 }
 
 
+// sketch animation
+
+const animation = lottie.loadAnimation({
+  container: animationWrapper,
+  renderer: 'canvas',
+  loop: false,
+  autoplay: false,
+  path: 'animations/sketch.json'
+})
+
+lottie.setSpeed(1.5)
+
 animation.onComplete = () => {
 
   gsap.to(introBlocks, {
@@ -88,7 +94,6 @@ animation.onComplete = () => {
     duration: 0.8,
     opacity: 0
   })
-
 
   setTimeout(() => {
     introWrapper.style.display = 'none'
@@ -155,7 +160,7 @@ let ringsSketch = (sketch) => {
 
   sketch.draw = () => {
     sketch.noStroke()
-    sketch.fill(255, 60)
+    sketch.fill(255, 40)
     sketch.rect(0, 0, sketch.width, sketch.height)
 
     sketch.translate(sketch.width / 2, sketch.height / 2)

@@ -80,8 +80,17 @@
   }
 }
 
-.o-gc-grid--gap-medium {
+
+.o-gc-grid--gap-tiny {
+  grid-gap: 1px;
+}
+
+.o-gc-grid--gap-small {
   grid-gap: .2rem;
+}
+
+.o-gc-grid--gap-medium {
+  grid-gap: .4rem;
 }
 
 
@@ -98,7 +107,7 @@
 
   .c-navbar {
     box-sizing: border-box;
-    padding: var(--spacing-4);
+    padding: 2.1vh 2.1vw;
     position: absolute;
     width: 100%;
   }
@@ -124,9 +133,9 @@
   background-image: url('/icons/mail.svg');
   background-position: center;
   background-repeat: no-repeat;
-  bottom: 1rem;
+  bottom: 0rem;
   height: 7.5rem;
-  left: 1rem;
+  left: 0rem;
   position: fixed;
   width: 7.5rem;
 }

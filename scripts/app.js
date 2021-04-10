@@ -5,9 +5,13 @@
 console.log('♥️')
 
 import gsap from 'gsap'
-import scrollTrigger from 'gsap/ScrollTrigger'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
-let rotateEl = document.querySelector('.c-contact-fab__spinning'),
+gsap.registerPlugin(ScrollTrigger)
+
+let rotateEl = document.querySelector(
+    '.c-contact-fab__spinning'
+  ),
   rotateDuration = 16
 
 let rotate = gsap.to(rotateEl, {
@@ -39,14 +43,11 @@ ScrollTrigger.create({
         document.documentElement.scrollHeight,
         document.documentElement.offsetHeight
       ) - window.innerHeight
-    rounds = Math.floor(
-      contentHeight / window.innerHeight
-    )
+    rounds = Math.floor(contentHeight / window.innerHeight)
     progress =
-      Math.floor((scrollTop / contentHeight) * 100) *
-      rounds
+      Math.floor((scrollTop / contentHeight) * 100) * rounds
 
-    console.log(clamp((self.getVelocity() / 100) * 0.5))
+    // console.log(clamp((self.getVelocity() / 100) * 0.5))
     rotate.timeScale(clamp(self.getVelocity() / 100))
     gsap.to(rotate, {
       timeScale: self.direction,

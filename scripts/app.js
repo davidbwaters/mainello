@@ -6,22 +6,90 @@ console.log('♥️')
 
 import lottie from 'lottie-web'
 
+
 // nav menu
 
-const menuButton = document.querySelector(
-  '.c-navbar__menu-button'
-)
+let navMenuOpen = false
+let navMenuSpeed = 2
+let navMenuBackgroundSpeed = 40
 
-const menuWrapper = document.querySelector(
-  '.c-nav-menu'
-)
 
-const animation = lottie.loadAnimation({
-  container: menuWrapper,
-  renderer: 'canvas',
-  loop: false,
-  autoplay: false,
-  path: 'animations/sketch.json'
+window.addEventListener('DOMContentLoaded', () => {
+
+  const menuButton = document.querySelector(
+    '.c-navbar__menu-button'
+  )
+
+  const menuAnimationWrapper = document.querySelector(
+    '.c-nav-menu__animation'
+  )
+
+  const menuWrapper = document.querySelector(
+    '.c-nav-menu'
+  )
+
+  const menuBackground = document.querySelector(
+    '.c-nav-menu__background'
+  )
+
+  const menuBackgroundAnimation = lottie.loadAnimation({
+    container: menuBackground,
+    renderer: 'canvas',
+    loop: true,
+    autoplay: false,
+    path: 'animations/nav.json',
+    rendererSettings: {
+      preserveAspectRatio: 'none'
+    }
+  })
+
+  const menuAnimation = lottie.loadAnimation({
+    container: menuAnimationWrapper,
+    renderer: 'canvas',
+    loop: false,
+    autoplay: false,
+    path: 'animations/stripes-alt-2.json',
+    rendererSettings: {
+      preserveAspectRatio: 'none'
+    },
+    onComplete: () => {
+      lottie.setSpeed(navMenuBackgroundSpeed)
+      menuAnimation.goToAndPlay(
+        1, true
+      )
+      menuBackgroundAnimation.play()
+    }
+  })
+
+  const handleNavMenu = () => {
+
+    menuWrapper.classList.toggle('is-active')
+
+    if (!navMenuOpen) {
+      navMenuOpen = true
+      lottie.setSpeed(navMenuSpeed)
+      menuAnimation.setDirection(1)
+      menuAnimation.goToAndPlay(
+        1, true
+      )
+    }
+    else {
+      navMenuOpen = false
+      menuBackgroundAnimation.stop()
+      lottie.setSpeed(navMenuSpeed)
+      menuAnimation.setDirection(-1)
+      menuAnimation.goToAndPlay(
+        menuAnimation.lastFrame, true
+      )
+    }
+
+  }
+
+
+  menuButton.addEventListener(
+    'click', handleNavMenu
+  )
+
 })
 
 
@@ -34,8 +102,8 @@ gsap.registerPlugin(ScrollTrigger)
 
 let rotateEl = document.querySelector(
     '.c-contact-fab__spinning'
-  ),
-  rotateDuration = 16
+  )
+let rotateDuration = 16
 
 let rotate = gsap.to(rotateEl, {
   rotation: 360,
@@ -47,11 +115,11 @@ let rotate = gsap.to(rotateEl, {
   ease: 'linear'
 })
 
-let scrollTop,
-  contentHeight,
-  progress = 0,
-  rounds = 0,
-  clamp = gsap.utils.clamp(-50, 50)
+let scrollTop
+let contentHeight
+let progress = 0
+let rounds = 0
+let clamp = gsap.utils.clamp(-50, 50)
 
 ScrollTrigger.create({
   onUpdate: self => {

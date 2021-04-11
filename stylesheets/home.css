@@ -22,7 +22,7 @@
 .c-intro__background {
   height: 100vmax;
   transition: all .8s;
-  width: 150vmax;
+  width: 180vmax;
   will-change: background-color, opacity;
   z-index: 0;
 }

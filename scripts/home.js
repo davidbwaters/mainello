@@ -51,6 +51,7 @@ let backgroundAnimation = lottie.loadAnimation({
   }
 })
 
+lottie.setSpeed(2)
 backgroundAnimation.play()
 
 backgroundAnimation.onComplete  = () => {
@@ -60,9 +61,11 @@ backgroundAnimation.onComplete  = () => {
     x: '0%',
     onComplete: () => {
 
+      lottie.setSpeed(3)
+
       setTimeout(() => {
         animation.play()
-      }, 1000)
+      }, 400)
 
     }
   })
@@ -80,7 +83,6 @@ const animation = lottie.loadAnimation({
   path: 'animations/sketch.json'
 })
 
-lottie.setSpeed(1.5)
 
 animation.onComplete = () => {
 

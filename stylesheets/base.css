@@ -154,12 +154,17 @@
 }
 
 .c-nav-menu__background {
+  background-color: white;
   height: 100%;
   left: 0;
   pointer-events: none;
   position: absolute;
   top: 0;
   width: 100%;
+}
+
+.c-nav-menu__link {
+  position: relative;
 }
 
 

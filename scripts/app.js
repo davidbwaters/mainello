@@ -10,8 +10,8 @@ import lottie from 'lottie-web'
 // nav menu
 
 let navMenuOpen = false
-let navMenuSpeed = 2
-let navMenuBackgroundSpeed = 1
+let navMenuSpeed = 1.5
+let navMenuBackgroundSpeed = .1
 
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -32,6 +32,7 @@ window.addEventListener('DOMContentLoaded', () => {
     '.c-nav-menu__background'
   )
 
+  /*
   const menuBackgroundAnimation = lottie.loadAnimation({
     container: menuBackground,
     renderer: 'canvas',
@@ -42,6 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
       preserveAspectRatio: 'none'
     }
   })
+  */
 
   const menuAnimation = lottie.loadAnimation({
     container: menuAnimationWrapper,
@@ -54,11 +56,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   })
 
-  menuAnimation.onComplete = () => {
-  }
-
   const handleNavMenu = () => {
-
 
     if (!navMenuOpen) {
       navMenuOpen = true
@@ -70,24 +68,22 @@ window.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         menuWrapper.classList.toggle('is-active')
 
-        lottie.setSpeed(navMenuBackgroundSpeed)
-        menuBackgroundAnimation.play()
+        //lottie.setSpeed(navMenuBackgroundSpeed)
+        //menuBackgroundAnimation.play()
       }, 200)
     }
     else {
       navMenuOpen = false
-      menuBackgroundAnimation.stop()
-      lottie.setSpeed(navMenuSpeed)
+      //menuBackgroundAnimation.stop()
       menuAnimation.setDirection(-1)
+
+      lottie.setSpeed(navMenuSpeed)
       menuAnimation.goToAndPlay(
         menuAnimation.lastFrame, true
       )
 
       setTimeout(() => {
         menuWrapper.classList.toggle('is-active')
-
-        lottie.setSpeed(navMenuBackgroundSpeed)
-        menuBackgroundAnimation.play()
       }, 800)
     }
 

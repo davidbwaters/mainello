@@ -17,6 +17,8 @@
     0.165fr
     0.135fr
     0.2fr;
+  min-height: 100vh;
+  width: 100%;
 }
 
 @media (min-width: 320px) {
@@ -42,8 +44,7 @@
       0.137fr
       0.15fr
       0.05fr;
-    height: 100%;
-    width: 100%;
+    min-height: 100vh;
   }
 }
 
@@ -80,9 +81,8 @@
   }
 }
 
-
 .o-gc-grid--gap-tiny {
-  grid-gap: 2px;
+  grid-gap: 4px;
 }
 
 .o-gc-grid--gap-small {
@@ -92,6 +92,25 @@
 .o-gc-grid--gap-medium {
   grid-gap: .4rem;
 }
+
+.o-gc-grid--columns {
+  grid-template-rows: 1fr;
+  min-height: 0;
+}
+
+@media (min-width: 320px) {
+  .o-gc-grid--columns {
+    grid-template-rows: 1fr;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .o-gc-grid--columns {
+    grid-template-rows: 1fr;
+  }
+}
+
 
 
 /* navbar */
@@ -168,6 +187,7 @@
 }
 
 
+
 /* contact fab */
 
 .c-contact-fab {
@@ -175,10 +195,19 @@
   background-position: center;
   background-repeat: no-repeat;
   bottom: 0rem;
+  display: none;
   height: 7.5rem;
   left: 0rem;
   position: fixed;
   width: 7.5rem;
+}
+
+@media (min-width: 320px) {
+
+  .c-contact-fab {
+    display: block;
+  }
+
 }
 
 .c-contact-fab__spinning {
@@ -188,4 +217,75 @@
   font-size: 2.8rem;
   letter-spacing: .6rem;
   will-change: transform;
+}
+
+
+/* line title */
+
+.c-line-title {
+  border-bottom: solid 1px var(--color-dark-gray);
+  grid-column: 1 / span 2;
+  grid-template-columns: calc(
+    100% - (var(--spacing-2)) * 2
+  );
+  margin-bottom: var(--spacing-2);
+  padding-bottom: var(--spacing-2);
+}
+
+@media (min-width: 320px) {
+
+  .c-line-title {
+    grid-column: 2 / span 8;
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (min-width: 768px) {
+  .c-line-title {
+    grid-column: 2 / span 14;
+  }
+}
+
+
+/* scrolling tags */
+
+.c-scrolling-tags {
+  display: grid;
+  grid-auto-flow: column;
+  grid-column: 1 / span 2;
+  grid-gap: 8vw;
+  white-space: nowrap;
+}
+
+
+.c-scrolling-tags__inner {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 4vw;
+}
+
+.c-scrolling-tags {
+  grid-column: 1 / span 2;
+}
+
+@media (min-width: 320px) {
+
+  .c-scrolling-tags {
+    grid-column: 2 / span 8;
+  }
+
+}
+
+@media (min-width: 768px) {
+
+  .c-scrolling-tags {
+    grid-column: 2 / span 14;
+  }
+
+}
+
+
+.c-scrolling-tags--right {
+  justify-content: end;
 }

@@ -57,7 +57,7 @@ backgroundAnimation.play()
 backgroundAnimation.onComplete  = () => {
 
   gsap.to(introBlocks, {
-    duration: 0.8,
+    duration: 0.4,
     x: '0%',
     onComplete: () => {
 
@@ -87,13 +87,13 @@ const animation = lottie.loadAnimation({
 animation.onComplete = () => {
 
   gsap.to(introBlocks, {
-    duration: 0.8,
+    duration: 0.4,
     y: '-110%',
     onComplete: () => {
     }
   })
   gsap.to(introWrapper, {
-    duration: 0.8,
+    duration: 0.2,
     opacity: 0
   })
 
@@ -109,7 +109,7 @@ animation.onComplete = () => {
 
 // rings animation
 
-let ringsWrapper = document.querySelector('#c-rings')
+let ringsWrapper = document.querySelector('#c-rings__inner')
 let ringsCanvas = ringsWrapper.getBoundingClientRect()
 
 let ringsSketch = (sketch) => {
@@ -152,7 +152,7 @@ let ringsSketch = (sketch) => {
       setSize()
     }
 
-    canvas.parent('c-rings');
+    canvas.parent('c-rings__inner');
     sketch.pixelDensity(sketch.displayDensity())
     setSize()
 

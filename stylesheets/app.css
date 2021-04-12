@@ -95,16 +95,25 @@
 }
 
 body {
-  font-size: var(--font-size-normal);
+  font-size: calc(var(--font-size-normal) * .7);
   height: 100%;
   margin: 0;
   padding: 0;
   width: 100%;
 }
 
+@media (min-width: 320px) {
+
+  body {
+    font-size: var(--font-size-normal);
+  }
+
+}
+
 main {
   display: block;
-  height: 100%;
+  min-height: 100%;
+  width: 100%;
 }
 
 a {
@@ -113,7 +122,7 @@ a {
 
 
 
-/ * backgrounds */
+/* backgrounds */
 
 .u-bg-blur-primary-1 {
   background-image: url(/images/bg-blur-primary-circle-1.svg);
@@ -129,14 +138,14 @@ a {
 .u-heading-large {
   font-size:
       calc(var(--font-size-large-4) * .5);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-semibold);
 }
 
 @media (min-width: 320px) {
 
   .u-heading-large {
     font-size: var(--font-size-large-2);
-    font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-semibold);
   }
 }
 
@@ -144,9 +153,58 @@ a {
 
   .u-heading-large {
     font-size: var(--font-size-large-3);
-    font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-semibold);
   }
 }
+
+
+.u-heading-huge {
+  font-size:
+      calc(var(--font-size-large-4) * .5);
+  font-weight: var(--font-weight-semibold);
+}
+
+@media (min-width: 320px) {
+
+  .u-heading-huge {
+    font-size: var(--font-size-large-2);
+    font-weight: var(--font-weight-semibold);
+  }
+}
+
+@media (min-width: 768px) {
+
+  .u-heading-huge {
+    font-size: var(--font-size-large-4);
+    font-weight: var(--font-weight-semibold);
+  }
+}
+
+
+.u-heading-huge-fluid {
+  font-size: 6vw;
+  font-weight: var(--font-weight-semibold);
+}
+
+@media (min-width: 320px) {
+  .u-heading-huge-fluid {
+    font-size: 6vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .u-heading-huge-fluid {
+    font-size: 6vw;
+  }
+}
+
+
+
+.u-text-outline {
+  -webkit-text-stroke: 1px var(--color-eerie-black);
+  -webkit-text-fill-color: transparent;
+}
+
 
 
 /* utilities - line */
@@ -163,8 +221,8 @@ a {
 }
 
 
-/* utilities - hide */
 
+/* utilities - hide */
 
 @media (max-width: 320px) {
   .u-hide-mobile-down {
@@ -176,3 +234,32 @@ a {
     display: none  !important;
   }
 }
+
+
+/* utilities - grid */
+
+.u-grid-row-1 {
+  grid-row-start: 1;
+}
+.u-grid-row-2 {
+  grid-row-start: 2;
+}
+.u-grid-row-3 {
+  grid-row-start: 3;
+}
+.u-grid-row-4 {
+  grid-row-start: 4;
+}
+.u-grid-row-5 {
+  grid-row-start: 5;
+}
+.u-grid-row-6 {
+  grid-row-start: 6;
+}
+.u-grid-row-7 {
+  grid-row-start: 7;
+}
+.u-grid-row-8 {
+  grid-row-start: 8;
+}
+

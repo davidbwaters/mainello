@@ -18,6 +18,7 @@
     0.135fr
     0.2fr;
   min-height: 100vh;
+  overflow-x: hidden;
   width: 100%;
 }
 

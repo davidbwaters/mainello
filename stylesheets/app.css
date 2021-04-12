@@ -136,13 +136,11 @@ a {
 /* text */
 
 .u-heading-large {
-  font-size:
-      calc(var(--font-size-large-4) * .5);
+  font-size: var(--font-size-large-1);
   font-weight: var(--font-weight-semibold);
 }
 
 @media (min-width: 320px) {
-
   .u-heading-large {
     font-size: var(--font-size-large-2);
     font-weight: var(--font-weight-semibold);
@@ -150,7 +148,6 @@ a {
 }
 
 @media (min-width: 768px) {
-
   .u-heading-large {
     font-size: var(--font-size-large-3);
     font-weight: var(--font-weight-semibold);
@@ -159,36 +156,31 @@ a {
 
 
 .u-heading-huge {
-  font-size:
-      calc(var(--font-size-large-4) * .5);
+  font-size: var(--font-size-large-1);
   font-weight: var(--font-weight-semibold);
 }
 
 @media (min-width: 320px) {
-
   .u-heading-huge {
     font-size: var(--font-size-large-2);
-    font-weight: var(--font-weight-semibold);
   }
 }
 
 @media (min-width: 768px) {
-
   .u-heading-huge {
     font-size: var(--font-size-large-4);
-    font-weight: var(--font-weight-semibold);
   }
 }
 
 
 .u-heading-huge-fluid {
-  font-size: 6vw;
+  font-size: 10vw;
   font-weight: var(--font-weight-semibold);
 }
 
 @media (min-width: 320px) {
   .u-heading-huge-fluid {
-    font-size: 6vw;
+    font-size: 8vw;
   }
 }
 

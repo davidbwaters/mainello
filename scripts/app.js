@@ -7,6 +7,7 @@ console.log('♥️')
 import lottie from 'lottie-web'
 
 
+
 // nav menu
 
 let navMenuOpen = false
@@ -97,6 +98,7 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 
+
 // contact fab
 
 import gsap from 'gsap'
@@ -157,4 +159,44 @@ gsap.set(rotateEl, {
   transformOrigin: 'center center',
   force3D: true
 })
+
+
+
+// scrolling tags
+
+
+window.addEventListener('DOMContentLoaded', () => {
+
+  let scrollingTagsEls = document.querySelectorAll(
+    '.c-scrolling-tags'
+  )
+
+  if (scrollingTagsEls.length) {
+
+    let scrollingTags = gsap.utils
+      .toArray('.c-scrolling-tags')
+
+    scrollingTags.forEach(el => {
+
+      gsap.to(el, {
+        x: () => -(
+          el.scrollWidth -
+          document.documentElement.clientWidth
+        ) + 'px',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: el,
+          invalidateOnRefresh: true,
+          scrub: 1,
+          end: () => '+=' + el.offsetWidth
+        }
+      })
+
+    })
+
+  }
+
+})
+
+
 

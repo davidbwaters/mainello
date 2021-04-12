@@ -189,17 +189,17 @@
   }
 }
 
+
+
 .c-sketch-animation {
   display: grid;
   grid-row: 5 / span 1;
   grid-column: 1 / span 2;
   overflow: hidden;
   position: relative;
-
   transition: all .8s;
   will-change: background-color, opacity;
 }
-
 
 @media (min-width: 320px) {
 
@@ -218,7 +218,6 @@
   }
 
 }
-
 
 .c-sketch-animation__inner {
   background-color: white;
@@ -247,7 +246,6 @@
   position: relative;
 }
 
-
 @media (min-width: 320px) {
   .c-tagline {
     align-content: center;
@@ -256,7 +254,6 @@
     grid-template-columns: 1fr;
   }
 }
-
 
 @media (min-width: 480px) {
   .c-tagline {
@@ -275,13 +272,14 @@
   }
 }
 
-
 .c-tagline > span {
   display: grid;
   grid-auto-flow: column;
   grid-gap: var(--spacing-2);
   grid-template-columns: max-content;
 }
+
+
 
 .c-rings {
   align-content: end;
@@ -299,8 +297,8 @@
   .c-rings {
     grid-column: 5 / span 5;
     grid-row: 5 / span 3;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
   }
 }
 
@@ -317,6 +315,7 @@
     grid-row: 2 / span 4;
   }
 }
+
 
 
 .c-cta {

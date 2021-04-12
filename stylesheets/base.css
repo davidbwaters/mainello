@@ -194,18 +194,29 @@
   background-image: url('/icons/mail.svg');
   background-position: center;
   background-repeat: no-repeat;
+  background-size: 1.33rem;
   bottom: 0rem;
   display: none;
-  height: 7.5rem;
+  height: 6rem;
   left: 0rem;
   position: fixed;
-  width: 7.5rem;
+  width: 6rem;
 }
 
 @media (min-width: 320px) {
 
   .c-contact-fab {
     display: block;
+  }
+
+}
+
+@media (min-width: 768px) {
+
+  .c-contact-fab {
+    display: block;
+    height: 7.5rem;
+    width: 7.5rem;
   }
 
 }

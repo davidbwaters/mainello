@@ -244,6 +244,7 @@ let curveSketch = sketch => {
 
     canvas.parent('c-curves__inner')
 
+    sketch.frameRate(20)
 		sketch.strokeWeight(1)
 		sketch.noFill()
 		sketch.background(255)
@@ -252,9 +253,9 @@ let curveSketch = sketch => {
 
 	sketch.drawPerlinCurve = (x, y, phase, step, numCurveVertices) => {
 		sketch.push()
-		sketch.stroke(114,180,174, 100)
-		sketch.circle(x, y, 20)
-		let noiseScale = 0.004
+		//sketch.stroke(114,180,174, 60)
+    sketch.stroke(220, 60)
+		let noiseScale = 0.002
 
 		sketch.beginShape()
 
@@ -275,25 +276,25 @@ let curveSketch = sketch => {
 
 	sketch.applyFade = () => {
 		sketch.push()
-		sketch.fill(255, 16)
-		sketch.rect(0, 0, sketch.width, sketch.height)
+		sketch.fill(255, 90)
+		//sketch.rect(0, 0, sketch.width, sketch.height)
 		sketch.pop()
 	}
 
 
 	sketch.draw = () => {
-		let STEP = 20
+		let STEP = 30
 		let numCurveVertices = sketch.floor(
 			sketch.width * 1.5 / STEP
 		)
-		sketch.applyFade()
-		sketch.background(255)
+		//sketch.applyFade()
+		sketch.background(255, 99)
 
 		sketch.push()
 		sketch.scale(1)
 
 		let phase = sketch.frameCount / 2
-		for (let y = 0; y < sketch.height; y += 20) {
+		for (let y = 0; y < sketch.height; y += 30) {
 			sketch.drawPerlinCurve(
 				sketch.width + 50, y, phase, STEP, numCurveVertices
 			)

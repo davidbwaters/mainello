@@ -352,3 +352,7 @@
     grid-row: 7 / span 2;
   }
 }
+
+.c-curves {
+  overflow: hidden;
+}

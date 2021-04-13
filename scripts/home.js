@@ -3,7 +3,7 @@
 //
 
 import gsap from 'gsap'
-import scrollTrigger from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 import lottie from 'lottie-web'
 import p5 from 'p5'
 
@@ -23,7 +23,7 @@ let introBackground = document.querySelector(
 //   '.c-sketch-animation'
 // )
 
-let animationWrapper = document.querySelector(
+let sketchAnimationWrapper = document.querySelector(
   '.c-sketch-animation__inner'
 )
 
@@ -34,7 +34,7 @@ let introBlocks = document.querySelectorAll(
 introBlocks = [
   ...introBlocks,
 
-  animationWrapper
+  sketchAnimationWrapper
 ]
 
 
@@ -64,7 +64,7 @@ backgroundAnimation.onComplete  = () => {
       lottie.setSpeed(3)
 
       setTimeout(() => {
-        animation.play()
+        sketchAnimation.play()
       }, 400)
 
     }
@@ -75,8 +75,8 @@ backgroundAnimation.onComplete  = () => {
 
 // sketch animation
 
-const animation = lottie.loadAnimation({
-  container: animationWrapper,
+const sketchAnimation = lottie.loadAnimation({
+  container: sketchAnimationWrapper,
   renderer: 'canvas',
   loop: false,
   autoplay: false,
@@ -84,7 +84,7 @@ const animation = lottie.loadAnimation({
 })
 
 
-animation.onComplete = () => {
+sketchAnimation.onComplete = () => {
 
   gsap.to(introBlocks, {
     duration: 0.4,
@@ -92,6 +92,7 @@ animation.onComplete = () => {
     onComplete: () => {
     }
   })
+
   gsap.to(introWrapper, {
     duration: 0.2,
     opacity: 0
@@ -111,6 +112,7 @@ animation.onComplete = () => {
 
 let ringsWrapper = document.querySelector('#c-rings__inner')
 let ringsCanvas = ringsWrapper.getBoundingClientRect()
+let ringsFrameRate = 60
 
 let ringsSketch = (sketch) => {
   let nPoints = 10
@@ -152,15 +154,16 @@ let ringsSketch = (sketch) => {
       setSize()
     }
 
-    canvas.parent('c-rings__inner');
+    canvas.parent('c-rings__inner')
     sketch.pixelDensity(sketch.displayDensity())
     setSize()
 
     minRadius = 0
-    sketch.background(0)
+    sketch.background(255)
   }
 
   sketch.draw = () => {
+    sketch.frameRate(ringsFrameRate)
     sketch.noStroke()
     sketch.fill(255, 40)
     sketch.rect(0, 0, sketch.width, sketch.height)
@@ -210,3 +213,93 @@ let ringsSketch = (sketch) => {
 let rings = new p5(ringsSketch)
 
 
+ScrollTrigger.create({
+  trigger: '#hero',
+  start: 'bottom top',
+  end: 'bottom top',
+  scrub: true,
+  //onLeave: ringsSketch.frameRate(1),
+  onEnter: () => {
+    ringsFrameRate = 1
+  },
+  onEnterBack: () => {
+    ringsFrameRate = 60
+  }
+})
+
+
+// curves animation
+
+let curveSketch = sketch => {
+
+	sketch.setup = () => {
+
+		let width = sketch.windowWidth
+    let height = sketch.windowHeight
+
+    let canvas = sketch.createCanvas(
+      width,
+      height
+    )
+
+    canvas.parent('c-curves__inner')
+
+		sketch.strokeWeight(1)
+		sketch.noFill()
+		sketch.background(255)
+	}
+
+
+	sketch.drawPerlinCurve = (x, y, phase, step, numCurveVertices) => {
+		sketch.push()
+		sketch.stroke(114,180,174, 100)
+		sketch.circle(x, y, 20)
+		let noiseScale = 0.004
+
+		sketch.beginShape()
+
+		for (let i = 0; i < numCurveVertices; i++) {
+			sketch.curveVertex(x, y)
+			let angle =
+					sketch.TWO_PI *
+					sketch.noise(
+						x * noiseScale, y * noiseScale, phase * noiseScale
+					)
+			x += sketch.cos(angle) * step
+			y += sketch.sin(angle) * step
+		}
+		sketch.endShape()
+
+		sketch.pop()
+	}
+
+	sketch.applyFade = () => {
+		sketch.push()
+		sketch.fill(255, 16)
+		sketch.rect(0, 0, sketch.width, sketch.height)
+		sketch.pop()
+	}
+
+
+	sketch.draw = () => {
+		let STEP = 20
+		let numCurveVertices = sketch.floor(
+			sketch.width * 1.5 / STEP
+		)
+		sketch.applyFade()
+		sketch.background(255)
+
+		sketch.push()
+		sketch.scale(1)
+
+		let phase = sketch.frameCount / 2
+		for (let y = 0; y < sketch.height; y += 20) {
+			sketch.drawPerlinCurve(
+				sketch.width + 50, y, phase, STEP, numCurveVertices
+			)
+		}
+		sketch.pop()
+	}
+}
+
+let curves = new p5(curveSketch)

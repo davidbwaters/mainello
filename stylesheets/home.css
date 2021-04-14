@@ -355,4 +355,27 @@
 
 .c-curves {
   overflow: hidden;
+  position: relative;
+}
+
+.c-curves::after {
+  background-image:
+    linear-gradient(
+      0deg,
+      white 0%,
+      transparent 20%,
+      transparent 80%,
+      white 100%
+    );
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+}
+
+.c-work {
+  z-index: 2;
 }

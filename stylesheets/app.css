@@ -196,10 +196,13 @@ p {
 }
 
 
-
 .u-text-outline {
   -webkit-text-stroke: 1px var(--color-eerie-black);
   -webkit-text-fill-color: transparent;
+}
+
+.u-text-align-center {
+  text-align: center;
 }
 
 

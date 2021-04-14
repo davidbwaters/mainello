@@ -214,11 +214,10 @@ let rings = new p5(ringsSketch)
 
 
 ScrollTrigger.create({
-  trigger: '#hero',
+  trigger: '#c-hero',
   start: 'bottom top',
   end: 'bottom top',
   scrub: true,
-  //onLeave: ringsSketch.frameRate(1),
   onEnter: () => {
     ringsFrameRate = 1
   },
@@ -229,6 +228,8 @@ ScrollTrigger.create({
 
 
 // curves animation
+
+let curvesFrameRate = 1
 
 let curveSketch = sketch => {
 
@@ -242,12 +243,20 @@ let curveSketch = sketch => {
       height
     )
 
+
+    sketch.windowResized = () => {
+      sketch.resizeCanvas(
+        sketch.windowWidth,
+        sketch.windowHeight
+      )
+    }
+
     canvas.parent('c-curves__inner')
 
-    sketch.frameRate(20)
 		sketch.strokeWeight(1)
 		sketch.noFill()
 		sketch.background(255)
+
 	}
 
 
@@ -269,6 +278,7 @@ let curveSketch = sketch => {
 			x += sketch.cos(angle) * step
 			y += sketch.sin(angle) * step
 		}
+
 		sketch.endShape()
 
 		sketch.pop()
@@ -283,6 +293,7 @@ let curveSketch = sketch => {
 
 
 	sketch.draw = () => {
+    sketch.frameRate(curvesFrameRate)
 		let STEP = 30
 		let numCurveVertices = sketch.floor(
 			sketch.width * 1.5 / STEP
@@ -304,3 +315,19 @@ let curveSketch = sketch => {
 }
 
 let curves = new p5(curveSketch)
+
+ScrollTrigger.create({
+  trigger: '.c-curves',
+  start: 'top bottom',
+  end: 'top bottom',
+  scrub: true,
+  //onLeave: ringsSketch.frameRate(1),
+  onEnter: () => {
+    curvesFrameRate = 20
+    console.log('e')
+  },
+  onLeaveBack: () => {
+    curvesFrameRate = 1
+    console.log('lb')
+  }
+})

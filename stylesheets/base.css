@@ -122,6 +122,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 9;
 }
 
 @media (min-width: 320px) {
@@ -151,6 +152,7 @@
   right: 0;
   top: 0;
   width: 100%;
+  z-index: 9;
 }
 
 .c-nav-menu__inner {
@@ -166,6 +168,7 @@
   transition: opacity .8s;
   width: 100%;
   will-change: opacity;
+  z-index: 9;
 }
 
 .c-nav-menu.is-active .c-nav-menu__inner {
@@ -202,6 +205,7 @@
   left: 0rem;
   position: fixed;
   width: 6rem;
+  z-index: 9;
 }
 
 @media (min-width: 320px) {

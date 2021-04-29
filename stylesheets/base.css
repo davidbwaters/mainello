@@ -374,3 +374,26 @@
   letter-spacing: var(--title-normal-spacing);
   padding-bottom: var(--spacing-4);
 }
+
+
+/* section title */
+
+.c-section-title {
+  font-size: 10vw;
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px var(--color-eerie-black);
+}
+
+@media (min-width: 320px) {
+  .c-section-title {
+    font-size: 8vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .c-section-title {
+    font-size: 6vw;
+  }
+}

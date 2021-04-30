@@ -397,3 +397,52 @@
     font-size: 6vw;
   }
 }
+
+
+/* fluid reveal */
+
+.c-fluid-reveal {
+	--fluid-reveal-section-height: 140vh;
+	height: calc(
+		var(--fluid-reveal-section-height) * var(--items)
+	);
+  z-index: 2;
+}
+
+.c-fluid-reveal__inner {
+	display: block;
+	min-height: 100vh;
+  position: relative;
+	width: 100%;
+}
+
+.c-fluid-reveal__item {
+	align-content: center;
+	display: grid;
+	grid-auto-flow: column;
+	grid-gap: 2rem;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	margin: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.c-fluid-reveal__item-media {
+    display: block;
+    max-height: 80vh;
+    margin-top: 10vh;
+    overflow: hidden;
+    top: 0;
+    width: 100%;
+}
+
+.c-fluid-reveal__content {
+	align-content: center;
+	background: white;
+	display: grid;
+	grid-column: 2 / span 1;
+	max-height: 100vh;
+	will-change: opacity, transform;
+}

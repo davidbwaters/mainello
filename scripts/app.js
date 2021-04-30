@@ -217,82 +217,105 @@ window.addEventListener('DOMContentLoaded', () => {
 
     wrapper.style.setProperty('--items', fluidRevealEls.length)
 
-    let tl = gsap.timeline({
-      ease: 'none',
-      scrollTrigger: {
-        trigger: wrapper,
-        start: 'top top ',
-        pin: true,
-        pinSpacing: true,
-        end: 'bottom bottom',
-        scrub: 0.4,
-        //markers: true
-      }
-    })
 
     let count = 1
 
-    fluidRevealEls.forEach(el => {
+    ScrollTrigger.matchMedia({
 
+      '(min-width: 768px)': function() {
 
-      ScrollTrigger.refresh()
-
-      wobble = el.querySelector('#wobble-' + count)
-      media = el.querySelector('.c-fluid-reveal__media')
-      content = el.querySelector('.c-fluid-reveal__content')
-
-      if (count > 1) {
-
-        tl.from(
-          wobble,
-          {
-            duration: animateDuration,
-            xPercent: 100,
-            yPercent: 100
-          },
-          '-=' + animateDuration
-        )
-
-      }
-      else {
-
-        tl.from(wobble, {
-          duration: animateDuration,
-          xPercent: 100,
-          yPercent: 100
+        let tl = gsap.timeline({
+          ease: 'none',
+          scrollTrigger: {
+            trigger: wrapper,
+            start: 'top top ',
+            pin: true,
+            pinSpacing: true,
+            end: 'bottom bottom',
+            scrub: 0.4
+            //markers: true
+          }
         })
 
+
+
+        fluidRevealEls.forEach(el => {
+
+
+          wobble = el.querySelector('#wobble-' + count)
+          media = el.querySelector('.c-fluid-reveal__media')
+          content = el.querySelector('.c-fluid-reveal__content')
+
+          if (count > 1) {
+
+            tl.from(
+              wobble,
+              {
+                duration: animateDuration,
+                xPercent: 100,
+                yPercent: 100
+              },
+              '-=' + animateDuration
+            )
+
+          }
+          else {
+
+            tl.from(wobble, {
+              duration: animateDuration,
+              xPercent: 100,
+              yPercent: 100
+            })
+
+          }
+
+          tl.from(
+            content,
+            {
+              duration: animateDuration,
+              opacity: 0,
+              yPercent: 100
+            },
+            '-=' + animateDuration
+          ).to(el, {
+            duration: pinDuration
+          })
+
+          if (count < fluidRevealEls.length) {
+
+            tl.to(
+              content,
+              {
+                duration: animateDuration,
+                opacity: 0,
+                yPercent: -100
+              },
+              '-=' + animateDuration
+            )
+
+          }
+          count++
+
+        })
+
+      },
+
+      '(max-width: 768px)': function() {
+
+        let tl
+
       }
-
-      tl.from(
-        content,
-        {
-          duration: animateDuration,
-          opacity: 0,
-          yPercent: 100
-        },
-        '-=' + animateDuration
-      ).to(el, {
-        duration: pinDuration
-      })
-      if (count < fluidRevealEls.length) {
-
-        tl.to(
-          content,
-          {
-            duration: animateDuration,
-            opacity: 0,
-            yPercent: -100
-          },
-          '-=' + animateDuration
-        )
-
-      }
-      count++
 
     })
+
 
   }, 500)
 
 })
 
+window.addEventListener('resize', () => {
+
+  ScrollTrigger.refresh()
+  console.log('resize')
+
+})

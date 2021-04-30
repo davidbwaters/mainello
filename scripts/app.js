@@ -9,6 +9,8 @@ import lottie from 'lottie-web'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
+gsap.registerPlugin(ScrollTrigger)
+
 console.log('♥️')
 
 // nav menu
@@ -100,8 +102,6 @@ window.addEventListener('DOMContentLoaded', () => {
   menuButton.addEventListener('click', handleNavMenu)
 
 })
-
-gsap.registerPlugin(ScrollTrigger)
 
 let rotateEl = document.querySelector(
   '.c-contact-fab__spinning'
@@ -198,89 +198,101 @@ window.addEventListener('DOMContentLoaded', () => {
 
 })
 
-let animateDuration = 2
-let pinDuration = 5
 
-let fluidRevealEls = gsap.utils.toArray(
-  '.c-fluid-reveal__item'
-)
-let wrapper = document.querySelector('.c-fluid-reveal')
-let inner = document.querySelector('.c-fluid-reveal__inner')
-let wobble
-let content
-let media
+window.addEventListener('DOMContentLoaded', () => {
 
-wrapper.style.setProperty('--items', fluidRevealEls.length)
+  setTimeout(() => {
 
-let tl = gsap.timeline({
-  ease: 'none',
-  scrollTrigger: {
-    trigger: wrapper,
-    start: 'top top ',
-    pin: true,
-    pinSpacing: true,
-    end: 'bottom bottom',
-    scrub: 0.4,
-    markers: true
-  }
-})
+    let animateDuration = 2
+    let pinDuration = 5
 
-let count = 1
-
-fluidRevealEls.forEach(el => {
-
-  wobble = el.querySelector('#wobble-' + count)
-  media = el.querySelector('.c-fluid-reveal__media')
-  content = el.querySelector('.c-fluid-reveal__content')
-
-  if (count > 1) {
-
-    tl.from(
-      wobble,
-      {
-        duration: animateDuration,
-        xPercent: 100,
-        yPercent: 100
-      },
-      '-=' + animateDuration
+    let fluidRevealEls = gsap.utils.toArray(
+      '.c-fluid-reveal__item'
     )
+    let wrapper = document.querySelector('.c-fluid-reveal')
+    let inner = document.querySelector('.c-fluid-reveal__inner')
+    let wobble
+    let content
+    let media
 
-  }
-  else {
+    wrapper.style.setProperty('--items', fluidRevealEls.length)
 
-    tl.from(wobble, {
-      duration: animateDuration,
-      xPercent: 100,
-      yPercent: 100
+    let tl = gsap.timeline({
+      ease: 'none',
+      scrollTrigger: {
+        trigger: wrapper,
+        start: 'top top ',
+        pin: true,
+        pinSpacing: true,
+        end: 'bottom bottom',
+        scrub: 0.4,
+        //markers: true
+      }
     })
 
-  }
+    let count = 1
 
-  tl.from(
-    content,
-    {
-      duration: animateDuration,
-      opacity: 0,
-      yPercent: 100
-    },
-    '-=' + animateDuration
-  ).to(el, {
-    duration: pinDuration
-  })
-  if (count < fluidRevealEls.length) {
+    fluidRevealEls.forEach(el => {
 
-    tl.to(
-      content,
-      {
-        duration: animateDuration,
-        opacity: 0,
-        yPercent: -100
-      },
-      '-=' + animateDuration
-    )
 
-  }
-  count++
+      ScrollTrigger.refresh()
+
+      wobble = el.querySelector('#wobble-' + count)
+      media = el.querySelector('.c-fluid-reveal__media')
+      content = el.querySelector('.c-fluid-reveal__content')
+
+      if (count > 1) {
+
+        tl.from(
+          wobble,
+          {
+            duration: animateDuration,
+            xPercent: 100,
+            yPercent: 100
+          },
+          '-=' + animateDuration
+        )
+
+      }
+      else {
+
+        tl.from(wobble, {
+          duration: animateDuration,
+          xPercent: 100,
+          yPercent: 100
+        })
+
+      }
+
+      tl.from(
+        content,
+        {
+          duration: animateDuration,
+          opacity: 0,
+          yPercent: 100
+        },
+        '-=' + animateDuration
+      ).to(el, {
+        duration: pinDuration
+      })
+      if (count < fluidRevealEls.length) {
+
+        tl.to(
+          content,
+          {
+            duration: animateDuration,
+            opacity: 0,
+            yPercent: -100
+          },
+          '-=' + animateDuration
+        )
+
+      }
+      count++
+
+    })
+
+  }, 500)
 
 })
 

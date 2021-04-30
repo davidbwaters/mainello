@@ -54,7 +54,7 @@ let backgroundAnimation = lottie.loadAnimation({
 lottie.setSpeed(2)
 backgroundAnimation.play()
 
-backgroundAnimation.onComplete  = () => {
+backgroundAnimation.onComplete = () => {
 
   gsap.to(introBlocks, {
     duration: 0.4,
@@ -64,7 +64,9 @@ backgroundAnimation.onComplete  = () => {
       lottie.setSpeed(3)
 
       setTimeout(() => {
+
         sketchAnimation.play()
+
       }, 400)
 
     }
@@ -99,7 +101,9 @@ sketchAnimation.onComplete = () => {
   })
 
   setTimeout(() => {
+
     introWrapper.style.display = 'none'
+
   }, 1200)
 
 
@@ -115,6 +119,7 @@ let ringsCanvas = ringsWrapper.getBoundingClientRect()
 let ringsFrameRate = 60
 
 let ringsSketch = (sketch) => {
+
   let nPoints = 10
   let nCircles = 10
   let minRadius
@@ -134,16 +139,24 @@ let ringsSketch = (sketch) => {
     )
 
     function setSize() {
+
       if (sketch.width < sketch.height) {
+
         noiseScale = sketch.width * 0.12
         maxRadius = sketch.width * 0.45
-      } else {
+
+      }
+      else {
+
         noiseScale = sketch.height * 0.12
         maxRadius = sketch.height * 0.45
+
       }
+
     }
 
     sketch.windowResized = () => {
+
       ringsCanvas = ringsWrapper.getBoundingClientRect()
 
       sketch.resizeCanvas(
@@ -152,6 +165,7 @@ let ringsSketch = (sketch) => {
       )
 
       setSize()
+
     }
 
     canvas.parent('c-rings__inner')
@@ -160,9 +174,11 @@ let ringsSketch = (sketch) => {
 
     minRadius = 0
     sketch.background(255)
+
   }
 
   sketch.draw = () => {
+
     sketch.frameRate(ringsFrameRate)
     sketch.noStroke()
     sketch.fill(255, 40)
@@ -173,6 +189,7 @@ let ringsSketch = (sketch) => {
     sketch.stroke(114, 180, 174)
 
     for (let i = 0; i < nCircles; i++) {
+
       sketch.strokeWeight(sketch.map(i, 0, nCircles, 1, 5))
 
       let radius = sketch.map(i, 0, nCircles, minRadius, maxRadius)
@@ -180,11 +197,12 @@ let ringsSketch = (sketch) => {
       sketch.beginShape()
 
       for (let j = 0; j < nPoints + 3; j++) {
+
         let jj = j
 
         if (j >= nPoints)
-          // Last three povars to close the shape smoothly
-          jj -= nPoints
+        // Last three povars to close the shape smoothly
+        { jj -= nPoints }
 
         let x =
           (radius + sketch.noise(t / nPoints + jj) * noiseScale) *
@@ -195,8 +213,10 @@ let ringsSketch = (sketch) => {
           sketch.sin((sketch.TWO_PI / nPoints) * jj)
 
         sketch.curveVertex(x, y)
+
       }
       sketch.endShape()
+
     }
 
     //t += speed
@@ -206,6 +226,7 @@ let ringsSketch = (sketch) => {
     //console.log(velocity)
 
     t += speed + velocity
+
   }
 
 }
@@ -219,10 +240,14 @@ ScrollTrigger.create({
   end: 'bottom top',
   scrub: true,
   onEnter: () => {
+
     ringsFrameRate = 1
+
   },
   onEnterBack: () => {
+
     ringsFrameRate = 60
+
   }
 })
 
@@ -233,9 +258,9 @@ let curvesFrameRate = 1
 
 let curveSketch = sketch => {
 
-	sketch.setup = () => {
+  sketch.setup = () => {
 
-		let width = sketch.windowWidth
+    let width = sketch.windowWidth
     let height = sketch.windowHeight
 
     let canvas = sketch.createCanvas(
@@ -245,73 +270,90 @@ let curveSketch = sketch => {
 
 
     sketch.windowResized = () => {
+
       sketch.resizeCanvas(
         sketch.windowWidth,
         sketch.windowHeight
       )
+
     }
 
     canvas.parent('c-curves__inner')
 
-		sketch.strokeWeight(1)
-		sketch.noFill()
-		sketch.background(255)
+    sketch.strokeWeight(1)
+    sketch.noFill()
+    sketch.background(255)
 
-	}
+  }
 
 
-	sketch.drawPerlinCurve = (x, y, phase, step, numCurveVertices) => {
-		sketch.push()
-		//sketch.stroke(114,180,174, 60)
+  sketch.drawPerlinCurve = (
+    x, y, phase, step, numCurveVertices
+  ) => {
+
+    sketch.push()
+    //sketch.stroke(114,180,174, 60)
     sketch.stroke(220, 60)
-		let noiseScale = 0.002
+    let noiseScale = 0.002
 
-		sketch.beginShape()
+    sketch.beginShape()
 
-		for (let i = 0; i < numCurveVertices; i++) {
-			sketch.curveVertex(x, y)
-			let angle =
-					sketch.TWO_PI *
-					sketch.noise(
-						x * noiseScale, y * noiseScale, phase * noiseScale
-					)
-			x += sketch.cos(angle) * step
-			y += sketch.sin(angle) * step
-		}
+    for (let i = 0; i < numCurveVertices; i++) {
 
-		sketch.endShape()
+      sketch.curveVertex(x, y)
+      let angle =
+          sketch.TWO_PI *
+          sketch.noise(
+            x * noiseScale,
+            y * noiseScale,
+            phase * noiseScale
+          )
+      x += sketch.cos(angle) * step
+      y += sketch.sin(angle) * step
 
-		sketch.pop()
-	}
+    }
 
-	sketch.applyFade = () => {
-		sketch.push()
-		sketch.fill(255, 90)
-		//sketch.rect(0, 0, sketch.width, sketch.height)
-		sketch.pop()
-	}
+    sketch.endShape()
+
+    sketch.pop()
+
+  }
+
+  sketch.applyFade = () => {
+
+    sketch.push()
+    sketch.fill(255, 90)
+    //sketch.rect(0, 0, sketch.width, sketch.height)
+    sketch.pop()
+
+  }
 
 
-	sketch.draw = () => {
+  sketch.draw = () => {
+
     sketch.frameRate(curvesFrameRate)
-		let STEP = 30
-		let numCurveVertices = sketch.floor(
-			sketch.width * 1.5 / STEP
-		)
-		//sketch.applyFade()
-		sketch.background(255, 99)
+    let STEP = 30
+    let numCurveVertices = sketch.floor(
+      sketch.width * 1.5 / STEP
+    )
+    //sketch.applyFade()
+    sketch.background(255, 99)
 
-		sketch.push()
-		sketch.scale(1)
+    sketch.push()
+    sketch.scale(1)
 
-		let phase = sketch.frameCount / 2
-		for (let y = 0; y < sketch.height; y += 30) {
-			sketch.drawPerlinCurve(
-				sketch.width + 50, y, phase, STEP, numCurveVertices
-			)
-		}
-		sketch.pop()
-	}
+    let phase = sketch.frameCount / 2
+    for (let y = 0; y < sketch.height; y += 30) {
+
+      sketch.drawPerlinCurve(
+        sketch.width + 50, y, phase, STEP, numCurveVertices
+      )
+
+    }
+    sketch.pop()
+
+  }
+
 }
 
 let curves = new p5(curveSketch)
@@ -323,11 +365,15 @@ ScrollTrigger.create({
   scrub: true,
   //onLeave: ringsSketch.frameRate(1),
   onEnter: () => {
+
     curvesFrameRate = 20
     console.log('e')
+
   },
   onLeaveBack: () => {
+
     curvesFrameRate = 1
     console.log('lb')
+
   }
 })

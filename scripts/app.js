@@ -206,25 +206,24 @@ window.addEventListener('DOMContentLoaded', () => {
     let animateDuration = 2
     let pinDuration = 5
 
-    let fluidRevealEls = gsap.utils.toArray(
-      '.c-fluid-reveal__item'
-    )
+
     let wrapper = document.querySelector('.c-fluid-reveal')
     let inner = document.querySelector('.c-fluid-reveal__inner')
     let wobble
     let content
     let media
 
-    wrapper.style.setProperty('--items', fluidRevealEls.length)
-
-
-    let count = 1
-
+    ScrollTrigger.saveStyles(wobble, content, media)
     ScrollTrigger.matchMedia({
 
-      '(min-width: 768px)': function() {
+      // desktop
+      '(min-width: 800px)': function() {
 
-        let tl = gsap.timeline({
+        let count = 1
+
+        let tl
+
+        tl = gsap.timeline({
           ease: 'none',
           scrollTrigger: {
             trigger: wrapper,
@@ -238,13 +237,25 @@ window.addEventListener('DOMContentLoaded', () => {
         })
 
 
+        let fluidRevealEls = document.querySelectorAll(
+          '.c-fluid-reveal__item'
+        )
+
+        fluidRevealEls = Array.from(fluidRevealEls)
+
+        console.log(fluidRevealEls)
+        wrapper.style.setProperty('--items', fluidRevealEls.length)
+
 
         fluidRevealEls.forEach(el => {
 
+          let wobble = el.querySelector('#wobble-' + count)
+          let media = el.querySelector('.c-fluid-reveal__media')
+          let content = el.querySelector('.c-fluid-reveal__content')
 
-          wobble = el.querySelector('#wobble-' + count)
-          media = el.querySelector('.c-fluid-reveal__media')
-          content = el.querySelector('.c-fluid-reveal__content')
+
+          wobble.style = ''
+          content.style = ''
 
           if (count > 1) {
 
@@ -294,28 +305,18 @@ window.addEventListener('DOMContentLoaded', () => {
             )
 
           }
+
           count++
 
         })
 
-      },
-
-      '(max-width: 768px)': function() {
-
-        let tl
+        count = 1
 
       }
 
     })
 
-
   }, 500)
 
-})
-
-window.addEventListener('resize', () => {
-
-  ScrollTrigger.refresh()
-  console.log('resize')
 
 })

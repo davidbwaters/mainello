@@ -401,6 +401,21 @@
 
 /* fluid reveal */
 
+
+@media (max-width: 768px) {
+
+  .c-fluid-reveal__item image {
+    mask: none !important;
+  }
+
+  .c-fluid-reveal__content {
+    display: none;
+    height: 0;
+    opacity: 1 !important;
+  }
+
+}
+
 @media (min-width: 768px) {
 
   .c-fluid-reveal {
@@ -449,18 +464,6 @@
     max-height: 100vh;
     padding-right: var(--spacing-6);
     will-change: opacity, transform;
-  }
-
-}
-
-@media (max-width: 768px) {
-
-  .c-fluid-reveal__item image {
-    mask: none !important;
-  }
-
-  .c-fluid-reveal__content {
-    opacity: 1 !important;
   }
 
 }

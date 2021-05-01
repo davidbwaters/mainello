@@ -280,3 +280,7 @@ p {
 .u-height-fill {
   height: 100vh;
 }
+
+.u-height-half {
+  height: 50vh;
+}

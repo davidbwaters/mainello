@@ -219,98 +219,102 @@ window.addEventListener('DOMContentLoaded', () => {
       // desktop
       '(min-width: 800px)': function() {
 
-        let count = 1
 
-        let tl
+        setTimeout(() => {
 
-        tl = gsap.timeline({
-          ease: 'none',
-          scrollTrigger: {
-            trigger: wrapper,
-            start: 'top top ',
-            pin: true,
-            pinSpacing: true,
-            end: 'bottom bottom',
-            scrub: 0.4
-            //markers: true
-          }
-        })
+          ScrollTrigger.refresh()
+          let count = 1
 
-
-        let fluidRevealEls = document.querySelectorAll(
-          '.c-fluid-reveal__item'
-        )
-
-        fluidRevealEls = Array.from(fluidRevealEls)
-
-        console.log(fluidRevealEls)
-        wrapper.style.setProperty('--items', fluidRevealEls.length)
+          let tl = gsap.timeline({
+            ease: 'none',
+            scrollTrigger: {
+              trigger: wrapper,
+              start: 'top top ',
+              pin: true,
+              pinSpacing: true,
+              end: 'bottom bottom',
+              scrub: 0.4
+              //markers: true
+            }
+          })
 
 
-        fluidRevealEls.forEach(el => {
+          let fluidRevealEls = document.querySelectorAll(
+            '.c-fluid-reveal__item'
+          )
 
-          let wobble = el.querySelector('#wobble-' + count)
-          let media = el.querySelector('.c-fluid-reveal__media')
-          let content = el.querySelector('.c-fluid-reveal__content')
+          fluidRevealEls = Array.from(fluidRevealEls)
+
+          console.log(fluidRevealEls)
+          wrapper.style.setProperty('--items', fluidRevealEls.length)
 
 
-          wobble.style = ''
-          content.style = ''
+          fluidRevealEls.forEach(el => {
 
-          if (count > 1) {
+            let wobble = el.querySelector('#wobble-' + count)
+            let media = el.querySelector('.c-fluid-reveal__media')
+            let content = el.querySelector('.c-fluid-reveal__content')
 
-            tl.from(
-              wobble,
-              {
+
+            wobble.style = ''
+            content.style = ''
+
+            if (count > 1) {
+
+              tl.from(
+                wobble,
+                {
+                  duration: animateDuration,
+                  xPercent: 100,
+                  yPercent: 100
+                },
+                '-=' + animateDuration
+              )
+
+            }
+            else {
+
+              tl.from(wobble, {
                 duration: animateDuration,
                 xPercent: 100,
                 yPercent: 100
-              },
-              '-=' + animateDuration
-            )
+              })
 
-          }
-          else {
+            }
 
-            tl.from(wobble, {
-              duration: animateDuration,
-              xPercent: 100,
-              yPercent: 100
-            })
-
-          }
-
-          tl.from(
-            content,
-            {
-              duration: animateDuration,
-              opacity: 0,
-              yPercent: 100
-            },
-            '-=' + animateDuration
-          ).to(el, {
-            duration: pinDuration
-          })
-
-          if (count < fluidRevealEls.length) {
-
-            tl.to(
+            tl.from(
               content,
               {
                 duration: animateDuration,
                 opacity: 0,
-                yPercent: -100
+                yPercent: 100
               },
               '-=' + animateDuration
-            )
+            ).to(el, {
+              duration: pinDuration
+            })
 
-          }
+            if (count < fluidRevealEls.length) {
 
-          count++
+              tl.to(
+                content,
+                {
+                  duration: animateDuration,
+                  opacity: 0,
+                  yPercent: -100
+                },
+                '-=' + animateDuration
+              )
 
-        })
+            }
 
-        count = 1
+            count++
+
+          })
+
+          count = 1
+
+        }, 500)
 
       }
 

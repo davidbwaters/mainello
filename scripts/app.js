@@ -7,7 +7,7 @@ import lottie from 'lottie-web'
 // contact fab
 
 import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
+//import ScrollTrigger from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -223,7 +223,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
     let tl
 
-    //ScrollTrigger.saveStyles(wobble, content, media)
+
+    ScrollTrigger.saveStyles([
+      '.c-fluid-reveal__item path',
+      '.c-fluid-reveal__item .c-fluid-reveal__media',
+      '.c-fluid-reveal__item .c-fluid-reveal__content'
+    ])
+
     ScrollTrigger.matchMedia({
 
       // desktop
@@ -240,7 +246,7 @@ window.addEventListener('DOMContentLoaded', () => {
               trigger: wrapper,
               start: 'top top ',
               pin: true,
-              pinSpacing: true,
+              pinSpacing: false,
               end: 'bottom bottom',
               scrub: 0.4
               //markers: true

@@ -3,10 +3,14 @@
 //
 
 import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
+//import ScrollTrigger from 'gsap/ScrollTrigger'
+
+//import './modules/ScrollTrigger.min.js'
 import lottie from 'lottie-web'
 import p5 from 'p5'
 
+
+//gsap.registerPlugin(gsap.ScrollTrigger)
 
 // intro animations
 
@@ -234,23 +238,6 @@ let ringsSketch = (sketch) => {
 let rings = new p5(ringsSketch)
 
 
-ScrollTrigger.create({
-  trigger: '#c-hero',
-  start: 'bottom top',
-  end: 'bottom top',
-  scrub: true,
-  onEnter: () => {
-
-    ringsFrameRate = 1
-
-  },
-  onEnterBack: () => {
-
-    ringsFrameRate = 60
-
-  }
-})
-
 
 // curves animation
 
@@ -358,22 +345,5 @@ let curveSketch = sketch => {
 
 let curves = new p5(curveSketch)
 
-ScrollTrigger.create({
-  trigger: '.c-curves',
-  start: 'top bottom',
-  end: 'top bottom',
-  scrub: true,
-  //onLeave: ringsSketch.frameRate(1),
-  onEnter: () => {
 
-    curvesFrameRate = 20
-    console.log('e')
 
-  },
-  onLeaveBack: () => {
-
-    curvesFrameRate = 1
-    console.log('lb')
-
-  }
-})

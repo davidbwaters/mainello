@@ -493,6 +493,7 @@
 }
 
 .c-post-list__item-date {
+  font-size: var(--font-size-small);
   margin-top:  var(--spacing-1);
 }
 

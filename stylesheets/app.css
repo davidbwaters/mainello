@@ -140,6 +140,27 @@ p {
 
 /* text */
 
+
+.u-heading-medium {
+  font-size: var(--font-size-large-1);
+  font-weight: var(--font-weight-semibold);
+}
+
+@media (min-width: 320px) {
+  .u-heading-medium {
+    font-size: var(--font-size-large-2);
+    font-weight: var(--font-weight-semibold);
+  }
+}
+
+@media (min-width: 768px) {
+  .u-heading-medium {
+    font-size: var(--font-size-large-2);
+    font-weight: var(--font-weight-semibold);
+  }
+}
+
+
 .u-heading-large {
   font-size: var(--font-size-large-1);
   font-weight: var(--font-weight-semibold);
@@ -283,4 +304,8 @@ p {
 
 .u-height-half {
   height: 50vh;
+}
+
+.u-height-quarter {
+  height: 25vh;
 }

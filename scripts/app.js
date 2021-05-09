@@ -209,11 +209,21 @@ window.addEventListener('DOMContentLoaded', () => {
 
     let wrapper = document.querySelector('.c-fluid-reveal')
     let inner = document.querySelector('.c-fluid-reveal__inner')
-    let wobble
-    let content
-    let media
 
-    ScrollTrigger.saveStyles(wobble, content, media)
+
+
+    let fluidRevealEls = document.querySelectorAll(
+      '.c-fluid-reveal__item'
+    )
+
+
+    fluidRevealEls = Array.from(fluidRevealEls)
+
+    wrapper.style.setProperty('--items', fluidRevealEls.length)
+
+    let tl
+
+    //ScrollTrigger.saveStyles(wobble, content, media)
     ScrollTrigger.matchMedia({
 
       // desktop
@@ -222,10 +232,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(() => {
 
-          ScrollTrigger.refresh()
           let count = 1
 
-          let tl = gsap.timeline({
+          tl = gsap.timeline({
             ease: 'none',
             scrollTrigger: {
               trigger: wrapper,
@@ -237,17 +246,6 @@ window.addEventListener('DOMContentLoaded', () => {
               //markers: true
             }
           })
-
-
-          let fluidRevealEls = document.querySelectorAll(
-            '.c-fluid-reveal__item'
-          )
-
-          fluidRevealEls = Array.from(fluidRevealEls)
-
-          console.log(fluidRevealEls)
-          wrapper.style.setProperty('--items', fluidRevealEls.length)
-
 
           fluidRevealEls.forEach(el => {
 
@@ -310,11 +308,27 @@ window.addEventListener('DOMContentLoaded', () => {
 
             count++
 
+
+            ScrollTrigger.update()
+
           })
 
           count = 1
 
-        }, 500)
+        }, 2000)
+
+
+
+      },
+
+
+      '(max-width: 800px)': function() {
+
+        if (tl) {
+
+          tl.kill()
+
+        }
 
       }
 
@@ -322,5 +336,21 @@ window.addEventListener('DOMContentLoaded', () => {
 
   }, 500)
 
+
+})
+
+window.addEventListener('resize', () => {
+
+
+
+
+  setTimeout(() => {
+
+    console.log('rf')
+
+
+    ScrollTrigger.update()
+
+  }, 500)
 
 })

@@ -427,6 +427,7 @@
   .c-fluid-reveal {
     --fluid-reveal-section-height: 110vh;
     height:   calc(var(--items) * var(--fluid-reveal-section-height));
+    pointer-events: none;
     z-index: 2;
   }
 

@@ -381,7 +381,8 @@
 .c-section-title {
   font-size: 10vw;
   font-weight: var(--font-weight-semibold);
-  padding-bottom: 15vh;
+  height: 50vh;
+  padding-top: 30vh;
   text-align: center;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px var(--color-eerie-black);
@@ -425,7 +426,7 @@
 
   .c-fluid-reveal {
     --fluid-reveal-section-height: 110vh;
-    height:   3000px;
+    height:   calc(var(--items) * var(--fluid-reveal-section-height));
     z-index: 2;
   }
 

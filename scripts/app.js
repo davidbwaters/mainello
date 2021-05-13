@@ -2,16 +2,258 @@
 // main
 //
 
-import lottie from 'lottie-web'
-
-// contact fab
+import LocomotiveScroll from 'locomotive-scroll'
 
 import gsap from 'gsap'
+
+import lottie from 'lottie-web'
+
 //import ScrollTrigger from 'gsap/ScrollTrigger'
+
+
+// init
 
 gsap.registerPlugin(ScrollTrigger)
 
-console.log('♥️')
+
+// smooth scroll setup
+
+const smoothScrollSetup = () => {
+
+  const scrollerEl = document.querySelector('.smooth-scroll')
+  const scroller = new LocomotiveScroll({
+    el: scrollerEl,
+    smooth: true
+  })
+
+  scroller.on('scroll', ScrollTrigger.update)
+
+  ScrollTrigger.scrollerProxy('.smooth-scroll', {
+    scrollTop(value) {
+
+      return arguments.length
+        ? scroller.scrollTo(value, 0, 0)
+        : scroller.scroll.instance.scroll.y
+
+    },
+    getBoundingClientRect() {
+
+      return {
+        left: 0,
+        top: 0,
+        width: window.innerWidth,
+        height: window.innerHeight
+      }
+
+    }
+
+  })
+
+}
+
+
+// scrolling tags
+
+const scrollingTagsSetup = () => {
+
+  let scrollingTagsEls = document.querySelectorAll(
+    '.c-scrolling-tags'
+  )
+
+  if (scrollingTagsEls.length) {
+
+    let scrollingTags = gsap.utils.toArray(
+      '.c-scrolling-tags'
+    )
+
+    scrollingTags.forEach(el => {
+
+      gsap.to(el, {
+        x: () =>
+          -(
+            el.scrollWidth -
+            document.documentElement.clientWidth
+          ) + 'px',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: el,
+          scroller: '.smooth-scroll',
+          invalidateOnRefresh: true,
+          scrub: .4,
+          end: () => '+=' + el.offsetWidth
+        }
+      })
+
+    })
+
+  }
+
+}
+
+
+// fluid reveal
+
+const fluidRevealSetup = () => {
+
+  let animateDuration = 2
+  let pinDuration = 5
+
+  let wrapper = document.querySelector('.c-fluid-reveal')
+
+  let fluidRevealEls = document.querySelectorAll(
+    '.c-fluid-reveal__item'
+  )
+
+
+  fluidRevealEls = Array.from(fluidRevealEls)
+
+  // console.log(fluidRevealEls)
+
+  wrapper.style.setProperty('--items', fluidRevealEls.length)
+
+  ScrollTrigger.refresh()
+
+  ScrollTrigger.saveStyles([
+    '.c-fluid-reveal__item path',
+    '.c-fluid-reveal__item .c-fluid-reveal__media',
+    '.c-fluid-reveal__item .c-fluid-reveal__content'
+  ])
+
+  ScrollTrigger.matchMedia({
+
+    // desktop
+    '(min-width: 800px)': function() {
+
+
+      setTimeout(() => {
+
+        let count = 1
+
+        let tl = gsap.timeline({
+          ease: 'none',
+          scrollTrigger: {
+            trigger: wrapper,
+            scroller: '.smooth-scroll',
+            start: 'top top ',
+            pin: true,
+            pinSpacing: false,
+            end: 'bottom bottom',
+            scrub: 0.4,
+            markers: true
+          }
+        })
+
+        fluidRevealEls.forEach(el => {
+
+          let wobble = el.querySelector('#wobble-' + count)
+          let media = el.querySelector('.c-fluid-reveal__media')
+          let content = el.querySelector('.c-fluid-reveal__content')
+
+
+          wobble.style = ''
+          content.style = ''
+
+          if (count > 1) {
+
+            tl.from(
+              wobble,
+              {
+                duration: animateDuration,
+                xPercent: 100,
+                yPercent: 100
+              },
+              '-=' + animateDuration
+            )
+
+          }
+          else {
+
+            tl.from(wobble, {
+              duration: animateDuration,
+              xPercent: 100,
+              yPercent: 100
+            })
+
+          }
+
+          tl.from(
+            content,
+            {
+              duration: animateDuration,
+              opacity: 0,
+              yPercent: 100
+            },
+            '-=' + animateDuration
+          ).to(el, {
+            duration: pinDuration
+          })
+
+          if (count < fluidRevealEls.length) {
+
+            tl.to(
+              content,
+              {
+                duration: animateDuration,
+                opacity: 0,
+                yPercent: -100
+              },
+              '-=' + animateDuration
+            )
+
+          }
+
+          count++
+
+
+          ScrollTrigger.update()
+
+        })
+
+        count = 1
+
+      }, 2000)
+
+
+    },
+
+
+    '(max-width: 800px)': function() {
+    }
+
+  })
+
+}
+
+
+window.addEventListener('DOMContentLoaded', () => {
+
+  setTimeout(() => {
+
+    smoothScrollSetup()
+
+    scrollingTagsSetup()
+
+    fluidRevealSetup()
+
+    ScrollTrigger.refresh()
+
+  }, 500)
+
+})
+
+window.addEventListener('resize', () => {
+
+
+  setTimeout(() => {
+
+    console.log('rf')
+
+    ScrollTrigger.update()
+
+  }, 500)
+
+})
+
 
 // nav menu
 
@@ -103,260 +345,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 })
 
-let rotateEl = document.querySelector(
-  '.c-contact-fab__spinning'
-)
-let rotateDuration = 16
 
-let rotate = gsap.to(rotateEl, {
-  rotation: 360,
-  duration: rotateDuration,
-  onReverseComplete() {
+// love
 
-    this.totalTime(rotateDuration * 100) // loop in reverse
-
-  },
-  repeat: -1,
-  ease: 'linear'
-})
-
-let scrollTop
-let contentHeight
-let progress = 0
-let rounds = 0
-let clamp = gsap.utils.clamp(-50, 50)
-
-ScrollTrigger.create({
-  onUpdate: self => {
-
-    scrollTop =
-      window.pageYOffset ||
-      document.documentElement.scrollTop
-    contentHeight =
-      Math.max(
-        document.body.scrollHeight,
-        document.body.offsetHeight,
-        document.documentElement.clientHeight,
-        document.documentElement.scrollHeight,
-        document.documentElement.offsetHeight
-      ) - window.innerHeight
-    rounds = Math.floor(contentHeight / window.innerHeight)
-    progress =
-      Math.floor((scrollTop / contentHeight) * 100) * rounds
-
-    // console.log(clamp((self.getVelocity() / 100) * 0.5))
-    rotate.timeScale(clamp(self.getVelocity() / 100))
-    gsap.to(rotate, {
-      timeScale: self.direction,
-      duration: 0.3,
-      overwrite: true,
-      ease: 'power1.inOut'
-    })
-
-  }
-})
-
-gsap.set(rotateEl, {
-  transformOrigin: 'center center',
-  force3D: true
-})
-
-// scrolling tags
-
-window.addEventListener('DOMContentLoaded', () => {
-
-  let scrollingTagsEls = document.querySelectorAll(
-    '.c-scrolling-tags'
-  )
-
-  if (scrollingTagsEls.length) {
-
-    let scrollingTags = gsap.utils.toArray(
-      '.c-scrolling-tags'
-    )
-
-    scrollingTags.forEach(el => {
-
-      gsap.to(el, {
-        x: () =>
-          -(
-            el.scrollWidth -
-            document.documentElement.clientWidth
-          ) + 'px',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: el,
-          invalidateOnRefresh: true,
-          scrub: 1,
-          end: () => '+=' + el.offsetWidth
-        }
-      })
-
-    })
-
-  }
-
-})
-
-
-window.addEventListener('DOMContentLoaded', () => {
-
-  setTimeout(() => {
-
-    let animateDuration = 2
-    let pinDuration = 5
-
-
-    let wrapper = document.querySelector('.c-fluid-reveal')
-    let inner = document.querySelector('.c-fluid-reveal__inner')
-
-
-
-    let fluidRevealEls = document.querySelectorAll(
-      '.c-fluid-reveal__item'
-    )
-
-
-    fluidRevealEls = Array.from(fluidRevealEls)
-
-    wrapper.style.setProperty('--items', fluidRevealEls.length)
-
-    let tl
-
-
-    ScrollTrigger.saveStyles([
-      '.c-fluid-reveal__item path',
-      '.c-fluid-reveal__item .c-fluid-reveal__media',
-      '.c-fluid-reveal__item .c-fluid-reveal__content'
-    ])
-
-    ScrollTrigger.matchMedia({
-
-      // desktop
-      '(min-width: 800px)': function() {
-
-
-        setTimeout(() => {
-
-          let count = 1
-
-          tl = gsap.timeline({
-            ease: 'none',
-            scrollTrigger: {
-              trigger: wrapper,
-              start: 'top top ',
-              pin: true,
-              pinSpacing: false,
-              end: 'bottom bottom',
-              scrub: 0.4
-              //markers: true
-            }
-          })
-
-          fluidRevealEls.forEach(el => {
-
-            let wobble = el.querySelector('#wobble-' + count)
-            let media = el.querySelector('.c-fluid-reveal__media')
-            let content = el.querySelector('.c-fluid-reveal__content')
-
-
-            wobble.style = ''
-            content.style = ''
-
-            if (count > 1) {
-
-              tl.from(
-                wobble,
-                {
-                  duration: animateDuration,
-                  xPercent: 100,
-                  yPercent: 100
-                },
-                '-=' + animateDuration
-              )
-
-            }
-            else {
-
-              tl.from(wobble, {
-                duration: animateDuration,
-                xPercent: 100,
-                yPercent: 100
-              })
-
-            }
-
-            tl.from(
-              content,
-              {
-                duration: animateDuration,
-                opacity: 0,
-                yPercent: 100
-              },
-              '-=' + animateDuration
-            ).to(el, {
-              duration: pinDuration
-            })
-
-            if (count < fluidRevealEls.length) {
-
-              tl.to(
-                content,
-                {
-                  duration: animateDuration,
-                  opacity: 0,
-                  yPercent: -100
-                },
-                '-=' + animateDuration
-              )
-
-            }
-
-            count++
-
-
-            ScrollTrigger.update()
-
-          })
-
-          count = 1
-
-        }, 2000)
-
-
-
-      },
-
-
-      '(max-width: 800px)': function() {
-
-        if (tl) {
-
-          tl.kill()
-
-        }
-
-      }
-
-    })
-
-  }, 500)
-
-
-})
-
-window.addEventListener('resize', () => {
-
-
-
-
-  setTimeout(() => {
-
-    console.log('rf')
-
-
-    ScrollTrigger.update()
-
-  }, 500)
-
-})
+console.log('♥️')

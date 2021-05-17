@@ -1,3 +1,4 @@
+const navigationPlugin = require('@11ty/eleventy-navigation');
 const CleanCSS = require("clean-css")
 
 const config = {
@@ -39,6 +40,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("cssmin", function(code) {
     return new CleanCSS({}).minify(code).styles
   })
+
+  eleventyConfig.addPlugin(navigationPlugin)
 
   return config
 }

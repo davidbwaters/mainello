@@ -219,6 +219,9 @@
 
 .c-footer__contact {
   display: grid;
+  margin: 0;
+  padding-bottom: 15vh;
+  padding-top: 15vh;
   text-align: center;
 }
 
@@ -228,9 +231,23 @@
   padding-right: 10vw;
 }
 
+.c-footer__menu {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  padding-top: 4vw;
+}
+
+.c-footer__social {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 1rem;
+}
+
 .c-footer canvas {
   opacity: 0.5;
 }
+
 
 
 /* contact fab */
@@ -354,7 +371,6 @@
   grid-gap: 8vw;
   white-space: nowrap;
 }
-
 
 .c-scrolling-tags__inner {
   display: grid;

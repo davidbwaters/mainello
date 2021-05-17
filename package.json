@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy-navigation": "^0.2.0",
     "@davidbwaters/eslint-config": "^1.7.1",
     "@davidbwaters/prettier-config": "^1.2.3",
     "@davidbwaters/stylelint-config": "^1.0.10",

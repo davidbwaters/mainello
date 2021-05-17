@@ -115,10 +115,12 @@ body {
 main {
   display: block;
   min-height: 100%;
+  overflow-x: hidden;
   width: 100%;
 }
 
 a {
+  color: inherit;
   cursor: pointer;
 }
 
@@ -126,6 +128,9 @@ p {
   margin: 0;
 }
 
+small {
+  font-size: var(--line-height-tiny);
+}
 
 /* backgrounds */
 
@@ -145,7 +150,6 @@ p {
   font-size: var(--font-size-large-1);
   font-weight: var(--font-weight-semibold);
 }
-
 
 
 .u-heading-medium {
@@ -218,14 +222,24 @@ p {
 
 
 .u-text-outline {
-  -webkit-text-stroke: 1px var(--color-eerie-black);
+  -webkit-text-stroke: 1px currentColor;
   -webkit-text-fill-color: transparent;
 }
+
+
+/* utilities - text */
 
 .u-text-align-center {
   text-align: center;
 }
 
+.u-text-align-right {
+  text-align: right;
+}
+
+.u-text-align-left {
+  text-align: left;
+}
 
 
 /* utilities - line */
@@ -308,4 +322,11 @@ p {
 
 .u-height-quarter {
   height: 25vh;
+}
+
+
+/* utilities - opacity */
+
+.u-transparent {
+  opacity: 0 !important;
 }

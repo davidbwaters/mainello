@@ -2,11 +2,14 @@
 // main
 //
 
-import LocomotiveScroll from 'locomotive-scroll'
-
 import gsap from 'gsap'
 
 import lottie from 'lottie-web'
+
+import p5 from 'p5'
+
+import { inViewport } from './modules/inViewport'
+
 
 //import ScrollTrigger from 'gsap/ScrollTrigger'
 
@@ -15,42 +18,75 @@ import lottie from 'lottie-web'
 
 gsap.registerPlugin(ScrollTrigger)
 
+// contact fab
 
-// smooth scroll setup
+const contactFabSetup = () => {
 
-const smoothScrollSetup = () => {
+  let rotateEl = document.querySelector(
+    '.c-contact-fab__spinning'
+  )
+  let rotateDuration = 16
 
-  const scrollerEl = document.querySelector('.smooth-scroll')
-  const scroller = new LocomotiveScroll({
-    el: scrollerEl,
-    smooth: true
-  })
+  let rotate = gsap.to(rotateEl, {
+    rotation: 360,
+    duration: rotateDuration,
+    onReverseComplete() {
 
-  scroller.on('scroll', ScrollTrigger.update)
-
-  ScrollTrigger.scrollerProxy('.smooth-scroll', {
-    scrollTop(value) {
-
-      return arguments.length
-        ? scroller.scrollTo(value, 0, 0)
-        : scroller.scroll.instance.scroll.y
+      this.totalTime(rotateDuration * 100)
 
     },
-    getBoundingClientRect() {
+    repeat: -1,
+    ease: 'linear'
+  })
 
-      return {
-        left: 0,
-        top: 0,
-        width: window.innerWidth,
-        height: window.innerHeight
-      }
+  let scrollTop
+  let contentHeight
+  let progress = 0
+  let rounds = 0
+  let clamp = gsap.utils.clamp(-50, 50)
+
+  ScrollTrigger.create({
+    onUpdate: self => {
+
+      scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop
+      contentHeight =
+        Math.max(
+          document.body.scrollHeight,
+          document.body.offsetHeight,
+          document.documentElement.clientHeight,
+          document.documentElement.scrollHeight,
+          document.documentElement.offsetHeight
+        ) - window.innerHeight
+      rounds = Math.floor(
+        contentHeight / window.innerHeight
+      )
+      progress =
+        Math.floor((scrollTop / contentHeight) * 100) *
+        rounds
+
+      // console.log(
+      //  clamp((self.getVelocity() / 100) * 0.5)
+      // )
+
+      rotate.timeScale(clamp(self.getVelocity() / 100))
+      gsap.to(rotate, {
+        timeScale: self.direction,
+        duration: 0.3,
+        overwrite: true,
+        ease: 'power1.inOut'
+      })
 
     }
+  })
 
+  gsap.set(rotateEl, {
+    transformOrigin: 'center center',
+    force3D: true
   })
 
 }
-
 
 // scrolling tags
 
@@ -77,9 +113,8 @@ const scrollingTagsSetup = () => {
         ease: 'none',
         scrollTrigger: {
           trigger: el,
-          scroller: '.smooth-scroll',
           invalidateOnRefresh: true,
-          scrub: .4,
+          scrub: 0.4,
           end: () => '+=' + el.offsetWidth
         }
       })
@@ -89,7 +124,6 @@ const scrollingTagsSetup = () => {
   }
 
 }
-
 
 // fluid reveal
 
@@ -104,12 +138,14 @@ const fluidRevealSetup = () => {
     '.c-fluid-reveal__item'
   )
 
-
   fluidRevealEls = Array.from(fluidRevealEls)
 
   // console.log(fluidRevealEls)
 
-  wrapper.style.setProperty('--items', fluidRevealEls.length)
+  wrapper.style.setProperty(
+    '--items',
+    fluidRevealEls.length
+  )
 
   ScrollTrigger.refresh()
 
@@ -120,10 +156,8 @@ const fluidRevealSetup = () => {
   ])
 
   ScrollTrigger.matchMedia({
-
     // desktop
     '(min-width: 800px)': function() {
-
 
       setTimeout(() => {
 
@@ -133,22 +167,24 @@ const fluidRevealSetup = () => {
           ease: 'none',
           scrollTrigger: {
             trigger: wrapper,
-            scroller: '.smooth-scroll',
             start: 'top top ',
             pin: true,
             pinSpacing: false,
             end: 'bottom bottom',
-            scrub: 0.4,
-            markers: true
+            scrub: 0.4
+            //markers: true
           }
         })
 
         fluidRevealEls.forEach(el => {
 
           let wobble = el.querySelector('#wobble-' + count)
-          let media = el.querySelector('.c-fluid-reveal__media')
-          let content = el.querySelector('.c-fluid-reveal__content')
-
+          let media = el.querySelector(
+            '.c-fluid-reveal__media'
+          )
+          let content = el.querySelector(
+            '.c-fluid-reveal__content'
+          )
 
           wobble.style = ''
           content.style = ''
@@ -204,7 +240,6 @@ const fluidRevealSetup = () => {
 
           count++
 
-
           ScrollTrigger.update()
 
         })
@@ -213,27 +248,22 @@ const fluidRevealSetup = () => {
 
       }, 2000)
 
-
     },
 
-
-    '(max-width: 800px)': function() {
-    }
-
+    '(max-width: 800px)': function() {}
   })
 
 }
-
 
 window.addEventListener('DOMContentLoaded', () => {
 
   setTimeout(() => {
 
-    smoothScrollSetup()
-
     scrollingTagsSetup()
 
     fluidRevealSetup()
+
+    contactFabSetup()
 
     ScrollTrigger.refresh()
 
@@ -242,7 +272,6 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 window.addEventListener('resize', () => {
-
 
   setTimeout(() => {
 
@@ -253,7 +282,6 @@ window.addEventListener('resize', () => {
   }, 500)
 
 })
-
 
 // nav menu
 
@@ -342,6 +370,99 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   menuButton.addEventListener('click', handleNavMenu)
+
+})
+
+
+// footer
+
+const fabricSketch = sketch => {
+
+  let theShader
+
+  sketch.preload = () => {
+
+    theShader = sketch.loadShader(
+      'scripts/shaders/fabric.vert',
+      'scripts/shaders/fabric.frag'
+    )
+
+  }
+
+  sketch.setup = () => {
+
+    let width = sketch.windowWidth
+    let height = sketch.windowHeight
+
+    let canvas = sketch.createCanvas(
+      width,
+      height,
+      sketch.WEBGL
+    )
+
+    sketch.windowResized = () => {
+
+      sketch.resizeCanvas(
+        sketch.windowWidth,
+        sketch.windowHeight
+      )
+
+    }
+
+    sketch.createCanvas(
+      sketch.windowWidth,
+      sketch.windowHeight
+    )
+
+    canvas.parent('c-footer__background')
+
+  }
+
+  sketch.draw = () => {
+
+    sketch.shader(theShader)
+
+    let x
+
+    theShader.setUniform('u_resolution', [
+      sketch.width, sketch.height
+    ])
+    theShader.setUniform('u_time', (
+      sketch.millis() / 1000) +
+      (Math.abs(sketch.mouseX) / 300)
+    )
+
+    sketch.quad(-5, -5, 5, -5, 5, 5, -5, 5)
+
+  }
+
+}
+
+const fabric = new p5(fabricSketch)
+
+const contactFab = document.querySelector(
+  '.c-contact-fab'
+)
+const footer = document.querySelector('.c-footer')
+let footerVisible = false
+
+inViewport(footer, el => {
+
+  if (el.isIntersecting) {
+
+    footerVisible = true
+    contactFab.classList.toggle('u-transparent')
+
+  }
+  else {
+
+    if (footerVisible) {
+
+      contactFab.classList.toggle('u-transparent')
+
+    }
+
+  }
 
 })
 

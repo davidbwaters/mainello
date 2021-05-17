@@ -5,12 +5,11 @@
 import gsap from 'gsap'
 //import ScrollTrigger from 'gsap/ScrollTrigger'
 
-//import './modules/ScrollTrigger.min.js'
 import lottie from 'lottie-web'
 import p5 from 'p5'
+import { doc } from 'prettier'
+import { inViewport } from './modules/inViewport'
 
-
-//gsap.registerPlugin(gsap.ScrollTrigger)
 
 // intro animations
 
@@ -196,7 +195,8 @@ let ringsSketch = (sketch) => {
 
       sketch.strokeWeight(sketch.map(i, 0, nCircles, 1, 5))
 
-      let radius = sketch.map(i, 0, nCircles, minRadius, maxRadius)
+      let radius = sketch
+        .map(i, 0, nCircles, minRadius, maxRadius)
 
       sketch.beginShape()
 
@@ -208,12 +208,14 @@ let ringsSketch = (sketch) => {
         // Last three povars to close the shape smoothly
         { jj -= nPoints }
 
-        let x =
-          (radius + sketch.noise(t / nPoints + jj) * noiseScale) *
+        let x = (
+          radius +
+          sketch.noise(t / nPoints + jj) * noiseScale) *
           sketch.cos((sketch.TWO_PI / nPoints) * jj)
 
-        let y =
-          (radius + sketch.noise(t / nPoints + jj) * noiseScale) *
+        let y = (
+          radius +
+          sketch.noise(t / nPoints + jj) * noiseScale) *
           sketch.sin((sketch.TWO_PI / nPoints) * jj)
 
         sketch.curveVertex(x, y)
@@ -225,7 +227,8 @@ let ringsSketch = (sketch) => {
 
     //t += speed
 
-    let velocity = sketch.abs(sketch.winMouseX - sketch.pwinMouseX) / 150
+    let velocity =
+    sketch.abs(sketch.winMouseX - sketch.pwinMouseX) / 150
 
     //console.log(velocity)
 
@@ -237,11 +240,26 @@ let ringsSketch = (sketch) => {
 
 let rings = new p5(ringsSketch)
 
+inViewport(ringsWrapper, el => {
+
+  if (el.isIntersecting) {
+
+    ringsFrameRate = 30
+
+  }
+  else {
+
+    ringsFrameRate = 1
+
+  }
+
+})
 
 
 // curves animation
 
-let curvesFrameRate = 1
+let curvesFrameRate
+
 
 let curveSketch = sketch => {
 
@@ -254,7 +272,6 @@ let curveSketch = sketch => {
       width,
       height
     )
-
 
     sketch.windowResized = () => {
 
@@ -273,7 +290,6 @@ let curveSketch = sketch => {
 
   }
 
-
   sketch.drawPerlinCurve = (
     x, y, phase, step, numCurveVertices
   ) => {
@@ -281,7 +297,8 @@ let curveSketch = sketch => {
     sketch.push()
     //sketch.stroke(114,180,174, 60)
     sketch.stroke(220, 60)
-    let noiseScale = 0.002
+
+    let noiseScale = 0.0025
 
     sketch.beginShape()
 
@@ -315,7 +332,6 @@ let curveSketch = sketch => {
 
   }
 
-
   sketch.draw = () => {
 
     sketch.frameRate(curvesFrameRate)
@@ -346,4 +362,19 @@ let curveSketch = sketch => {
 let curves = new p5(curveSketch)
 
 
+let curveWrapper = document.querySelector('#c-curves__inner')
 
+inViewport(curveWrapper, el => {
+
+  if (el.isIntersecting) {
+
+    curvesFrameRate = 30
+
+  }
+  else {
+
+    curvesFrameRate = 1
+
+  }
+
+})

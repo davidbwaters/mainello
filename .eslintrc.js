@@ -8,6 +8,7 @@ module.exports = {
   rules: {
     'accessor-pairs': 0,
     'no-unused-vars': 0,
-    'no-undef': 0
+    'no-undef': 0,
+    'new-cap': 0
   }
 }

@@ -9,6 +9,18 @@
     <div class="c-nav-menu__background">
     </div>
 
+    {% set navPages = collections.all | eleventyNavigation %}
+
+    {% for entry in navPages %}
+        <a
+          {% if entry.url == page.url %} class="active"{% endif %}
+          class="c-nav-menu__link"
+          href="{{ entry.url | url }}"
+        >
+          {{ entry.title }}
+        </a>
+    {% endfor %}
+
     <a class="c-nav-menu__link">Link</a>
     <a class="c-nav-menu__link">Link</a>
     <a class="c-nav-menu__link">Link</a>

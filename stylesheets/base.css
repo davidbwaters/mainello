@@ -113,6 +113,15 @@
 
 
 
+/* container */
+
+.c-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+
+
 
 /* navbar */
 
@@ -564,6 +573,17 @@
 .c-post-list__item-title {
   margin-bottom: var(--spacing-3);
   margin-top: 0;
+}
+
+
+
+/* work */
+
+.c-offset-columns {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-column: 1fr 1fr;
+  grid-gap: 10vw;
 }
 
 

@@ -134,124 +134,130 @@ const fluidRevealSetup = () => {
 
   let wrapper = document.querySelector('.c-fluid-reveal')
 
-  let fluidRevealEls = document.querySelectorAll(
-    '.c-fluid-reveal__item'
-  )
+  if (wrapper) {
 
-  fluidRevealEls = Array.from(fluidRevealEls)
 
-  // console.log(fluidRevealEls)
+    let fluidRevealEls = document.querySelectorAll(
+      '.c-fluid-reveal__item'
+    )
 
-  wrapper.style.setProperty(
-    '--items',
-    fluidRevealEls.length
-  )
+    fluidRevealEls = Array.from(fluidRevealEls)
 
-  ScrollTrigger.refresh()
+    // console.log(fluidRevealEls)
 
-  ScrollTrigger.saveStyles([
-    '.c-fluid-reveal__item path',
-    '.c-fluid-reveal__item .c-fluid-reveal__media',
-    '.c-fluid-reveal__item .c-fluid-reveal__content'
-  ])
+    wrapper.style.setProperty(
+      '--items',
+      fluidRevealEls.length
+    )
 
-  ScrollTrigger.matchMedia({
-    // desktop
-    '(min-width: 800px)': function() {
+    ScrollTrigger.refresh()
 
-      setTimeout(() => {
+    ScrollTrigger.saveStyles([
+      '.c-fluid-reveal__item path',
+      '.c-fluid-reveal__item .c-fluid-reveal__media',
+      '.c-fluid-reveal__item .c-fluid-reveal__content'
+    ])
 
-        let count = 1
+    ScrollTrigger.matchMedia({
+      // desktop
+      '(min-width: 800px)': function() {
 
-        let tl = gsap.timeline({
-          ease: 'none',
-          scrollTrigger: {
-            trigger: wrapper,
-            start: 'top top ',
-            pin: true,
-            pinSpacing: false,
-            end: 'bottom bottom',
-            scrub: 0.4
-            //markers: true
-          }
-        })
+        setTimeout(() => {
 
-        fluidRevealEls.forEach(el => {
+          let count = 1
 
-          let wobble = el.querySelector('#wobble-' + count)
-          let media = el.querySelector(
-            '.c-fluid-reveal__media'
-          )
-          let content = el.querySelector(
-            '.c-fluid-reveal__content'
-          )
+          let tl = gsap.timeline({
+            ease: 'none',
+            scrollTrigger: {
+              trigger: wrapper,
+              start: 'top top ',
+              pin: true,
+              pinSpacing: false,
+              end: 'bottom bottom',
+              scrub: 0.4
+              //markers: true
+            }
+          })
 
-          wobble.style = ''
-          content.style = ''
+          fluidRevealEls.forEach(el => {
 
-          if (count > 1) {
+            let wobble = el.querySelector('#wobble-' + count)
+            let media = el.querySelector(
+              '.c-fluid-reveal__media'
+            )
+            let content = el.querySelector(
+              '.c-fluid-reveal__content'
+            )
 
-            tl.from(
-              wobble,
-              {
+            wobble.style = ''
+            content.style = ''
+
+            if (count > 1) {
+
+              tl.from(
+                wobble,
+                {
+                  duration: animateDuration,
+                  xPercent: 100,
+                  yPercent: 100
+                },
+                '-=' + animateDuration
+              )
+
+            }
+            else {
+
+              tl.from(wobble, {
                 duration: animateDuration,
                 xPercent: 100,
                 yPercent: 100
-              },
-              '-=' + animateDuration
-            )
+              })
 
-          }
-          else {
+            }
 
-            tl.from(wobble, {
-              duration: animateDuration,
-              xPercent: 100,
-              yPercent: 100
-            })
-
-          }
-
-          tl.from(
-            content,
-            {
-              duration: animateDuration,
-              opacity: 0,
-              yPercent: 100
-            },
-            '-=' + animateDuration
-          ).to(el, {
-            duration: pinDuration
-          })
-
-          if (count < fluidRevealEls.length) {
-
-            tl.to(
+            tl.from(
               content,
               {
                 duration: animateDuration,
                 opacity: 0,
-                yPercent: -100
+                yPercent: 100
               },
               '-=' + animateDuration
-            )
+            ).to(el, {
+              duration: pinDuration
+            })
 
-          }
+            if (count < fluidRevealEls.length) {
 
-          count++
+              tl.to(
+                content,
+                {
+                  duration: animateDuration,
+                  opacity: 0,
+                  yPercent: -100
+                },
+                '-=' + animateDuration
+              )
 
-          ScrollTrigger.update()
+            }
 
-        })
+            count++
 
-        count = 1
+            ScrollTrigger.update()
 
-      }, 2000)
+          })
 
-    },
+          count = 1
 
-    '(max-width: 800px)': function() {}
-  })
+        }, 2000)
+
+      },
+
+      '(max-width: 800px)': function() {}
+    })
+
+  }
+
 
 }
 
@@ -323,7 +329,7 @@ window.addEventListener('DOMContentLoaded', () => {
     renderer: 'canvas',
     loop: false,
     autoplay: false,
-    path: 'animations/stripes-alt-2.json',
+    path: '/animations/stripes-alt-2.json',
     rendererSettings: {
       preserveAspectRatio: 'none'
     }
@@ -383,8 +389,8 @@ const fabricSketch = sketch => {
   sketch.preload = () => {
 
     theShader = sketch.loadShader(
-      'scripts/shaders/fabric.vert',
-      'scripts/shaders/fabric.frag'
+      '/scripts/shaders/fabric.vert',
+      '/scripts/shaders/fabric.frag'
     )
 
   }
@@ -443,28 +449,33 @@ const fabric = new p5(fabricSketch)
 const contactFab = document.querySelector(
   '.c-contact-fab'
 )
+
 const footer = document.querySelector('.c-footer')
-let footerVisible = false
 
-inViewport(footer, el => {
+if (contactFab) {
+  let footerVisible = false
 
-  if (el.isIntersecting) {
+  inViewport(footer, el => {
 
-    footerVisible = true
-    contactFab.classList.toggle('u-transparent')
+    if (el.isIntersecting) {
 
-  }
-  else {
-
-    if (footerVisible) {
-
+      footerVisible = true
       contactFab.classList.toggle('u-transparent')
 
     }
+    else {
 
-  }
+      if (footerVisible) {
 
-})
+        contactFab.classList.toggle('u-transparent')
+
+      }
+
+    }
+
+  })
+
+}
 
 
 // love

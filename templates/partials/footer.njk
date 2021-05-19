@@ -18,7 +18,7 @@
 
       {% for entry in navPages %}
           <a
-            class="c-nav__menu-link"
+            class="c-nav__menu-link u-hide-tablet-down"
             {% if entry.url == page.url %} class="c-nav-menu__link active"{% endif %}
             href="{{ entry.url | url }}"
           >

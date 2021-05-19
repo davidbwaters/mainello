@@ -132,6 +132,12 @@ small {
   font-size: var(--line-height-tiny);
 }
 
+img {
+  height: auto;
+  width: 100%;
+}
+
+
 /* backgrounds */
 
 .u-bg-blur-primary-1 {

@@ -118,7 +118,7 @@
 .c-container {
   margin-left: auto;
   margin-right: auto;
-  width: 75%;
+  width: 87.6%;
 }
 
 
@@ -217,9 +217,9 @@
 
 .c-footer__inner {
   box-sizing: border-box;
-  padding-bottom: var(--font-size-large-6);
-  padding-left: 12.5vw;
-  padding-right: 12.5vw;
+  padding-bottom: 10vh;
+  padding-left: 6.21vw;
+  padding-right: 6.21vw;
   padding-top: 10vh;
   position: absolute;
   width: 100%;
@@ -229,28 +229,44 @@
 .c-footer__contact {
   display: grid;
   margin: 0;
-  padding-bottom: 15vh;
-  padding-top: 15vh;
-  text-align: center;
+  padding-bottom: 12vh;
+  padding-top: 12vh;
 }
 
 .c-footer__contact a,
 .c-footer__contact span {
-  padding-left: 10vw;
-  padding-right: 10vw;
+  padding-left: 10.46vw;
+  padding-right: 10.46vw;
+}
+
+.c-footer__logo {
+  width: 45px;
 }
 
 .c-footer__menu {
   display: grid;
   grid-auto-flow: column;
   justify-content: space-between;
-  padding-top: 4vw;
+  padding-top: 2vh;
+}
+
+.c-footer__menu a {
+  text-decoration: none;
+}
+
+.c-footer__menu a.active {
+  text-decoration: underline;
 }
 
 .c-footer__social {
   display: grid;
   grid-auto-flow: column;
   grid-gap: 1rem;
+}
+
+.c-footer__social img {
+  height: 20px;
+  width: 20px;
 }
 
 .c-footer canvas {
@@ -452,8 +468,8 @@
 .c-section-title {
   font-size: 10vw;
   font-weight: var(--font-weight-semibold);
-  height: 50vh;
-  padding-top: 30vh;
+  padding-bottom: 20vh;
+  padding-top: 20vh;
   text-align: center;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px var(--color-eerie-black);
@@ -582,8 +598,6 @@
 .c-offset-columns {
   display: grid;
   grid-auto-flow: column;
-  grid-template-column: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 10vw;
 }
-
-

@@ -10,81 +10,116 @@ import p5 from 'p5'
 
 import { inViewport } from './modules/inViewport'
 
-
-//import ScrollTrigger from 'gsap/ScrollTrigger'
+import barba from '@barba/core'
 
 
 // init
 
 gsap.registerPlugin(ScrollTrigger)
 
+
 // contact fab
 
 const contactFabSetup = () => {
 
-  let rotateEl = document.querySelector(
-    '.c-contact-fab__spinning'
+
+  const contactFab = document.querySelector(
+    '.c-contact-fab'
   )
-  let rotateDuration = 16
 
-  let rotate = gsap.to(rotateEl, {
-    rotation: 360,
-    duration: rotateDuration,
-    onReverseComplete() {
+  if (contactFab) {
 
-      this.totalTime(rotateDuration * 100)
+    const footer = document.querySelector('.c-footer')
 
-    },
-    repeat: -1,
-    ease: 'linear'
-  })
+    let rotateEl = document.querySelector(
+      '.c-contact-fab__spinning'
+    )
 
-  let scrollTop
-  let contentHeight
-  let progress = 0
-  let rounds = 0
-  let clamp = gsap.utils.clamp(-50, 50)
+    let rotateDuration = 16
 
-  ScrollTrigger.create({
-    onUpdate: self => {
+    let rotate = gsap.to(rotateEl, {
+      rotation: 360,
+      duration: rotateDuration,
+      onReverseComplete() {
 
-      scrollTop =
-        window.pageYOffset ||
-        document.documentElement.scrollTop
-      contentHeight =
-        Math.max(
-          document.body.scrollHeight,
-          document.body.offsetHeight,
-          document.documentElement.clientHeight,
-          document.documentElement.scrollHeight,
-          document.documentElement.offsetHeight
-        ) - window.innerHeight
-      rounds = Math.floor(
-        contentHeight / window.innerHeight
-      )
-      progress =
-        Math.floor((scrollTop / contentHeight) * 100) *
-        rounds
+        this.totalTime(rotateDuration * 100)
 
-      // console.log(
-      //  clamp((self.getVelocity() / 100) * 0.5)
-      // )
+      },
+      repeat: -1,
+      ease: 'linear'
+    })
 
-      rotate.timeScale(clamp(self.getVelocity() / 100))
-      gsap.to(rotate, {
-        timeScale: self.direction,
-        duration: 0.3,
-        overwrite: true,
-        ease: 'power1.inOut'
-      })
+    let scrollTop
+    let contentHeight
+    let progress = 0
+    let rounds = 0
+    let clamp = gsap.utils.clamp(-50, 50)
 
-    }
-  })
+    ScrollTrigger.create({
+      onUpdate: self => {
 
-  gsap.set(rotateEl, {
-    transformOrigin: 'center center',
-    force3D: true
-  })
+        scrollTop =
+          window.pageYOffset ||
+          document.documentElement.scrollTop
+        contentHeight =
+          Math.max(
+            document.body.scrollHeight,
+            document.body.offsetHeight,
+            document.documentElement.clientHeight,
+            document.documentElement.scrollHeight,
+            document.documentElement.offsetHeight
+          ) - window.innerHeight
+        rounds = Math.floor(
+          contentHeight / window.innerHeight
+        )
+        progress =
+          Math.floor((scrollTop / contentHeight) * 100) *
+          rounds
+
+        // console.log(
+        //  clamp((self.getVelocity() / 100) * 0.5)
+        // )
+
+        rotate.timeScale(clamp(self.getVelocity() / 100))
+        gsap.to(rotate, {
+          timeScale: self.direction,
+          duration: 0.3,
+          overwrite: true,
+          ease: 'power1.inOut'
+        })
+
+      }
+    })
+
+    gsap.set(rotateEl, {
+      transformOrigin: 'center center',
+      force3D: true
+    })
+
+
+    let footerVisible = false
+
+    inViewport(footer, el => {
+
+      if (el.isIntersecting) {
+
+        footerVisible = true
+        contactFab.classList.toggle('u-transparent')
+
+      }
+      else {
+
+        if (footerVisible) {
+
+          contactFab.classList.toggle('u-transparent')
+
+        }
+
+      }
+
+    })
+
+  }
 
 }
 
@@ -258,9 +293,9 @@ const fluidRevealSetup = () => {
 
   }
 
-
 }
 
+// on load
 window.addEventListener('DOMContentLoaded', () => {
 
   setTimeout(() => {
@@ -288,6 +323,7 @@ window.addEventListener('resize', () => {
   }, 500)
 
 })
+
 
 // nav menu
 
@@ -397,27 +433,32 @@ const fabricSketch = sketch => {
 
   sketch.setup = () => {
 
-    let width = sketch.windowWidth
-    let height = sketch.windowHeight
+    const footerInnerEl = document.querySelector(
+      '.c-footer__inner'
+    )
+
+    let footerSize = footerInnerEl.getBoundingClientRect()
 
     let canvas = sketch.createCanvas(
-      width,
-      height,
+      footerSize.width,
+      footerSize.height,
       sketch.WEBGL
     )
 
     sketch.windowResized = () => {
 
+      footerSize = footerInnerEl.getBoundingClientRect()
+
       sketch.resizeCanvas(
-        sketch.windowWidth,
-        sketch.windowHeight
+        footerSize.width,
+        footerSize.height
       )
 
     }
 
     sketch.createCanvas(
-      sketch.windowWidth,
-      sketch.windowHeight
+      footerSize.width,
+      footerSize.height
     )
 
     canvas.parent('c-footer__background')
@@ -446,36 +487,13 @@ const fabricSketch = sketch => {
 
 const fabric = new p5(fabricSketch)
 
-const contactFab = document.querySelector(
-  '.c-contact-fab'
-)
 
-const footer = document.querySelector('.c-footer')
 
-if (contactFab) {
-  let footerVisible = false
+// barba
 
-  inViewport(footer, el => {
-
-    if (el.isIntersecting) {
-
-      footerVisible = true
-      contactFab.classList.toggle('u-transparent')
-
-    }
-    else {
-
-      if (footerVisible) {
-
-        contactFab.classList.toggle('u-transparent')
-
-      }
-
-    }
-
-  })
-
-}
+barba.init({
+  // ...
+})
 
 
 // love

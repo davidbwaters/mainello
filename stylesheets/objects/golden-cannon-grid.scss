@@ -1,0 +1,109 @@
+//
+// golden canon grid
+//
+
+.o-gc-grid {
+  display: grid;
+  grid-template-columns:
+    0.5fr
+    0.5fr;
+  grid-template-rows:
+    0.2fr
+    0.135fr
+    0.165fr
+    0.165fr
+    0.135fr
+    0.2fr;
+  min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+@media (min-width: 320px) {
+  .o-gc-grid {
+    display: grid;
+    grid-template-columns:
+      0.05fr
+      0.076fr
+      0.125fr
+      0.125fr
+      0.125fr
+      0.166fr
+      0.083fr
+      0.124fr
+      0.076fr
+      0.05fr;
+    grid-template-rows:
+      0.05fr
+      0.148fr
+      0.125fr
+      0.17fr
+      0.17fr
+      0.137fr
+      0.15fr
+      0.05fr;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .o-gc-grid {
+    display: grid;
+    grid-template-columns:
+      0.021fr
+      0.041fr
+      0.0635fr
+      0.041fr
+      0.034fr
+      0.05fr
+      0.15fr
+      0.1fr
+      0.1fr
+      0.15fr
+      0.05fr
+      0.034fr
+      0.041fr
+      0.0635fr
+      0.041fr
+      0.021fr;
+    grid-template-rows:
+      0.083fr
+      0.167fr
+      0.083fr
+      0.167fr
+      0.167fr
+      0.083fr
+      0.167fr
+      0.083fr;
+  }
+}
+
+.o-gc-grid--gap-tiny {
+  grid-gap: 4px;
+}
+
+.o-gc-grid--gap-small {
+  grid-gap: .2rem;
+}
+
+.o-gc-grid--gap-medium {
+  grid-gap: .4rem;
+}
+
+
+.o-gc-grid--columns {
+  grid-template-rows: auto;
+  min-height: 0;
+}
+
+@media (min-width: 320px) {
+  .o-gc-grid--columns {
+    grid-template-rows: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .o-gc-grid--columns {
+    grid-template-rows: auto;
+  }
+}

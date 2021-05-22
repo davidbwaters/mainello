@@ -1,0 +1,37 @@
+//
+// navbar
+//
+
+.c-navbar {
+  box-sizing: border-box;
+  padding: var(--spacing-2);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9;
+}
+
+@media (min-width: 320px) {
+
+  .c-navbar {
+    padding: 2.1vh 2.1vw;
+  }
+
+}
+
+.c-navbar__inner {
+  display: grid;
+  grid-auto-columns: min-content;
+  grid-auto-flow: column;
+  justify-content: space-between;
+}
+
+.c-navbar__branding {
+  display: inline-block;
+  width: 80px;
+}
+
+.c-navbar__menu-button {
+  display: inline-block;
+  width: 24px;
+}

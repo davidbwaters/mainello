@@ -1,0 +1,14 @@
+//
+// dash line
+//
+
+.c-dash-line {
+  align-content: center;
+  display: grid;
+  grid-template-rows: 1px;
+}
+
+.c-dash-line:after {
+  content: '';
+  background: var(--color-opaque-dark);
+}

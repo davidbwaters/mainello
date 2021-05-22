@@ -1,5 +1,4 @@
 .snowpack
-dist
+build
 node_modules
 .DS_Store
-dist/_snowpack/pkg/import-map.json

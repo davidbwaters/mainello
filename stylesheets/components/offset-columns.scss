@@ -1,0 +1,10 @@
+//
+// offsets columns
+//
+
+.c-offset-columns {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10vw;
+}

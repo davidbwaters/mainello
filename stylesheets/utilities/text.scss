@@ -1,0 +1,24 @@
+//
+// text
+//
+
+// align
+
+.u-text-align-center {
+  text-align: center;
+}
+
+.u-text-align-right {
+  text-align: right;
+}
+
+.u-text-align-left {
+  text-align: left;
+}
+
+// style
+
+.u-text-outline {
+  -webkit-text-stroke: 1px currentColor;
+  -webkit-text-fill-color: transparent;
+}

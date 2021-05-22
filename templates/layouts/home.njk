@@ -1,9 +1,10 @@
-{% block head %}
-  <link rel="stylesheet" href='/stylesheets/home.css'>
-{% endblock %}
-
 {% extends './base.njk' %}
 
+{% block head %}
+
+  <link rel="stylesheet" href='/stylesheets/home.css'>
+
+{% endblock %}
 
 {% block preContent %}
 
@@ -13,13 +14,17 @@
 
 
 {% block content %}
+
   {{ content | safe }}
 
   {% include 'contact-fab.njk' %}
+
 {% endblock %}
 
 {% if js %}
+
   <script>
     {{ js | jsmin | safe }}
   </script>
+
 {% endif %}

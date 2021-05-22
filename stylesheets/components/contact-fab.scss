@@ -1,0 +1,46 @@
+//
+// contact fab
+//
+
+.c-contact-fab {
+  background-image: url('/icons/mail.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1.33rem;
+  bottom: 0rem;
+  display: none;
+  height: 6rem;
+  left: 0rem;
+  position: fixed;
+  transition: opacity .8s;
+  width: 6rem;
+  will-change: opacity;
+  z-index: 9;
+}
+
+@media (min-width: 320px) {
+
+  .c-contact-fab {
+    display: block;
+  }
+
+}
+
+@media (min-width: 768px) {
+
+  .c-contact-fab {
+    display: block;
+    height: 7.5rem;
+    width: 7.5rem;
+  }
+
+}
+
+.c-contact-fab__spinning {
+  border-radius: 100rem;
+  fill: var(--color-eerie-black);
+  font-family: var(--font-mono);
+  font-size: 2.8rem;
+  letter-spacing: .6rem;
+  will-change: transform;
+}

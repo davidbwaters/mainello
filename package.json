@@ -5,14 +5,13 @@
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "snowpack dev",
-    "build": "snowpack build",
-    "test": "echo \"This template does not include a test runner by default.\" && exit 1",
-    "format": "prettier --write \"src/**/*.js\"",
-    "lint": "prettier --check \"src/**/*.js\""
+    "start": "eleventy --serve",
+    "build": "yarn clean && eleventy",
+    "clean": "rimraf build"
   },
   "dependencies": {
     "@barba/core": "^2.9.7",
+    "@snowpack/plugin-sass": "^1.4.0",
     "gsap": "npm:@gsap/shockingly",
     "locomotive-scroll": "^4.1.1",
     "lottie-web": "^5.7.7",
@@ -24,12 +23,14 @@
     "@davidbwaters/eslint-config": "^1.7.1",
     "@davidbwaters/prettier-config": "^1.2.3",
     "@davidbwaters/stylelint-config": "^1.0.10",
-    "@snowpack/plugin-run-script": "^2.3.0",
     "clean-css": "^5.1.2",
-    "eslint": "^7.25.0",
+    "esbuild": "^0.12.1",
+    "esbuild-sass-plugin": "^1.4.0",
+    "eslint": "^7.27.0",
     "eslint-plugin-import": "^2.22.1",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
-    "snowpack": "^3.1.2",
+    "rimraf": "^3.0.2",
     "stylelint": "^13.13.0"
   }
 }

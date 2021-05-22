@@ -1,0 +1,49 @@
+//
+// tagline
+//
+
+.c-tagline {
+  align-content: center;
+  display: grid;
+  grid-column: 1 / span 2;
+  grid-row: 4 / span 2;
+  grid-template-columns: calc(
+    100% - (var(--spacing-2)) * 2
+  );
+  justify-content: center;
+  margin: 0;
+  position: relative;
+}
+
+@media (min-width: 320px) {
+  .c-tagline {
+    align-content: center;
+    grid-column: 3 / span 6;
+    grid-row: 3 / span 2;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 480px) {
+  .c-tagline {
+    align-content: space-evenly;
+    grid-column: 3 / span 4;
+    grid-row: 3 / span 2;
+  }
+}
+
+@media (min-width: 768px) {
+  .c-tagline {
+    align-content: center;
+    grid-column: 4 / span 6;
+    grid-gap: var(--spacing-6);
+    grid-row: 2 / span 4;
+  }
+}
+
+.c-tagline > span {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: var(--spacing-2);
+  grid-template-columns: max-content;
+}

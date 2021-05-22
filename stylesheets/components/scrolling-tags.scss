@@ -1,0 +1,42 @@
+//
+// scrolling tags
+//
+
+.c-scrolling-tags {
+  display: grid;
+  grid-auto-flow: column;
+  grid-column: 1 / span 2;
+  grid-gap: 8vw;
+  white-space: nowrap;
+}
+
+.c-scrolling-tags__inner {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 4vw;
+}
+
+.c-scrolling-tags {
+  grid-column: 1 / span 2;
+  padding: var(--spacing-6) 0;
+}
+
+@media (min-width: 320px) {
+
+  .c-scrolling-tags {
+    grid-column: 2 / span 8;
+  }
+
+}
+
+@media (min-width: 768px) {
+
+  .c-scrolling-tags {
+    grid-column: 2 / span 14;
+  }
+
+}
+
+.c-scrolling-tags--right {
+  justify-content: end;
+}

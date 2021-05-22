@@ -1,0 +1,37 @@
+//
+// labeled text
+//
+
+.c-labeled-text {
+  display: grid;
+  grid-column: 1 / span 2;
+  grid-template-columns: calc(
+    100% - (var(--spacing-2)) * 2
+  );
+  margin-bottom: var(--spacing-8);
+  margin-top: var(--spacing-8);
+}
+
+@media (min-width: 320px) {
+  .c-labeled-text {
+    grid-column: 2 / span 8;
+    grid-template-columns: 1fr 4fr;
+  }
+}
+
+@media (min-width: 768px) {
+  .c-labeled-text {
+    grid-column: 3 / span 12;
+  }
+}
+
+.c-labeled-text__label {
+  font-size: var(--font-size-small);
+  letter-spacing: var(--title-normal-spacing);
+  padding-bottom: var(--spacing-4);
+}
+
+.c-labeled-text--spacing-large {
+  margin-bottom: calc(var(--spacing-8) * 2);
+  margin-top: calc(var(--spacing-8) * 2);
+}

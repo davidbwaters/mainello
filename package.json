@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "eleventy --serve",
-    "build": "yarn clean && eleventy",
+    "build": "nm run clean && eleventy",
     "clean": "rimraf build"
   },
   "dependencies": {

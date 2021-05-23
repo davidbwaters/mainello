@@ -68,6 +68,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode(
     'spacedImage', shortcodes.spacedImage
   )
+  eleventyConfig.addPairedShortcode(
+    'spacedColumns', shortcodes.spacedColumns
+  )
 
   eleventyConfig.addPlugin(navigationPlugin)
 

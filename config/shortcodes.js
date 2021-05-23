@@ -5,7 +5,7 @@
 exports.carousel = data => {
 
   return `
-    <div class="c-carousel">
+    <div class="c-carousel js-parallax">
       <div class="glider">
         ${data}
       </div>
@@ -18,7 +18,7 @@ exports.carousel = data => {
 exports.fullWidthImage = (data, alt) => {
 
   return `
-    <div class="c-full-width-image">
+    <div class="c-full-width-image js-parallax">
       <img src="${data}" alt="${alt}">
     </div>
   `
@@ -28,7 +28,7 @@ exports.fullWidthImage = (data, alt) => {
 exports.fullWidthVideo = (data, style) => {
 
   return `
-    <div class="c-full-width-video" style=${style}>
+    <div class="c-full-width-video js-parallax" style=${style}>
       <video class="js-play-in-view">
         <source
           src="${data}"
@@ -44,7 +44,7 @@ exports.fullWidthVideo = (data, style) => {
 exports.labeledText = (data, title) => {
 
   return `
-    <div class="o-container">
+    <div class="o-container js-parallax">
       <div class="c-labeled-text c-labeled-text--spacing-large">
         <div class="c-labeled-text__label">
           ${title}
@@ -69,19 +69,26 @@ exports.offsetColumns = data => {
 
 }
 
-exports.spacedVideo = data => {
+exports.spacedImage = (data, alt) => {
 
   return `
-    <div class="c-spaced-video">
-      <video>
-        <source
-          src="${data}"
-          type="video/mp4"
-        >
-      </video>
+    <div class="c-spaced-image js-parallax">
+      <img
+        src="${data}" alt="${alt}"
+      >
     </div>
 
   `
 
 }
 
+exports.spacedColumns = data => {
+
+  return `
+    <div class="c-spaced-columns">
+      ${data}
+    </div>
+
+  `
+
+}

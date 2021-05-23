@@ -528,15 +528,11 @@ const contactFabSetup = () => {
 
 const scrollingTagsSetup = () => {
 
-  let scrollingTagsEls = document.querySelectorAll(
-    '.c-scrolling-tags'
+  let scrollingTags = gsap.utils.toArray(
+    '.js-scrolling-tags'
   )
 
-  if (scrollingTagsEls.length) {
-
-    let scrollingTags = gsap.utils.toArray(
-      '.c-scrolling-tags'
-    )
+  if (scrollingTags.length) {
 
     scrollingTags.forEach(el => {
 
@@ -902,12 +898,50 @@ playInViewVids.forEach(video => {
 
     if (el.isIntersecting) {
 
+      video.muted = true
       video.loop = true
       video.autoplay = true
       video.play()
 
     }
 
+  })
+
+})
+
+// parallax
+
+let parallaxEls = gsap.utils.toArray(
+  '.js-parallax'
+)
+
+let windowHeight = document
+  .body
+  .getBoundingClientRect()
+  .height
+
+window.addEventListener('resize', () => {
+
+  windowHeight = document
+    .body
+    .getBoundingClientRect()
+    .height
+
+})
+
+console.log(windowHeight)
+
+parallaxEls.forEach(el => {
+
+  gsap.to(el, {
+    y: windowHeight * -0.5,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: el,
+      // start: "top bottom",
+      // end: "bottom top",
+      scrub: true
+    }
   })
 
 })

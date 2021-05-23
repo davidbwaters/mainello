@@ -4,7 +4,16 @@
 
 .c-offset-columns {
   display: grid;
-  grid-auto-flow: column;
+  grid-auto-flow: row;
   grid-template-columns: 1fr 1fr;
   grid-gap: 10vw;
+  margin-bottom: calc(var(--spacing-8) * 2);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: calc((var(--spacing-8) * 2) + 30vh);
+  width: 87.6%;
+}
+
+.c-offset-columns :nth-child(odd) {
+  margin-top: -30vh;
 }

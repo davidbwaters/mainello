@@ -81,7 +81,7 @@ module.exports = function(eleventyConfig) {
         'scripts/app.js'
       ],
       outdir: 'build/scripts',
-      external: 'gsap',
+      external: ['gsap'],
       bundle: true,
       minify: process.env.ELEVENTY_ENV === 'production',
       sourcemap: process.env.ELEVENTY_ENV !== 'production',

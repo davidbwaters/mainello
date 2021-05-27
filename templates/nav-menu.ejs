@@ -1,0 +1,23 @@
+<div
+  class="c-nav-menu"
+>
+  <div class="c-nav-menu__animation">
+  </div>
+
+  <div class="c-nav-menu__inner">
+    <div class="c-nav-menu__background">
+    </div>
+
+    <nav class="c-nav-menu__nav">
+      <% navPages.forEach(function(entry){ %>
+        <a
+          class="c-nav-menu__nav-link u-hide-tablet-down"
+          href="<%- entry.url %>"
+        >
+          <%- entry.title %>
+        </a>
+      <% }); %>
+    </nav>
+
+  </div>
+</div>

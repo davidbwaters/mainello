@@ -1,0 +1,52 @@
+<footer
+  class="c-footer"
+>
+  <div class="c-footer__inner">
+    <h2 class="c-footer__contact u-heading-huge">
+      <span class="u-text-outline">have an idea?</span>
+      <a href="/contact.html">
+        get in touch
+      </a>
+    </h2>
+    <div class="c-line c-line--light"></div>
+    <div class="c-footer__lower">
+      <img
+        class="c-footer__logo"
+        src="/images/logo-glyph.svg"
+      >
+
+      <nav class="c-footer__nav">
+        <% navPages.forEach(function(entry){ %>
+          <a
+            class="c-footer__nav-link u-hide-tablet-down"
+            href="<%- entry.url %>"
+          >
+            <%- entry.title %>
+          </a>
+        <% }); %>
+      </nav>
+
+      <div class="c-footer__social">
+        <a
+          class="c-footer__social-link"
+        >
+          <img src="/icons/social/instagram.svg">
+        </a>
+        <a
+          class="c-footer__social-link"
+        >
+          <img src="/icons/social/twitter.svg">
+        </a>
+        <a
+          class="c-footer__social-link"
+        >
+          <img src="/icons/social/facebook.svg">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-footer__background" id="c-footer__background">
+  </div>
+
+</footer>

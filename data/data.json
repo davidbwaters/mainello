@@ -1,0 +1,14 @@
+
+{
+  "navPages": [
+    {
+      "title": "home",
+      "url": "/index.html"
+    },
+    {
+      "title": "work",
+      "url": "/work.html"
+    }
+  ]
+
+}

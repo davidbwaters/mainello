@@ -23,6 +23,7 @@ module.exports = {
   },
   buildOptions: {
     out: 'dist',
+    metaUrlPath: 'scripts/modules',
     clean: true
   }
 }

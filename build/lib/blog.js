@@ -26,9 +26,15 @@ module.exports = () => {
       '.ejs'
 
     const output =
-      '<%- include(\'../../templates/post-before.ejs\'); %>' +
+      '<% locals.postTitle = \'' +
+      post.title +
+      '\' %> \n' +
+      '<% locals.postDate = \'' +
+      post.date +
+      '\' %> \n' +
+      '<%- include(\'../../templates/post-before.ejs\'); %> \n' +
       body +
-      '<%- include(\'../../templates/post-after.ejs\'); %>'
+      '<%- include(\'../../templates/post-after.ejs\'); %> \n'
 
     fs.writeFileSync(outpath, output)
 

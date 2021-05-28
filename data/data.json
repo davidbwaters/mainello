@@ -13,19 +13,22 @@
   "blogPosts": [
     {
       "slug": "post-1",
-      "heading": "Post Heading 1",
+      "title": "Post Heading 1",
+      "date": "June 23, 2022",
       "preview-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "body": "This is a simple codeblock.\\n    But it has a linebreak!"
     },
     {
       "slug": "post-2",
-      "heading": "Post Heading 2",
+      "title": "Post Heading 2",
+      "date": "June 23, 2022",
       "preview-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "body": "This is a simple codeblock.\\n    But it has a linebreak!"
     },
     {
       "slug": "post-3",
-      "heading": "Post Heading 2",
+      "title": "Post Heading 2",
+      "date": "June 23, 2022",
       "preview-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "body": "This is a simple codeblock.\\n    But it has a linebreak!"
     }

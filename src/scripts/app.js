@@ -772,19 +772,30 @@ const parallaxSetup = () => {
 
 let navMenuOpen = false
 
-const menuSetup = () => {
+const navMenuSetup = () => {
 
   let navMenuSpeed = 1.5
 
-  const menuButton = document.querySelector(
-    '.c-navbar__menu-button'
-  )
-
   const menuAnimationWrapper = document.querySelector(
-    '.c-nav-menu__animation'
+    '.js-nav-menu-animation'
   )
 
-  const menuWrapper = document.querySelector('.c-nav-menu')
+  const menuWrapper = document.querySelector(
+    '.js-nav-menu'
+  )
+
+  const menuButton = document.querySelector(
+    '.js-navbar-button'
+  )
+
+
+  const menuButtonAnimation = lottie.loadAnimation({
+    container: menuButton,
+    renderer: 'svg',
+    loop: false,
+    autoplay: false,
+    path: '/animations/nav-button.json'
+  })
 
   const menuAnimation = lottie.loadAnimation({
     container: menuAnimationWrapper,
@@ -802,15 +813,18 @@ const menuSetup = () => {
     if (!navMenuOpen) {
 
       navMenuOpen = true
+
       lottie.setSpeed(navMenuSpeed)
+
       menuAnimation.setDirection(1)
       menuAnimation.goToAndPlay(1, true)
+
+      menuButtonAnimation.setDirection(1)
+      menuButtonAnimation.goToAndPlay(1, true)
+
       setTimeout(() => {
 
         menuWrapper.classList.toggle('is-active')
-
-        //lottie.setSpeed(navMenuBackgroundSpeed)
-        //menuBackgroundAnimation.play()
 
       }, 200)
 
@@ -818,12 +832,18 @@ const menuSetup = () => {
     else {
 
       navMenuOpen = false
-      //menuBackgroundAnimation.stop()
-      menuAnimation.setDirection(-1)
 
       lottie.setSpeed(navMenuSpeed)
+
+      menuAnimation.setDirection(-1)
       menuAnimation.goToAndPlay(
         menuAnimation.lastFrame,
+        true
+      )
+
+      menuButtonAnimation.setDirection(-1)
+      menuButtonAnimation.goToAndPlay(
+        menuButtonAnimation.lastFrame,
         true
       )
 
@@ -1005,13 +1025,17 @@ const barbaSetup = () => {
 }
 
 
+// toggle nav menu
+
+const toggleNavMenu = navMenuSetup()
+
+
 // on load
 
 window.addEventListener('DOMContentLoaded', () => {
 
   footerSetup()
   barbaSetup()
-  handlePageLoad()
 
 })
 
@@ -1029,11 +1053,6 @@ window.addEventListener('resize', () => {
   }, 500)
 
 })
-
-
-// toggle nav menu
-
-const toggleNavMenu = menuSetup()
 
 
 // love

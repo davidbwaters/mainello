@@ -1,0 +1,34 @@
+<% locals.title = 'mainello - design agency' %>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/images/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="mainello - leading digital agency with solid design and
+    development expertise. we build readymade websites,
+    mobile applications, and elaborate online business
+    services." />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/app.css" />
+    <title>
+      <% if (locals.title) { %>
+        <%= title -%>
+      <% } else { %>'mainello - design agency'<% } %>
+    </title>
+  </head>
+  <body data-barba="wrapper">
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/home.css" />
+
+    <%- include('../templates/nav-menu.ejs', {navPages: navPages}); %>
+    <%- include('../templates/navbar.ejs'); %>
+
+    <main data-barba="container" data-barba-namespace="post">
+      <article class="c-blog-post">
+        <h1 class="c-blog-post__title">
+          <%= postTitle -%>
+        </h1>
+        <div class="c-blog-post__date">
+          <%= postDate -%>
+        </div>

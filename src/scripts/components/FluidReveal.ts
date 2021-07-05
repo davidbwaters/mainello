@@ -148,26 +148,6 @@ export class FluidReveal extends LitElement {
         margin-top: 0;
       }
 
-      .c-fluid-reveal__button {
-        border: solid 1px currentColor;
-        color: inherit;
-        font-family: var(--font-mono);
-        font-size: var(--font-size-mono-normal);
-        padding:
-          var(--spacing-1)
-          var(--spacing-2)
-          var(--spacing-2)
-          var(--spacing-2);
-        text-decoration: none;
-        transition: all .4s;
-      }
-
-      .c-fluid-reveal__button:hover {
-        background-color: var(--color-eerie-black);
-        border-color: var(--color-eerie-black);
-        color: white;
-      }
-
     }
 
   `
@@ -378,10 +358,9 @@ export class FluidReveal extends LitElement {
                   ${item.heading}
                 </h3>
                 ${unsafeHTML(item.text)}
-                <a
-                  class="c-fluid-reveal__button"
-                  href="/work/${item.id}.html"
-                >view project</a>
+                <c-button>
+                  view project
+                </c-button>
               </div>
             </div>
           `

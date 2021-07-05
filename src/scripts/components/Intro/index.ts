@@ -45,6 +45,12 @@ export class Intro extends LitElement {
 
   async introSetup():Promise<void> {
 
+    setTimeout(() => {
+
+      document.body.style.opacity = '1'
+
+    }, 400)
+
     const introEls = [
       ...Array.from(this._introBlockEls),
       this.sketchEl.value
@@ -116,7 +122,7 @@ export class Intro extends LitElement {
 
       lottie.setSpeed(2)
 
-      document.body.style.position = 'fixed'
+      //document.body.style.position = 'fixed'
       backgroundAnimation.play()
 
     }

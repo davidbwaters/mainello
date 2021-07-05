@@ -62,6 +62,7 @@ async function buildData() {
       text: i.preview_text
     }
 
+    console.log(i)
     homeData.news_post_list[index] = i
 
   })

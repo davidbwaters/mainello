@@ -10,6 +10,7 @@ export default css`
   :host {
     display: block;
     height: 100%;
+    max-height: 100vh;
     position: absolute;
     width: 100%;
   }

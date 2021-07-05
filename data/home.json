@@ -1,0 +1,145 @@
+{
+  "id": 1,
+  "hero_line_1": "bespoke",
+  "hero_line_2": "digital design",
+  "hero_line_3": "agency",
+  "cta": "leading digital agency with solid design and development expertise. we build readymade websites, mobile applications, and elaborate online business services.",
+  "scrolling_tag_row_1": [
+    {
+      "name": "branding"
+    },
+    {
+      "name": "identity"
+    },
+    {
+      "name": "interaction design"
+    },
+    {
+      "name": "ui + visual"
+    }
+  ],
+  "scrolling_tag_row_2": [
+    {
+      "name": "web design"
+    },
+    {
+      "name": "multimedia"
+    },
+    {
+      "name": "graphic design"
+    },
+    {
+      "name": "motion"
+    }
+  ],
+  "services_title": "services",
+  "services_text_label": "what we do",
+  "services_text": "<div>\n<div>lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>\n</div>",
+  "work_heading": "selected work",
+  "news_heading": "news",
+  "work_preview": [
+    {
+      "id": 1,
+      "heading": "fitbux",
+      "text": "<p>lorem ipsum is simply dummy text of the printing and typesetting industry. lorem ipsum has been the industry&rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>",
+      "image": "https://admin.mainellomontage.com/assets/2672fbd4-9dd6-4ce7-9a80-a9f56c48723e"
+    },
+    {
+      "id": 2,
+      "heading": "orion electric",
+      "text": "<div>\n<div>lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>\n</div>",
+      "image": "https://admin.mainellomontage.com/assets/ab020f58-63c3-400e-981f-59984334478a"
+    },
+    {
+      "id": 3,
+      "heading": "retrospec",
+      "text": "<div>\n<div>lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>\n</div>",
+      "image": "https://admin.mainellomontage.com/assets/d638ea29-0d80-4966-a249-a423683b1418"
+    }
+  ],
+  "news_post_list": [
+    {
+      "id": 1,
+      "status": "published",
+      "sort": null,
+      "user_created": "6edd5e11-7e6d-46e1-aad1-a83c050c2e06",
+      "date_created": "2021-07-01T10:54:45Z",
+      "user_updated": null,
+      "date_updated": null,
+      "title": "lorem ipsum dolor sit amet",
+      "preview_text": "lorem ipsum dolor sit amet, consectetur adipiscing elit. tellus, commodo ornare aenean amet, mi sed accumsan. lectus vel volutpat id mi aenean at elit vitae dictum. a ac eu platea iaculis sagittis scelerisque semper blandit. ipsum adipiscing ullamcorper sit elementum. aliquam ultrices amet viverra enim. gravida nibh ullamcorper nec in. lorem at vel morbi turpis elementum interdum malesuada. sed lectus ac sit nulla. commodo semper ut venenatis neque. urna risus sit libero amet. nunc faucibus nec dolor tortor laoreet odio nunc dui aliquam.",
+      "content": "<p>lorem ipsum dolor sit amet, consectetur adipiscing elit. tellus, commodo ornare aenean amet, mi sed accumsan. lectus vel volutpat id mi aenean at elit vitae dictum. a ac eu platea iaculis sagittis scelerisque semper blandit. ipsum adipiscing ullamcorper sit elementum. aliquam ultrices amet viverra enim. gravida nibh ullamcorper nec in. lorem at vel morbi turpis elementum interdum malesuada. sed lectus ac sit nulla. commodo semper ut venenatis neque. urna risus sit libero amet. nunc faucibus nec dolor tortor laoreet odio nunc dui aliquam.<br />in sit non mi pharetra eget lorem lorem metus. nisi, fermentum massa elementum magna. orci fames arcu quis cursus. condimentum ornare purus imperdiet tellus consequat, ipsum libero non neque. morbi tortor lectus bibendum id aliquam, in ac enim et. pellentesque magna eget ornare dui. ut scelerisque rhoncus, ipsum varius dolor. nec hendrerit sed vitae consequat. id faucibus sem gravida ultricies habitasse odio integer. tincidunt ut nec quam gravida. congue ipsum mauris, cras eros volutpat.<br />pulvinar sed morbi dictum congue molestie ac. magna sit ac justo, lacus vulputate sollicitudin ut congue mattis. tellus vitae tortor, curabitur aliquam. maecenas id elit lobortis vitae at duis magna iaculis viverra. aliquam morbi sed massa neque, cursus sit elit pharetra risus. integer non purus scelerisque vitae sed lectus. convallis consectetur consectetur venenatis, potenti lacus, arcu, arcu. pellentesque nulla varius tellus auctor. curabitur in nisl purus sit. leo, cursus nulla porttitor egestas viverra tristique. ornare lacus imperdiet porta id montes, ultricies sit. accumsan mauris molestie elit ut ullamcorper placerat nullam.<br />et nulla tincidunt amet, porttitor. habitasse mattis condimentum quisque habitasse est ullamcorper. faucibus ullamcorper sit in vitae. eu parturient odio ac rhoncus odio non mauris aliquam. lacus adipiscing amet purus id.</p>"
+    },
+    {
+      "id": 2,
+      "status": "published",
+      "sort": null,
+      "user_created": "6edd5e11-7e6d-46e1-aad1-a83c050c2e06",
+      "date_created": "2021-07-01T10:56:23Z",
+      "user_updated": null,
+      "date_updated": null,
+      "title": "lorem ipsum dolor sit amet",
+      "preview_text": "lorem ipsum dolor sit amet, consectetur adipiscing elit. tellus, commodo ornare aenean amet, mi sed accumsan. lectus vel volutpat id mi aenean at elit vitae dictum. a ac eu platea iaculis sagittis scelerisque semper blandit. ipsum adipiscing ullamcorper sit elementum. aliquam ultrices amet viverra enim. gravida nibh ullamcorper nec in. lorem at vel morbi turpis elementum interdum malesuada. sed lectus ac sit nulla. commodo semper ut venenatis neque. urna risus sit libero amet. nunc faucibus nec dolor tortor laoreet odio nunc dui aliquam.",
+      "content": "<p>lorem ipsum dolor sit amet, consectetur adipiscing elit. tellus, commodo ornare aenean amet, mi sed accumsan. lectus vel volutpat id mi aenean at elit vitae dictum. a ac eu platea iaculis sagittis scelerisque semper blandit. ipsum adipiscing ullamcorper sit elementum. aliquam ultrices amet viverra enim. gravida nibh ullamcorper nec in. lorem at vel morbi turpis elementum interdum malesuada. sed lectus ac sit nulla. commodo semper ut venenatis neque. urna risus sit libero amet. nunc faucibus nec dolor tortor laoreet odio nunc dui aliquam.<br />in sit non mi pharetra eget lorem lorem metus. nisi, fermentum massa elementum magna. orci fames arcu quis cursus. condimentum ornare purus imperdiet tellus consequat, ipsum libero non neque. morbi tortor lectus bibendum id aliquam, in ac enim et. pellentesque magna eget ornare dui. ut scelerisque rhoncus, ipsum varius dolor. nec hendrerit sed vitae consequat. id faucibus sem gravida ultricies habitasse odio integer. tincidunt ut nec quam gravida. congue ipsum mauris, cras eros volutpat.<br />pulvinar sed morbi dictum congue molestie ac. magna sit ac justo, lacus vulputate sollicitudin ut congue mattis. tellus vitae tortor, curabitur aliquam. maecenas id elit lobortis vitae at duis magna iaculis viverra. aliquam morbi sed massa neque, cursus sit elit pharetra risus. integer non purus scelerisque vitae sed lectus. convallis consectetur consectetur venenatis, potenti lacus, arcu, arcu. pellentesque nulla varius tellus auctor. curabitur in nisl purus sit. leo, cursus nulla porttitor egestas viverra tristique. ornare lacus imperdiet porta id montes, ultricies sit. accumsan mauris molestie elit ut ullamcorper placerat nullam.<br />et nulla tincidunt amet, porttitor. habitasse mattis condimentum quisque habitasse est ullamcorper. faucibus ullamcorper sit in vitae. eu parturient odio ac rhoncus odio non mauris aliquam. lacus adipiscing amet purus id.</p>"
+    },
+    {
+      "id": 3,
+      "status": "published",
+      "sort": null,
+      "user_created": "6edd5e11-7e6d-46e1-aad1-a83c050c2e06",
+      "date_created": "2021-07-01T10:57:50Z",
+      "user_updated": null,
+      "date_updated": null,
+      "title": "lorem ipsum dolor sit amet",
+      "preview_text": "lorem ipsum dolor sit amet, consectetur adipiscing elit. tellus, commodo ornare aenean amet, mi sed accumsan. lectus vel volutpat id mi aenean at elit vitae dictum. a ac eu platea iaculis sagittis scelerisque semper blandit. ipsum adipiscing ullamcorper sit elementum. aliquam ultrices amet viverra enim. gravida nibh ullamcorper nec in. lorem at vel morbi turpis elementum interdum malesuada. sed lectus ac sit nulla. commodo semper ut venenatis neque. urna risus sit libero amet. nunc faucibus nec dolor tortor laoreet odio nunc dui aliquam.",
+      "content": "<p>lorem ipsum dolor sit amet, consectetur adipiscing elit. tellus, commodo ornare aenean amet, mi sed accumsan. lectus vel volutpat id mi aenean at elit vitae dictum. a ac eu platea iaculis sagittis scelerisque semper blandit. ipsum adipiscing ullamcorper sit elementum. aliquam ultrices amet viverra enim. gravida nibh ullamcorper nec in. lorem at vel morbi turpis elementum interdum malesuada. sed lectus ac sit nulla. commodo semper ut venenatis neque. urna risus sit libero amet. nunc faucibus nec dolor tortor laoreet odio nunc dui aliquam.<br />in sit non mi pharetra eget lorem lorem metus. nisi, fermentum massa elementum magna. orci fames arcu quis cursus. condimentum ornare purus imperdiet tellus consequat, ipsum libero non neque. morbi tortor lectus bibendum id aliquam, in ac enim et. pellentesque magna eget ornare dui. ut scelerisque rhoncus, ipsum varius dolor. nec hendrerit sed vitae consequat. id faucibus sem gravida ultricies habitasse odio integer. tincidunt ut nec quam gravida. congue ipsum mauris, cras eros volutpat.<br />pulvinar sed morbi dictum congue molestie ac. magna sit ac justo, lacus vulputate sollicitudin ut congue mattis. tellus vitae tortor, curabitur aliquam. maecenas id elit lobortis vitae at duis magna iaculis viverra. aliquam morbi sed massa neque, cursus sit elit pharetra risus. integer non purus scelerisque vitae sed lectus. convallis consectetur consectetur venenatis, potenti lacus, arcu, arcu. pellentesque nulla varius tellus auctor. curabitur in nisl purus sit. leo, cursus nulla porttitor egestas viverra tristique. ornare lacus imperdiet porta id montes, ultricies sit. accumsan mauris molestie elit ut ullamcorper placerat nullam.<br />et nulla tincidunt amet, porttitor. habitasse mattis condimentum quisque habitasse est ullamcorper. faucibus ullamcorper sit in vitae. eu parturient odio ac rhoncus odio non mauris aliquam. lacus adipiscing amet purus id.</p>"
+    }
+  ],
+  "title": "mainello - design agency - austin",
+  "menu_items": [
+    {
+      "title": "home",
+      "link": "/home.html"
+    },
+    {
+      "title": "services",
+      "link": "/services.html"
+    },
+    {
+      "title": "agency",
+      "link": "/agency.html"
+    },
+    {
+      "title": "contact",
+      "link": "/contact.html"
+    },
+    {
+      "title": "work",
+      "link": "/work.html"
+    }
+  ],
+  "social_links": [
+    {
+      "service": "behance",
+      "link": "/#"
+    },
+    {
+      "service": "dribbble",
+      "link": "/#"
+    },
+    {
+      "service": "facebook",
+      "link": "/#"
+    },
+    {
+      "service": "instagram",
+      "link": "/#"
+    }
+  ],
+  "footer_heading": "<p>have an idea? <br /><a href=\"/contact\"> drop us a line </a></p>",
+  "contact_address": "<p>100 cooper street<br />austin, tx 22314, usa</p>",
+  "contact_email": "zach@mainello",
+  "footer_lower": "<p>all rights reserved.</p>",
+  "logo_header": "9921670f-7c76-41e4-a1aa-160eb51d8467",
+  "logo_footer": "46a70bac-3b7e-40e3-a1fa-226d2480bec1"
+}

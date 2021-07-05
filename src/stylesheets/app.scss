@@ -20,10 +20,8 @@
 @use './components/offset-columns.scss';
 @use './components/page-header.scss';
 @use './components/post-list.scss';
-@use './components/scrolling-tags.scss';
 @use './components/section-title.scss';
 @use './components/spaced-columns.scss';
-
 @use './utilities/backgrounds.scss';
 @use './utilities/headings.scss';
 @use './utilities/hide.scss';
@@ -32,3 +30,25 @@
 @use './utilities/text.scss';
 @use './utilities/transparency.scss';
 @use './utilities/z-index.scss';
+
+@font-face {
+  font-family: 'Sohne';
+  font-weight: 400;
+  src: url('/fonts/sohne-buch.woff2') format('woff2'),
+       url('/fonts/sohne-buch.woff') format('woff'),
+       url('/fonts/sohne-buch.eot') format('eot');
+}
+@font-face {
+  font-family: 'Sohne';
+  font-weight: 600;
+  src: url('/fonts/sohne-halbfett.woff2') format('woff2'),
+       url('/fonts/sohne-halbfett.woff') format('woff'),
+       url('/fonts/sohne-halbfett.eot') format('eot');
+}
+@font-face {
+  font-family: 'Sohne';
+  font-weight: 700;
+  src: url('/fonts/sohne-dreiviertelfett.woff2') format('woff2'),
+       url('/fonts/sohne-dreiviertelfett.woff') format('woff'),
+       url('/fonts/sohne-dreiviertelfett.eot') format('eot');
+}

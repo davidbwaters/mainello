@@ -2,28 +2,6 @@
 // variables
 //
 
-@font-face {
-  font-family: 'Sohne';
-  font-weight: 400;
-  src: url('/fonts/sohne-buch.woff2') format('woff2'),
-       url('/fonts/sohne-buch.woff') format('woff'),
-       url('/fonts/sohne-buch.eot') format('eot');
-}
-@font-face {
-  font-family: 'Sohne';
-  font-weight: 600;
-  src: url('/fonts/sohne-halbfett.woff2') format('woff2'),
-       url('/fonts/sohne-halbfett.woff') format('woff'),
-       url('/fonts/sohne-halbfett.eot') format('eot');
-}
-@font-face {
-  font-family: 'Sohne';
-  font-weight: 700;
-  src: url('/fonts/sohne-dreiviertelfett.woff2') format('woff2'),
-       url('/fonts/sohne-dreiviertelfett.woff') format('woff'),
-       url('/fonts/sohne-dreiviertelfett.eot') format('eot');
-}
-
 :root {
   --spacing-1: .5rem;
   --spacing-2: .6875rem;
@@ -63,7 +41,7 @@
   --title-normal-spacing: .02em;
 
   --font-size-mono-small: .6875rem;
-  --font-size-mono-normal: .875rem;
+  --font-size-mono-normal: .8rem;
 
   --font-weight-normal: 400;
   --font-weight-semibold: 600;

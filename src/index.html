@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+    <link rel="icon" href="/images/favicon.png" />
+    <script type="module" src="/scripts/main.ts"></script>
+  </head>
+  <body>
+    <c-navbar>
+      <img src="https://admin.mainellomontage.com/assets/{{logo_header}}">{{logo-header}}
+    </c-navbar>
+    <c-nav-menu></c-nav-menu>
+
+    <main data-barba="container" data-barba-namespace="home">
+      <c-intro></c-intro>
+      <div id="#c-hero" class="o-gc-grid">
+        <h1 class="c-tagline u-bg-blur-primary-1 u-heading-large">
+          <span>{{hero_line_1}}</span>
+          <span>
+            <span>{{hero_line_2}}</span>
+            <span class="u-dash-line"></span>
+          </span>
+          <span>{{hero_line_3}}</span>
+        </h1>
+
+        <c-rings></c-rings>
+
+        <h2 class="c-cta">
+          {{cta}}
+        </h2>
+      </div>
+
+      <div class="o-gc-grid o-gc-grid--columns">
+        <div class="c-line-title c-line-title--inverse">
+          {{services_title}}
+        </div>
+
+        <c-scrolling-tags
+          items='{{scrolling_tag_row_1}}'
+        >
+        </c-scrolling-tags>
+
+        <c-scrolling-tags
+          items='{{scrolling_tag_row_2}}'
+          reverse=true
+        >
+        </c-scrolling-tags>
+
+        <div class="c-line">
+        </div>
+
+        <div class="c-labeled-text">
+
+          <div class="c-labeled-text__label">
+            {{services_text_label}}
+          </div>
+
+          <div class="c-labeled-text__text">
+            {{{services_text}}}
+          </div>
+
+        </div>
+
+      </div>
+
+      <c-curves>
+      </c-curves>
+
+      <section class="c-work u-z-index-2">
+        <div class="c-section-title">
+          {{work_heading}}
+        </div>
+
+        <c-fluid-reveal
+          items='{{{work_preview}}}'
+        ></c-fluid-reveal>
+
+      </section>
+
+      <section class="c-news">
+        <div class="c-section-title">
+          latest news
+        </div>
+        <ul class="c-post-list">
+          <li class="c-post-list__item">
+            <a class="c-post-list__item-date">
+              June 23, 2022
+            </a>
+
+            <a class="c-post-list__item-preview">
+              <h4 class="c-post-list__item-title u-heading-small">
+                Post Title
+              </h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </a>
+
+          </li>
+          <li class="c-post-list__item">
+            <a class="c-post-list__item-date">
+              June 23, 2022
+            </a>
+
+            <a class="c-post-list__item-preview">
+              <h4 class="c-post-list__item-title u-heading-small">
+                Post Title
+              </h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </a>
+
+          </li>
+          <li class="c-post-list__item">
+            <a class="c-post-list__item-date">
+              June 23, 2022
+            </a>
+
+            <a class="c-post-list__item-preview">
+              <h4 class="c-post-list__item-title u-heading-small">
+                Post Title
+              </h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </a>
+
+          </li>
+        </ul>
+      </section>
+
+    </main>
+  </body>
+</html>

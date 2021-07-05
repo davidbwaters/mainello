@@ -6,7 +6,7 @@
   display: grid;
   grid-auto-flow: row;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 10vw;
+  gap: 10vw;
   margin-bottom: calc(var(--spacing-8) * 2);
   margin-left: auto;
   margin-right: auto;

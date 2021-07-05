@@ -54,6 +54,7 @@ export class FluidReveal extends LitElement {
 
 
     .c-fluid-reveal__heading {
+      font-weight: var(--font-weight-normal);
       margin: 0;
     }
 
@@ -76,7 +77,6 @@ export class FluidReveal extends LitElement {
 
       .c-fluid-reveal__heading {
         font-size: var(--font-size-large-1);
-        font-weight: var(--font-weight-semibold);
       }
 
     }
@@ -138,7 +138,6 @@ export class FluidReveal extends LitElement {
       .c-fluid-reveal__heading {
         cursor: text;
         font-size: var(--font-size-large-3);
-        font-weight: var(--font-weight-semibold);
       }
 
       .c-fluid-reveal__content p,
@@ -358,7 +357,9 @@ export class FluidReveal extends LitElement {
                   ${item.heading}
                 </h3>
                 ${unsafeHTML(item.text)}
-                <c-button>
+                <c-button
+                  link="/work/${item.id}.html"
+                >
                   view project
                 </c-button>
               </div>

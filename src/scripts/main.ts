@@ -21,6 +21,7 @@ async function onInit() {
 
   await import('./components/Button')
   await import('./components/FluidReveal')
+  await import('./components/BlogPost')
 
 }
 

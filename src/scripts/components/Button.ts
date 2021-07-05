@@ -38,8 +38,12 @@ export class Button extends LitElement {
     }
 
     :host([large]) {
-      padding:
-        var(--spacing-3);
+      padding: var(--spacing-3);
+    }
+
+    :host([small]) {
+      font-size: var(--font-size-mono-small);
+      padding: var(--spacing-1);
     }
 
     :host(:hover) {

@@ -86,34 +86,19 @@
         </section>
 
         <section class="c-news" asscroll>
-          <div class="c-section-title">
+          <div class="c-section-title u-border-subtle-top">
             latest news
           </div>
-          <ul class="c-post-list">
 
             {{#each news_post_list}}
-              <li>{{this.title}}</li>
+              <c-blog-post
+                date='{{this.date}}'
+                title='{{this.title}}'
+                text='{{this.text}}'
+                content='{{this.content}}'
+              ></c-blog-post>
             {{/each}}
 
-            <li class="c-post-list__item">
-              <a class="c-post-list__item-date">
-                June 23, 2022
-              </a>
-
-              <a class="c-post-list__item-preview">
-                <h4 class="c-post-list__item-title u-heading-small">
-                  Post Title
-                </h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                  nisi ut aliquip ex ea commodo consequat.
-                </p>
-              </a>
-
-            </li>
-          </ul>
         </section>
       </div>
     </main>

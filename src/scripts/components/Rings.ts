@@ -26,12 +26,12 @@ declare global {
 
 export class Rings extends LitElement {
 
-  baseFrameRate = 15
+  baseFrameRate = 20
   frameRate = this.baseFrameRate
 
   instance
 
-  private _speed = 0.045
+  private _speed = 0.08
   private _time = 0
   private _nPoints = 10
   private _nCircles = 10
@@ -126,7 +126,7 @@ export class Rings extends LitElement {
 
       sketch.frameRate(this.frameRate)
       sketch.noStroke()
-      sketch.fill(255, 40)
+      sketch.fill(255, 80)
       sketch.rect(0, 0, sketch.width, sketch.height)
 
       sketch.translate(

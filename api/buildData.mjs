@@ -59,7 +59,9 @@ async function buildData() {
       id: i.id,
       date: i.date,
       title: i.title,
-      text: i.preview_text
+      text: i.preview_text,
+      content: i.content,
+      slug: i.slug
     }
 
     console.log(i)

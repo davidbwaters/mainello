@@ -9,129 +9,163 @@ import {
 } from 'lit'
 
 import {
-  customElement
+  customElement,
+  property
 } from 'lit/decorators.js'
+
+import {
+  unsafeHTML
+} from 'lit/directives/unsafe-html'
 
 import {
   createRef,
   ref
 } from 'lit/directives/ref'
 
-import lottie from 'lottie-web'
-
 
 declare global {
   interface HTMLElementTagNameMap {
-    'c-navbar': Navbar,
+    'c-blog-post': BlogPost,
   }
 }
 
-@customElement('c-navbar')
+@customElement('c-blog-post')
 
-export class Navbar extends LitElement {
+export class BlogPost extends LitElement {
 
   static styles = css`
-    .c-navbar {
-      box-sizing: border-box;
-      padding: var(--spacing-2);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 10;
+    :host {
+      border-bottom: 1px solid var(--color-platinum);
+      display: block;
+      list-style-type: none;
+      padding-bottom: var(--spacing-6);
+      padding-left: var(--spacing-5);
+      padding-right: var(--spacing-5);
+      padding-top: var(--spacing-5);
     }
 
-    @media (min-width: 320px) {
-
-      .c-navbar {
-        padding: 2.1vh 2.1vw;
-      }
-
-    }
-
-    .c-navbar__inner {
+    .c-blog-post__item {
+      border-bottom: solid 1px rgba(0,0,0,0.2);
       display: grid;
-      grid-auto-columns: min-content;
-      grid-auto-flow: column;
-      justify-content: space-between;
+      grid-template-columns: 15rem 1fr;
     }
 
-    .c-navbar__branding {
-      display: inline-block;
-      width: 80px;
+    .c-blog-post__item:last-child {
+      border-bottom: none;
     }
 
-    .c-navbar__menu-button {
-      cursor: pointer;
-      display: inline-block;
-      width: 20px;
+    .c-blog-post__item-date {
+      font-size: var(--font-size-small);
+      margin-top:  var(--spacing-1);
     }
+
+    .c-blog-post__item-title {
+      font-size: var(--font-size-large-1);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--spacing-3);
+      margin-top: 0;
+    }
+
+    .c-blog-post__item-text {
+      margin-bottom: var(--spacing-4);
+    }
+
+    .c-blog-post__content {
+      background: white;
+      height: 100vh;
+      position: absolute;
+      top: 100vh;
+      transition: all .4s;
+      width: 100vw;
+    }
+
   `
+
+  @property({
+    type: String,
+    attribute: true
+  })
+  date:string
+
+  @property({
+    type: String,
+    attribute: true
+  })
+  title:string
+
+  @property({
+    type: String,
+    attribute: true
+  })
+  text:string
+
+  @property({
+    type: String,
+    attribute: true
+  })
+  content:string
+
+  private _contentEl = createRef<HTMLDivElement>()
 
   private _open = false
 
-  menuToggleEl = createRef<HTMLDivElement>()
+  handleToggle = ():void => {
 
-  _menuButtonAnimation
+    if (this._open) {
 
-  firstUpdated():void {
-
-    this._menuButtonAnimation = lottie.loadAnimation({
-      container: this.menuToggleEl.value,
-      renderer: 'svg',
-      loop: false,
-      autoplay: false,
-      path: '/animations/nav-button.json'
-    })
-
-  }
-
-  _toggleNavMenu():void {
-
-    this.dispatchEvent(new CustomEvent('toggleNavMenu', {
-      bubbles: true,
-      composed: true
-    }))
-
-    if (!this._open) {
-
-      this._open = true
-
-      this._menuButtonAnimation.setDirection(1)
-      this._menuButtonAnimation.goToAndPlay(1, true)
+      this._contentEl.value.style.top = '0vh'
 
     }
     else {
 
-      this._open = false
-
-      this._menuButtonAnimation.setDirection(-1)
-      this._menuButtonAnimation.goToAndPlay(
-        this._menuButtonAnimation.lastFrame,
-        true
-      )
+      this._contentEl.value.style.top = '100vh'
 
     }
+
+  }
+
+  firstUpdated() {
+
+    this._contentEl.value.style.backgroundColor = 'white'
+    this._contentEl.value.style.height = '100vh'
+    this._contentEl.value.style.position = 'fixed'
+    this._contentEl.value.style.top = '100vh'
+    this._contentEl.value.style.transition = 'all .4s'
+    this._contentEl.value.style.width = '100vw'
+
+    document.body.appendChild(
+      this._contentEl.value
+    )
 
   }
 
   protected render(): TemplateSpecification {
 
     return html`
-      <header
-        class='c-navbar'
-      >
-        <div class='c-navbar__inner'>
-          <a class='c-navbar__branding' href='/'>
-            <slot></slot>
-          </a>
-          <a
-            class='c-navbar__menu-button js-navbar-button'
-            @click=${this._toggleNavMenu}
-            ${ref(this.menuToggleEl)}
-          >
-          </a>
+      <div class="c-blog-post__item">
+        <div class="c-blog-post__item-date">
+          ${this.date}
         </div>
-      </header>
+
+        <div class="c-blog-post__item-preview">
+          <h4 class="c-blog-post__item-title">
+            ${this.title}
+          </h4>
+          <div class="c-blog-post__item-text">
+            ${this.text}
+          </div>
+          <c-button @click=${this.handleToggle} small>
+            read more
+          </c-button>
+        </div>
+        <div
+          class="c-blog-post__content"
+          ${ref(this._contentEl)}
+        >
+          ${unsafeHTML(this.content)}
+        </div>
+
+      </div>
     `
 
   }

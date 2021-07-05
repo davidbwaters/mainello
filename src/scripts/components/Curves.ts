@@ -27,7 +27,8 @@ declare global {
 
 export class Curves extends LitElement {
 
-  frameRate = 60
+  baseFrameRate = 5
+  frameRate = this.baseFrameRate
 
   instance
 
@@ -85,7 +86,7 @@ export class Curves extends LitElement {
 
       if (el.isIntersecting) {
 
-        this.frameRate = 30
+        this.frameRate = this.baseFrameRate
 
       }
       else {

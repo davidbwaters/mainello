@@ -26,7 +26,8 @@ declare global {
 
 export class Rings extends LitElement {
 
-  frameRate = 60
+  baseFrameRate = 15
+  frameRate = this.baseFrameRate
 
   instance
 
@@ -59,7 +60,7 @@ export class Rings extends LitElement {
 
       if (el.isIntersecting) {
 
-        this.frameRate = 30
+        this.frameRate = this.baseFrameRate
 
       }
       else {

@@ -120,7 +120,7 @@ export class ScrollingTags extends LitElement {
     gsap.registerPlugin(ScrollTrigger)
 
     gsap.config({
-      force3D: false
+      //force3D: false
     })
 
     gsap.fromTo(this, {
@@ -134,7 +134,7 @@ export class ScrollingTags extends LitElement {
       scrollTrigger: {
         trigger: this,
         invalidateOnRefresh: true,
-        scrub: true,
+        scrub: 0.1,
         start: () => 'top 100%',
         end: '+=100%'
       }

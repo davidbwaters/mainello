@@ -19,13 +19,13 @@ import inViewport from '../lib/inViewport'
 
 declare global {
   interface HTMLElementTagNameMap {
-    'c-curves': Curves,
+    'c-curves': Footer,
   }
 }
 
 @customElement('c-curves')
 
-export class Curves extends LitElement {
+export class Footer extends LitElement {
 
   frameRate = 60
 

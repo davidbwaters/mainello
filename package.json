@@ -6,8 +6,9 @@
   "author": "David B. Waters",
   "license": "MIT",
   "scripts": {
-    "start": "npm run data && vite",
-    "build": "npm run data && vite build",
+    "start": "npm run data && npm run clean && vite",
+    "build": "npm run data && npm run clean && vite build",
+    "clean": "rimraf dist",
     "data": "node api/buildData.mjs"
   },
   "dependencies": {
@@ -30,6 +31,7 @@
     "markdown-it": "^12.0.6",
     "node-fetch": "^2.6.1",
     "prettier": "^2.3.1",
+    "rimraf": "^3.0.2",
     "sass": "^1.35.1",
     "typescript": "^4.3.4",
     "vite": "^2.3.8",

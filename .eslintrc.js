@@ -16,7 +16,8 @@ module.exports = {
     'no-unused-vars': 0,
     'no-undef': 0,
     'new-cap': 0,
-    'import/no-unresolved': 0
+    'import/no-unresolved': 0,
+    'import/no-useless-path-segments': 0
   },
 
   'plugins': [

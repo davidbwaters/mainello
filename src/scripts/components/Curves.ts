@@ -12,9 +12,9 @@ import {
   customElement
 } from 'lit/decorators.js'
 
-import * as p5 from 'p5'
+import p5 from 'p5'
 
-import inViewport from '../lib/inViewport'
+import inViewport from './../lib/inViewport'
 
 
 declare global {

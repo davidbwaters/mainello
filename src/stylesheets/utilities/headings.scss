@@ -16,30 +16,25 @@
 @media (min-width: 320px) {
   .u-heading-medium {
     font-size: var(--font-size-large-2);
-    font-weight: var(--font-weight-semibold);
   }
 }
 
-
 .u-heading-large {
   font-size: var(--font-size-large-1);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-normal);
 }
 
 @media (min-width: 320px) {
   .u-heading-large {
     font-size: var(--font-size-large-2);
-    font-weight: var(--font-weight-semibold);
   }
 }
 
 @media (min-width: 768px) {
   .u-heading-large {
     font-size: var(--font-size-large-3);
-    font-weight: var(--font-weight-semibold);
   }
 }
-
 
 .u-heading-huge {
   font-size: var(--font-size-large-1);

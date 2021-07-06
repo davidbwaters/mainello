@@ -13,16 +13,6 @@ import {
   property
 } from 'lit/decorators.js'
 
-import {
-  unsafeHTML
-} from 'lit/directives/unsafe-html'
-
-import {
-  createRef,
-  ref
-} from 'lit/directives/ref'
-
-
 declare global {
   interface HTMLElementTagNameMap {
     'c-blog-post': BlogPost,
@@ -47,7 +37,23 @@ export class BlogPost extends LitElement {
     .c-blog-post__item {
       border-bottom: solid 1px rgba(0,0,0,0.2);
       display: grid;
-      grid-template-columns: 15rem 1fr;
+      gap: var(--spacing-6);
+      grid-template-columns: auto 1fr;
+      margin: auto;
+      max-width: 1200px;
+    }
+
+
+    @media (min-width: 768px) {
+
+
+    .c-blog-post__item {
+      border-bottom: solid 1px rgba(0,0,0,0.2);
+      display: grid;
+      gap: var(--spacing-6);
+      grid-template-columns: auto 1fr;
+    }
+
     }
 
     .c-blog-post__item:last-child {
@@ -56,11 +62,10 @@ export class BlogPost extends LitElement {
 
     .c-blog-post__item-date {
       font-size: var(--font-size-small);
-      margin-top:  var(--spacing-1);
+      margin-top: 0.3rem;
     }
 
     .c-blog-post__item-title {
-      font-size: var(--font-size-large-1);
       font-weight: var(--font-weight-semibold);
       margin-bottom: var(--spacing-3);
       margin-top: 0;
@@ -68,15 +73,6 @@ export class BlogPost extends LitElement {
 
     .c-blog-post__item-text {
       margin-bottom: var(--spacing-4);
-    }
-
-    .c-blog-post__content {
-      background: white;
-      height: 100vh;
-      position: absolute;
-      top: 100vh;
-      transition: all .4s;
-      width: 100vw;
     }
 
   `
@@ -91,7 +87,7 @@ export class BlogPost extends LitElement {
     type: String,
     attribute: true
   })
-  title:string
+  name:string
 
   @property({
     type: String,
@@ -105,39 +101,12 @@ export class BlogPost extends LitElement {
   })
   content:string
 
-  private _contentEl = createRef<HTMLDivElement>()
 
-  private _open = false
-
-  handleToggle = ():void => {
-
-    if (this._open) {
-
-      this._contentEl.value.style.top = '0vh'
-
-    }
-    else {
-
-      this._contentEl.value.style.top = '100vh'
-
-    }
-
-  }
-
-  firstUpdated() {
-
-    this._contentEl.value.style.backgroundColor = 'white'
-    this._contentEl.value.style.height = '100vh'
-    this._contentEl.value.style.position = 'fixed'
-    this._contentEl.value.style.top = '100vh'
-    this._contentEl.value.style.transition = 'all .4s'
-    this._contentEl.value.style.width = '100vw'
-
-    document.body.appendChild(
-      this._contentEl.value
-    )
-
-  }
+  @property({
+    type: String,
+    attribute: true
+  })
+  slug:string
 
   protected render(): TemplateSpecification {
 
@@ -149,20 +118,14 @@ export class BlogPost extends LitElement {
 
         <div class="c-blog-post__item-preview">
           <h4 class="c-blog-post__item-title">
-            ${this.title}
+            ${this.name}
           </h4>
           <div class="c-blog-post__item-text">
             ${this.text}
           </div>
-          <c-button @click=${this.handleToggle} small>
+          <c-button link="/blog/${this.slug}" small>
             read more
           </c-button>
-        </div>
-        <div
-          class="c-blog-post__content"
-          ${ref(this._contentEl)}
-        >
-          ${unsafeHTML(this.content)}
         </div>
 
       </div>

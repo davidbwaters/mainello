@@ -93,9 +93,10 @@
             {{#each news_post_list}}
               <c-blog-post
                 date='{{this.date}}'
-                title='{{this.title}}'
+                name='{{this.title}}'
                 text='{{this.text}}'
                 content='{{this.content}}'
+                slug='{{this.slug}}'
               ></c-blog-post>
             {{/each}}
 

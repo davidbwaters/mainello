@@ -50,6 +50,8 @@ export class FluidReveal extends LitElement {
     :host {
       display: block;
       overflow: hidden;
+      margin: auto;
+      max-width: 1200px;
     }
 
 
@@ -113,10 +115,12 @@ export class FluidReveal extends LitElement {
       }
 
       .c-fluid-reveal__item-media {
+        box-sizing: border-box;
           display: block;
           max-height: 80vh;
           margin-top: 10vh;
           overflow: hidden;
+          padding: var(--spacing-3);
           top: 0;
           width: 100%;
       }

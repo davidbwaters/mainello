@@ -34,7 +34,6 @@ function scrollSetup() {
 
   const isTouch = 'ontouchstart' in document.documentElement
 
-  // https://github.com/ashthornton/asscroll
   const asscroll = new ASScroll({
     containerElement: scrollContainer,
     disableRaf: true
@@ -66,17 +65,21 @@ function scrollSetup() {
     }
   })
 
-  console.log(asscroll)
   asscroll.on('update', ScrollTrigger.update)
-  asscroll.on('scroll', scrollPos => console.log(scrollPos))
 
-  setTimeout(() => {
+  ScrollTrigger.addEventListener(
+    'refresh', asscroll.resize
+  )
 
-    asscroll.enable()
+  window.addEventListener(
 
-  }, 2000)
+    'enableScroll', () => {
 
-  ScrollTrigger.addEventListener('refresh', asscroll.resize)
+      asscroll.enable()
+
+    }
+
+  )
 
 }
 

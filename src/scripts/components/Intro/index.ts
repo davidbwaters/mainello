@@ -106,7 +106,15 @@ export class Intro extends LitElement {
 
         gsap.to(this, {
           duration: 0.2,
-          opacity: 0
+          opacity: 0,
+          onComplete: () => {
+
+            this.dispatchEvent(new CustomEvent('enableScroll', {
+              bubbles: true,
+              composed: true
+            }))
+
+          }
         })
 
         setTimeout(() => {
@@ -122,7 +130,7 @@ export class Intro extends LitElement {
 
       lottie.setSpeed(2)
 
-      //document.body.style.position = 'fixed'
+      document.body.style.position = 'fixed'
       backgroundAnimation.play()
 
     }

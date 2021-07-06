@@ -61,7 +61,7 @@ export class Button extends LitElement {
 
 
   @property({
-    type: Array,
+    type: String,
     attribute: true
   })
   link:string

@@ -43,7 +43,7 @@ export class Navbar extends LitElement {
     @media (min-width: 320px) {
 
       .c-navbar {
-        padding: 2.1vh 2.1vw;
+        padding: var(--spacing-5);
       }
 
     }

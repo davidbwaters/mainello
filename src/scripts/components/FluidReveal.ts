@@ -104,7 +104,7 @@ export class FluidReveal extends LitElement {
       .c-fluid-reveal__item {
         align-content: center;
         display: grid;
-        gap: var(--spacing-4);
+        gap: var(--spacing-6);
         grid-auto-flow: column;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
@@ -134,7 +134,7 @@ export class FluidReveal extends LitElement {
         grid-column: 2 / span 1;
         justify-items: start;
         max-height: 100vh;
-        padding-right: var(--spacing-6);
+        padding-right: var(--spacing-8);
         will-change: opacity, transform;
         z-index: 2;
       }

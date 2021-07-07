@@ -30,7 +30,7 @@ declare global {
 interface NavLinks {
   title: string;
   link: string;
-  active: boolean;
+  active: string;
 }
 
 @customElement('c-nav-menu')
@@ -82,12 +82,29 @@ export class NavMenu extends LitElement {
 
     .c-nav-menu__nav {
       display: grid;
+      justify-items: start;
     }
 
     .c-nav-menu__nav-link {
       color: inherit;
+      font-size: var(--font-size-large-4);
       position: relative;
       text-decoration: none;
+      -webkit-text-stroke: 1px currentColor;
+      -webkit-text-fill-color: white
+    }
+
+    .c-nav-menu__nav-link span{
+      position: relative
+    }
+
+    .c-nav-menu__nav-link.active::after {
+      background-color: currentColor;
+      content: '';
+      height: 1px;
+      display: block;
+      position: relative;
+      top: -0.2em;
     }
 
   `
@@ -157,13 +174,13 @@ export class NavMenu extends LitElement {
     this.navLinks.forEach((item, index) => {
 
       item.link === current
-        ? navLinksNew[index].active = true
-        : navLinksNew[index].active = false
+        ? navLinksNew[index].active = 'active'
+        : navLinksNew[index].active = ''
 
     })
 
     this.navLinks = navLinksNew
-    console.log(current)
+    console.log(navLinksNew)
 
   }
 
@@ -225,15 +242,12 @@ export class NavMenu extends LitElement {
 
               html`
                 <a
-                  class="c-nav-menu__nav-link"
+                  class="c-nav-menu__nav-link ${item.active}"
                   href="${item.link}"
-                  ${
-                    item.active
-                      ? html`active`
-                      : html``
-                  }
+
+                  ${console.log(item.active)}
                 >
-                  ${item.title}
+                  <span>${item.title}</span>
                 </a>
               `
 

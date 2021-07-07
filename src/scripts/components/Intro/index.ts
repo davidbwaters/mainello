@@ -109,6 +109,8 @@ export class Intro extends LitElement {
           opacity: 0,
           onComplete: () => {
 
+            this.style.height = '0'
+
             this.dispatchEvent(new CustomEvent('enableScroll', {
               bubbles: true,
               composed: true
@@ -152,7 +154,7 @@ export class Intro extends LitElement {
           ${ref(this.introBgEl)}
         ></div>
 
-        <div class='o-gc-grid o-gc-grid--gap-tiny'>
+        <div class='c-intro__grid'>
           <div class='c-intro__block'>
             <div class='c-intro__block-inner js-intro-block' ></div>
           </div>

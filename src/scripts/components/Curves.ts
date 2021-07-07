@@ -12,7 +12,7 @@ import {
   customElement
 } from 'lit/decorators.js'
 
-import p5 from 'p5'
+import * as p5 from 'p5'
 
 import inViewport from './../lib/inViewport'
 
@@ -27,26 +27,10 @@ declare global {
 
 export class Curves extends LitElement {
 
-  baseFrameRate = 5
-  frameRate = this.baseFrameRate
-
-  instance
-
-  private _speed = 0.045
-  private _time = 0
-  private _nPoints = 10
-  private _nCircles = 10
-  private _minRadius = 0
-
-  private _wrapper:HTMLDivElement
-  private _size:DOMRect
-  private _velocity:number
-  private _maxRadius:number
-  private _noiseScale:number
-
   static styles = css`
     :host {
       display: block;
+      height: 100%;
       position: relative;
     }
 
@@ -68,6 +52,14 @@ export class Curves extends LitElement {
       top: 0;
     }
   `
+
+  baseFrameRate = 15
+  frameRate = this.baseFrameRate
+
+  instance
+
+  private _wrapper:HTMLDivElement
+
 
   private _createWrapper() {
 
@@ -156,7 +148,6 @@ export class Curves extends LitElement {
       }
 
       sketch.endShape()
-
       sketch.pop()
 
     }
@@ -165,7 +156,6 @@ export class Curves extends LitElement {
 
       sketch.push()
       sketch.fill(255, 90)
-      //sketch.rect(0, 0, sketch.width, sketch.height)
       sketch.pop()
 
     }
@@ -179,7 +169,6 @@ export class Curves extends LitElement {
         sketch.width * 1.5 / STEP
       )
 
-      //sketch.applyFade()
       sketch.background(255, 99)
 
       sketch.push()
@@ -190,8 +179,8 @@ export class Curves extends LitElement {
       for (let y = 0; y < sketch.height; y += 30) {
 
         sketch.drawPerlinCurve(
-          sketch.width +
-          50, y, phase, STEP, numCurveVertices
+          sketch.width + 100,
+          y, phase, STEP, numCurveVertices
         )
 
       }
@@ -206,8 +195,6 @@ export class Curves extends LitElement {
 
     this._createWrapper()
     this._inViewort()
-
-    this._size = this.getBoundingClientRect()
 
     this.instance = new p5(this.sketch)
 

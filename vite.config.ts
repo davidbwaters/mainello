@@ -23,6 +23,14 @@ data.work_preview = JSON.stringify(
   data.work_preview
 )
 
+data.social_links = JSON.stringify(
+  data.social_links
+)
+
+data.menu_items = JSON.stringify(
+  data.menu_items
+)
+
 export default defineConfig({
   root: 'src',
   plugins: [

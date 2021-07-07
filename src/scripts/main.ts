@@ -11,17 +11,17 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 async function onInit() {
 
+  await import('./components/BlogPost')
+  await import('./components/Button')
+  await import('./components/Curves')
+  await import('./components/FluidReveal')
+  await import('./components/Footer')
   await import('./components/Intro')
   await import('./components/Navbar')
   await import('./components/NavMenu')
-
   await import('./components/Rings')
-  await import('./components/Curves')
   await import('./components/ScrollingTags')
-
-  await import('./components/Button')
-  await import('./components/FluidReveal')
-  await import('./components/BlogPost')
+  await import('./components/SectionTitle')
 
 }
 
@@ -29,13 +29,9 @@ function scrollSetup() {
 
   gsap.registerPlugin(ScrollTrigger)
 
-  const scrollContainer: HTMLElement =
-    document.querySelector('.js-scroll-container')
-
   const isTouch = 'ontouchstart' in document.documentElement
 
   const asscroll = new ASScroll({
-    containerElement: scrollContainer,
     disableRaf: true
   })
 
@@ -71,23 +67,20 @@ function scrollSetup() {
     'refresh', asscroll.resize
   )
 
-  window.addEventListener(
-
-    'enableScroll', () => {
-
-      asscroll.enable()
-
-    }
-
-  )
+  asscroll.enable()
 
 }
 
-function onRouteChange() {
+window.addEventListener(
 
-  scrollSetup()
+  'enableScroll', () => {
 
-}
+    ScrollTrigger.refresh()
+    //scrollSetup()
+
+  }
+
+)
 
 onInit()
-onRouteChange()
+//onRouteChange()

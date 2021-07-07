@@ -14,8 +14,10 @@ export default css`
     position: absolute;
     width: 100%;
   }
-  .o-gc-grid {
+
+  .c-intro__grid {
     display: grid;
+    gap: 2px;
     grid-template-columns:
       0.5fr
       0.5fr;
@@ -32,7 +34,7 @@ export default css`
   }
 
   @media (min-width: 320px) {
-    .o-gc-grid {
+    .c-intro__grid {
       display: grid;
       grid-template-columns:
         0.05fr
@@ -59,7 +61,7 @@ export default css`
 
   @media (min-width: 768px) {
 
-    .o-gc-grid {
+    .c-intro__grid {
       display: grid;
       grid-template-columns:
         0.021fr
@@ -90,36 +92,6 @@ export default css`
     }
   }
 
-  .o-gc-grid--gap-tiny {
-    gap: 4px;
-  }
-
-  .o-gc-grid--gap-small {
-    gap: .2rem;
-  }
-
-  .o-gc-grid--gap-medium {
-    gap: .4rem;
-  }
-
-
-  .o-gc-grid--columns {
-    grid-template-rows: auto;
-    min-height: 0;
-  }
-
-  @media (min-width: 320px) {
-    .o-gc-grid--columns {
-      grid-template-rows: auto;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .o-gc-grid--columns {
-      grid-template-rows: auto;
-    }
-  }
-
   .c-intro {
     align-content: center;
     background-color: var(--color-platinum);
@@ -142,7 +114,7 @@ export default css`
     z-index: 0;
   }
 
-  .c-intro .o-gc-grid {
+  .c-intro .c-intro__grid {
     height: 100%;
     position: absolute;
     width: 100%;

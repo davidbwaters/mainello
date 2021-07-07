@@ -22,3 +22,8 @@
   -webkit-text-stroke: 1px currentColor;
   -webkit-text-fill-color: transparent;
 }
+
+.u-text-label {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+}

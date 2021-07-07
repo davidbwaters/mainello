@@ -25,7 +25,7 @@ export class BlogPost extends LitElement {
 
   static styles = css`
     :host {
-      border-bottom: 1px solid var(--color-platinum);
+      border-top: 1px solid var(--color-platinum);
       display: block;
       list-style-type: none;
       padding-bottom: var(--spacing-6);
@@ -35,7 +35,6 @@ export class BlogPost extends LitElement {
     }
 
     .c-blog-post__item {
-      border-bottom: solid 1px rgba(0,0,0,0.2);
       display: grid;
       gap: var(--spacing-6);
       grid-template-columns: auto 1fr;

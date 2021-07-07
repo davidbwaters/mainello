@@ -42,7 +42,6 @@ export class ScrollingTags extends LitElement {
     :host {
       display: grid;
       font-size: 10vw;
-      font-weight: var(--font-weight-semibold);
       grid-auto-flow: column;
       grid-column: 1 / span 2;
       justify-content: start;

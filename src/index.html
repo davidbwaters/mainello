@@ -8,100 +8,110 @@
     <link rel="icon" href="/images/favicon.png" />
     <script type="module" src="/scripts/main.ts"></script>
   </head>
-  <body style="opacity: 0">
+  <body asscroll-container style="opacity: 0">
     <c-navbar>
-      <img src="https://admin.mainellomontage.com/assets/{{logo_header}}">{{logo-header}}
+      <img src="{{logo_header}}">
     </c-navbar>
-    <c-nav-menu></c-nav-menu>
+
+    <c-nav-menu
+      navLinks="{{menu_items}}"
+    >
+    </c-nav-menu>
 
     <main
       data-barba="container"
-      data-barba-namespace="home"
-
-    >
+      data-barba-namespace="home">
       <c-intro></c-intro>
-      <div class="js-scroll-container">
-        <div id="#c-hero" class="o-gc-grid" asscroll>
-          <h1 class="c-tagline u-bg-blur-primary-1 u-heading-large">
-            <span>{{hero_line_1}}</span>
-            <span>
-              <span>{{hero_line_2}}</span>
-              <span class="u-dash-line"></span>
-            </span>
-            <span>{{hero_line_3}}</span>
-          </h1>
+      <div id="#c-hero" class="o-gc-grid" asscroll>
+        <h1 class="c-tagline u-bg-blur-primary-1 u-heading-huge">
+          <span>{{hero_line_1}}</span>
+          <span>
+            <span>{{hero_line_2}}</span>
+            <span class="u-dash-line"></span>
+          </span>
+          <span>{{hero_line_3}}</span>
+        </h1>
 
-          <c-rings></c-rings>
+        <c-rings></c-rings>
 
-          <h2 class="c-cta">
-            {{cta}}
-          </h2>
-        </div>
-
-        <div class="o-gc-grid o-gc-grid--columns" asscroll>
-          <div class="c-line-title c-line-title--inverse">
-            {{services_title}}
-          </div>
-
-          <c-scrolling-tags
-            items='{{scrolling_tag_row_1}}'
-          >
-          </c-scrolling-tags>
-
-          <c-scrolling-tags
-            items='{{scrolling_tag_row_2}}'
-            reverse=true
-          >
-          </c-scrolling-tags>
-
-          <div class="c-line">
-          </div>
-
-          <div class="c-labeled-text">
-
-            <div class="c-labeled-text__label">
-              {{services_text_label}}
-            </div>
-
-            <div class="c-labeled-text__text">
-              {{{services_text}}}
-            </div>
-
-          </div>
-
-        </div>
-
-        <c-curves asscroll>
-        </c-curves>
-
-        <section class="c-work u-z-index-2" asscroll>
-          <div class="c-section-title">
-            {{work_heading}}
-          </div>
-
-          <c-fluid-reveal
-            items='{{{work_preview}}}'
-          ></c-fluid-reveal>
-
-        </section>
-
-        <section class="c-news" asscroll>
-          <div class="c-section-title u-border-subtle-top">
-            latest news
-          </div>
-
-            {{#each news_post_list}}
-              <c-blog-post
-                date='{{this.date}}'
-                name='{{this.title}}'
-                text='{{this.text}}'
-                content='{{this.content}}'
-                slug='{{this.slug}}'
-              ></c-blog-post>
-            {{/each}}
-
-        </section>
+        <h2 class="c-cta">
+          {{cta}}
+        </h2>
       </div>
+
+      <div class="o-gc-grid o-gc-grid--columns" asscroll>
+        <div class="c-line-title c-line-title--inverse u-text-label">
+          {{services_title}}
+        </div>
+
+        <c-scrolling-tags
+          items='{{scrolling_tag_row_1}}'
+        >
+        </c-scrolling-tags>
+
+        <c-scrolling-tags
+          items='{{scrolling_tag_row_2}}'
+          reverse=true
+        >
+        </c-scrolling-tags>
+
+        <div class="c-line">
+        </div>
+
+        <div class="c-labeled-text">
+
+          <div class="c-labeled-text__label u-text-label">
+            {{services_text_label}}
+          </div>
+
+          <div class="c-labeled-text__text">
+            {{{services_text}}}
+          </div>
+
+        </div>
+
+      </div>
+
+      <c-curves asscroll>
+      </c-curves>
+
+      <section class="c-work u-z-index-2" asscroll>
+        <c-section-title>
+          {{work_heading}}
+        </c-section-title>
+
+        <c-fluid-reveal
+          items='{{{work_preview}}}'
+        ></c-fluid-reveal>
+
+      </section>
+
+      <section class="c-news" asscroll>
+        <div class="c-section-title u-border-subtle-top">
+          latest news
+        </div>
+
+        {{#each news_post_list}}
+          <c-blog-post
+            date='{{this.date}}'
+            name='{{this.title}}'
+            text='{{this.text}}'
+            content='{{this.content}}'
+            slug='{{this.slug}}'
+          ></c-blog-post>
+        {{/each}}
+      </section>
+
     </main>
+    <c-footer
+      socialLinks="{{social_links}}"
+      navLinks="{{menu_items}}"
+      logo="{{logo_footer}}"
+      asscroll
+    >
+      <div slot="heading" class="u-heading-huge-fluid">
+        {{{footer_heading}}}
+      </div>
+    </c-footer>
   </body>
 </html>

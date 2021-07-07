@@ -9,21 +9,32 @@ import {
 } from 'lit'
 
 import {
+  property,
   customElement
 } from 'lit/decorators.js'
 
-import p5 from 'p5'
+import * as p5 from 'p5'
 
 import inViewport from './../lib/inViewport'
 
 
 declare global {
   interface HTMLElementTagNameMap {
-    'c-curves': Footer,
+    'c-footer': Footer,
   }
 }
 
-@customElement('c-curves')
+interface SocialLinks {
+  service: string;
+  link: string;
+}
+
+interface NavLinks {
+  title: string;
+  link: string;
+}
+
+@customElement('c-footer')
 
 export class Footer extends LitElement {
 
@@ -31,48 +42,124 @@ export class Footer extends LitElement {
 
   instance
 
-  private _speed = 0.045
-  private _time = 0
-  private _nPoints = 10
-  private _nCircles = 10
-  private _minRadius = 0
-
   private _wrapper:HTMLDivElement
-  private _size:DOMRect
-  private _velocity:number
-  private _maxRadius:number
-  private _noiseScale:number
 
   static styles = css`
     :host {
+      background: var(--color-eerie-black);
+      color: white;
       display: block;
+      margin-top: 10vh;
+      overflow: hidden;
       position: relative;
+      top: 0;
+      width: 100%;
     }
 
-    .c-curves__fade {
-      background-image:
-        linear-gradient(
-          0deg,
-          white 0%,
-          transparent 25%,
-          transparent 75%,
-          white 100%
-        );
-      content: '';
-      display: block;
-      height: 100%;
+    :host a {
+      color: inherit;
+    }
+
+    .c-footer__inner {
+      align-content: space-between;
+      box-sizing: border-box;
+      display: grid;
+      min-height: 60vh;
+      padding-bottom: 12vh;
+      padding-left: 6.21vw;
+      padding-right: 6.21vw;
+      padding-top: 16vh;
+      position: relative;
       width: 100%;
-      position: absolute;
       z-index: 2;
+    }
+
+    .c-footer__contact {
+      display: grid;
+      margin: 0;
+      padding-bottom: 16vh;
+    }
+
+    .c-footer__contact a,
+    .c-footer__contact span {
+      padding-left: 10.46vw;
+      padding-right: 10.46vw;
+    }
+
+    .c-footer__line {
+      border-bottom: solid 1px var(--color-opaque-light);
+    }
+
+    .c-footer__lower {
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: space-between;
+      padding-top: 12vh;
+    }
+
+    .c-footer__logo {
+      width: 45px;
+    }
+
+    .c-footer__nav {
+      display: grid;
+      gap: var(--spacing-4);
+      grid-auto-flow: column;
+    }
+
+    .c-footer__nav-link {
+      text-decoration: none;
+    }
+
+    .c-footer__nav-link.active {
+      text-decoration: underline;
+    }
+
+    .c-footer__social {
+      display: grid;
+      grid-auto-flow: column;
+      gap: 1rem;
+    }
+
+    .c-footer__social img {
+      height: 20px;
+      width: 20px;
+    }
+
+    ::slotted([slot="background"]) {
+      opacity: 0.4;
+      height: 100%;
+      left: 0;
+      position: absolute;
       top: 0;
+      width: 100%;
     }
   `
+
+  @property({
+    type: Array,
+    attribute: true
+  })
+  socialLinks:Array<SocialLinks>
+
+  @property({
+    type: Array,
+    attribute: true
+  })
+  navLinks:Array<NavLinks>
+
+  @property({
+    type: String,
+    attribute: true
+  })
+  logo:string
 
   private _createWrapper() {
 
     const el = document.createElement('div')
 
-    el.id = 'c-curves__inner'
+    el.id = 'c-footer__background'
+    el.setAttribute('slot', 'background')
 
     this.appendChild(el)
     this._wrapper = el
@@ -100,102 +187,62 @@ export class Footer extends LitElement {
 
   sketch = (sketch): void => {
 
+    let theShader
+
+    sketch.preload = () => {
+
+      theShader = sketch.loadShader(
+        '/scripts/shaders/fabric.vert',
+        '/scripts/shaders/fabric.frag'
+      )
+
+    }
+
     sketch.setup = () => {
 
-      const width = sketch.windowWidth
-      const height = sketch.windowHeight
+      let footerSize = this._wrapper.getBoundingClientRect()
 
       const canvas = sketch.createCanvas(
-        width,
-        height
+        footerSize.width,
+        footerSize.height,
+        sketch.WEBGL
       )
 
       sketch.windowResized = () => {
 
+        footerSize = this._wrapper.getBoundingClientRect()
+
         sketch.resizeCanvas(
-          sketch.windowWidth,
-          sketch.windowHeight
+          footerSize.width,
+          footerSize.height
         )
 
       }
 
-      canvas.parent('c-curves__inner')
+      sketch.createCanvas(
+        footerSize.width,
+        footerSize.height
+      )
 
-      sketch.strokeWeight(1)
-      sketch.noFill()
-      sketch.background(255)
-
-    }
-
-    sketch.drawPerlinCurve = (
-      x, y, phase, step, numCurveVertices
-    ) => {
-
-      sketch.push()
-      //sketch.stroke(114,180,174, 60)
-      sketch.stroke(220, 60)
-
-      const noiseScale = 0.0025
-
-      sketch.beginShape()
-
-      for (let i = 0; i < numCurveVertices; i++) {
-
-        sketch.curveVertex(x, y)
-        const angle =
-            sketch.TWO_PI *
-            sketch.noise(
-              x * noiseScale,
-              y * noiseScale,
-              phase * noiseScale
-            )
-        x += sketch.cos(angle) * step
-        y += sketch.sin(angle) * step
-
-      }
-
-      sketch.endShape()
-
-      sketch.pop()
-
-    }
-
-    sketch.applyFade = () => {
-
-      sketch.push()
-      sketch.fill(255, 90)
-      //sketch.rect(0, 0, sketch.width, sketch.height)
-      sketch.pop()
+      canvas.parent('c-footer__background')
 
     }
 
     sketch.draw = () => {
 
-      sketch.frameRate(this.frameRate)
+      sketch.shader(theShader)
 
-      const STEP = 30
-      const numCurveVertices = sketch.floor(
-        sketch.width * 1.5 / STEP
+      let x
+
+      theShader.setUniform('u_resolution', [
+        sketch.width, sketch.height
+      ])
+      theShader.setUniform('u_time', (
+        sketch.millis() / 1000) +
+      (Math.abs(sketch.mouseX) / 300)
       )
 
-      //sketch.applyFade()
-      sketch.background(255, 99)
-
-      sketch.push()
-      sketch.scale(1)
-
-      const phase = sketch.frameCount / 2
-
-      for (let y = 0; y < sketch.height; y += 30) {
-
-        sketch.drawPerlinCurve(
-          sketch.width +
-          50, y, phase, STEP, numCurveVertices
-        )
-
-      }
-
-      sketch.pop()
+      sketch.quad(-5, -5, 5, -5, 5, 5, -5, 5)
 
     }
 
@@ -206,8 +253,6 @@ export class Footer extends LitElement {
     this._createWrapper()
     this._inViewort()
 
-    this._size = this.getBoundingClientRect()
-
     this.instance = new p5(this.sketch)
 
   }
@@ -215,58 +260,54 @@ export class Footer extends LitElement {
   protected render(): TemplateSpecification {
 
     return html`
-      <footer
-        class="c-footer"
-      >
-        <div class="c-footer__inner">
-          <h2 class="c-footer__contact u-heading-huge">
-            <span class="u-text-outline">have an idea?</span>
-            <a href="/contact.html">
-              get in touch
-            </a>
-          </h2>
-          <div class="c-line c-line--light"></div>
-          <div class="c-footer__lower">
-            <img
-              class="c-footer__logo"
-              src="/images/logo-glyph.svg"
-            >
+      <slot name="background">
+      </slot>
 
-            <nav class="c-footer__nav">
-              <% navPages.forEach(function(entry){ %>
+      <div class="c-footer__inner">
+        <div class="c-footer__contact">
+
+          <slot name="heading">
+          </slot>
+
+        </div>
+        <div class="c-footer__line"></div>
+        <div class="c-footer__lower">
+          <img
+            class="c-footer__logo"
+            src="${this.logo}"
+          >
+
+          <nav class="c-footer__nav">
+            ${this.navLinks.map(item =>
+
+              html`
                 <a
-                  class="c-footer__nav-link u-hide-tablet-down"
-                  href="<%- entry.url %>"
+                  class="c-footer__nav-link"
+                  href="${item.link}"
                 >
-                  <%- entry.title %>
+                  ${item.title}
                 </a>
-              <% }); %>
-            </nav>
+              `
 
-            <div class="c-footer__social">
-              <a
-                class="c-footer__social-link"
-              >
-                <img src="/icons/social/instagram.svg">
-              </a>
-              <a
-                class="c-footer__social-link"
-              >
-                <img src="/icons/social/twitter.svg">
-              </a>
-              <a
-                class="c-footer__social-link"
-              >
-                <img src="/icons/social/facebook.svg">
-              </a>
-            </div>
+            )}
+          </nav>
+
+          <div class="c-footer__social">
+            ${this.socialLinks.map(item =>
+
+              html`
+                <a
+                  class="c-footer__social-link"
+                  href="${item.link}"
+                >
+                  <img src="/icons/social/${item.service}.svg">
+                </a>
+              `
+
+            )}
           </div>
         </div>
-
-        <div class="c-footer__background" id="c-footer__background">
-        </div>
-
-      </footer>
+      </div>
     `
 
   }

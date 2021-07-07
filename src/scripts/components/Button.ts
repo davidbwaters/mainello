@@ -59,7 +59,6 @@ export class Button extends LitElement {
     }
   `
 
-
   @property({
     type: String,
     attribute: true

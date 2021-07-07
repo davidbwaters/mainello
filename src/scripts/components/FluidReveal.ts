@@ -116,13 +116,13 @@ export class FluidReveal extends LitElement {
 
       .c-fluid-reveal__item-media {
         box-sizing: border-box;
-          display: block;
-          max-height: 80vh;
-          margin-top: 10vh;
-          overflow: hidden;
-          padding: var(--spacing-3);
-          top: 0;
-          width: 100%;
+        display: block;
+        max-height: 80vh;
+        margin-top: 10vh;
+        overflow: hidden;
+        padding: var(--spacing-3);
+        top: 0;
+        width: 100%;
       }
 
       .c-fluid-reveal__content {
@@ -197,6 +197,8 @@ export class FluidReveal extends LitElement {
 
   firstUpdated():void {
 
+    gsap.registerPlugin(ScrollTrigger)
+
     const fluidRevealEls:Array<HTMLDivElement> =
       Array.from(
         this._fluidRevealEls
@@ -233,7 +235,6 @@ export class FluidReveal extends LitElement {
             pin: true,
             pinSpacing: true,
             end: 'bottom bottom',
-            //invalidateOnRefresh: true,
             scrub: 0.2
             //markers: true
           }
@@ -254,13 +255,15 @@ export class FluidReveal extends LitElement {
             tl.fromTo(
               wobble,
               {
-                xPercent: 100,
-                yPercent: 100
+                xPercent: 110,
+                yPercent: 110,
+                scale: 1
               },
               {
                 duration: this.animationDuration,
-                xPercent: 0,
-                yPercent: 0
+                xPercent: -7,
+                yPercent: -7,
+                scale: 1.2
               },
               '-=' + this.animationDuration
             )
@@ -269,13 +272,15 @@ export class FluidReveal extends LitElement {
           else {
 
             tl.fromTo(wobble, {
-              xPercent: 100,
-              yPercent: 100
+              xPercent: 110,
+              yPercent: 110,
+              scale: 1
             },
             {
               duration: this.animationDuration,
-              xPercent: 0,
-              yPercent: 0
+              xPercent: -7,
+              yPercent: -7,
+              scale: 1.2
             })
 
           }
@@ -338,7 +343,7 @@ export class FluidReveal extends LitElement {
         ${this.items.map((item, index) =>
           html`
             <div class="c-fluid-reveal__item">
-              <svg class="c-fluid-reveal__item-media" viewBox="0 0 800 1000">
+              <svg class="c-fluid-reveal__item-media" viewBox="0 0 1000 1000">
                 <image
                   opacity="1"
                   mask="url('#mask-${index}')"

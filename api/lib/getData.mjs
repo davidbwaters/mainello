@@ -1,9 +1,9 @@
 //
-// getData
+// get data
 //
 
-import config from '../../config.mjs'
 import fetch from 'node-fetch'
+import config from '../../config.mjs'
 
 export default async function getData(
   endpoint, remote = config.remote

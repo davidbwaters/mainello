@@ -9,7 +9,8 @@ import {
 } from 'lit'
 
 import {
-  customElement
+  customElement,
+  property
 } from 'lit/decorators.js'
 
 import lottie from 'lottie-web'
@@ -24,6 +25,12 @@ declare global {
   interface HTMLElementTagNameMap {
     'c-nav-menu': NavMenu,
   }
+}
+
+interface NavLinks {
+  title: string;
+  link: string;
+  active: boolean;
 }
 
 @customElement('c-nav-menu')
@@ -78,11 +85,18 @@ export class NavMenu extends LitElement {
     }
 
     .c-nav-menu__nav-link {
+      color: inherit;
       position: relative;
       text-decoration: none;
     }
 
   `
+
+  @property({
+    type: Array,
+    attribute: true
+  })
+  navLinks:Array<NavLinks>
 
   private _open = false
 
@@ -134,6 +148,25 @@ export class NavMenu extends LitElement {
 
   }
 
+  updateActive():void {
+
+    const current = window.location.pathname
+
+    const navLinksNew = this.navLinks
+
+    this.navLinks.forEach((item, index) => {
+
+      item.link === current
+        ? navLinksNew[index].active = true
+        : navLinksNew[index].active = false
+
+    })
+
+    this.navLinks = navLinksNew
+    console.log(current)
+
+  }
+
   firstUpdated(): void {
 
     this._menuAnimation = lottie.loadAnimation({
@@ -153,8 +186,17 @@ export class NavMenu extends LitElement {
 
   }
 
+  connectedCallback():void {
+
+    super.connectedCallback()
+    this.updateActive()
+
+  }
+
   disconnectedCallback():void {
 
+
+    super.disconnectedCallback()
     window.removeEventListener(
       'toggleNavMenu', this.handleToggle
     )
@@ -179,6 +221,23 @@ export class NavMenu extends LitElement {
           </div>
 
           <nav class='c-nav-menu__nav'>
+            ${this.navLinks.map(item =>
+
+              html`
+                <a
+                  class="c-nav-menu__nav-link"
+                  href="${item.link}"
+                  ${
+                    item.active
+                      ? html`active`
+                      : html``
+                  }
+                >
+                  ${item.title}
+                </a>
+              `
+
+            )}
           </nav>
 
         </div>

@@ -39,19 +39,17 @@ export class BlogPost extends LitElement {
       gap: var(--spacing-6);
       grid-template-columns: auto 1fr;
       margin: auto;
-      max-width: 1200px;
+      max-width: var(--wrapper-width);
     }
-
 
     @media (min-width: 768px) {
 
-
-    .c-blog-post__item {
-      border-bottom: solid 1px rgba(0,0,0,0.2);
-      display: grid;
-      gap: var(--spacing-6);
-      grid-template-columns: auto 1fr;
-    }
+      .c-blog-post__item {
+        border-bottom: solid 1px rgba(0,0,0,0.2);
+        display: grid;
+        gap: var(--spacing-6);
+        grid-template-columns: 1fr 4fr;
+      }
 
     }
 

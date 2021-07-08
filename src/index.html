@@ -4,17 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{title}}</title>
+    <title>{{site.title}}</title>
     <link rel="icon" href="/images/favicon.png" />
     <script type="module" src="/scripts/main.ts"></script>
   </head>
   <body asscroll-container style="opacity: 0">
+
     <c-navbar>
-      <img src="{{logo_header}}">
+      <img src="{{site.logo_header}}">
     </c-navbar>
 
     <c-nav-menu
-      navLinks="{{menu_items}}"
+      navLinks="{{site.menu_items}}"
     >
     </c-nav-menu>
 
@@ -29,33 +30,33 @@
         asscroll>
 
         <h1 class="c-tagline u-bg-blur-primary-1 u-heading-huge">
-          <span>{{hero_line_1}}</span>
+          <span>{{home.hero_line_1}}</span>
           <span>
-            <span>{{hero_line_2}}</span>
+            <span>{{home.hero_line_2}}</span>
             <span class="u-dash-line"></span>
           </span>
-          <span>{{hero_line_3}}</span>
+          <span>{{home.hero_line_3}}</span>
         </h1>
 
         <c-rings></c-rings>
 
         <h2 class="c-cta">
-          {{cta}}
+          {{home.cta}}
         </h2>
       </div>
 
       <div class="o-gc-grid o-gc-grid--columns" asscroll>
         <div class="c-line-title c-line-title--inverse u-text-label">
-          {{services_title}}
+          {{home.services_title}}
         </div>
 
         <c-scrolling-tags
-          items='{{scrolling_tag_row_1}}'
+          items='{{home.scrolling_tag_row_1}}'
         >
         </c-scrolling-tags>
 
         <c-scrolling-tags
-          items='{{scrolling_tag_row_2}}'
+          items='{{home.scrolling_tag_row_2}}'
           reverse=true
         >
         </c-scrolling-tags>
@@ -66,11 +67,11 @@
         <div class="c-labeled-text">
 
           <div class="c-labeled-text__label u-text-label">
-            {{services_text_label}}
+            {{home.services_text_label}}
           </div>
 
           <div class="c-labeled-text__text">
-            {{{services_text}}}
+            {{{home.services_text}}}
           </div>
 
         </div>
@@ -82,11 +83,11 @@
 
       <section class="c-work u-z-index-2" asscroll>
         <c-section-title>
-          {{work_heading}}
+          {{home.work_heading}}
         </c-section-title>
 
         <c-fluid-reveal
-          items='{{{work_preview}}}'
+          items='{{{home.work_preview}}}'
         ></c-fluid-reveal>
 
       </section>
@@ -96,7 +97,7 @@
           latest news
         </div>
 
-        {{#each news_post_list}}
+        {{#each home.news_post_list}}
           <c-blog-post
             date='{{this.date}}'
             name='{{this.title}}'
@@ -105,18 +106,23 @@
             slug='{{this.slug}}'
           ></c-blog-post>
         {{/each}}
+
       </section>
 
+      <c-contact-fab></c-contact-fab>
+
     </main>
+
     <c-footer
-      socialLinks="{{social_links}}"
-      navLinks="{{menu_items}}"
-      logo="{{logo_footer}}"
+      socialLinks="{{site.social_links}}"
+      navLinks="{{site.menu_items}}"
+      logo="{{site.logo_footer}}"
       asscroll
     >
       <div slot="heading" class="u-heading-huge-fluid">
-        {{{footer_heading}}}
+        {{{site.footer_heading}}}
       </div>
     </c-footer>
+
   </body>
 </html>

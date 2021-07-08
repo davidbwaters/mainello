@@ -1,0 +1,52 @@
+//
+// post template
+
+
+export const postTemplateStart = `
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>{{site.title}}</title>
+      <link rel="icon" href="/images/favicon.png" />
+      <script type="module" src="/scripts/main.ts"></script>
+    </head>
+    <body asscroll-container style="opacity: 0">
+      <c-navbar>
+        <img src="{{site.logo_header}}">
+      </c-navbar>
+
+      <c-nav-menu
+        navLinks="{{site.menu_items}}"
+      >
+      </c-nav-menu>
+
+      <main
+        data-barba="container"
+        data-barba-namespace="home">
+
+        <div class="c-page-header c-page-header--post">`
+
+export const postTemplateMiddle = `</div>
+
+        <div class="c-post-body">`
+
+export const postTemplateEnd = `</div>
+
+      </main>
+      <c-footer
+        socialLinks="{{site.social_links}}"
+        navLinks="{{site.menu_items}}"
+        logo="{{site.logo_footer}}"
+        asscroll
+      >
+        <div slot="heading" class="u-heading-huge-fluid">
+          {{{site.footer_heading}}}
+        </div>
+      </c-footer>
+    </body>
+  </html>
+
+`

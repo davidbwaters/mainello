@@ -13,6 +13,7 @@ async function onInit() {
 
   await import('./components/BlogPost')
   await import('./components/Button')
+  await import('./components/ContactFab')
   await import('./components/Curves')
   await import('./components/FluidReveal')
   await import('./components/Footer')

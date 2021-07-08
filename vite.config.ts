@@ -8,27 +8,27 @@ import handlebars from 'vite-plugin-handlebars'
 import { readFileSync } from 'fs'
 
 const data = JSON.parse(
-  readFileSync('data/home.json', 'utf8')
+  readFileSync('data/data.json', 'utf8')
 )
 
-data.scrolling_tag_row_1 = JSON.stringify(
-  data.scrolling_tag_row_1
+data.home.scrolling_tag_row_1 = JSON.stringify(
+  data.home.scrolling_tag_row_1
 )
 
-data.scrolling_tag_row_2 = JSON.stringify(
-  data.scrolling_tag_row_2
+data.home.scrolling_tag_row_2 = JSON.stringify(
+  data.home.scrolling_tag_row_2
 )
 
-data.work_preview = JSON.stringify(
-  data.work_preview
+data.home.work_preview = JSON.stringify(
+  data.home.work_preview
 )
 
-data.social_links = JSON.stringify(
-  data.social_links
+data.site.social_links = JSON.stringify(
+  data.site.social_links
 )
 
-data.menu_items = JSON.stringify(
-  data.menu_items
+data.site.menu_items = JSON.stringify(
+  data.site.menu_items
 )
 
 export default defineConfig({

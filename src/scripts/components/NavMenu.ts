@@ -180,7 +180,6 @@ export class NavMenu extends LitElement {
     })
 
     this.navLinks = navLinksNew
-    console.log(navLinksNew)
 
   }
 
@@ -244,8 +243,6 @@ export class NavMenu extends LitElement {
                 <a
                   class="c-nav-menu__nav-link ${item.active}"
                   href="${item.link}"
-
-                  ${console.log(item.active)}
                 >
                   <span>${item.title}</span>
                 </a>

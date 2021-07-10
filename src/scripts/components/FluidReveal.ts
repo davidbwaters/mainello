@@ -39,6 +39,7 @@ interface MediaItem {
   heading: string;
   text: string;
   id: number;
+  slug: string
 }
 
 @customElement('c-fluid-reveal')
@@ -196,6 +197,27 @@ export class FluidReveal extends LitElement {
   }
 
   firstUpdated():void {
+
+    this.items.forEach((item, index) => {
+
+      const a = document.createElement('a')
+      const button = document.createElement('c-button')
+
+      a.setAttribute(
+        'href', '/work/' + item.slug + '.html'
+      )
+
+      a.innerText = 'view project'
+
+      button.setAttribute(
+        'slot', index.toString()
+      )
+
+      button.appendChild(a)
+      this.appendChild(button)
+
+    })
+
 
     gsap.registerPlugin(ScrollTrigger)
 
@@ -366,11 +388,7 @@ export class FluidReveal extends LitElement {
                   ${item.heading}
                 </h3>
                 ${unsafeHTML(item.text)}
-                <c-button
-                  link="/work/${item.id}.html"
-                >
-                  view project
-                </c-button>
+                <slot name="${index}"></slot>
               </div>
             </div>
           `

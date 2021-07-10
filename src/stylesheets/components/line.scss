@@ -26,6 +26,15 @@
   }
 }
 
+.c-line--spaced {
+  margin-left: 6.2vw;
+  margin-right: 6.2vw;
+}
+
+.c-line--opaque {
+  opacity: 0.5;
+}
+
 .c-line--light {
   border-bottom: solid 1px var(--color-opaque-light);
 }

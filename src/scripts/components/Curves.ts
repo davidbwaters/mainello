@@ -53,7 +53,7 @@ export class Curves extends LitElement {
     }
   `
 
-  baseFrameRate = 15
+  baseFrameRate = 12
   frameRate = this.baseFrameRate
 
   instance

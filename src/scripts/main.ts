@@ -8,8 +8,22 @@ import '../stylesheets/home.scss'
 import ASScroll from '@ashthornton/asscroll'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import barba from '@barba/core'
+import barbaPrefetch from '@barba/prefetch'
+
+let asscroll
+
+const navMenuEl = document.querySelector(
+  'c-nav-menu'
+)
 
 async function onInit() {
+
+  setTimeout(() => {
+
+    document.body.style.opacity = '1'
+
+  }, 600)
 
   await import('./components/BlogPost')
   await import('./components/Button')
@@ -20,6 +34,7 @@ async function onInit() {
   await import('./components/Intro')
   await import('./components/Navbar')
   await import('./components/NavMenu')
+  await import('./components/PageHeader')
   await import('./components/Rings')
   await import('./components/ScrollingTags')
   await import('./components/SectionTitle')
@@ -32,7 +47,7 @@ function scrollSetup() {
 
   const isTouch = 'ontouchstart' in document.documentElement
 
-  const asscroll = new ASScroll({
+  asscroll = new ASScroll({
     disableRaf: true
   })
 
@@ -72,16 +87,104 @@ function scrollSetup() {
 
 }
 
+async function handlePageLoad() {
+
+  scrollSetup()
+  await onInit()
+
+  setTimeout(() => {
+
+    asscroll.resize()
+    ScrollTrigger.refresh()
+
+
+  }, 1000)
+
+}
+
+const barbaSetup = () => {
+
+  barba.use(barbaPrefetch)
+
+  barba.hooks.afterEnter(data => {
+
+    console.log('after enter all')
+    //handlePageLoad()
+
+    asscroll.disable()
+    setTimeout(() => {
+
+      asscroll.enable({
+        newScrollElements:
+          document.querySelectorAll('[asscroll]'),
+        reset: true
+      })
+      asscroll.resize()
+
+      ScrollTrigger.refresh()
+
+    }, 800);
+
+
+  })
+
+  barba.init({
+
+    debug: true,
+    views: [{
+      namespace: 'home',
+      afterEnter(data) {
+
+        console.log('after enter home')
+
+      }
+    }],
+    transitions: [{
+      name: 'default-transition',
+      leave(data):any {
+
+        if (navMenuEl.open) {
+
+          navMenuEl.handleToggle()
+
+        }
+
+        return gsap.to(data.current.container, {
+          opacity: 0,
+          duration: 0.8
+        })
+
+      },
+      enter(data):any {
+
+        return gsap.from(data.next.container, {
+          opacity: 0,
+          duration: 0.8
+        })
+
+      }
+    }]
+
+  })
+
+}
+
+
 window.addEventListener(
 
-  'enableScroll', () => {
+  'load', () => {
 
-    ScrollTrigger.refresh()
-    //scrollSetup()
+    console.log('load')
+    //ScrollTrigger.refresh()
+    handlePageLoad()
+
+    barbaSetup()
 
   }
 
 )
 
-onInit()
+
+//scrollSetup()
+//onInit()
 //onRouteChange()

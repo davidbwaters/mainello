@@ -11,12 +11,101 @@ import {
   postTemplateEnd
 } from './lib/postTemplage.mjs'
 
+
+import {
+  pageTemplateStart,
+  pageTemplateMiddle,
+  pageTemplateEnd
+} from './lib/pageTemplage.mjs'
+
 import getData from './lib/getData.mjs'
 import config from '../config.mjs'
+
 
 const datePatternIn = 'YYYY-MM-DD[T]HH:mm:ss[Z]'
 const datePatternOut = 'MMMM D, YYYY'
 const assetPath = config.assets + '/'
+
+async function getFile(id, collection) {
+
+  const file = await getData(
+    'items/' + collection + '_directus_files' + '/' +
+    id
+  )
+
+  return assetPath + file.directus_files_id
+
+}
+
+async function getBlock(block) {
+
+  let item = {
+    component: block.collection
+  }
+
+  item = {
+    ...item,
+    ...await getData(
+      'items/' + block.collection + '/' +
+      block.item
+    )
+  }
+
+  if (block.collection === 'offset_columns') {
+
+    for (
+      const [index, i] of item.items.entries()
+    ) {
+
+      item.items[index] = await getFile(
+        i, block.collection
+      )
+
+    }
+
+  }
+
+  if (block.collection === 'image_row') {
+
+    for (
+      const [index, i] of item.images.entries()
+    ) {
+
+      item.images[index] = await getFile(
+        i, block.collection
+      )
+
+    }
+
+  }
+
+  if (block.collection === 'featured_video') {
+
+    item.media = assetPath + item.media
+
+  }
+
+  if (block.collection === 'featured_image') {
+
+    item.media = assetPath + item.media
+
+  }
+
+  if (block.collection === 'pattern') {
+
+    item.image = assetPath + item.image
+
+  }
+
+  if (block.collection === 'image_with_text') {
+
+    item.image = assetPath + item.image
+
+  }
+
+  return item
+
+}
 
 async function buildData() {
 
@@ -32,6 +121,75 @@ async function buildData() {
 
   data.services = await getData('items/services')
 
+  data.agency = await getData('items/agency')
+
+  console.log(data.agency)
+
+  const workContent = await getData(
+    'items/portfolio_content'
+  )
+
+  const agencyContent = await getData(
+    'items/agency_content'
+  )
+
+  for (
+    const [index, item] of data.work.entries()
+  ) {
+
+    const content = []
+
+    for (
+      const [blockIndex, block] of item.content.entries()
+    ) {
+
+      content[blockIndex] = workContent
+        .filter(i => {
+
+          return block === i.id
+
+        })[0]
+
+      content[blockIndex] = await getBlock(
+
+        content[blockIndex]
+
+      )
+
+    }
+
+    data.work[index].featured_image =
+      assetPath + data.work[index].featured_image
+
+    data.work[index].cover_image =
+      assetPath + data.work[index].cover_image
+
+    data.work[index].content = content
+
+  }
+
+  for (
+    const [
+      blockIndex, block
+    ] of data.agency.content.entries()
+  ) {
+
+    data.agency.content[blockIndex] = agencyContent
+      .filter(i => {
+
+        return block === i.id
+
+      })[0]
+
+    data.agency.content[blockIndex] = await getBlock(
+
+      data.agency.content[blockIndex]
+
+    )
+
+  }
+
+
   data.home.work_preview.forEach((item, index) => {
 
     let i = data.work.filter(j => {
@@ -43,8 +201,9 @@ async function buildData() {
     i = {
       id: i.id,
       heading: i.title,
-      text: i.description_text,
-      image: assetPath + i.cover_image
+      image: i.cover_image,
+      slug: i.slug,
+      text: i.description_text
     }
 
     data.home.work_preview[index] = i
@@ -76,7 +235,6 @@ async function buildData() {
       slug: i.slug
     }
 
-    console.log(i)
     data.home.news_post_list[index] = i
 
   })
@@ -90,9 +248,17 @@ async function buildData() {
 
   data.news.forEach((item) => {
 
+    const post =
+      postTemplateStart +
+      item.title +
+      postTemplateMiddle +
+      item.content +
+      postTemplateEnd
+
+
     writeFileSync(
-      'src/posts/' + item.slug + '.html',
-      JSON.stringify(data, null, 2)
+      'src/news/' + item.slug + '.html',
+      post
     )
 
   })

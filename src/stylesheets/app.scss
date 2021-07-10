@@ -16,17 +16,21 @@
 @use './components/nav-menu.scss';
 @use './components/navbar.scss';
 @use './components/offset-columns.scss';
-@use './components/page-header.scss';
+@use './components/post-body.scss';
 @use './components/section-title.scss';
 @use './components/spaced-columns.scss';
+
 @use './utilities/backgrounds.scss';
 @use './utilities/borders.scss';
 @use './utilities/headings.scss';
 @use './utilities/hide.scss';
+@use './utilities/link.scss';
 @use './utilities/margin.scss';
+@use './utilities/padding.scss';
 @use './utilities/sizing.scss';
 @use './utilities/text.scss';
 @use './utilities/transparency.scss';
+@use './utilities/wrapper.scss';
 @use './utilities/z-index.scss';
 
 @font-face {

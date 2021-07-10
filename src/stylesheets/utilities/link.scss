@@ -1,0 +1,32 @@
+//
+// link
+//
+
+.u-link-opaque-hover {
+  display: inline-block;
+  transition: opacity .4s;
+  will-change: opacity;
+}
+
+.u-link-opaque-hover:hover {
+  opacity: .8;
+}
+
+.u-link-reverse-outline {
+  transition: all .8s;
+}
+
+.u-link-reverse-outline:hover {
+  color: currentcolor;
+  -webkit-text-stroke: 1px transparent;
+  -webkit-text-fill-color: rgba(0,0,0,1);
+}
+
+.u-link-fake-underline::after {
+  background-color: currentcolor;
+  content: "";
+  height: 1px;
+  display: block;
+  position: relative;
+  top: -0.2em;
+}

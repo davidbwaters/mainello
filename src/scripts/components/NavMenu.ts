@@ -30,7 +30,7 @@ declare global {
 interface NavLinks {
   title: string;
   link: string;
-  active: string;
+  active: boolean;
 }
 
 @customElement('c-nav-menu')
@@ -85,26 +85,13 @@ export class NavMenu extends LitElement {
       justify-items: start;
     }
 
-    .c-nav-menu__nav-link {
+    ::slotted(*) {
       color: inherit;
       font-size: var(--font-size-large-4);
       position: relative;
       text-decoration: none;
       -webkit-text-stroke: 1px currentColor;
-      -webkit-text-fill-color: white
-    }
-
-    .c-nav-menu__nav-link span{
-      position: relative
-    }
-
-    .c-nav-menu__nav-link.active::after {
-      background-color: currentColor;
-      content: '';
-      height: 1px;
-      display: block;
-      position: relative;
-      top: -0.2em;
+      -webkit-text-fill-color: rgba(255,255,255,1);
     }
 
   `
@@ -115,19 +102,24 @@ export class NavMenu extends LitElement {
   })
   navLinks:Array<NavLinks>
 
-  private _open = false
+  @property({
+    type: Boolean,
+    attribute: true
+  })
+  open:boolean
 
   private _speed = 1.5
   private _menuAnimation
+  private _navLinkEls
 
   menuEl = createRef<HTMLDivElement>()
   menuAnimationEl = createRef<HTMLDivElement>()
 
   handleToggle = ():void => {
 
-    if (!this._open) {
+    if (!this.open) {
 
-      this._open = true
+      this.open = true
 
       lottie.setSpeed(this._speed)
 
@@ -145,7 +137,7 @@ export class NavMenu extends LitElement {
     }
     else {
 
-      this._open = false
+      this.open = false
 
       lottie.setSpeed(this._speed)
 
@@ -162,24 +154,6 @@ export class NavMenu extends LitElement {
       }, 800)
 
     }
-
-  }
-
-  updateActive():void {
-
-    const current = window.location.pathname
-
-    const navLinksNew = this.navLinks
-
-    this.navLinks.forEach((item, index) => {
-
-      item.link === current
-        ? navLinksNew[index].active = 'active'
-        : navLinksNew[index].active = ''
-
-    })
-
-    this.navLinks = navLinksNew
 
   }
 
@@ -200,12 +174,75 @@ export class NavMenu extends LitElement {
       'toggleNavMenu', this.handleToggle
     )
 
+    const current = window.location.pathname
+
+    this.navLinks.forEach(i => {
+
+      const link = document.createElement('a')
+
+      link.href = i.link
+      link.innerText = i.title
+      link.classList.add(
+        'u-link-reverse-outline'
+      )
+
+      if (i.link === current) {
+
+        link.classList.add(
+          'u-link-fake-underline'
+        )
+
+      }
+
+      this.appendChild(link)
+
+    })
+
+    this._navLinkEls = this.querySelectorAll('a')
+
+  }
+
+
+  updated():void {
+
+    const current = window.location.pathname
+
+    this._navLinkEls.forEach(link => {
+
+      const href = link.getAttribute('href')
+
+      if (href === current) {
+
+        link.classList.add(
+          'u-link-fake-underline'
+        )
+
+      }
+      else {
+
+        if (link.classList.contains(
+          'u-link-fake-underline'
+        )) {
+
+          link.classList.remove(
+            'u-link-fake-underline'
+          )
+
+        }
+
+      }
+
+      this.appendChild(
+        link
+      )
+
+    })
+
   }
 
   connectedCallback():void {
 
     super.connectedCallback()
-    this.updateActive()
 
   }
 
@@ -237,18 +274,9 @@ export class NavMenu extends LitElement {
           </div>
 
           <nav class='c-nav-menu__nav'>
-            ${this.navLinks.map(item =>
 
-              html`
-                <a
-                  class="c-nav-menu__nav-link ${item.active}"
-                  href="${item.link}"
-                >
-                  <span>${item.title}</span>
-                </a>
-              `
+            <slot></slot>
 
-            )}
           </nav>
 
         </div>

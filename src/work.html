@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{site.title}}</title>
+    <link rel="icon" href="/images/favicon.png" />
+    <script type="module" src="/scripts/main.ts"></script>
+  </head>
+  <body style="opacity: 0" data-barba="wrapper">
+
+    <c-navbar>
+      <a href='/'>
+        <img src="{{site.logo_header}}">
+      </a>
+    </c-navbar>
+
+    <c-nav-menu
+      navLinks="{{site.menu_items}}"
+    >
+    </c-nav-menu>
+
+    <div asscroll-container>
+
+      <main
+        data-barba="container"
+        asscroll>
+
+        <c-page-header>
+          <div>
+            our work
+          </div>
+        </c-page-header>
+
+        <p class="
+          u-text-large-1
+          u-wrapper
+          u-padding-grid-horizontal
+          u-margin-10vh-bottom
+        ">
+          {{site.work_header_text}}
+        </p>
+
+        <div class="
+          c-line
+          c-line--opaque
+          c-line--spaced
+        ">
+        </div>
+
+        <div class="c-offset-columns">
+
+          {{#each work}}
+
+              <div class="c-labeled-image">
+                <a
+                  href="/work/{{{this.slug}}}.html"
+                  class="
+                    u-text-decoration-none
+                    u-link-opaque-hover
+                  "
+                >
+                  <img
+                    src="{{{this.cover_image}}}"
+                    alt="{{{this.title}}}"
+                  >
+                  <div class="u-margin-4-top u-text-align-center">
+                    <strong>{{{this.title}}}</strong> –
+                    {{{this.heading}}}
+                  </div>
+                </a>
+              </div>
+
+          {{/each}}
+
+        </div>
+
+      </main>
+
+      <c-footer
+        socialLinks="{{site.social_links}}"
+        navLinks="{{site.menu_items}}"
+        logo="{{site.logo_footer}}"
+        asscroll>
+        <div slot="heading" class="u-heading-huge-fluid">
+          {{{site.footer_heading}}}
+        </div>
+      </c-footer>
+    </div>
+
+  </body>
+</html>

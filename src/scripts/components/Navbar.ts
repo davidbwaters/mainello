@@ -121,9 +121,9 @@ export class Navbar extends LitElement {
         class='c-navbar'
       >
         <div class='c-navbar__inner'>
-          <a class='c-navbar__branding' href='/'>
+          <div class='c-navbar__branding'>
             <slot></slot>
-          </a>
+          </div>
           <a
             class='c-navbar__menu-button js-navbar-button'
             @click=${this._toggleNavMenu}

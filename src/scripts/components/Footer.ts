@@ -49,7 +49,7 @@ export class Footer extends LitElement {
       background: var(--color-eerie-black);
       color: white;
       display: block;
-      margin-top: 10vh;
+      margin-top: 20vh;
       overflow: hidden;
       position: relative;
       top: 0;
@@ -133,6 +133,10 @@ export class Footer extends LitElement {
       position: absolute;
       top: 0;
       width: 100%;
+    }
+
+    ::slotted(a) {
+      color: inherit;
     }
   `
 

@@ -120,9 +120,7 @@ export class BlogPost extends LitElement {
           <div class="c-blog-post__item-text">
             ${this.text}
           </div>
-          <c-button link="/blog/${this.slug}" small>
-            read more
-          </c-button>
+          <slot></slot>
         </div>
 
       </div>

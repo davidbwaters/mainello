@@ -2,6 +2,14 @@
 // text
 //
 
+
+// large
+
+.u-text-large-1 {
+  font-size: var(--font-size-large-1);
+}
+
+
 // align
 
 .u-text-align-center {
@@ -16,6 +24,7 @@
   text-align: left;
 }
 
+
 // style
 
 .u-text-outline {
@@ -26,4 +35,12 @@
 .u-text-label {
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-semibold);
+}
+
+.u-text-decoration-none {
+  text-decoration: none;
+}
+
+.u-text-indent {
+  text-indent: 5em;
 }

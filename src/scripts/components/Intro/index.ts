@@ -111,10 +111,12 @@ export class Intro extends LitElement {
 
             this.style.height = '0'
 
-            this.dispatchEvent(new CustomEvent('enableScroll', {
-              bubbles: true,
-              composed: true
-            }))
+            //this.dispatchEvent(new CustomEvent(
+            //  'enableScroll', {
+            //    bubbles: true,
+            //    composed: true
+            //  })
+            //)
 
           }
         })

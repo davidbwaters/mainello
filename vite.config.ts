@@ -5,7 +5,27 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import handlebars from 'vite-plugin-handlebars'
-import { readFileSync } from 'fs'
+
+import {
+  readFileSync
+} from 'fs'
+
+import * as fg from 'fast-glob'
+
+
+const entriesList = fg.sync('src/**/*.html')
+
+const entries = {}
+
+entriesList.forEach((i, index) => {
+
+  entries[index.toString()] = resolve(
+    __dirname, i
+  )
+
+})
+
+console.log(entries)
 
 const data = JSON.parse(
   readFileSync('data/data.json', 'utf8')
@@ -36,11 +56,16 @@ export default defineConfig({
   plugins: [
     handlebars({
       context: data,
-      partialDirectory: resolve(__dirname, 'src/templates/partials')
+      partialDirectory: resolve(
+        __dirname, 'src/templates/partials'
+      )
     })
   ],
   publicDir: '../public',
   build: {
-    outDir: '../dist'
+    outDir: '../dist',
+    rollupOptions: {
+      input: entries
+    }
   }
 })

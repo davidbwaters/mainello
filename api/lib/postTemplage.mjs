@@ -1,6 +1,6 @@
 //
 // post template
-
+//
 
 export const postTemplateStart = `
   <!DOCTYPE html>
@@ -13,9 +13,12 @@ export const postTemplateStart = `
       <link rel="icon" href="/images/favicon.png" />
       <script type="module" src="/scripts/main.ts"></script>
     </head>
-    <body asscroll-container style="opacity: 0">
+    <body data-barba="wrapper" style="opacity: 0">
+
       <c-navbar>
-        <img src="{{site.logo_header}}">
+        <a href='/'>
+          <img src="{{site.logo_header}}">
+        </a>
       </c-navbar>
 
       <c-nav-menu
@@ -23,29 +26,33 @@ export const postTemplateStart = `
       >
       </c-nav-menu>
 
-      <main
-        data-barba="container"
-        data-barba-namespace="home">
+      <div asscroll-container>
 
-        <div class="c-page-header c-page-header--post">`
+        <main
+          data-barba="container"
+          data-barba-namespace="home"
+          asscroll>
 
-export const postTemplateMiddle = `</div>
+          <c-page-header><div>`
 
-        <div class="c-post-body">`
+export const postTemplateMiddle = `</div></c-page-header>
+
+          <div class="c-post-body">`
 
 export const postTemplateEnd = `</div>
+        </main>
 
-      </main>
-      <c-footer
-        socialLinks="{{site.social_links}}"
-        navLinks="{{site.menu_items}}"
-        logo="{{site.logo_footer}}"
-        asscroll
-      >
-        <div slot="heading" class="u-heading-huge-fluid">
-          {{{site.footer_heading}}}
-        </div>
-      </c-footer>
+        <c-footer
+          socialLinks="{{site.social_links}}"
+          navLinks="{{site.menu_items}}"
+          logo="{{site.logo_footer}}"
+          asscroll>
+          <div slot="heading" class="u-heading-huge-fluid">
+            {{{site.footer_heading}}}
+          </div>
+        </c-footer>
+      </div>
+
     </body>
   </html>
 

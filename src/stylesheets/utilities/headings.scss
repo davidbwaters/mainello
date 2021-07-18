@@ -36,6 +36,12 @@
   }
 }
 
+
+.u-heading-huge,
+.u-heading-huge p {
+  line-height: 1.15;
+}
+
 .u-heading-huge {
   font-size: var(--font-size-large-1);
   font-weight: var(--font-weight-normal);
@@ -53,6 +59,11 @@
   }
 }
 
+
+.u-heading-huge-fluid,
+.u-heading-huge-fluid p {
+  line-height: 1.15;
+}
 
 .u-heading-huge-fluid {
   font-size: 10vw;

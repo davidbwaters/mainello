@@ -9,8 +9,7 @@ import {
 } from 'lit'
 
 import {
-  customElement,
-  queryAssignedNodes
+  customElement
 } from 'lit/decorators.js'
 
 
@@ -79,7 +78,7 @@ export class Button extends LitElement {
 
   }
 
-  protected render(): TemplateSpecification {
+  protected render():TemplateSpecification {
 
     return html`
       <slot></slot>

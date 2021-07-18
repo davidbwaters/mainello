@@ -2,7 +2,7 @@
 // page template
 //
 
-export function buildPageTemplate(title, content) {
+export function buildWorkTemplate(title, content) {
 
   return `
     <!DOCTYPE html>
@@ -41,7 +41,6 @@ export function buildPageTemplate(title, content) {
                 content='${JSON.stringify(content)}'>
               </c-dynamic-content>
             </div>
-
           </main>
 
           <c-footer

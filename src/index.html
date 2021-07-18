@@ -23,9 +23,7 @@
 
     <div asscroll-container>
 
-      <main
-        data-barba="container"
-        data-barba-namespace="home">
+      <main data-barba="container" data-barba-namespace="home">
 
         <c-intro></c-intro>
 
@@ -67,17 +65,11 @@
           <div class="c-line">
           </div>
 
-          <div class="c-labeled-text">
-
-            <div class="c-labeled-text__label u-text-label">
-              {{home.services_text_label}}
-            </div>
-
-            <div class="c-labeled-text__text">
-              {{{home.services_text}}}
-            </div>
-
-          </div>
+          <c-labeled-text
+            label='{{home.services_text_label}}'
+            text='[{"paragraph": "{{home.services_text}}"}]'
+          >
+          </c-labeled-text>
 
         </div>
 
@@ -96,9 +88,9 @@
         </section>
 
         <section class="c-news" asscroll>
-          <div class="c-section-title u-border-subtle-top">
+          <c-section-title>
             latest news
-          </div>
+          </c-section-title>
           {{#each home.news_post_list}}
             <c-blog-post
               date='{{this.date}}'

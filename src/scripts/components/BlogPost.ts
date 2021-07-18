@@ -36,7 +36,7 @@ export class BlogPost extends LitElement {
 
     .c-blog-post__item {
       display: grid;
-      gap: var(--spacing-6);
+      gap: 6.2vw;
       grid-template-columns: auto 1fr;
       margin: auto;
       max-width: var(--wrapper-width);
@@ -105,7 +105,7 @@ export class BlogPost extends LitElement {
   })
   slug:string
 
-  protected render(): TemplateSpecification {
+  protected render():TemplateSpecification {
 
     return html`
       <div class="c-blog-post__item">

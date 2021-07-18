@@ -217,7 +217,7 @@ export class Rings extends LitElement {
 
   }
 
-  protected render(): TemplateSpecification {
+  protected render():TemplateSpecification {
 
     return html`
       <slot></slot>

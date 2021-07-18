@@ -6,16 +6,11 @@ import { writeFileSync } from 'fs'
 import date from 'date-and-time'
 
 import {
-  postTemplateStart,
-  postTemplateMiddle,
-  postTemplateEnd
+  buildPostTemplate
 } from './lib/postTemplage.mjs'
 
-
 import {
-  pageTemplateStart,
-  pageTemplateMiddle,
-  pageTemplateEnd
+  buildPageTemplate
 } from './lib/pageTemplage.mjs'
 
 import getData from './lib/getData.mjs'
@@ -33,7 +28,14 @@ async function getFile(id, collection) {
     id
   )
 
-  return assetPath + file.directus_files_id
+  const fileInfo = await getData(
+    'files/' + file.directus_files_id
+  )
+
+  return {
+    url: assetPath + file.directus_files_id,
+    title: fileInfo.title
+  }
 
 }
 
@@ -81,13 +83,23 @@ async function getBlock(block) {
 
   if (block.collection === 'featured_video') {
 
+    const fileInfo = await getData(
+      'files/' + item.media
+    )
+
     item.media = assetPath + item.media
+    item.type = fileInfo.type
 
   }
 
   if (block.collection === 'featured_image') {
 
+    const fileInfo = await getData(
+      'files/' + item.media
+    )
+
     item.media = assetPath + item.media
+    item.title = fileInfo.title
 
   }
 
@@ -123,7 +135,7 @@ async function buildData() {
 
   data.agency = await getData('items/agency')
 
-  console.log(data.agency)
+  // console.log(data.agency)
 
   const workContent = await getData(
     'items/portfolio_content'
@@ -248,16 +260,23 @@ async function buildData() {
 
   data.news.forEach((item) => {
 
-    const post =
-      postTemplateStart +
-      item.title +
-      postTemplateMiddle +
-      item.content +
-      postTemplateEnd
-
+    const post = buildPostTemplate(item.title, item.content)
 
     writeFileSync(
       'src/news/' + item.slug + '.html',
+      post
+    )
+
+  })
+
+  data.work.forEach((item) => {
+
+    const post = buildPageTemplate(
+      item.title, item.content
+    )
+
+    writeFileSync(
+      'src/work/' + item.slug + '.html',
       post
     )
 

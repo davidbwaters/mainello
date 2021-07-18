@@ -1,52 +1,56 @@
 
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>{{site.title}}</title>
-      <link rel="icon" href="/images/favicon.png" />
-      <script type="module" src="/scripts/main.ts"></script>
-    </head>
-    <body data-barba="wrapper" style="opacity: 0">
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{{site.title}}</title>
+        <link rel="icon" href="/images/favicon.png" />
+        <script type="module" src="/scripts/main.ts"></script>
+      </head>
+      <body data-barba="wrapper" style="opacity: 0">
 
-      <c-navbar>
-        <a href='/'>
-          <img src="{{site.logo_header}}">
-        </a>
-      </c-navbar>
+        <c-navbar>
+          <a href='/'>
+            <img src="{{site.logo_header}}">
+          </a>
+        </c-navbar>
 
-      <c-nav-menu
-        navLinks="{{site.menu_items}}"
-      >
-      </c-nav-menu>
-
-      <div asscroll-container>
-
-        <main
-          data-barba="container"
-          data-barba-namespace="home"
-          asscroll>
-
-          <c-page-header><div>lorem ipsum dolor sit amet</div></c-page-header>
-
-          <div class="c-post-body"><p>lorem ipsum dolor sit amet, consectetur adipiscing elit. tellus, commodo ornare aenean amet, mi sed accumsan. lectus vel volutpat id mi aenean at elit vitae dictum. a ac eu platea iaculis sagittis scelerisque semper blandit. ipsum adipiscing ullamcorper sit elementum. aliquam ultrices amet viverra enim. gravida nibh ullamcorper nec in. lorem at vel morbi turpis elementum interdum malesuada. sed lectus ac sit nulla. commodo semper ut venenatis neque. urna risus sit libero amet. nunc faucibus nec dolor tortor laoreet odio nunc dui aliquam.</p>
-<p>lorem ipsum dolor sit amet, consectetur adipiscing elit. tellus, commodo ornare aenean amet, mi sed accumsan. lectus vel volutpat id mi aenean at elit vitae dictum. a ac eu platea iaculis sagittis scelerisque semper blandit. ipsum adipiscing ullamcorper sit elementum. aliquam ultrices amet viverra enim. gravida nibh ullamcorper nec in. lorem at vel morbi turpis elementum interdum malesuada. sed lectus ac sit nulla. commodo semper ut venenatis neque. urna risus sit libero amet. nunc faucibus nec dolor tortor laoreet odio nunc dui aliquam.</p>
-<p>lorem ipsum dolor sit amet, consectetur adipiscing elit. tellus, commodo ornare aenean amet, mi sed accumsan. lectus vel volutpat id mi aenean at elit vitae dictum. a ac eu platea iaculis sagittis scelerisque semper blandit. ipsum adipiscing ullamcorper sit elementum. aliquam ultrices amet viverra enim. gravida nibh ullamcorper nec in. lorem at vel morbi turpis elementum interdum malesuada. sed lectus ac sit nulla. commodo semper ut venenatis neque. urna risus sit libero amet. nunc faucibus nec dolor tortor laoreet odio nunc dui aliquam.</p></div>
-        </main>
-
-        <c-footer
-          socialLinks="{{site.social_links}}"
+        <c-nav-menu
           navLinks="{{site.menu_items}}"
-          logo="{{site.logo_footer}}"
-          asscroll>
-          <div slot="heading" class="u-heading-huge-fluid">
-            {{{site.footer_heading}}}
-          </div>
-        </c-footer>
-      </div>
+        >
+        </c-nav-menu>
 
-    </body>
-  </html>
+        <div asscroll-container>
 
+          <main data-barba="container" data-barba-namespace="post" asscroll>
+
+            <c-page-header>
+              <div>
+                lorem ipsum dolor sit amet
+              </div>
+            </c-page-header>
+
+            <div class="u-wrapper u-padding-grid-horizontal">
+              <p>lorem ipsum dolor sit amet, consectetur adipiscing elit. tellus, commodo ornare aenean amet, mi sed accumsan. lectus vel volutpat id mi aenean at elit vitae dictum. a ac eu platea iaculis sagittis scelerisque semper blandit. ipsum adipiscing ullamcorper sit elementum. aliquam ultrices amet viverra enim. gravida nibh ullamcorper nec in. lorem at vel morbi turpis elementum interdum malesuada. sed lectus ac sit nulla. commodo semper ut venenatis neque. urna risus sit libero amet. nunc faucibus nec dolor tortor laoreet odio nunc dui aliquam.</p>
+<p>lorem ipsum dolor sit amet, consectetur adipiscing elit. tellus, commodo ornare aenean amet, mi sed accumsan. lectus vel volutpat id mi aenean at elit vitae dictum. a ac eu platea iaculis sagittis scelerisque semper blandit. ipsum adipiscing ullamcorper sit elementum. aliquam ultrices amet viverra enim. gravida nibh ullamcorper nec in. lorem at vel morbi turpis elementum interdum malesuada. sed lectus ac sit nulla. commodo semper ut venenatis neque. urna risus sit libero amet. nunc faucibus nec dolor tortor laoreet odio nunc dui aliquam.</p>
+<p>lorem ipsum dolor sit amet, consectetur adipiscing elit. tellus, commodo ornare aenean amet, mi sed accumsan. lectus vel volutpat id mi aenean at elit vitae dictum. a ac eu platea iaculis sagittis scelerisque semper blandit. ipsum adipiscing ullamcorper sit elementum. aliquam ultrices amet viverra enim. gravida nibh ullamcorper nec in. lorem at vel morbi turpis elementum interdum malesuada. sed lectus ac sit nulla. commodo semper ut venenatis neque. urna risus sit libero amet. nunc faucibus nec dolor tortor laoreet odio nunc dui aliquam.</p>
+            </div>
+
+          </main>
+
+          <c-footer
+            socialLinks="{{site.social_links}}"
+            navLinks="{{site.menu_items}}"
+            logo="{{site.logo_footer}}"
+            asscroll>
+            <div slot="heading" class="u-heading-huge-fluid">
+              {{{site.footer_heading}}}
+            </div>
+          </c-footer>
+        </div>
+
+      </body>
+    </html>
+  

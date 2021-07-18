@@ -13,6 +13,7 @@ export default css`
     max-height: 100vh;
     position: absolute;
     width: 100%;
+    z-index: 99;
   }
 
   .c-intro__grid {
@@ -304,6 +305,7 @@ export default css`
 
   .c-sketch-animation__inner {
     background-color: white;
+    box-sizing: border-box;
     height: 100%;
     left: 0%;
     position: absolute;

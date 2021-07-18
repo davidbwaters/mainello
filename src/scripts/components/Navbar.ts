@@ -31,18 +31,19 @@ declare global {
 export class Navbar extends LitElement {
 
   static styles = css`
-    .c-navbar {
+    :host {
       box-sizing: border-box;
       padding: var(--spacing-2);
       position: fixed;
       top: 0;
+      transition: all .8s;
       width: 100%;
       z-index: 10;
     }
 
     @media (min-width: 320px) {
 
-      .c-navbar {
+      :host {
         padding: var(--spacing-5);
       }
 
@@ -114,7 +115,7 @@ export class Navbar extends LitElement {
 
   }
 
-  protected render(): TemplateSpecification {
+  protected render():TemplateSpecification {
 
     return html`
       <header

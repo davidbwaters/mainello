@@ -96,11 +96,57 @@
   ],
   "work": [
     {
+      "id": 3,
+      "status": "published",
+      "sort": null,
+      "date_created": "2021-07-04T19:41:25Z",
+      "date_updated": "2021-07-10T03:22:33Z",
+      "featured_image": "https://admin.mainellomontage.com/assets/d638ea29-0d80-4966-a249-a423683b1418",
+      "heading": "a new take on outdoors",
+      "title": "retrospec",
+      "description_label": "the problem",
+      "description_text": "<div>\n<div>lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>\n</div>",
+      "slug": "retrospec",
+      "cover_image": "https://admin.mainellomontage.com/assets/f34f5eaa-5ef0-43b7-9566-c7116fc5d55c",
+      "content": [
+        {
+          "component": "featured_video",
+          "id": 3,
+          "media": "https://admin.mainellomontage.com/assets/dd1c266c-2455-4bdd-a15d-8fbc5c5e0c7c",
+          "spacing": "none",
+          "loop": true,
+          "type": "video/mp4"
+        },
+        {
+          "component": "labeled_text",
+          "id": 5,
+          "sort": null,
+          "text": [
+            {
+              "paragraph": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            },
+            {
+              "paragraph": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            }
+          ],
+          "label": "the solution"
+        },
+        {
+          "component": "featured_video",
+          "id": 4,
+          "media": "https://admin.mainellomontage.com/assets/d6f6ac7e-78e8-4cec-b79b-258e4a112843",
+          "spacing": "none",
+          "loop": true,
+          "type": "video/mp4"
+        }
+      ]
+    },
+    {
       "id": 2,
       "status": "published",
       "sort": null,
       "date_created": "2021-07-04T16:54:25Z",
-      "date_updated": "2021-07-10T03:21:39Z",
+      "date_updated": "2021-07-18T11:50:37Z",
       "featured_image": "https://admin.mainellomontage.com/assets/ab020f58-63c3-400e-981f-59984334478a",
       "heading": "a modern look for a traditional industry",
       "title": "orion electric",
@@ -114,7 +160,8 @@
           "id": 2,
           "media": "https://admin.mainellomontage.com/assets/d2460a04-33a5-4b96-a303-6640f644cbf2",
           "spacing": "none",
-          "loop": false
+          "loop": false,
+          "type": "video/mp4"
         },
         {
           "component": "labeled_text",
@@ -136,7 +183,7 @@
           "image": "https://admin.mainellomontage.com/assets/b1cd3c89-8f02-468c-9202-43308a2fd9ef",
           "pattern_width": 400,
           "pattern_position": "center",
-          "wrapper_height_percent": 60
+          "wrapper_height_percent": 80
         },
         {
           "component": "labeled_text",
@@ -157,75 +204,43 @@
           "id": 1,
           "media": "https://admin.mainellomontage.com/assets/f1e3bb30-712d-46d3-916e-efe724304ec1",
           "fixed": false,
-          "spacing": "large"
+          "spacing": "large",
+          "title": "Work 2 Swatches"
         },
         {
           "component": "featured_image",
           "id": 2,
           "media": "https://admin.mainellomontage.com/assets/b945b998-075e-47d9-9635-5d12c2c50b73",
           "fixed": false,
-          "spacing": "none"
+          "spacing": "none",
+          "title": "Work 2 Vans"
         },
         {
           "component": "featured_image",
           "id": 3,
           "media": "https://admin.mainellomontage.com/assets/f1306614-7944-4f16-88f4-a7899c2e180b",
           "fixed": true,
-          "spacing": "none"
+          "spacing": "none",
+          "title": "Work 2e"
         },
         {
           "component": "offset_columns",
           "id": 2,
           "reverse": false,
           "items": [
-            "https://admin.mainellomontage.com/assets/84cff4bc-84d0-430f-ade9-05f3fd6b0349",
-            "https://admin.mainellomontage.com/assets/184b6eb6-7b96-41a9-bc7d-27dacbfb34d7",
-            "https://admin.mainellomontage.com/assets/19d266a8-cdee-4555-b784-f3906269b418"
-          ]
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "status": "published",
-      "sort": null,
-      "date_created": "2021-07-04T19:41:25Z",
-      "date_updated": "2021-07-10T03:22:33Z",
-      "featured_image": "https://admin.mainellomontage.com/assets/d638ea29-0d80-4966-a249-a423683b1418",
-      "heading": "a new take on outdoors",
-      "title": "retrospec",
-      "description_label": "the problem",
-      "description_text": "<div>\n<div>lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>\n</div>",
-      "slug": "retrospec",
-      "cover_image": "https://admin.mainellomontage.com/assets/f34f5eaa-5ef0-43b7-9566-c7116fc5d55c",
-      "content": [
-        {
-          "component": "featured_video",
-          "id": 3,
-          "media": "https://admin.mainellomontage.com/assets/dd1c266c-2455-4bdd-a15d-8fbc5c5e0c7c",
-          "spacing": "none",
-          "loop": true
-        },
-        {
-          "component": "labeled_text",
-          "id": 5,
-          "sort": null,
-          "text": [
             {
-              "paragraph": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              "url": "https://admin.mainellomontage.com/assets/84cff4bc-84d0-430f-ade9-05f3fd6b0349",
+              "title": "Work 2D"
             },
             {
-              "paragraph": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              "url": "https://admin.mainellomontage.com/assets/184b6eb6-7b96-41a9-bc7d-27dacbfb34d7",
+              "title": "Work 2b"
+            },
+            {
+              "url": "https://admin.mainellomontage.com/assets/19d266a8-cdee-4555-b784-f3906269b418",
+              "title": "Work 2c"
             }
-          ],
-          "label": "the solution"
-        },
-        {
-          "component": "featured_video",
-          "id": 4,
-          "media": "https://admin.mainellomontage.com/assets/d6f6ac7e-78e8-4cec-b79b-258e4a112843",
-          "spacing": "none",
-          "loop": true
+          ]
         }
       ]
     },
@@ -259,7 +274,8 @@
           "id": 1,
           "media": "https://admin.mainellomontage.com/assets/3d102d99-7beb-4bdf-b720-726ba312243a",
           "spacing": "none",
-          "loop": false
+          "loop": false,
+          "type": "video/mp4"
         },
         {
           "component": "labeled_text",
@@ -276,9 +292,18 @@
           "component": "image_row",
           "id": 1,
           "images": [
-            "https://admin.mainellomontage.com/assets/da0e7908-5a82-4e96-8982-071527a3df91",
-            "https://admin.mainellomontage.com/assets/a96d8186-15ad-4ef6-9c52-906bd7023516",
-            "https://admin.mainellomontage.com/assets/33203e82-a3bf-448d-b15e-156b2c036348"
+            {
+              "url": "https://admin.mainellomontage.com/assets/da0e7908-5a82-4e96-8982-071527a3df91",
+              "title": "Work 1f2"
+            },
+            {
+              "url": "https://admin.mainellomontage.com/assets/a96d8186-15ad-4ef6-9c52-906bd7023516",
+              "title": "Work 1f1"
+            },
+            {
+              "url": "https://admin.mainellomontage.com/assets/33203e82-a3bf-448d-b15e-156b2c036348",
+              "title": "Work 1f3"
+            }
           ]
         },
         {
@@ -286,8 +311,14 @@
           "id": 1,
           "reverse": false,
           "items": [
-            "https://admin.mainellomontage.com/assets/182eca29-dc50-49eb-8b76-ad35c673fcb6",
-            "https://admin.mainellomontage.com/assets/463780e3-455e-46f2-8d5b-2fc5fddd3207"
+            {
+              "url": "https://admin.mainellomontage.com/assets/182eca29-dc50-49eb-8b76-ad35c673fcb6",
+              "title": "Work 1d"
+            },
+            {
+              "url": "https://admin.mainellomontage.com/assets/463780e3-455e-46f2-8d5b-2fc5fddd3207",
+              "title": "Work 1e"
+            }
           ]
         }
       ]
@@ -329,7 +360,7 @@
     ],
     "services_title": "services",
     "services_text_label": "what we do",
-    "services_text": "<div>\n<div>lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>\n</div>",
+    "services_text": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "work_heading": "selected work",
     "news_heading": "news",
     "news_post_list": [
@@ -421,15 +452,15 @@
         "id": 3,
         "reverse": false,
         "items": [
-          "https://admin.mainellomontage.com/assets/5fb26324-56c3-4791-a1f3-c7923f348f15",
-          "https://admin.mainellomontage.com/assets/4ce0f9ac-e029-4b43-b4ea-a5df7dcb2350"
+          {
+            "url": "https://admin.mainellomontage.com/assets/5fb26324-56c3-4791-a1f3-c7923f348f15",
+            "title": "Ill Planet 2"
+          },
+          {
+            "url": "https://admin.mainellomontage.com/assets/4ce0f9ac-e029-4b43-b4ea-a5df7dcb2350",
+            "title": "Ill Planet 3"
+          }
         ]
-      },
-      {
-        "component": "article",
-        "id": 2,
-        "heading": "lorem ipsum dolor",
-        "text": "<p>lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n<p>lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
       },
       {
         "component": "pattern",
@@ -438,6 +469,30 @@
         "pattern_width": 400,
         "pattern_position": "center",
         "wrapper_height_percent": 60
+      },
+      {
+        "component": "article",
+        "id": 2,
+        "heading": "lorem ipsum dolor",
+        "text": "<p>lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n<p>lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+      },
+      {
+        "component": "stat_columns",
+        "id": 1,
+        "stats": [
+          {
+            "stat": "40",
+            "text": "stat"
+          },
+          {
+            "stat": "30",
+            "text": "stat"
+          },
+          {
+            "stat": "20",
+            "text": "stat"
+          }
+        ]
       }
     ]
   }

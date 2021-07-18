@@ -6,13 +6,13 @@
   font-family: 'Sohne', sans-serif;
   font-size: 16px;
   height: 100%;
-  line-height: 1.4;
   overflow-y: scroll;
 }
 
 body {
   font-size: calc(var(--font-size-normal) * .7);
   height: 100%;
+  line-height: var(--line-height-normal);
   margin: 0;
   padding: 0;
   transition: .4s;
@@ -40,7 +40,9 @@ a {
 }
 
 p {
-  margin: 0;
+  line-height: var(--line-height-normal-spaced);
+  margin-bottom: 1.4em;
+  margin-top: 0;
 }
 
 strong {

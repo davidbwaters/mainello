@@ -1,5 +1,5 @@
 //
-// component - scrolling tags
+// component - contact fab
 //
 
 import { LitElement, html, css } from 'lit'
@@ -11,8 +11,6 @@ import { createRef, ref } from 'lit/directives/ref'
 import { gsap } from 'gsap'
 
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-import inViewport from '../lib/inViewport'
 
 
 @customElement('c-contact-fab')
@@ -68,8 +66,6 @@ export class ContactFab extends LitElement {
   firstUpdated(): void {
 
     gsap.registerPlugin(ScrollTrigger)
-
-    const footer = document.querySelector('c-footer')
 
     const rotateDuration = 16
 
@@ -131,31 +127,9 @@ export class ContactFab extends LitElement {
       force3D: true
     })
 
-    let footerVisible = false
-
-    inViewport(footer, el => {
-
-      if (el.isIntersecting) {
-
-        footerVisible = true
-        this.classList.toggle('u-transparent')
-
-      }
-      else {
-
-        if (footerVisible) {
-
-          this.classList.toggle('u-transparent')
-
-        }
-
-      }
-
-    })
-
   }
 
-  protected render(): TemplateSpecification {
+  protected render():TemplateSpecification {
 
     return html`
       <svg

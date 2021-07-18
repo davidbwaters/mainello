@@ -1,5 +1,5 @@
 //
-// component - button
+// component - page header
 //
 
 import {
@@ -27,14 +27,18 @@ export class PageHeader extends LitElement {
   static styles = css`
     :host {
       display: block;
+      border-bottom: solid 1px var(--color-gray);
+    }
+
+    .c-page-header__inner {
+      display: block;
       margin-left: auto;
       margin-right: auto;
-      margin-top: 5rem;
       max-width: var(--wrapper-width);
-      padding-bottom: calc(var(--spacing-8) + 5vh);
+      padding-bottom: calc(var(--spacing-8) + 5vh + 4.5rem);
       padding-left: 6.2vw;
       padding-right: 6.2vw;
-      padding-top: calc(var(--spacing-8) + 5vh);
+      padding-top: calc(var(--spacing-8) + 5vh + 4.5rem);
     }
 
     ::slotted(*) {
@@ -55,11 +59,13 @@ export class PageHeader extends LitElement {
   })
   link:string
 
-  protected render(): TemplateSpecification {
+  protected render():TemplateSpecification {
 
     return html`
-      <slot></slot>
-      <slot name="subtitle"></slot>
+      <div class='c-page-header__inner'>
+        <slot></slot>
+        <slot name="subtitle"></slot>
+      </div>
     `
 
   }

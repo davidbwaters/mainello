@@ -39,6 +39,17 @@ async function onInit() {
   await import('./components/ScrollingTags')
   await import('./components/SectionTitle')
 
+  await import('./components/Article')
+  await import('./components/FeaturedImage')
+  await import('./components/FeaturedVideo')
+  await import('./components/ImageRow')
+  await import('./components/ImageText')
+  await import('./components/LabeledText')
+  await import('./components/OffsetColumns')
+  await import('./components/Pattern')
+  await import('./components/StatColumns')
+  await import('./components/DynamicContent')
+
 }
 
 function scrollSetup() {
@@ -112,6 +123,7 @@ const barbaSetup = () => {
     //handlePageLoad()
 
     asscroll.disable()
+
     setTimeout(() => {
 
       asscroll.enable({
@@ -123,7 +135,7 @@ const barbaSetup = () => {
 
       ScrollTrigger.refresh()
 
-    }, 800);
+    }, 400)
 
 
   })
@@ -149,7 +161,10 @@ const barbaSetup = () => {
 
         }
 
-        return gsap.to(data.current.container, {
+        return gsap.fromTo(data.current.container, {
+          opacity: 1
+        },
+        {
           opacity: 0,
           duration: 0.8
         })
@@ -157,8 +172,14 @@ const barbaSetup = () => {
       },
       enter(data):any {
 
-        return gsap.from(data.next.container, {
-          opacity: 0,
+        data.current.container
+          .style.position = 'absolute'
+
+        return gsap.fromTo(data.next.container, {
+          opacity: 0
+        },
+        {
+          opacity: 1,
           duration: 0.8
         })
 
@@ -175,6 +196,7 @@ window.addEventListener(
   'load', () => {
 
     console.log('load')
+
     //ScrollTrigger.refresh()
     handlePageLoad()
 

@@ -137,7 +137,7 @@ export class ScrollingTags extends LitElement {
 
   }
 
-  protected render(): TemplateSpecification {
+  protected render():TemplateSpecification {
 
     return html`
       <div

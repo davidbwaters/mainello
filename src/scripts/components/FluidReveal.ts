@@ -55,7 +55,6 @@ export class FluidReveal extends LitElement {
       max-width: 1200px;
     }
 
-
     .c-fluid-reveal__heading {
       font-weight: var(--font-weight-normal);
       margin: 0;
@@ -65,6 +64,7 @@ export class FluidReveal extends LitElement {
 
       .c-fluid-reveal__inner {
         display: grid;
+        gap: 0 5px;
         grid-template-columns: 1fr 1fr;
       }
 
@@ -105,7 +105,7 @@ export class FluidReveal extends LitElement {
       .c-fluid-reveal__item {
         align-content: center;
         display: grid;
-        gap: var(--spacing-6);
+        gap: 6.2vw;
         grid-auto-flow: column;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
@@ -118,8 +118,7 @@ export class FluidReveal extends LitElement {
       .c-fluid-reveal__item-media {
         box-sizing: border-box;
         display: block;
-        max-height: 80vh;
-        margin-top: 10vh;
+        height: 100vh;
         overflow: hidden;
         padding: var(--spacing-3);
         top: 0;
@@ -134,7 +133,7 @@ export class FluidReveal extends LitElement {
         gap: var(--spacing-2);
         grid-column: 2 / span 1;
         justify-items: start;
-        max-height: 100vh;
+        height: 100vh;
         padding-right: var(--spacing-8);
         will-change: opacity, transform;
         z-index: 2;
@@ -158,7 +157,6 @@ export class FluidReveal extends LitElement {
 
   wrapper = createRef<HTMLDivElement>()
 
-
   @property({
     type: Array,
     attribute: true
@@ -176,7 +174,6 @@ export class FluidReveal extends LitElement {
     attribute: true
   })
   pinDuration:number
-
 
   @property({
     type: Number,
@@ -355,7 +352,7 @@ export class FluidReveal extends LitElement {
 
   }
 
-  protected render(): TemplateSpecification {
+  protected render():TemplateSpecification {
 
     return html`
       <div

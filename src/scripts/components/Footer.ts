@@ -1,5 +1,5 @@
 //
-// components - curves
+// component - footer
 //
 
 import {
@@ -16,6 +16,8 @@ import {
 import * as p5 from 'p5'
 
 import inViewport from './../lib/inViewport'
+import { ContactFab } from './ContactFab'
+import { Navbar } from './Navbar'
 
 
 declare global {
@@ -68,7 +70,7 @@ export class Footer extends LitElement {
       padding-bottom: 12vh;
       padding-left: 6.21vw;
       padding-right: 6.21vw;
-      padding-top: 16vh;
+      padding-top: 14vh;
       position: relative;
       width: 100%;
       z-index: 2;
@@ -77,7 +79,7 @@ export class Footer extends LitElement {
     .c-footer__contact {
       display: grid;
       margin: 0;
-      padding-bottom: 16vh;
+      padding-bottom: 0vh;
     }
 
     .c-footer__contact a,
@@ -259,9 +261,57 @@ export class Footer extends LitElement {
 
     this.instance = new p5(this.sketch)
 
+
+    const contactFab:ContactFab = document.querySelector(
+      'c-contact-fab'
+    )
+
+    const navbar:Navbar = document.querySelector(
+      'c-navbar'
+    )
+
+    let visible = false
+
+    inViewport(this, el => {
+
+      //console.log(el)
+
+      if (el.isIntersecting) {
+
+        visible = true
+
+        if (contactFab) {
+
+          contactFab.style.opacity = '0'
+
+        }
+
+        navbar.classList.toggle('u-transparent')
+
+      }
+      else {
+
+        if (visible) {
+
+          visible = false
+
+          if (contactFab) {
+
+            contactFab.style.opacity = '1'
+
+          }
+
+          navbar.classList.toggle('u-transparent')
+
+        }
+
+      }
+
+    })
+
   }
 
-  protected render(): TemplateSpecification {
+  protected render():TemplateSpecification {
 
     return html`
       <slot name="background">

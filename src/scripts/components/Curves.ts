@@ -1,5 +1,5 @@
 //
-// components - curves
+// component - curves
 //
 
 import {
@@ -200,7 +200,7 @@ export class Curves extends LitElement {
 
   }
 
-  protected render(): TemplateSpecification {
+  protected render():TemplateSpecification {
 
     return html`
       <slot></slot>

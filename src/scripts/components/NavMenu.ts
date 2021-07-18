@@ -256,7 +256,7 @@ export class NavMenu extends LitElement {
 
   }
 
-  protected render(): TemplateSpecification {
+  protected render():TemplateSpecification {
 
     return html`
       <div

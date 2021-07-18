@@ -29,9 +29,8 @@ export class SectionTitle extends LitElement {
       border-top: 1px solid var(--color-platinum);
       display: block;
       font-size: 10vw;
-      margin-top: 20vw;
-      padding-bottom: 20vw;
-      padding-top: 20vw;
+      padding-bottom: calc(10vh + 5vw);
+      padding-top: calc(10vh + 5vw);
       text-align: center;
       -webkit-text-fill-color: transparent;
       -webkit-text-stroke: 1px var(--color-eerie-black);
@@ -46,6 +45,7 @@ export class SectionTitle extends LitElement {
     @media (min-width: 768px) {
       :host {
         font-size: 6vw;
+        margin-top: 20vw;
       }
     }
   `

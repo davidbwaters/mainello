@@ -66,11 +66,11 @@ export class Footer extends LitElement {
       align-content: space-between;
       box-sizing: border-box;
       display: grid;
+      grid-template-columns: 87.6vw;
+      justify-content: center;
       min-height: 60vh;
-      padding-bottom: 12vh;
-      padding-left: 6.21vw;
-      padding-right: 6.21vw;
-      padding-top: 14vh;
+      padding-bottom: 9.3vh;
+      padding-top: 12.4vh;
       position: relative;
       width: 100%;
       z-index: 2;
@@ -79,7 +79,7 @@ export class Footer extends LitElement {
     .c-footer__contact {
       display: grid;
       margin: 0;
-      padding-bottom: 0vh;
+      padding-bottom: 12.4vh;
     }
 
     .c-footer__contact a,
@@ -94,9 +94,18 @@ export class Footer extends LitElement {
 
     .c-footer__lower {
       display: grid;
-      grid-auto-flow: column;
+      gap: 6.2vh;
       justify-content: space-between;
-      padding-top: 12vh;
+      padding-top: 12.4vh;
+    }
+
+    @media (min-width: 768px) {
+
+      .c-footer__lower {
+        gap: var(--spacing-6);
+        grid-auto-flow: column;
+      }
+
     }
 
     .c-footer__logo {
@@ -109,6 +118,17 @@ export class Footer extends LitElement {
       grid-auto-flow: column;
     }
 
+
+    @media (max-width: 768px) {
+
+      .c-footer__nav {
+        grid-column: span 2;
+        grid-row: 1;
+        justify-content: space-between;
+      }
+
+    }
+
     .c-footer__nav-link {
       text-decoration: none;
     }
@@ -119,8 +139,18 @@ export class Footer extends LitElement {
 
     .c-footer__social {
       display: grid;
+      grid-auto-columns: min-content;
       grid-auto-flow: column;
       gap: 1rem;
+      justify-self: end;
+    }
+
+    @media (max-width: 768px) {
+
+      .c-footer__social {
+        grid-area: 2 / 2 / auto / auto;
+      }
+
     }
 
     .c-footer__social img {

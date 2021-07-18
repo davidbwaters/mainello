@@ -18,8 +18,8 @@
 @media (min-width: 320px) {
   .c-tagline {
     align-content: center;
-    grid-column: 3 / span 6;
-    grid-row: 3 / span 2;
+    grid-column: 2/span 6;
+    grid-row: 3/span 2;
     grid-template-columns: 1fr;
   }
 }

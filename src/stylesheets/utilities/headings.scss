@@ -63,16 +63,17 @@
 .u-heading-huge-fluid,
 .u-heading-huge-fluid p {
   line-height: 1.15;
+  margin: 0;
 }
 
 .u-heading-huge-fluid {
-  font-size: 10vw;
+  font-size: calc(2rem + 2vw);
   font-weight: var(--font-weight-normal);
 }
 
 @media (min-width: 320px) {
   .u-heading-huge-fluid {
-    font-size: 8vw;
+    font-size: calc(2rem + 2vw);
   }
 }
 

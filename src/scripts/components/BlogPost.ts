@@ -37,7 +37,6 @@ export class BlogPost extends LitElement {
     .c-blog-post__item {
       display: grid;
       gap: 6.2vw;
-      grid-template-columns: auto 1fr;
       margin: auto;
       max-width: var(--wrapper-width);
     }

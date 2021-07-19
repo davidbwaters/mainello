@@ -11,7 +11,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import barba from '@barba/core'
 import barbaPrefetch from '@barba/prefetch'
 
-
 declare global {
   interface Window { p5: any }
 }
@@ -60,6 +59,7 @@ async function onInit() {
 async function handlePageLoad() {
 
   scrollSetup()
+
   await onInit()
 
   setTimeout(() => {
@@ -76,7 +76,7 @@ function scrollSetup() {
 
   gsap.registerPlugin(ScrollTrigger)
 
-  const isTouch = 'ontouchstart' in document.documentElement
+  //const isTouch = 'ontouchstart' in document.documentElement
 
   asscroll = new ASScroll({
     disableRaf: true
@@ -121,12 +121,9 @@ function scrollSetup() {
 function barbaSetup() {
 
   barba.use(barbaPrefetch)
-
   barba.hooks.afterEnter(data => {
 
     console.log('after enter all')
-    //handlePageLoad()
-
     asscroll.disable()
 
     setTimeout(() => {
@@ -203,9 +200,8 @@ window.addEventListener(
 
   'load', () => {
 
-    console.log('load')
+    console.log('page load')
 
-    //ScrollTrigger.refresh()
     handlePageLoad()
 
     barbaSetup()
@@ -213,6 +209,9 @@ window.addEventListener(
   }
 
 )
+
+
+
 
 
 //scrollSetup()

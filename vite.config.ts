@@ -63,6 +63,7 @@ export default defineConfig({
   ],
   publicDir: '../public',
   build: {
+    assetsDir: 'scripts',
     outDir: '../dist',
     rollupOptions: {
       input: entries

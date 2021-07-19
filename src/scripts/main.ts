@@ -23,7 +23,7 @@ async function onInit() {
 
     document.body.style.opacity = '1'
 
-  }, 600)
+  }, 1000)
 
   await import('./components/BlogPost')
   await import('./components/Button')
@@ -56,17 +56,6 @@ async function handlePageLoad() {
 
   scrollSetup()
   await onInit()
-
-  gsap.fromTo(
-    document.body,
-    {
-      opacity: 0
-    },
-    {
-      opacity: 1,
-      duration: 0.33
-    }
-  )
 
   setTimeout(() => {
 

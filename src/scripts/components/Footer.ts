@@ -69,8 +69,6 @@ export class Footer extends LitElement {
       grid-template-columns: 87.6vw;
       justify-content: center;
       min-height: 60vh;
-      padding-bottom: 9.3vh;
-      padding-top: 12.4vh;
       position: relative;
       width: 100%;
       z-index: 2;
@@ -79,7 +77,8 @@ export class Footer extends LitElement {
     .c-footer__contact {
       display: grid;
       margin: 0;
-      padding-bottom: 12.4vh;
+      padding-bottom: 21.7vh;
+      padding-top: 21.7vh;
     }
 
     .c-footer__contact a,
@@ -96,7 +95,8 @@ export class Footer extends LitElement {
       display: grid;
       gap: 6.2vh;
       justify-content: space-between;
-      padding-top: 12.4vh;
+      padding-bottom: 6.2vh;
+      padding-top: 6.2vh;
     }
 
     @media (min-width: 768px) {

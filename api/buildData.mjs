@@ -13,6 +13,11 @@ import {
   buildPageTemplate
 } from './lib/pageTemplage.mjs'
 
+import {
+  buildWorkTemplate
+} from './lib/workTemplage.mjs'
+
+
 import getData from './lib/getData.mjs'
 import config from '../config.mjs'
 
@@ -134,8 +139,6 @@ async function buildData() {
   data.services = await getData('items/services')
 
   data.agency = await getData('items/agency')
-
-  // console.log(data.agency)
 
   const workContent = await getData(
     'items/portfolio_content'
@@ -271,7 +274,7 @@ async function buildData() {
 
   data.work.forEach((item) => {
 
-    const post = buildPageTemplate(
+    const post = buildWorkTemplate(
       item.title, item.content
     )
 

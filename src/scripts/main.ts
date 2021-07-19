@@ -11,6 +11,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import barba from '@barba/core'
 import barbaPrefetch from '@barba/prefetch'
 
+
+declare global {
+  interface Window { p5: any }
+}
+
 let asscroll
 
 const navMenuEl = document.querySelector(

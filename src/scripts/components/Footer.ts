@@ -13,8 +13,6 @@ import {
   customElement
 } from 'lit/decorators.js'
 
-import * as p5 from 'p5'
-
 import inViewport from './../lib/inViewport'
 import { ContactFab } from './ContactFab'
 import { Navbar } from './Navbar'
@@ -289,7 +287,7 @@ export class Footer extends LitElement {
     this._createWrapper()
     this._inViewort()
 
-    this.instance = new p5(this.sketch)
+    this.instance = new window.p5(this.sketch)
 
 
     const contactFab:ContactFab = document.querySelector(

@@ -11,8 +11,6 @@ import {
   customElement
 } from 'lit/decorators.js'
 
-import * as p5 from 'p5'
-
 import inViewport from './../lib/inViewport'
 
 
@@ -213,7 +211,7 @@ export class Rings extends LitElement {
 
     this._size = this.getBoundingClientRect()
 
-    this.instance = new p5(this.sketch)
+    this.instance = new window.p5(this.sketch)
 
   }
 

@@ -55,6 +55,14 @@ export function buildPageTemplate(title, content) {
           </c-footer>
         </div>
 
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.3/p5.min.js"
+          integrity="sha512-xrAcaPlDVY5TDNAKKsVPf040TnCatM3YFUi/AChhyBLJ1IVn+lbAKTiVDjhicrUFPqz/IvC0S2uVlbi7iF6I7w=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+        >
+        </script>
+
       </body>
     </html>
   `

@@ -8,6 +8,7 @@
   "scripts": {
     "start": "npm run data && npm run clean && vite",
     "build": "npm run data && npm run clean && vite build",
+    "serve": "vite serve",
     "clean": "rimraf dist",
     "data": "node api/buildData.mjs"
   },

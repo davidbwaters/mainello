@@ -12,7 +12,7 @@ import {
   customElement
 } from 'lit/decorators.js'
 
-import p5 from 'p5'
+import * as p5 from 'p5'
 
 import inViewport from './../lib/inViewport'
 
@@ -192,6 +192,8 @@ export class Curves extends LitElement {
   }
 
   firstUpdated(): void {
+
+    console.log(p5)
 
     this._createWrapper()
     this._inViewort()

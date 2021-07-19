@@ -52,6 +52,32 @@ async function onInit() {
 
 }
 
+async function handlePageLoad() {
+
+  scrollSetup()
+  await onInit()
+
+  gsap.fromTo(
+    document.body,
+    {
+      opacity: 0
+    },
+    {
+      opacity: 1,
+      duration: 0.33
+    }
+  )
+
+  setTimeout(() => {
+
+    asscroll.resize()
+    ScrollTrigger.refresh()
+
+
+  }, 1000)
+
+}
+
 function scrollSetup() {
 
   gsap.registerPlugin(ScrollTrigger)
@@ -98,22 +124,7 @@ function scrollSetup() {
 
 }
 
-async function handlePageLoad() {
-
-  scrollSetup()
-  await onInit()
-
-  setTimeout(() => {
-
-    asscroll.resize()
-    ScrollTrigger.refresh()
-
-
-  }, 1000)
-
-}
-
-const barbaSetup = () => {
+function barbaSetup() {
 
   barba.use(barbaPrefetch)
 
@@ -175,13 +186,16 @@ const barbaSetup = () => {
         data.current.container
           .style.position = 'absolute'
 
-        return gsap.fromTo(data.next.container, {
-          opacity: 0
-        },
-        {
-          opacity: 1,
-          duration: 0.8
-        })
+        return gsap.fromTo(
+          data.next.container,
+          {
+            opacity: 0
+          },
+          {
+            opacity: 1,
+            duration: 0.8
+          }
+        )
 
       }
     }]

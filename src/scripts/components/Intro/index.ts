@@ -49,6 +49,8 @@ export class Intro extends LitElement {
 
     navbar.style.opacity = '0'
 
+    document.body.style.opacity = '1'
+
     const introEls = [
       ...Array.from(this._introBlockEls),
       this.sketchEl.value

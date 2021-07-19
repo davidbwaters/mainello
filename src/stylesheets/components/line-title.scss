@@ -3,7 +3,7 @@
 //
 
 .c-line-title {
-  border-bottom: solid 1px var(--color-dark-gray);
+  border-bottom: solid 1px var(--color-opaque-dark-subtle);
   font-size: var(--font-size-small);
   grid-column: 1 / span 2;
   grid-template-columns: calc(
@@ -30,5 +30,5 @@
 
 .c-line-title--inverse {
   border-bottom: none;
-  border-top: solid 1px var(--color-dark-gray);
+  border-top: solid 1px var(--color-opaque-dark-subtle);
 }

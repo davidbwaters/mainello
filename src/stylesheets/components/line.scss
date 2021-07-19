@@ -3,7 +3,7 @@
 //
 
 .c-line {
-  border-bottom: solid 1px var(--color-platinum);
+  border-bottom: solid 1px var(--color-opaque-dark-subtle);
   grid-column: 1 / span 2;
   grid-template-columns: calc(
     100% - (var(--spacing-2)) * 2
@@ -31,10 +31,6 @@
   margin-right: 6.2vw;
 }
 
-.c-line--opaque {
-  opacity: 0.5;
-}
-
 .c-line--light {
-  border-bottom: solid 1px var(--color-opaque-light);
+  border-bottom: solid 1px var(--color-opaque-light-subtle);
 }

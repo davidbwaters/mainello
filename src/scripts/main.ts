@@ -25,7 +25,12 @@ async function onInit() {
 
   setTimeout(() => {
 
-    document.body.style.opacity = '1'
+    if(document.querySelector('c-intro') === null) {
+
+      document.body.style.opacity = '1'
+
+    }
+
 
   }, 1000)
 
@@ -168,7 +173,7 @@ function barbaSetup() {
         },
         {
           opacity: 0,
-          duration: 0.8
+          duration: 0.6
         })
 
       },
@@ -184,7 +189,7 @@ function barbaSetup() {
           },
           {
             opacity: 1,
-            duration: 0.8
+            duration: 0.6
           }
         )
 

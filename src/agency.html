@@ -25,57 +25,19 @@
 
       <main
         data-barba='container'
-        data-barba-namespace='work'
+        data-barba-namespace='agency'
         asscroll>
 
         <c-page-header>
           <div>
-            our work
+            {{agency.heading}}
           </div>
         </c-page-header>
 
-        <p class='
-          u-text-large-1
-          u-wrapper
-          u-padding-grid-horizontal
-          u-margin-10vh-bottom
-        '>
-          {{site.work_header_text}}
-        </p>
-
-        <div class='
-          c-line
-          c-line--opaque
-          c-line--spaced
-        '>
-        </div>
-
-        <div class='c-offset-columns'>
-
-          {{#each work}}
-
-              <div class='c-labeled-image'>
-                <a
-                  href='/work/{{{this.slug}}}.html'
-                  class='
-                    u-text-decoration-none
-                    u-link-opaque-hover
-                  '
-                >
-                  <img
-                    src='{{{this.cover_image}}}'
-                    alt='{{{this.title}}}'
-                  >
-                  <div class='u-margin-4-top u-text-align-center'>
-                    <strong>{{{this.title}}}</strong> –
-                    {{{this.heading}}}
-                  </div>
-                </a>
-              </div>
-
-          {{/each}}
-
-        </div>
+        <c-dynamic-content
+          content='{{{agency.content}}}'
+          >
+        </c-dynamic-content>
 
       </main>
 

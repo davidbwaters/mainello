@@ -31,6 +31,15 @@ const data = JSON.parse(
   readFileSync('data/data.json', 'utf8')
 )
 
+
+data.site.social_links = JSON.stringify(
+  data.site.social_links
+)
+
+data.site.menu_items = JSON.stringify(
+  data.site.menu_items
+)
+
 data.home.scrolling_tag_row_1 = JSON.stringify(
   data.home.scrolling_tag_row_1
 )
@@ -43,13 +52,14 @@ data.home.work_preview = JSON.stringify(
   data.home.work_preview
 )
 
-data.site.social_links = JSON.stringify(
-  data.site.social_links
+data.agency.content = JSON.stringify(
+  data.agency.content
 )
 
-data.site.menu_items = JSON.stringify(
-  data.site.menu_items
+data.services.content = JSON.stringify(
+  data.services.content
 )
+
 
 export default defineConfig({
   root: 'src',

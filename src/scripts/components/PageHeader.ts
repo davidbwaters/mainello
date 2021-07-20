@@ -27,7 +27,7 @@ export class PageHeader extends LitElement {
   static styles = css`
     :host {
       display: block;
-      border-bottom: solid 1px var(--color-gray);
+      border-bottom: solid 1px var(--color-opaque-dark-subtle);
     }
 
     .c-page-header__inner {
@@ -35,20 +35,23 @@ export class PageHeader extends LitElement {
       margin-left: auto;
       margin-right: auto;
       max-width: var(--wrapper-width);
-      padding-bottom: calc(var(--spacing-8) + 5vh + 4.5rem);
+      padding-bottom: calc(10vh + 7.5vw);
       padding-left: 6.2vw;
       padding-right: 6.2vw;
-      padding-top: calc(var(--spacing-8) + 5vh + 4.5rem);
+      padding-top: calc(10vh + 7.5vw);
     }
 
     ::slotted(*) {
       font-size: var(--font-size-large-4);
-      margin-bottom: 0;
+      margin-bottom: var(--spacing-3);
       margin-top: 0;
     }
 
     ::slotted([slot="subtitle"]) {
-      font-size: var(--font-size-large-2);
+      font-family: var(--font-mono);
+      font-size: var(--font-size-normal);
+      margin-bottom: 0;
+      margin-top: 0;
     }
   `
 

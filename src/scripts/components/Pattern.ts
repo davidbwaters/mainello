@@ -28,12 +28,10 @@ export class Pattern extends LitElement {
     :host {
       display: grid;
       height:  var(--pattern-height);
-      margin-bottom: 20vh;
-      margin-top: 20vh;
     }
     .c-pattern__inner {
       background-position: var(--pattern-position);
-      background-repeat: repeat;
+      background-repeat: var(--pattern-repeat);
       background-size: var(--pattern-width) auto;
     }
   `
@@ -48,6 +46,12 @@ export class Pattern extends LitElement {
     type: Number,
     attribute: true
   })
+  height:number
+
+  @property({
+    type: Number,
+    attribute: true
+  })
   patternWidth:number
 
   @property({
@@ -57,10 +61,10 @@ export class Pattern extends LitElement {
   patternPosition:string
 
   @property({
-    type: Number,
+    type: String,
     attribute: true
   })
-  height:number
+  repeat:string
 
   connectedCallback():void {
 
@@ -77,10 +81,26 @@ export class Pattern extends LitElement {
     )
 
     this.style.setProperty(
-      '--pattern-width',
-      this.patternWidth.toString() + 'px'
+      '--pattern-repeat',
+      this.repeat
     )
 
+    if (this.repeat === 'repeat-x') {
+
+      this.style.setProperty(
+        '--pattern-width',
+        'auto'
+      )
+
+    }
+    else {
+
+      this.style.setProperty(
+        '--pattern-width',
+        this.patternWidth.toString() + 'px'
+      )
+
+    }
 
   }
 

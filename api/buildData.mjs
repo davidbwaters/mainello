@@ -37,9 +37,12 @@ async function getFile(id, collection) {
     'files/' + file.directus_files_id
   )
 
+  const sort = file.sort_item
+
   return {
     url: assetPath + file.directus_files_id,
-    title: fileInfo.title
+    title: fileInfo.title,
+    sort: sort
   }
 
 }
@@ -275,7 +278,12 @@ async function buildData() {
   data.work.forEach((item) => {
 
     const post = buildWorkTemplate(
-      item.title, item.content
+      item.title,
+      item.heading,
+      item.featured_image,
+      item.description_label,
+      item.description_text,
+      item.content
     )
 
     writeFileSync(

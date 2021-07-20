@@ -35,27 +35,24 @@ export class OffsetColumns extends LitElement {
       grid-auto-flow: row;
       grid-template-columns: 1fr 1fr;
       gap: 12.4vw 6.2vw;
-      margin-bottom: calc(var(--spacing-9) * 2);
+      margin-bottom: calc(10vh + 5vw);
       margin-left: auto;
       margin-right: auto;
-      margin-top: calc((var(--spacing-9) * 2) + 30vh);
+      margin-top: calc(10vh + 5vw + 30vh);
+      max-width: var(--wrapper-width);
       width: 87.6%;
     }
 
-    :host > :nth-child(odd) {
-      margin-top: -30vh;
-    }
-
-    :host([reverse=true]) > :nth-child(even) {
-      margin-top: -30vh;
-    }
-
-    :host([reverse=true]) > :nth-child(odd) {
-      margin-top: 0vh;
-    }
-
-    img {
+    ::slotted(*) {
       max-width: 100%;
+    }
+
+    ::slotted(*:nth-child(odd)) {
+      margin-top: var(--offset-columns-odd);
+    }
+
+    ::slotted(*:nth-child(even)) {
+      margin-top: var(--offset-columns-even);
     }
   `
 
@@ -72,23 +69,49 @@ export class OffsetColumns extends LitElement {
   })
   reverse:boolean
 
+  connectedCallback():void {
+
+    super.connectedCallback()
+
+    this.reverse = JSON.parse(
+      this.getAttribute('reverse')
+    )
+
+    const offset = '-30vh'
+
+    if (this.reverse) {
+
+      this.style.setProperty(
+        '--offset-columns-even',
+        '0'
+      )
+
+      this.style.setProperty(
+        '--offset-columns-odd',
+        offset
+      )
+
+    }
+    else {
+
+      this.style.setProperty(
+        '--offset-columns-even',
+        offset
+      )
+
+      this.style.setProperty(
+        '--offset-columns-odd',
+        '0'
+      )
+
+    }
+
+  }
 
   protected render():TemplateSpecification {
 
     return html`
-      ${this.items.map(item =>
-
-        html`
-          <div class='c-offset-columns__image-wrapper'>
-            <img
-              class='c-offset-columns__image'
-              src='${item.url}'
-              alt='${item.title}'
-            >
-          </div>
-        `
-
-      )}
+      <slot></slot>
     `
 
   }

@@ -28,8 +28,7 @@ module.exports = {
   'overrides': [
     {
       'excludedFiles': [
-        '**/*.mjs',
-        '**/*.js'
+        '**/*.mjs'
       ]
     }
   ]

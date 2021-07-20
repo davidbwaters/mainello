@@ -2,7 +2,14 @@
 // page template
 //
 
-export function buildWorkTemplate(title, content) {
+export function buildWorkTemplate(
+  title,
+  heading,
+  featuredImage,
+  descriptionLabel,
+  description,
+  content
+) {
 
   return `
     <!DOCTYPE html>
@@ -33,8 +40,25 @@ export function buildWorkTemplate(title, content) {
           <main data-barba='container' asscroll>
 
             <c-page-header>
-              <div>${title}</div>
+              <div>
+                ${title}
+              </div>
+              <div slot='subtitle'>
+                ${heading}
+              </div>
             </c-page-header>
+
+            <c-featured-image
+              link='${featuredImage}'
+              alt='${title}'
+            >
+            </c-featured-image>
+
+            <c-article
+              heading='${descriptionLabel}'
+              text='${description}'
+            >
+            </c-article>
 
             <div class='c-page-body'>
               <c-dynamic-content

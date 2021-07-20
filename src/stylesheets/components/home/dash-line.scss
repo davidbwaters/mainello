@@ -2,13 +2,13 @@
 // dash line
 //
 
-.u-dash-line {
+.c-dash-line {
   align-content: center;
   display: grid;
   grid-template-rows: 1px;
 }
 
-.u-dash-line:after {
+.c-dash-line:after {
   content: '';
   background: var(--color-opaque-dark);
 }

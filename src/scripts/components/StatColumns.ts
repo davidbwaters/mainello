@@ -16,7 +16,7 @@ import {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'c-stat-colums': ImageRow
+    'c-stat-columns': StatColumns
   }
 }
 
@@ -25,9 +25,9 @@ interface StatColumn {
   'text': string
 }
 
-@customElement('c-stat-colums')
+@customElement('c-stat-columns')
 
-export class ImageRow extends LitElement {
+export class StatColumns extends LitElement {
 
   static styles = css`
     :host {
@@ -46,7 +46,16 @@ export class ImageRow extends LitElement {
     }
 
     .c-stat-columns__stat {
-      font-size: var(--font-size-large-4);
+      font-size: var(--font-size-large-5);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--spacing-1);
+      -webkit-text-stroke: 1px currentColor;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .c-stat-columns__text {
+      font-family: var(--font-mono);
+      font-size: var(--font-size-mono-normal);
     }
   `
 
@@ -63,10 +72,10 @@ export class ImageRow extends LitElement {
 
         html`
           <div class="c-stat-columns__column">
-            <h4 class="c-stat-columns__stat">
-              ${item.stat}
-            </h4>
             <div class="c-stat-columns__stat">
+              ${item.stat}
+            </div>
+            <div class="c-stat-columns__text">
               ${item.text}
             </div>
           </div>

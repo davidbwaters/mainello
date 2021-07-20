@@ -25,30 +25,51 @@ declare global {
 export class LabeledText extends LitElement {
 
   static styles = css`
-
     :host {
-      display: grid;
-      gap: 6.2vw;
-      grid-auto-flow: row;
+      border-bottom: solid var(--labeled-text-border) var(
+        --color-opaque-dark-subtle
+      );
+      display: block;
       grid-column: 1 / span 2;
-      margin-bottom: var(--spacing-8);
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: var(--spacing-8);
-      width: 87.6vw;
+      padding-bottom: calc(10vh + 5.5vw);
+      padding-top: calc(10vh + 5.5vw);
     }
 
     @media (min-width: 320px) {
       :host {
         grid-column: 2 / span 8;
+        padding-left: 0;
+        padding-right: 0;
       }
     }
 
     @media (min-width: 768px) {
       :host {
-        grid-auto-flow: column;
         grid-column: 3 / span 12;
       }
+    }
+
+    .c-labeled-text__inner {
+      display: grid;
+      gap: 6.2vw;
+      grid-auto-flow: row;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: var(
+        --labeled-text-spacing
+      );
+      padding-right: var(
+        --labeled-text-spacing
+      );
+      max-width: var(--wrapper-width);
+    }
+
+    @media (min-width: 768px) {
+
+      .c-labeled-text__inner {
+        grid-auto-flow: column;
+      }
+
     }
 
     .c-labeled-text__label {
@@ -78,24 +99,86 @@ export class LabeledText extends LitElement {
   })
   text:Array<Record<string, unknown>>
 
-  connectedCallback() {
+  @property({
+    type: Boolean,
+    attribute: true
+  })
+  spacing:boolean
+
+  @property({
+    type: Boolean,
+    attribute: true
+  })
+  border:boolean
+
+  connectedCallback():void {
 
     super.connectedCallback()
+
+    const spacing = '6.2vw'
+
+    this.border = JSON.parse(
+      this.getAttribute('border')
+    )
+
+    this.spacing = JSON.parse(
+      this.getAttribute('spacing')
+    )
+
+    if (this.spacing) {
+
+      this.style.setProperty(
+        '--labeled-text-spacing',
+        spacing
+      )
+
+    }
+    else {
+
+      this.style.setProperty(
+        '--labeled-text-spacing',
+        '0'
+      )
+
+    }
+
+    if (this.border) {
+
+      this.style.setProperty(
+        '--labeled-text-border',
+        '1px'
+      )
+
+    }
+    else {
+
+      this.style.setProperty(
+        '--labeled-text-border',
+        '0'
+      )
+
+    }
 
   }
 
   protected render():TemplateSpecification {
 
     return html`
-      <div class="c-labeled-text__label">
-        ${this.label}
+
+      <div class="c-labeled-text__inner">
+
+        <div class="c-labeled-text__label">
+          ${this.label}
+        </div>
+
+        <div class="c-labeled-text__text">
+          ${this.text.map(item => html`
+            <p>${item.paragraph}</p>
+          `)}
+        </div>
+
       </div>
 
-      <div class="c-labeled-text__text">
-        ${this.text.map(item => html`
-          <p>${item.paragraph}</p>
-        `)}
-      </div>
     `
 
   }

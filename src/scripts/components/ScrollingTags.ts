@@ -96,6 +96,16 @@ export class ScrollingTags extends LitElement {
   })
   reverse:boolean
 
+  connectedCallback():void {
+
+    super.connectedCallback()
+
+    this.reverse = JSON.parse(
+      this.getAttribute('reverse')
+    )
+
+  }
+
   firstUpdated():void {
 
     if (this.reverse) {

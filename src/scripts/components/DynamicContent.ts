@@ -38,7 +38,7 @@ export class DynamicContent extends LitElement {
     type: Array,
     attribute: true
   })
-  content:Array<Record<string, unknown>>
+  content:Array<Record<string, any>>
 
   private _blocks = ''
 
@@ -82,6 +82,8 @@ export class DynamicContent extends LitElement {
           <c-labeled-text
             label='${block.label}'
             text='${JSON.stringify(block.text)}'
+            spacing=true
+            border=${block.bottom_border}
           >
           </c-labeled-text>
         `
@@ -95,11 +97,17 @@ export class DynamicContent extends LitElement {
             reverse='${block.reverse}'
             items='${JSON.stringify(block.items)}'
           >
+            ${block.items.map(item => `
+              <img
+                class='c-offset-columns__item'
+                src='${item.url}'
+                alt='${item.title}'
+              >
+            `).join('')}
           </c-offset-columns>
         `
 
       }
-
 
       if (block.component === 'pattern') {
 
@@ -109,8 +117,34 @@ export class DynamicContent extends LitElement {
             image='${block.image}'
             patternPosition='${block.pattern_position}'
             patternWidth='${block.pattern_width}'
+            repeat='${block.repeat}'
           >
           </c-pattern>
+        `
+
+      }
+
+      if (block.component === 'article') {
+
+
+        this._blocks += `
+          <c-article
+            heading='${block.heading}'
+            text='${block.text}'
+            border=${block.bottom_border}
+          >
+          </c-article>
+        `
+      }
+
+
+      if (block.component === 'stat_columns') {
+
+        this._blocks += `
+          <c-stat-columns
+            stats='${JSON.stringify(block.stats)}'
+          >
+          </c-stat-columns>
         `
 
       }

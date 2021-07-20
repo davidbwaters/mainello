@@ -26,17 +26,16 @@ export class FeaturedImage extends LitElement {
 
   static styles = css`
     :host {
-      border-bottom: solid 1px var(--color-gray);
+      border-bottom: solid 1px var(
+        --color-opaque-dark-subtle
+      );
       display: block;
-      padding-bottom: 20vh;
-      padding-top: 20vh;
     }
     .c-featured-image__image,
     .c-featured-image__image-spaced-small,
     .c-featured-image__image-spaced-large {
       display: block;
       max-width: 100%;
-      max-height: 90vh;
     }
     .c-featured-image__image {
       margin: auto;

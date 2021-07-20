@@ -33,10 +33,10 @@ export class FeaturedVideo extends LitElement {
 
   static styles = css`
     :host {
-      border-bottom: solid 1px var(--color-gray);
+      border-bottom: solid 1px var(
+        --color-opaque-dark-subtle
+      );
       display: block;
-      margin-bottom: 20vh;
-      margin-top: 20vh;
     }
     .c-featured-video__video {
       display: block;
@@ -82,9 +82,13 @@ export class FeaturedVideo extends LitElement {
 
   private _wrapperClass:string
 
-  constructor() {
+  connectedCallback():void {
 
-    super()
+    super.connectedCallback()
+
+    this.loop = JSON.parse(
+      this.getAttribute('loop')
+    )
 
     if (this.spacing === 'small') {
 

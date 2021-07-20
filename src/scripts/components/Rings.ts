@@ -189,14 +189,10 @@ export class Rings extends LitElement {
 
       }
 
-      //t += this._speed
-
       this._velocity =
         sketch.abs(
           sketch.winMouseX - sketch.pwinMouseX
         ) / 150
-
-      //console.log(velocity)
 
       this._time += this._speed + this._velocity
 

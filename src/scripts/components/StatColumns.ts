@@ -31,13 +31,14 @@ export class StatColumns extends LitElement {
 
   static styles = css`
     :host {
+      border-top: 1px solid var(--color-opaque-dark-subtle);
       display: grid;
       gap: var(--spacing-6);
       grid-auto-flow: column;
-      margin-bottom: calc(var(--spacing-8) * 2);
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: calc(var(--spacing-8) * 2);
+      padding-bottom: calc(var(--spacing-8) * 2);
+      padding-left: 6.2vw;
+      padding-right: 6.2vw;
+      padding-top: calc(var(--spacing-8) * 2);
       width: 87.6%;
     }
 
@@ -68,6 +69,7 @@ export class StatColumns extends LitElement {
   protected render():TemplateSpecification {
 
     return html`
+
       ${this.stats.map(item =>
 
         html`
@@ -82,6 +84,7 @@ export class StatColumns extends LitElement {
         `
 
       )}
+
     `
 
   }

@@ -31,7 +31,6 @@ async function onInit() {
 
     }
 
-
   }, 1000)
 
   await import('./components/BlogPost')
@@ -54,9 +53,11 @@ async function onInit() {
   await import('./components/ImageRow')
   await import('./components/ImageText')
   await import('./components/LabeledText')
+  await import('./components/LottieAnimation')
   await import('./components/OffsetColumns')
   await import('./components/Pattern')
   await import('./components/StatColumns')
+  await import('./components/WarpText')
   await import('./components/DynamicContent')
 
 }

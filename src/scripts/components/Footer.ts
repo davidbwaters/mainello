@@ -38,18 +38,12 @@ interface NavLinks {
 
 export class Footer extends LitElement {
 
-  frameRate = 60
-
-  instance
-
-  private _wrapper:HTMLDivElement
-
   static styles = css`
     :host {
       background: var(--color-eerie-black);
       color: white;
       display: block;
-      margin-top: 20vh;
+      margin-top: 10vh;
       overflow: hidden;
       position: relative;
       top: 0;
@@ -136,6 +130,7 @@ export class Footer extends LitElement {
     }
 
     .c-footer__social {
+      align-content: end;
       display: grid;
       grid-auto-columns: min-content;
       grid-auto-flow: column;
@@ -188,6 +183,13 @@ export class Footer extends LitElement {
   })
   logo:string
 
+  baseFrameRate = 30
+  frameRate = this.baseFrameRate
+
+  instance
+
+  private _wrapper:HTMLDivElement
+
   private _createWrapper() {
 
     const el = document.createElement('div')
@@ -202,94 +204,6 @@ export class Footer extends LitElement {
 
   private _inViewort() {
 
-    inViewport(this._wrapper, el => {
-
-      if (el.isIntersecting) {
-
-        this.frameRate = 30
-
-      }
-      else {
-
-        this.frameRate = 1
-
-      }
-
-    })
-
-  }
-
-  sketch = (sketch): void => {
-
-    let theShader
-
-    sketch.preload = () => {
-
-      theShader = sketch.loadShader(
-        '/scripts/shaders/fabric.vert',
-        '/scripts/shaders/fabric.frag'
-      )
-
-    }
-
-    sketch.setup = () => {
-
-      let footerSize = this._wrapper.getBoundingClientRect()
-
-      const canvas = sketch.createCanvas(
-        footerSize.width,
-        footerSize.height,
-        sketch.WEBGL
-      )
-
-      sketch.windowResized = () => {
-
-        footerSize = this._wrapper.getBoundingClientRect()
-
-        sketch.resizeCanvas(
-          footerSize.width,
-          footerSize.height
-        )
-
-      }
-
-      sketch.createCanvas(
-        footerSize.width,
-        footerSize.height
-      )
-
-      canvas.parent('c-footer__background')
-
-    }
-
-    sketch.draw = () => {
-
-      sketch.shader(theShader)
-
-      let x
-
-      theShader.setUniform('u_resolution', [
-        sketch.width, sketch.height
-      ])
-      theShader.setUniform('u_time', (
-        sketch.millis() / 1000) +
-      (Math.abs(sketch.mouseX) / 300)
-      )
-
-      sketch.quad(-5, -5, 5, -5, 5, 5, -5, 5)
-
-    }
-
-  }
-
-  firstUpdated(): void {
-
-    this._createWrapper()
-    this._inViewort()
-
-    this.instance = new window.p5(this.sketch)
-
-
     const contactFab:ContactFab = document.querySelector(
       'c-contact-fab'
     )
@@ -300,9 +214,22 @@ export class Footer extends LitElement {
 
     let visible = false
 
-    inViewport(this, el => {
+    inViewport(this._wrapper, el => {
 
-      //console.log(el)
+      if (el.isIntersecting) {
+
+        this.frameRate = this.baseFrameRate
+
+      }
+      else {
+
+        this.frameRate = 4
+
+      }
+
+    })
+
+    inViewport(this, el => {
 
       if (el.isIntersecting) {
 
@@ -339,33 +266,101 @@ export class Footer extends LitElement {
 
   }
 
+  sketch = (sketch):void => {
+
+    let shader
+
+    sketch.preload = () => {
+
+      shader = sketch.loadShader(
+        '/scripts/shaders/fabric.vert',
+        '/scripts/shaders/fabric.frag'
+      )
+
+    }
+
+    sketch.setup = () => {
+
+      let wrapperSize = this._wrapper
+        .getBoundingClientRect()
+
+      const canvas = sketch.createCanvas(
+        wrapperSize.width,
+        wrapperSize.height,
+        sketch.WEBGL
+      )
+
+      sketch.windowResized = () => {
+
+        wrapperSize = this._wrapper.getBoundingClientRect()
+
+        sketch.resizeCanvas(
+          wrapperSize.width,
+          wrapperSize.height
+        )
+
+      }
+
+      canvas.parent('c-footer__background')
+
+    }
+
+    sketch.draw = () => {
+
+      sketch.frameRate(this.frameRate)
+      sketch.shader(shader)
+
+      shader.setUniform('u_resolution', [
+        sketch.width, sketch.height
+      ])
+
+      shader.setUniform('u_time', (
+        sketch.millis() / 1000) +
+        (Math.abs(sketch.mouseX) / 300)
+      )
+
+      sketch.quad(-5, -5, 5, -5, 5, 5, -5, 5)
+
+    }
+
+  }
+
+  firstUpdated(): void {
+
+    this._createWrapper()
+    this._inViewort()
+
+    this.instance = new window.p5(this.sketch)
+
+  }
+
   protected render():TemplateSpecification {
 
     return html`
-      <slot name="background">
+      <slot name='background'>
       </slot>
 
-      <div class="c-footer__inner">
-        <div class="c-footer__contact">
+      <div class='c-footer__inner'>
+        <div class='c-footer__contact'>
 
-          <slot name="heading">
+          <slot name='heading'>
           </slot>
 
         </div>
-        <div class="c-footer__line"></div>
-        <div class="c-footer__lower">
+        <div class='c-footer__line'></div>
+        <div class='c-footer__lower'>
           <img
-            class="c-footer__logo"
-            src="${this.logo}"
+            class='c-footer__logo'
+            src='${this.logo}'
           >
 
-          <nav class="c-footer__nav">
+          <nav class='c-footer__nav'>
             ${this.navLinks.map(item =>
 
               html`
                 <a
-                  class="c-footer__nav-link"
-                  href="${item.link}"
+                  class='c-footer__nav-link'
+                  href='${item.link}'
                 >
                   ${item.title}
                 </a>
@@ -374,19 +369,23 @@ export class Footer extends LitElement {
             )}
           </nav>
 
-          <div class="c-footer__social">
+          <div class='c-footer__social'>
+
             ${this.socialLinks.map(item =>
 
               html`
                 <a
-                  class="c-footer__social-link"
+                  class='c-footer__social-link'
                   href="${item.link}"
                 >
-                  <img src="/icons/social/${item.service}.svg">
+                  <img
+                    src='/icons/social/${item.service}.svg'
+                  >
                 </a>
               `
 
             )}
+
           </div>
         </div>
       </div>

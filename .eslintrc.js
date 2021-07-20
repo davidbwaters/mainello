@@ -23,14 +23,6 @@ module.exports = {
 
   'plugins': [
     '@typescript-eslint'
-  ],
-
-  'overrides': [
-    {
-      'excludedFiles': [
-        '**/*.mjs'
-      ]
-    }
   ]
 
 }

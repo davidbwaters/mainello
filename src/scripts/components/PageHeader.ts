@@ -38,7 +38,7 @@ export class PageHeader extends LitElement {
       padding-bottom: calc(10vh + 7.5vw);
       padding-left: 6.2vw;
       padding-right: 6.2vw;
-      padding-top: calc(10vh + 7.5vw);
+      padding-top: calc(10vh + 7.5vw + 2.34375rem);
     }
 
     ::slotted(*) {

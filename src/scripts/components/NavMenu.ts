@@ -240,14 +240,7 @@ export class NavMenu extends LitElement {
 
   }
 
-  connectedCallback():void {
-
-    super.connectedCallback()
-
-  }
-
   disconnectedCallback():void {
-
 
     super.disconnectedCallback()
     window.removeEventListener(

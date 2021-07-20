@@ -58,7 +58,7 @@ export class Navbar extends LitElement {
 
     .c-navbar__branding {
       display: inline-block;
-      width: 80px;
+      width: 4.6875rem;
     }
 
     .c-navbar__menu-button {

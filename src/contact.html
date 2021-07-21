@@ -33,6 +33,31 @@
           text='get in touch'>
         </c-bounce-title>
 
+        <form
+          class='c-form'
+          name='contact'
+          method='POST'
+          data-netlify='true'
+        >
+          <input
+            type='text'
+            name='name'
+            placeholder='your name'
+          />
+          <input
+            type='email'
+            name='email'
+            placeholder='your email'
+          />
+          <textarea name='message'></textarea>
+          <button
+            class='c-button'
+            type='submit'
+          >
+            send
+          </button>
+        </form>
+
       </main>
 
       <c-footer

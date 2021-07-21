@@ -66,3 +66,8 @@ img {
   height: auto;
   width: 100%;
 }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--color-opaque-dark);
+  opacity: 1;
+}

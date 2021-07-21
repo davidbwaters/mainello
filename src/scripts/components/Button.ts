@@ -24,36 +24,46 @@ declare global {
 export class Button extends LitElement {
 
   static styles = css`
-    ::slotted(a) {
-      border: solid 1px currentColor;
+    ::slotted(*) {
+      border: solid 1px var(--color-opaque-dark-subtle);
+      border-radius: 5rem;
       color: inherit;
       cursor: pointer;
       display: inline-block;
       font-family: var(--font-mono);
       font-size: var(--font-size-mono-normal);
-      padding:
-        var(--spacing-2);
+      padding-bottom: 1em;
+      padding-left: 1.4em;
+      padding-right: 1.4em;
+      padding-top: 1em;
       text-decoration: none;
       transition: all .4s;
     }
 
-    ::slotted(a:hover) {
+    ::slotted(*::selection) {
+      background-color: transparent;
+    }
+
+    ::slotted(*:hover) {
       background-color: var(--color-eerie-black);
       border-color: var(--color-eerie-black);
       color: white !important;
     }
 
-    ::slotted(a:hover) {
-      color: inherit;
-    }
-
     ::slotted([large]) {
-      padding: var(--spacing-3);
+      font-size: var(--font-size-normal);
+      padding-bottom: 1.1em;
+      padding-left: 1.5em;
+      padding-right: 1.5em;
+      padding-top: 1.1em;
     }
 
     ::slotted([small]) {
       font-size: var(--font-size-mono-small);
-      padding: var(--spacing-1);
+      padding-bottom: 0.9em;
+      padding-left: 1.2em;
+      padding-right: 1.2em;
+      padding-top: 0.9em;
     }
   `
 

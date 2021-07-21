@@ -1,0 +1,23 @@
+//
+// form
+//
+
+.c-form {
+  align-content: start;
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--wrapper-width);
+  min-height: 50vh;
+  padding-bottom: calc(10vh + 7.5vw);
+  padding-top: calc(10vh + 7.5vw);
+}
+
+.c-form input,
+.c-form textarea {
+  color: green;
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-large-1);
+  margin-bottom: 1em;
+  padding: 1em;
+}

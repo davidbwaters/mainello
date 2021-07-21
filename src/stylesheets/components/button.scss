@@ -1,0 +1,46 @@
+//
+// button
+//
+
+.c-button {
+  background-color: white;
+  border: solid 1px var(--color-opaque-dark-subtle);
+  border-radius: 5rem;
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-normal);
+  padding-bottom: 1em;
+  padding-left: 1.4em;
+  padding-right: 1.4em;
+  padding-top: 1em;
+  text-decoration: none;
+  transition: all .4s;
+}
+
+.c-button:hover {
+  background-color: var(--color-eerie-black);
+  border-color: var(--color-eerie-black);
+  color: white !important;
+}
+
+.c-button::selection {
+  background-color: transparent;
+}
+
+.c-button--large {
+  font-size: var(--font-size-normal);
+  padding-bottom: 1.1em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: 1.1em;
+}
+
+.c-button--small {
+  font-size: var(--font-size-mono-small);
+  padding-bottom: 0.9em;
+  padding-left: 1.2em;
+  padding-right: 1.2em;
+  padding-top: 0.9em;
+}

@@ -26,7 +26,9 @@ export class SectionTitle extends LitElement {
 
   static styles = css`
     :host {
-      border-top: 1px solid var(--color-opaque-dark-subtle);
+      border-top: solid var(--section-title-border) var(
+        --color-opaque-dark-subtle
+      );
       display: block;
       font-size: 10vw;
       padding-bottom: calc(10vh + 7.5vw);
@@ -45,7 +47,7 @@ export class SectionTitle extends LitElement {
     @media (min-width: 768px) {
       :host {
         font-size: 6vw;
-        margin-top: 20vw;
+        margin-top: calc(5vh + 3.75vw);
       }
     }
   `
@@ -56,6 +58,39 @@ export class SectionTitle extends LitElement {
     attribute: true
   })
   text:string
+
+  @property({
+    type: Boolean,
+    attribute: true
+  })
+  border:boolean
+
+  connectedCallback():void {
+
+    super.connectedCallback()
+
+    this.border = JSON.parse(
+      this.getAttribute('border')
+    )
+
+    if (this.border) {
+
+      this.style.setProperty(
+        '--section-title-border',
+        '1px'
+      )
+
+    }
+    else {
+
+      this.style.setProperty(
+        '--section-title-border',
+        '0'
+      )
+
+    }
+
+  }
 
   firstUpdated():void {
 

@@ -28,7 +28,7 @@ export class Curves extends LitElement {
   static styles = css`
     :host {
       display: block;
-      height: 100%;
+      height: 60vh;
       position: relative;
     }
 
@@ -93,19 +93,20 @@ export class Curves extends LitElement {
 
     sketch.setup = () => {
 
-      const width = sketch.windowWidth
-      const height = sketch.windowHeight
+      let wrapperSize = this.getBoundingClientRect()
 
       const canvas = sketch.createCanvas(
-        width,
-        height
+        wrapperSize.width,
+        wrapperSize.height
       )
 
       sketch.windowResized = () => {
 
+        wrapperSize = this.getBoundingClientRect()
+
         sketch.resizeCanvas(
-          sketch.windowWidth,
-          sketch.windowHeight
+          wrapperSize.width,
+          wrapperSize.height
         )
 
       }
@@ -153,7 +154,7 @@ export class Curves extends LitElement {
     sketch.applyFade = () => {
 
       sketch.push()
-      sketch.fill(255, 90)
+      //sketch.fill(255, 80)
       sketch.pop()
 
     }
@@ -167,7 +168,7 @@ export class Curves extends LitElement {
         sketch.width * 1.5 / STEP
       )
 
-      sketch.background(255, 99)
+      sketch.background(255, 90)
 
       sketch.push()
       sketch.scale(1)

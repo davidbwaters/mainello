@@ -12,20 +12,20 @@ import barba from '@barba/core'
 import barbaPrefetch from '@barba/prefetch'
 
 declare global {
-  interface Window { p5: any }
+  interface Window { p5:any }
 }
 
 let asscroll
 
-const navMenuEl = document.querySelector(
-  'c-nav-menu'
+const navbarEl = document.querySelector(
+  'c-navbar'
 )
 
 async function onInit() {
 
   setTimeout(() => {
 
-    if(document.querySelector('c-intro') === null) {
+    if (document.querySelector('c-intro') === null) {
 
       document.body.style.opacity = '1'
 
@@ -48,11 +48,13 @@ async function onInit() {
   await import('./components/SectionTitle')
 
   await import('./components/Article')
+  await import('./components/BounceTitle')
   await import('./components/FeaturedImage')
   await import('./components/FeaturedVideo')
   await import('./components/ImageRow')
   await import('./components/ImageText')
   await import('./components/LabeledText')
+  await import('./components/LiquidTitle')
   await import('./components/LottieAnimation')
   await import('./components/OffsetColumns')
   await import('./components/Pattern')
@@ -82,7 +84,8 @@ function scrollSetup() {
 
   gsap.registerPlugin(ScrollTrigger)
 
-  //const isTouch = 'ontouchstart' in document.documentElement
+  // const isTouch =
+  //  'ontouchstart' in document.documentElement
 
   asscroll = new ASScroll({
     disableRaf: true
@@ -145,7 +148,6 @@ function barbaSetup() {
 
     }, 400)
 
-
   })
 
   barba.init({
@@ -163,9 +165,9 @@ function barbaSetup() {
       name: 'default-transition',
       leave(data):any {
 
-        if (navMenuEl.open) {
+        if (navbarEl.open) {
 
-          navMenuEl.handleToggle()
+          navbarEl.handleToggle()
 
         }
 
@@ -215,11 +217,3 @@ window.addEventListener(
   }
 
 )
-
-
-
-
-
-//scrollSetup()
-//onInit()
-//onRouteChange()

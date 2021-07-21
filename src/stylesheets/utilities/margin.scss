@@ -8,11 +8,9 @@
     margin-bottom: var(--spacing-#{$i});
     margin-top: var(--spacing-#{$i});
   }
-
   .u-margin-#{$i}-top {
     margin-top: var(--spacing-#{$i});
   }
-
   .u-margin-#{$i}-bottom {
     margin-bottom: var(--spacing-#{$i});
   }
@@ -22,9 +20,23 @@
 .u-margin-10vh-bottom {
   margin-bottom: 10vh;
 }
+.u-margin-10vh-top {
+  margin-top: 10vh;
+}
+.u-margin-10vh-vertical {
+  margin-bottom: 10vh;
+  margin-top: 10vh;
+}
 
 .u-margin-20vh-bottom {
   margin-bottom: 20vh;
+}
+.u-margin-20vh-top {
+  margin-top: 20vh;
+}
+.u-margin-20vh-vertical {
+  margin-bottom: 20vh;
+  margin-top: 20vh;
 }
 
 .u-margin-navbar-top {

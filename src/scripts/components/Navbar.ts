@@ -68,11 +68,10 @@ export class Navbar extends LitElement {
     }
   `
 
-  private _open = false
-
   menuToggleEl = createRef<HTMLDivElement>()
+  open = false
 
-  _menuButtonAnimation
+  private _menuButtonAnimation
 
   firstUpdated():void {
 
@@ -86,16 +85,16 @@ export class Navbar extends LitElement {
 
   }
 
-  _toggleNavMenu():void {
+  handleToggle():void {
 
     this.dispatchEvent(new CustomEvent('toggleNavMenu', {
       bubbles: true,
       composed: true
     }))
 
-    if (!this._open) {
+    if (!this.open) {
 
-      this._open = true
+      this.open = true
 
       this._menuButtonAnimation.setDirection(1)
       this._menuButtonAnimation.goToAndPlay(1, true)
@@ -103,7 +102,7 @@ export class Navbar extends LitElement {
     }
     else {
 
-      this._open = false
+      this.open = false
 
       this._menuButtonAnimation.setDirection(-1)
       this._menuButtonAnimation.goToAndPlay(
@@ -127,7 +126,7 @@ export class Navbar extends LitElement {
           </div>
           <a
             class='c-navbar__menu-button js-navbar-button'
-            @click=${this._toggleNavMenu}
+            @click=${this.handleToggle}
             ${ref(this.menuToggleEl)}
           >
           </a>

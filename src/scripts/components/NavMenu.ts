@@ -151,7 +151,7 @@ export class NavMenu extends LitElement {
 
         this.menuEl.value.classList.toggle('is-active')
 
-      }, 800)
+      }, 1200)
 
     }
 
@@ -243,6 +243,7 @@ export class NavMenu extends LitElement {
   disconnectedCallback():void {
 
     super.disconnectedCallback()
+
     window.removeEventListener(
       'toggleNavMenu', this.handleToggle
     )

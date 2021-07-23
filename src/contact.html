@@ -49,9 +49,16 @@
             name='email'
             placeholder='your email'
           />
-          <textarea name='message'></textarea>
+          <div class="c-form__grow-wrap">
+            <textarea
+              onInput="this.parentNode.dataset.replicatedValue = this.value"
+              name='message'
+              placeholder='your message'
+              rows='1'
+            ></textarea>
+          </div>
           <button
-            class='c-button'
+            class='c-button c-button--large'
             type='submit'
           >
             send

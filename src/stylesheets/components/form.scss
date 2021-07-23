@@ -10,14 +10,55 @@
   max-width: var(--wrapper-width);
   min-height: 50vh;
   padding-bottom: calc(10vh + 7.5vw);
+  padding-left: 6.2vw;
+  padding-right: 6.2vw;
   padding-top: calc(10vh + 7.5vw);
 }
 
 .c-form input,
-.c-form textarea {
-  color: green;
-  font-weight: var(--font-weight-normal);
+.c-form textarea,
+.c-form__grow-wrap::after {
+  border-bottom: solid 1px var(--color-opaque-dark);
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  font-family: var(--font-normal);
   font-size: var(--font-size-large-1);
-  margin-bottom: 1em;
-  padding: 1em;
+  font-weight: var(--font-weight-normal);
+  margin-bottom: 2em;
+  opacity: 0.8;
+  padding-bottom: 1em;
+  padding-top: 1em;
+}
+
+.c-form input:focus,
+.c-form textarea:focus {
+  border-bottom: solid 1px var(--color-darker-gray);
+  outline: none;
+  opacity: 1;
+  transition: all 0.4s;
+}
+
+.c-form ::placeholder {
+  color: var(--color-dark-gray);
+}
+
+.c-form__grow-wrap {
+  display: grid;
+}
+
+.c-form__grow-wrap::after {
+  content: attr(data-replicated-value) " ";
+  white-space: pre-wrap;
+  visibility: hidden;
+}
+
+.c-form__grow-wrap > textarea {
+  resize: none;
+  overflow: hidden;
+}
+
+.c-form__grow-wrap > textarea,
+.c-form__grow-wrap::after {
+  grid-area: 1 / 1 / 2 / 2;
 }

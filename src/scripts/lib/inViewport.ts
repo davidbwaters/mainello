@@ -4,7 +4,7 @@
 
 export default function inViewport(
   el, callback, options = {}
-) {
+):void {
 
   return new IntersectionObserver(entries => {
 

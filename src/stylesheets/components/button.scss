@@ -12,9 +12,10 @@
   font-family: var(--font-mono);
   font-size: var(--font-size-mono-normal);
   padding-bottom: 1em;
-  padding-left: 1.4em;
-  padding-right: 1.4em;
-  padding-top: 1em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: .9em;
+  position: relative;
   text-decoration: none;
   transition: all .4s;
 }
@@ -31,16 +32,8 @@
 
 .c-button--large {
   font-size: var(--font-size-normal);
-  padding-bottom: 1.1em;
-  padding-left: 1.5em;
-  padding-right: 1.5em;
-  padding-top: 1.1em;
 }
 
 .c-button--small {
   font-size: var(--font-size-mono-small);
-  padding-bottom: 0.9em;
-  padding-left: 1.2em;
-  padding-right: 1.2em;
-  padding-top: 0.9em;
 }

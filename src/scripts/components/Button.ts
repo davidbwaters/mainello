@@ -9,6 +9,7 @@ import {
 } from 'lit'
 
 import {
+  property,
   customElement
 } from 'lit/decorators.js'
 
@@ -52,35 +53,48 @@ export class Button extends LitElement {
 
     ::slotted([large]) {
       font-size: var(--font-size-normal);
-      padding-bottom: 1.1em;
-      padding-left: 1.5em;
-      padding-right: 1.5em;
-      padding-top: 1.1em;
     }
 
     ::slotted([small]) {
       font-size: var(--font-size-mono-small);
-      padding-bottom: 0.9em;
-      padding-left: 1.2em;
-      padding-right: 1.2em;
-      padding-top: 0.9em;
     }
   `
 
-  firstUpdated() {
+  @property({
+    type: String,
+    attribute: true
+  })
+  text:string
+
+
+  @property({
+    type: String,
+    attribute: true
+  })
+  link:string
+
+
+  @property({
+    type: String,
+    attribute: true
+  })
+  type:'button' | 'submit' | 'reset' | 'menu'
+
+
+  firstUpdated():void {
 
     if (this.hasAttribute('small')) {
 
-      this.querySelector('a').setAttribute(
-        'small', ''
+      this.querySelector('.c-button').classList.add(
+        'c-button--small'
       )
 
     }
 
     if (this.hasAttribute('large')) {
 
-      this.querySelector('a').setAttribute(
-        'large', ''
+      this.querySelector('.c-button').classList.add(
+        'c-button--large'
       )
 
     }
@@ -91,8 +105,48 @@ export class Button extends LitElement {
   protected render():TemplateSpecification {
 
     return html`
-      <slot></slot>
+
+      ${this.link && !this.type
+
+        ? html`
+          <a class='c-button' href='${this.link}'>
+
+            <div class='c-button__filler'></div>
+
+            <span class='c-button__text'>
+
+              <span class='c-button__text-inner'>
+                ${this.text}
+              </span>
+
+            </span>
+
+          </a>`
+        : html`
+          <button class='c-button' type='${this.type}'>
+
+            <div class='c-button__filler'></div>
+
+            <span class='c-button__text'>
+
+              <span class='c-button__text-inner'>
+                ${this.text}
+              </span>
+
+            </span>
+
+          </button>`
+
+      }
+
     `
+
+  }
+
+
+  protected createRenderRoot():Button {
+
+    return this
 
   }
 

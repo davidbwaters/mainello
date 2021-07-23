@@ -5,6 +5,7 @@
 .c-form {
   align-content: start;
   display: grid;
+  justify-items: start;
   margin-left: auto;
   margin-right: auto;
   max-width: var(--wrapper-width);
@@ -18,7 +19,10 @@
 .c-form input,
 .c-form textarea,
 .c-form__grow-wrap::after {
-  border-bottom: solid 1px var(--color-opaque-dark);
+  background-image: url('/images/wave-line.svg');
+  background-position: left bottom;
+  background-size: 300% 100%;
+  border-bottom: none;
   border-left: none;
   border-right: none;
   border-top: none;
@@ -29,14 +33,16 @@
   opacity: 0.8;
   padding-bottom: 1em;
   padding-top: 1em;
+  width: 100%;
 }
 
 .c-form input:focus,
 .c-form textarea:focus {
-  border-bottom: solid 1px var(--color-darker-gray);
+  background-position: right bottom;
   outline: none;
   opacity: 1;
-  transition: all 0.4s;
+  transition: all 0.8s;
+  width: 100%;
 }
 
 .c-form ::placeholder {
@@ -45,6 +51,7 @@
 
 .c-form__grow-wrap {
   display: grid;
+  width: 100%;
 }
 
 .c-form__grow-wrap::after {

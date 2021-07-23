@@ -16,6 +16,7 @@
     "@ashthornton/asscroll": "^2.0.1",
     "@barba/core": "^2.9.7",
     "@barba/prefetch": "^2.1.10",
+    "events": "^3.3.0",
     "gsap": "npm:@gsap/shockingly@^3.7.1",
     "lit": "^2.0.0-rc.2",
     "locomotive-scroll": "^4.1.1",

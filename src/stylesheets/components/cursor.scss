@@ -1,0 +1,24 @@
+//
+// cursor
+//
+
+.c-cursor {
+	display: none;
+}
+
+@media (any-pointer: fine) {
+
+	.c-cursor {
+		position: fixed;
+		top: 0;
+		left: 0;
+		display: block;
+		pointer-events: none;
+	}
+	.c-cursor__inner {
+		fill: var(--cursor-fill);
+		stroke: var(--cursor-stroke);
+		stroke-width: var(--cursor-stroke-width);
+	}
+
+}

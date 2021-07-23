@@ -11,15 +11,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import barba from '@barba/core'
 import barbaPrefetch from '@barba/prefetch'
 
+import Cursor from './lib/cursor'
+import ButtonControl from './lib/buttonControl'
+
 declare global {
-  interface Window { p5:any }
+  interface Window {
+    p5: any
+  }
 }
 
 let asscroll
 
-const navbarEl = document.querySelector(
-  'c-navbar'
-)
+const navbarEl = document.querySelector('c-navbar')
 
 async function onInit() {
 
@@ -75,7 +78,6 @@ async function handlePageLoad() {
     asscroll.resize()
     ScrollTrigger.refresh()
 
-
   }, 1000)
 
 }
@@ -119,11 +121,26 @@ function scrollSetup() {
 
   asscroll.on('update', ScrollTrigger.update)
 
-  ScrollTrigger.addEventListener(
-    'refresh', asscroll.resize
-  )
+  ScrollTrigger.addEventListener('refresh', asscroll.resize)
 
   asscroll.enable()
+
+}
+
+function cursorSetup() {
+
+  const cursor = new Cursor(
+    document.querySelector('.c-cursor')
+  )
+  const buttonEls = document.querySelectorAll('c-button')
+  buttonEls.forEach(buttonEl => {
+
+    const button = new ButtonControl(buttonEl)
+
+    button.on('enter', () => cursor.enter())
+    button.on('leave', () => cursor.leave())
+
+  })
 
 }
 
@@ -146,74 +163,76 @@ function barbaSetup() {
 
       ScrollTrigger.refresh()
 
+      cursorSetup()
+
     }, 400)
+
 
   })
 
   barba.init({
-
     debug: true,
-    views: [{
-      namespace: 'home',
-      afterEnter(data) {
+    views: [
+      {
+        namespace: 'home',
+        afterEnter(data) {
 
-        console.log('after enter home')
-
-      }
-    }],
-    transitions: [{
-      name: 'default-transition',
-      leave(data):any {
-
-        if (navbarEl.open) {
-
-          navbarEl.handleToggle()
+          console.log('after enter home')
 
         }
-
-        return gsap.fromTo(data.current.container, {
-          opacity: 1
-        },
-        {
-          opacity: 0,
-          duration: 0.6
-        })
-
-      },
-      enter(data):any {
-
-        data.current.container
-          .style.position = 'absolute'
-
-        return gsap.fromTo(
-          data.next.container,
-          {
-            opacity: 0
-          },
-          {
-            opacity: 1,
-            duration: 0.6
-          }
-        )
-
       }
-    }]
+    ],
+    transitions: [
+      {
+        name: 'default-transition',
+        leave(data): any {
 
+          if (navbarEl.open) {
+
+            navbarEl.handleToggle()
+
+          }
+
+          return gsap.fromTo(
+            data.current.container,
+            {
+              opacity: 1
+            },
+            {
+              opacity: 0,
+              duration: 0.6
+            }
+          )
+
+        },
+        enter(data): any {
+
+          data.current.container.style.position = 'absolute'
+
+          return gsap.fromTo(
+            data.next.container,
+            {
+              opacity: 0
+            },
+            {
+              opacity: 1,
+              duration: 0.6
+            }
+          )
+
+        }
+      }
+    ]
   })
 
 }
 
+window.addEventListener('load', () => {
 
-window.addEventListener(
+  console.log('page load')
 
-  'load', () => {
+  handlePageLoad()
 
-    console.log('page load')
+  barbaSetup()
 
-    handlePageLoad()
-
-    barbaSetup()
-
-  }
-
-)
+})

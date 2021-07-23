@@ -13,7 +13,7 @@ import {
   property
 } from 'lit/decorators.js'
 
-import {unsafeHTML} from 'lit/directives/unsafe-html.js'
+import { unsafeHTML } from 'lit/directives/unsafe-html.js'
 
 
 declare global {
@@ -38,7 +38,7 @@ export class DynamicContent extends LitElement {
     type: Array,
     attribute: true
   })
-  content:Array<Record<string, any>>
+  content:Array<Record<string, unknown>>
 
   private _blocks = ''
 
@@ -135,6 +135,7 @@ export class DynamicContent extends LitElement {
           >
           </c-article>
         `
+
       }
 
 

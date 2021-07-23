@@ -32,6 +32,8 @@ export class BounceTitle extends LitElement {
         --color-opaque-dark-subtle
       );
       display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: 100%;
       height: 60vh;
       position: relative;
     }

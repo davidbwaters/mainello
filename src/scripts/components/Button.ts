@@ -25,7 +25,7 @@ export class Button extends LitElement {
 
   static styles = css`
     ::slotted(*) {
-      border: solid 1px var(--color-opaque-dark-subtle);
+      border: solid 1px var(--color-opaque-dark);
       border-radius: 5rem;
       color: inherit;
       cursor: pointer;

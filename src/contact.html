@@ -1,65 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
+      name='viewport'
+      content='width=device-width, initial-scale=1.0'
     />
     <title>{{site.title}}</title>
-    <link rel="icon" href="/images/favicon.png" />
-    <script type="module" src="/scripts/main.ts"></script>
+    <link rel='icon' href='/images/favicon.png' />
+    <script type='module' src='/scripts/main.ts'></script>
   </head>
-  <body style="opacity: 0" data-barba="wrapper">
+  <body style='opacity: 0' data-barba='wrapper'>
     <c-navbar>
-      <a href="/">
-        <img src="{{site.logo_header}}" />
+      <a href='/'>
+        <img src='{{site.logo_header}}' />
       </a>
     </c-navbar>
 
-    <c-nav-menu navLinks="{{site.menu_items}}">
+    <c-nav-menu navLinks='{{site.menu_items}}'>
     </c-nav-menu>
 
     <div asscroll-container>
       <main
-        data-barba="container"
-        data-barba-namespace="contact"
+        data-barba='container'
+        data-barba-namespace='contact'
         asscroll
       >
         <c-bounce-title
-          class="u-margin-navbar-top"
-          text="get in touch"
+          class='u-margin-navbar-top'
+          text='get in touch'
         >
         </c-bounce-title>
 
         <form
-          class="c-form"
-          name="contact"
-          method="POST"
-          data-netlify="true"
+          class='c-form js-contact-form'
+          name='contact'
+          method='POST'
+          data-netlify='true'
         >
           <input
-            type="text"
-            name="name"
-            placeholder="your name"
+            type='text'
+            name='name'
+            placeholder='your name'
           />
           <input
-            type="email"
-            name="email"
-            placeholder="your email"
+            type='email'
+            name='email'
+            placeholder='your email'
           />
-          <div class="c-form__grow-wrap">
+          <div class='c-form__grow-wrap'>
             <textarea
-              onInput="this.parentNode.dataset.replicatedValue = this.value"
-              name="message"
-              placeholder="your message"
-              rows="1"
+              onInput='this.parentNode.dataset.replicatedValue = this.value'
+              name='message'
+              placeholder='your message'
+              rows='1'
             ></textarea>
           </div>
           <button
-            class="c-button c-button--large"
-            type="submit"
+            class='c-button c-button--large'
+            type='submit'
           >
             send
           </button>
@@ -67,20 +67,20 @@
       </main>
 
       <c-footer
-        socialLinks="{{site.social_links}}"
-        navLinks="{{site.menu_items}}"
-        logo="{{site.logo_footer}}"
+        socialLinks='{{site.social_links}}'
+        navLinks='{{site.menu_items}}'
+        logo='{{site.logo_footer}}'
         asscroll
       >
-        <div slot="heading" class="u-heading-huge-fluid">
+        <div slot='heading' class='u-heading-huge-fluid'>
           {{{site.footer_heading}}}
         </div>
       </c-footer>
     </div>
 
     <script>
-      const contactForm = document.getElementById(
-        'js-contact-form'
+      const contactForm = document.querySelector(
+        '.js-contact-form'
       )
 
       if (contactForm) {
@@ -175,10 +175,10 @@
     </script>
 
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.3/p5.min.js"
-      integrity="sha512-xrAcaPlDVY5TDNAKKsVPf040TnCatM3YFUi/AChhyBLJ1IVn+lbAKTiVDjhicrUFPqz/IvC0S2uVlbi7iF6I7w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+      src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.3/p5.min.js'
+      integrity='sha512-xrAcaPlDVY5TDNAKKsVPf040TnCatM3YFUi/AChhyBLJ1IVn+lbAKTiVDjhicrUFPqz/IvC0S2uVlbi7iF6I7w=='
+      crossorigin='anonymous'
+      referrerpolicy='no-referrer'
     ></script>
   </body>
 </html>

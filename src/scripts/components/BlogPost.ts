@@ -64,12 +64,12 @@ export class BlogPost extends LitElement {
     .c-blog-post__item-title {
       font-size: var(--font-size-large-1);
       font-weight: var(--font-weight-semibold);
-      margin-bottom: var(--spacing-3);
+      margin-bottom: 1.5em;
       margin-top: 0;
     }
 
     .c-blog-post__item-text {
-      margin-bottom: var(--spacing-4);
+      margin-bottom: 1.5em;
     }
 
   `

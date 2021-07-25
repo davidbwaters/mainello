@@ -33,26 +33,40 @@ export class OffsetColumns extends LitElement {
     :host {
       display: grid;
       grid-auto-flow: row;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 12.4vw 6.2vw;
       margin-bottom: calc(10vh + 5vw);
       margin-left: auto;
       margin-right: auto;
-      margin-top: calc(10vh + 5vw + 30vh);
+      margin-top: calc(10vh + 5vw);
       max-width: var(--wrapper-width);
       width: 87.6%;
+    }
+
+
+    @media (min-width: 768px) {
+
+      :host {
+        grid-template-columns: 1fr 1fr;
+        margin-top: calc(10vh + 5vw + 30vh);
+      }
+
     }
 
     ::slotted(*) {
       max-width: 100%;
     }
 
-    ::slotted(*:nth-child(odd)) {
-      margin-top: var(--offset-columns-odd);
-    }
+    @media (min-width: 768px) {
 
-    ::slotted(*:nth-child(even)) {
-      margin-top: var(--offset-columns-even);
+      ::slotted(*:nth-child(odd)) {
+        margin-top: var(--offset-columns-odd);
+      }
+
+      ::slotted(*:nth-child(even)) {
+        margin-top: var(--offset-columns-even);
+      }
+
     }
   `
 
@@ -83,12 +97,12 @@ export class OffsetColumns extends LitElement {
 
       this.style.setProperty(
         '--offset-columns-even',
-        '0'
+        offset
       )
 
       this.style.setProperty(
         '--offset-columns-odd',
-        offset
+        '0'
       )
 
     }
@@ -96,12 +110,12 @@ export class OffsetColumns extends LitElement {
 
       this.style.setProperty(
         '--offset-columns-even',
-        offset
+        '0'
       )
 
       this.style.setProperty(
         '--offset-columns-odd',
-        '0'
+        offset
       )
 
     }

@@ -34,13 +34,13 @@ export class Curves extends LitElement {
     }
   `
 
-  baseFrameRate = 12
+  baseFrameRate = 40
   frameRate = this.baseFrameRate
   variation = 0.001
   amp = 200
   perlin = new ClassicalNoise()
   variators = []
-  isAnimating = false
+  isIntersecting = false
 
   canvas:HTMLCanvasElement
   ctx:CanvasRenderingContext2D
@@ -69,10 +69,9 @@ export class Curves extends LitElement {
 
         this.frameRate = this.baseFrameRate
 
-        if (this.isAnimating === false) {
+        if (this.isIntersecting === false) {
 
-          this.isAnimating = true
-          this.animateCanvas()
+          this.isIntersecting = true
 
         }
 
@@ -82,13 +81,9 @@ export class Curves extends LitElement {
 
         this.frameRate = 1
 
+        if (this.isIntersecting === true) {
 
-        if (this.isAnimating === true) {
-
-          this.isAnimating = false
-          cancelAnimationFrame(
-            this.animationInstance
-          )
+          this.isIntersecting = false
 
         }
 
@@ -137,16 +132,45 @@ export class Curves extends LitElement {
 
   }
 
-  animateCanvas():void {
+  start():void {
 
-    this.ctx.clearRect(
-      0, 0, this.canvasWidth, this.canvasHeight
-    )
+    let then = performance.now()
 
-    this.draw()
+    const interval = 1000 / this.frameRate
+    const tolerance = 0.1
+
+    const animateCanvas = (now:number) => {
+
+      this.animationInstance = requestAnimationFrame(
+        animateCanvas
+      )
+
+      const delta = now - then
+
+      if (delta >= interval - tolerance) {
+
+        then = now - (delta % interval)
+
+        this.ctx.clearRect(
+          0, 0, this.canvasWidth, this.canvasHeight
+        )
+
+        this.draw()
+
+      }
+
+    }
 
     this.animationInstance = requestAnimationFrame(
-      this.animateCanvas.bind(this)
+      animateCanvas
+    )
+
+  }
+
+  stop():void {
+
+    cancelAnimationFrame(
+      this.animationInstance
     )
 
   }
@@ -174,7 +198,7 @@ export class Curves extends LitElement {
 
   firstUpdated(): void {
 
-    this.animateCanvas.bind(this)
+    this.start()
     this.resizeCanvas.bind(this)
 
     this._createWrapper()
@@ -193,7 +217,7 @@ export class Curves extends LitElement {
 
     }
 
-    this.animateCanvas()
+    this.start()
     this._inViewort()
 
     window.addEventListener(

@@ -85,9 +85,9 @@ export class Footer extends LitElement {
     }
 
     .c-footer__lower {
+      align-items: center;
       display: grid;
       gap: 6.2vh;
-      grid-template-columns: 1fr 5fr 1fr;
       justify-content: space-between;
       padding-bottom: 6.2vh;
       padding-top: 6.2vh;
@@ -98,6 +98,7 @@ export class Footer extends LitElement {
       .c-footer__lower {
         gap: var(--spacing-6);
         grid-auto-flow: column;
+        grid-template-columns: 1fr 5fr 1fr;
       }
 
     }
@@ -110,15 +111,17 @@ export class Footer extends LitElement {
       display: grid;
       gap: var(--spacing-4);
       grid-auto-flow: column;
+      justify-content: center;
     }
 
 
     @media (max-width: 768px) {
 
       .c-footer__nav {
+        align-items: center;
         grid-column: span 2;
         grid-row: 1;
-        justify-content: centern;
+        justify-content: space-between;
       }
 
     }

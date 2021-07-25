@@ -31,8 +31,8 @@ export class LabeledText extends LitElement {
       );
       display: block;
       grid-column: 1 / span 2;
-      padding-bottom: calc(10vh + 5vw);
-      padding-top: calc(10vh + 5vw);
+      padding-bottom: var(--labeled-text-spacing);
+      padding-top: var(--labeled-text-spacing);
     }
 
     @media (min-width: 320px) {
@@ -51,28 +51,27 @@ export class LabeledText extends LitElement {
     }
 
 
+    @media (min-width: 1080px) {
+      :host {
+        grid-column: 2 / span 14;
+      }
+    }
+
     .c-labeled-text__inner {
+      align-content: center;
       display: grid;
       grid-auto-flow: row;
-      grid-template-columns: calc(
-        100% - (var(--spacing-2)) * 2
-      );
+      grid-template-columns: 87.6%;
       justify-content: center;
       margin-left: auto;
       margin-right: auto;
-      padding-left: var(
-        --labeled-text-spacing
-      );
-      padding-right: var(
-        --labeled-text-spacing
-      );
       max-width: var(--wrapper-width);
     }
 
     @media (min-width: 320px) {
 
       .c-labeled-text__inner {
-        grid-template-columns: 1fr 4fr;
+        grid-template-columns: 1fr;
       }
 
     }
@@ -81,6 +80,7 @@ export class LabeledText extends LitElement {
 
       .c-labeled-text__inner {
         grid-auto-flow: column;
+        grid-template-columns: 1fr 4fr;
       }
 
     }
@@ -89,14 +89,29 @@ export class LabeledText extends LitElement {
       font-size: var(--font-size-small);
       font-weight: var(--font-weight-semibold);
       letter-spacing: var(--title-normal-spacing);
-      line-height: 1.6rem;
       padding-bottom: var(--spacing-4);
+    }
+
+    @media (min-width: 480px) {
+
+      .c-labeled-text__label {
+        font-size:  var(--font-size-large-1);
+      }
+
     }
 
     .c-labeled-text__text p {
       line-height: var(--line-height-normal-spaced);
       margin-bottom: 1.4em;
       margin-top: 0;
+    }
+
+    @media (min-width: 768px) {
+
+      .c-labeled-text__text p {
+        font-size:  var(--font-size-large-1);
+      }
+
     }
   `
 

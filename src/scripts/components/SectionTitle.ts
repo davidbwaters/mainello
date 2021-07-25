@@ -46,7 +46,7 @@ export class SectionTitle extends LitElement {
 
     @media (min-width: 768px) {
       :host {
-        font-size: 6vw;
+        font-size: 7vw;
         margin-top: calc(5vh + 3.75vw);
       }
     }

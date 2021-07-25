@@ -41,7 +41,7 @@ export class Cursor extends LitElement {
     :host {
       --cursor-size: 1.5rem;
 
-      display: block;
+      display: var(--cursor-display);
       height: var(--cursor-size);
       left: calc(var(--cursor-size) / 2 * -1);
       pointer-events: none;
@@ -52,8 +52,7 @@ export class Cursor extends LitElement {
     }
 
     .c-cursor__inner {
-      background-color: var(--color-platinum);
-      border: solid 1px var(--color-dark-gray);
+      border: solid 2px var(--color-darker-gray);
       border-radius: var(--cursor-size);
       height: 100%;
       opacity: 0.4;
@@ -80,7 +79,7 @@ export class Cursor extends LitElement {
   innerEl = createRef<HTMLDivElement>()
 
   private _set = gsap.quickSetter(this, 'css')
-  private _speed = 0.1
+  private _speed = 0.2
   private _delta:number
   private _targets:NodeList
 
@@ -192,6 +191,24 @@ export class Cursor extends LitElement {
   }
 
   firstUpdated():void {
+
+    const isTouch =
+      'ontouchstart' in document.documentElement
+
+    if (isTouch === true) {
+
+      this.style.setProperty(
+        '--cursor-display', 'none'
+      )
+
+    }
+    else {
+
+      this.style.setProperty(
+        '--cursor-display', 'block'
+      )
+
+    }
 
     window.addEventListener('mousemove', e => {
 

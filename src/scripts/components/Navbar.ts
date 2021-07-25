@@ -47,8 +47,8 @@ export class Navbar extends LitElement {
     @media (min-width: 320px) {
 
       :host {
-        padding-bottom: var(--spacing-4);
-        padding-top: var(--spacing-4);
+        padding-left: var(--spacing-4);
+        padding-right: var(--spacing-4);
       }
 
     }
@@ -56,8 +56,10 @@ export class Navbar extends LitElement {
     @media (min-width: 480px) {
 
       :host {
-        padding-bottom: var(--spacing-3);
-        padding-top: var(--spacing-3);
+        padding-bottom: var(--spacing-4);
+        padding-left: var(--spacing-4);
+        padding-right: var(--spacing-4);
+        padding-top: var(--spacing-4);
       }
 
     }

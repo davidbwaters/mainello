@@ -19,23 +19,6 @@ body {
   width: 100%;
 }
 
-@media (min-width: 320px) {
-
-  body {
-    font-size: calc(var(--font-size-normal) * .85);
-  }
-
-}
-
-
-@media (min-width: 768px) {
-
-  body {
-    font-size: var(--font-size-normal);
-  }
-
-}
-
 main {
   display: block;
   min-height: 100%;

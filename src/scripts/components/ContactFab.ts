@@ -45,8 +45,8 @@ export class ContactFab extends LitElement {
 
       :host {
         display: block;
-        height: 7.5rem;
-        width: 7.5rem;
+        height: 6.75rem;
+        width: 6.75rem;
       }
 
     }

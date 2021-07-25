@@ -127,7 +127,7 @@ export class Curves extends LitElement {
       //sketch.stroke(114,180,174, 60)
       sketch.stroke(220, 60)
 
-      const noiseScale = 0.0025
+      const noiseScale = 0.004
 
       sketch.beginShape()
 
@@ -163,22 +163,22 @@ export class Curves extends LitElement {
 
       sketch.frameRate(this.frameRate)
 
-      const STEP = 30
+      const STEP = 20
       const numCurveVertices = sketch.floor(
         sketch.width * 1.5 / STEP
       )
 
-      sketch.background(255, 90)
+      sketch.background(255, 80)
 
       sketch.push()
       sketch.scale(1)
 
       const phase = sketch.frameCount / 2
 
-      for (let y = 0; y < sketch.height; y += 30) {
+      for (let y = 0; y < sketch.height; y += 20) {
 
         sketch.drawPerlinCurve(
-          sketch.width + 100,
+          sketch.width + 50,
           y, phase, STEP, numCurveVertices
         )
 

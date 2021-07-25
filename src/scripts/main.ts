@@ -12,10 +12,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import barba from '@barba/core'
 import barbaPrefetch from '@barba/prefetch'
 
-import Cursor from './lib/Cursor'
-import ButtonControl from './lib/buttonControl'
-
-
 declare global {
   interface Window {
     p5: any
@@ -42,6 +38,7 @@ async function onInit() {
   await import('./components/Button')
   await import('./components/ContactFab')
   await import('./components/Curves')
+  await import('./components/Cursor')
   await import('./components/FluidReveal')
   await import('./components/Footer')
   await import('./components/Intro')
@@ -130,10 +127,6 @@ function scrollSetup() {
 }
 
 function cursorSetup() {
-
-  const cursor = new Cursor(
-    document.querySelector('.c-cursor')
-  )
 
 }
 

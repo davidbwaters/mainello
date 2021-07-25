@@ -7,13 +7,12 @@ c-rings {
   box-sizing: border-box;
   display: grid;
   grid-column: 1 / span 2;
-  grid-row: 1 / span 3;
+  grid-row: 1 / span 2;
   grid-template-columns: calc(
     100% - (var(--spacing-2)) * 2
   );
   grid-template-rows: 80%;
   justify-content: center;
-  margin: 1rem;
 }
 
 @media (min-width: 320px) {
@@ -22,7 +21,6 @@ c-rings {
     grid-row: 3/span 2;
     grid-template-columns: 100%;
     grid-template-rows: 100%;
-    margin: 0rem;
   }
 }
 
@@ -35,7 +33,7 @@ c-rings {
 
 @media (min-width: 768px) {
   c-rings {
-    grid-column: 9 / span 6;
+    grid-column: 8 / span 6;
     grid-row: 2 / span 4;
   }
 }

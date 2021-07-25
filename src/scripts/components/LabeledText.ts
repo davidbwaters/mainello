@@ -31,13 +31,14 @@ export class LabeledText extends LitElement {
       );
       display: block;
       grid-column: 1 / span 2;
-      padding-bottom: calc(10vh + 5.5vw);
-      padding-top: calc(10vh + 5.5vw);
+      padding-bottom: calc(10vh + 5vw);
+      padding-top: calc(10vh + 5vw);
     }
 
     @media (min-width: 320px) {
       :host {
         grid-column: 2 / span 8;
+        grid-template-columns: 100%;
         padding-left: 0;
         padding-right: 0;
       }
@@ -49,10 +50,14 @@ export class LabeledText extends LitElement {
       }
     }
 
+
     .c-labeled-text__inner {
       display: grid;
-      gap: 6.2vw;
       grid-auto-flow: row;
+      grid-template-columns: calc(
+        100% - (var(--spacing-2)) * 2
+      );
+      justify-content: center;
       margin-left: auto;
       margin-right: auto;
       padding-left: var(
@@ -62,6 +67,14 @@ export class LabeledText extends LitElement {
         --labeled-text-spacing
       );
       max-width: var(--wrapper-width);
+    }
+
+    @media (min-width: 320px) {
+
+      .c-labeled-text__inner {
+        grid-template-columns: 1fr 4fr;
+      }
+
     }
 
     @media (min-width: 768px) {

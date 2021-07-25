@@ -75,6 +75,9 @@ export class Rings extends LitElement {
 
     sketch.setup = () => {
 
+      this._size =
+        this._wrapper.getBoundingClientRect()
+
       const canvas = sketch.createCanvas(
         this._size.width,
         this._size.height
@@ -204,8 +207,6 @@ export class Rings extends LitElement {
 
     this._createWrapper()
     this._inViewort()
-
-    this._size = this.getBoundingClientRect()
 
     this.instance = new window.p5(this.sketch)
 

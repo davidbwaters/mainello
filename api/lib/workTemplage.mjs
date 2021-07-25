@@ -67,18 +67,8 @@ export function buildWorkTemplate(
             </div>
           </main>
 
-          <svg
-            class='c-cursor'
-            width='25' height='25'
-            viewBox='0 0 25 25'
-          >
-            <circle
-              class='c-cursor__inner'
-              cx='12.5'
-              cy='12.5'
-              r='6.25'
-            />
-          </svg>
+          <c-cursor>
+          </c-cursor>
 
           <c-footer
             socialLinks='{{site.social_links}}'

@@ -33,7 +33,10 @@ export class Navbar extends LitElement {
   static styles = css`
     :host {
       box-sizing: border-box;
-      padding: var(--spacing-2);
+      padding-bottom: var(--spacing-2);
+      padding-left: 6.2vw;
+      padding-right: 6.2vw;
+      padding-top: var(--spacing-2);
       position: fixed;
       top: 0;
       transition: all .8s;
@@ -44,12 +47,23 @@ export class Navbar extends LitElement {
     @media (min-width: 320px) {
 
       :host {
-        padding: var(--spacing-5);
+        padding-bottom: var(--spacing-4);
+        padding-top: var(--spacing-4);
+      }
+
+    }
+
+    @media (min-width: 480px) {
+
+      :host {
+        padding-bottom: var(--spacing-3);
+        padding-top: var(--spacing-3);
       }
 
     }
 
     .c-navbar__inner {
+      align-items: center;
       display: grid;
       grid-auto-columns: min-content;
       grid-auto-flow: column;
@@ -58,14 +72,33 @@ export class Navbar extends LitElement {
 
     .c-navbar__branding {
       display: inline-block;
-      width: 4.6875rem;
+      width: 4rem;
+    }
+
+
+    @media (min-width: 320px) {
+
+      .c-navbar__branding {
+        width: 4.6875rem;
+      }
+
     }
 
     .c-navbar__menu-button {
       cursor: pointer;
-      display: inline-block;
-      width: 20px;
+      display: grid;
+      width: 1rem;
     }
+
+    @media (min-width: 320px) {
+
+      .c-navbar__menu-button {
+        width: 1.25rem;
+      }
+
+    }
+
+
   `
 
   menuToggleEl = createRef<HTMLDivElement>()

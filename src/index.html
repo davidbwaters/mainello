@@ -32,7 +32,7 @@
         <div id='#c-hero' asscroll
           class='c-hero u-margin-20vh-bottom o-gc-grid'>
 
-          <h1 class='c-tagline u-bg-blur-primary-1 u-heading-huge-fluid'>
+          <h1 class='c-tagline u-bg-blur-primary-1 u-heading-huge'>
             <span>{{home.hero_line_1}}</span>
             <span>
               <span>{{home.hero_line_2}}</span>
@@ -102,6 +102,7 @@
               slug='{{this.slug}}'
             >
               <c-button
+              class='js-cursor-target'
                 link='/news/{{this.slug}}.html'
                 text='read more'
               >
@@ -115,18 +116,8 @@
 
       </main>
 
-      <svg
-        class='c-cursor'
-        width='25' height='25'
-        viewBox='0 0 25 25'
-      >
-        <circle
-          class='c-cursor__inner'
-          cx='12.5'
-          cy='12.5'
-          r='6.25'
-        />
-      </svg>
+      <c-cursor>
+      </c-cursor>
 
       <c-footer
         socialLinks='{{site.social_links}}'

@@ -45,11 +45,13 @@ export class ScrollingTags extends LitElement {
       grid-auto-flow: column;
       grid-column: 1 / span 2;
       justify-content: start;
-      padding: var(--spacing-6) 0;
+      padding-bottom: var(--spacing-4);
+      padding-top: var(--spacing-4);
       transform: rotate(.1deg);
       white-space: nowrap;
       will-change: transform;
     }
+
     @media (min-width: 320px) {
       :host {
         font-size: 8vw;
@@ -62,6 +64,8 @@ export class ScrollingTags extends LitElement {
         display: grid;
         font-size: 6vw;
         grid-column: 2 / span 14;
+        padding-bottom: var(--spacing-6);
+        padding-top: var(--spacing-6);
       }
     }
 

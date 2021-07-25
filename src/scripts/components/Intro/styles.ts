@@ -11,9 +11,32 @@ export default css`
     display: block;
     height: 100%;
     max-height: 100vh;
-    position: absolute;
+    position: fixed;
+    top: 0;
     width: 100%;
-    z-index: 99;
+    z-index: 90;
+  }
+
+  .c-intro {
+    align-content: center;
+    background-color: var(--color-platinum);
+    display: grid;
+    height: 100%;
+    justify-content: center;
+    overflow: hidden;
+    position: absolute;
+    transition: all .8s;
+    will-change: background-color, opacity;
+    width: 100%;
+    z-index: 10;
+  }
+
+  .c-intro__background {
+    height: 100vmax;
+    transition: all .8s;
+    width: 180vmax;
+    will-change: background-color, opacity;
+    z-index: 0;
   }
 
   .c-intro__grid {
@@ -91,28 +114,6 @@ export default css`
         0.167fr
         0.083fr;
     }
-  }
-
-  .c-intro {
-    align-content: center;
-    background-color: var(--color-platinum);
-    display: grid;
-    height: 100%;
-    justify-content: center;
-    overflow: hidden;
-    position: absolute;
-    transition: all .8s;
-    will-change: background-color, opacity;
-    width: 100%;
-    z-index: 10;
-  }
-
-  .c-intro__background {
-    height: 100vmax;
-    transition: all .8s;
-    width: 180vmax;
-    will-change: background-color, opacity;
-    z-index: 0;
   }
 
   .c-intro .c-intro__grid {

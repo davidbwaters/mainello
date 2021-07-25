@@ -66,7 +66,6 @@ export class Button extends LitElement {
   })
   text:string
 
-
   @property({
     type: String,
     attribute: true
@@ -99,6 +98,12 @@ export class Button extends LitElement {
 
     }
 
+
+  }
+
+  protected createRenderRoot():Button {
+
+    return this
 
   }
 
@@ -140,13 +145,6 @@ export class Button extends LitElement {
       }
 
     `
-
-  }
-
-
-  protected createRenderRoot():Button {
-
-    return this
 
   }
 

@@ -5,8 +5,7 @@
 .o-gc-grid {
   display: grid;
   grid-template-columns:
-    0.5fr
-    0.5fr;
+    50% 50%;
   grid-template-rows:
     0.2fr
     0.135fr
@@ -93,6 +92,7 @@
 
 .o-gc-grid--columns {
   grid-template-rows: auto;
+  height: auto;
   min-height: 0;
 }
 

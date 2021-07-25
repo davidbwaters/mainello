@@ -43,20 +43,8 @@
 }
 
 .u-heading-huge {
-  font-size: var(--font-size-large-1);
+  font-size: var(--font-size-large-6);
   font-weight: var(--font-weight-normal);
-}
-
-@media (min-width: 320px) {
-  .u-heading-huge {
-    font-size: var(--font-size-large-2);
-  }
-}
-
-@media (min-width: 768px) {
-  .u-heading-huge {
-    font-size: var(--font-size-large-4);
-  }
 }
 
 
@@ -83,6 +71,11 @@
   }
 }
 
+@media (min-width: 1080px) {
+  .u-heading-huge-fluid {
+    font-size: 5vw;
+  }
+}
 
 .u-heading-lighter {
   font-weight: var(--font-weight-normal);

@@ -13,6 +13,7 @@ import {
 } from 'lit/decorators.js'
 
 import inViewport from './../lib/inViewport'
+import ClassicalNoise from './../lib/ClassicalNoise'
 
 
 declare global {
@@ -31,48 +32,37 @@ export class Curves extends LitElement {
       height: 60vh;
       position: relative;
     }
-
-    .c-curves__fade {
-      background-image:
-        linear-gradient(
-          0deg,
-          white 0%,
-          rgba(255,255,255,0.1) 25%,
-          rgba(255,255,255,0.1) 75%,
-          white 100%
-        );
-      content: '';
-      display: block;
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      z-index: 2;
-      top: 0;
-    }
   `
 
   baseFrameRate = 12
   frameRate = this.baseFrameRate
+  variation = 0.001
+  amp = 200
+  perlin = new ClassicalNoise()
+  variators = []
 
-  instance
 
-  private _wrapper:HTMLDivElement
-
+  canvas:HTMLCanvasElement
+  ctx:CanvasRenderingContext2D
+  canvasWidth
+  canvasHeight
+  startY
+  maxLines
 
   private _createWrapper() {
 
-    const el = document.createElement('div')
-
-    el.id = 'c-curves__inner'
+    const el = document.createElement('canvas')
 
     this.appendChild(el)
-    this._wrapper = el
+
+    this.canvas = el
+    this.ctx = this.canvas.getContext('2d')
 
   }
 
   private _inViewort() {
 
-    inViewport(this._wrapper, el => {
+    inViewport(this.canvas, el => {
 
       if (el.isIntersecting) {
 
@@ -89,104 +79,77 @@ export class Curves extends LitElement {
 
   }
 
-  sketch = (sketch): void => {
+  draw():void {
 
-    sketch.setup = () => {
+    this.ctx.shadowColor = 'rgba(0, 0, 0, 0)'
+    this.ctx.shadowBlur = 0
 
-      let wrapperSize = this.getBoundingClientRect()
+    for (let i = 0; i <= this.maxLines; i++) {
 
-      const canvas = sketch.createCanvas(
-        wrapperSize.width,
-        wrapperSize.height
-      )
+      let y
 
-      sketch.windowResized = () => {
+      this.ctx.beginPath()
+      this.ctx.moveTo(0, this.startY)
 
-        wrapperSize = this.getBoundingClientRect()
+      for (let x = 0; x <= this.canvasWidth; x++) {
 
-        sketch.resizeCanvas(
-          wrapperSize.width,
-          wrapperSize.height
+        y = this.perlin.noise(
+          x * this.variation + this.variators[i],
+          x * this.variation, 0
+        )
+
+        this.ctx.lineTo(
+          x, this.startY + this.amp * y
         )
 
       }
 
-      canvas.parent('c-curves__inner')
+      const color = Math.floor(150 * Math.abs(y))
+      const alpha = Math.min(Math.abs(y) + 0.1, 0.25)
 
-      sketch.strokeWeight(1)
-      sketch.noFill()
-      sketch.background(255)
+      this.ctx.lineWidth = 1
+      this.ctx.strokeStyle = 'rgba(114,181,175,' + alpha * 2 + ')'
+      this.ctx.stroke()
+      this.ctx.closePath()
 
-    }
-
-    sketch.drawPerlinCurve = (
-      x, y, phase, step, numCurveVertices
-    ) => {
-
-      sketch.push()
-      //sketch.stroke(114,180,174, 60)
-      sketch.stroke(220, 60)
-
-      const noiseScale = 0.004
-
-      sketch.beginShape()
-
-      for (let i = 0; i < numCurveVertices; i++) {
-
-        sketch.curveVertex(x, y)
-        const angle =
-            sketch.TWO_PI *
-            sketch.noise(
-              x * noiseScale,
-              y * noiseScale,
-              phase * noiseScale
-            )
-        x += sketch.cos(angle) * step
-        y += sketch.sin(angle) * step
-
-      }
-
-      sketch.endShape()
-      sketch.pop()
+      this.variators[i] += 0.005
 
     }
 
-    sketch.applyFade = () => {
+  }
 
-      sketch.push()
-      //sketch.fill(255, 80)
-      sketch.pop()
+  animateCanvas() {
 
-    }
+    this.ctx.clearRect(
+      0, 0, this.canvasWidth, this.canvasHeight
+    )
 
-    sketch.draw = () => {
+    this.draw()
 
-      sketch.frameRate(this.frameRate)
+    requestAnimationFrame(
+      this.animateCanvas.bind(this)
+    )
 
-      const STEP = 20
-      const numCurveVertices = sketch.floor(
-        sketch.width * 1.5 / STEP
-      )
+  }
 
-      sketch.background(255, 80)
+  resizeCanvas():void {
 
-      sketch.push()
-      sketch.scale(1)
+    const size = this.getBoundingClientRect()
 
-      const phase = sketch.frameCount / 2
+    this.canvasWidth = size.width
+    this.canvasHeight = size.height
 
-      for (let y = 0; y < sketch.height; y += 20) {
+    this.canvas.setAttribute(
+      'width',
+      this.canvasWidth
+    )
 
-        sketch.drawPerlinCurve(
-          sketch.width + 50,
-          y, phase, STEP, numCurveVertices
-        )
+    this.canvas.setAttribute(
+      'height',
+      this.canvasHeight
+    )
 
-      }
-
-      sketch.pop()
-
-    }
+    this.startY = this.canvasHeight / 2
 
   }
 
@@ -194,8 +157,28 @@ export class Curves extends LitElement {
 
     this._createWrapper()
     this._inViewort()
+    this.resizeCanvas()
 
-    this.instance = new window.p5(this.sketch)
+    this.maxLines = (
+      navigator.userAgent.toLowerCase()
+        .indexOf('firefox') > -1
+    ) ? 25 : 40
+
+    for (
+      let i = 0, u = 0; i < this.maxLines; i++, u += 0.02
+    ) {
+
+      this.variators[i] = u
+
+    }
+
+    this.animateCanvas.bind(this)
+
+    this.animateCanvas()
+
+    window.addEventListener(
+      'resize', this.resizeCanvas
+    )
 
   }
 
@@ -203,7 +186,6 @@ export class Curves extends LitElement {
 
     return html`
       <slot></slot>
-      <div class="c-curves__fade"></div>
     `
 
   }

@@ -1,4 +1,4 @@
-const ClassicalNoise = function(r) {
+const ClassicalNoise = function(r?) {
 
   // Classic Perlin noise in 3D, for comparison
 
@@ -138,3 +138,5 @@ ClassicalNoise.prototype.noise = function(x, y, z) {
   return nxyz
 
 }
+
+export default ClassicalNoise

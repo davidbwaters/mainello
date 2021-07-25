@@ -120,7 +120,8 @@ export class FluidReveal extends LitElement {
         display: block;
         height: 100vh;
         overflow: hidden;
-        padding: var(--spacing-3);
+        padding-bottom: 10vh;
+        padding-top: 10vh;
         top: 0;
         width: 100%;
       }

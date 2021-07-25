@@ -40,7 +40,7 @@ export class Curves extends LitElement {
   amp = 200
   perlin = new ClassicalNoise()
   variators = []
-
+  isAnimating = false
 
   canvas:HTMLCanvasElement
   ctx:CanvasRenderingContext2D
@@ -48,6 +48,7 @@ export class Curves extends LitElement {
   canvasHeight
   startY
   maxLines
+  animationInstance
 
   private _createWrapper() {
 
@@ -68,10 +69,28 @@ export class Curves extends LitElement {
 
         this.frameRate = this.baseFrameRate
 
+        if (this.isAnimating === false) {
+
+          this.isAnimating = true
+          this.animateCanvas()
+
+        }
+
       }
+
       else {
 
         this.frameRate = 1
+
+
+        if (this.isAnimating === true) {
+
+          this.isAnimating = false
+          cancelAnimationFrame(
+            this.animationInstance
+          )
+
+        }
 
       }
 
@@ -104,7 +123,7 @@ export class Curves extends LitElement {
 
       }
 
-      const color = Math.floor(150 * Math.abs(y))
+      // const color = Math.floor(150 * Math.abs(y))
       const alpha = Math.min(Math.abs(y) + 0.1, 0.25)
 
       this.ctx.lineWidth = 1
@@ -118,7 +137,7 @@ export class Curves extends LitElement {
 
   }
 
-  animateCanvas() {
+  animateCanvas():void {
 
     this.ctx.clearRect(
       0, 0, this.canvasWidth, this.canvasHeight
@@ -126,7 +145,7 @@ export class Curves extends LitElement {
 
     this.draw()
 
-    requestAnimationFrame(
+    this.animationInstance = requestAnimationFrame(
       this.animateCanvas.bind(this)
     )
 
@@ -159,7 +178,6 @@ export class Curves extends LitElement {
     this.resizeCanvas.bind(this)
 
     this._createWrapper()
-    this._inViewort()
     this.resizeCanvas()
 
     this.maxLines = (
@@ -176,9 +194,10 @@ export class Curves extends LitElement {
     }
 
     this.animateCanvas()
+    this._inViewort()
 
     window.addEventListener(
-      'resize', this.resizeCanvas
+      'resize', this.resizeCanvas.bind(this)
     )
 
   }

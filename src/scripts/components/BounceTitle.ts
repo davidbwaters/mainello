@@ -97,7 +97,7 @@ export class BounceTitle extends LitElement {
 
   sketch = (sketch):void => {
 
-    const text = ' ' + this.text + ' '
+    const text = this.text
 
     let font:any
     let angle = 0
@@ -142,7 +142,13 @@ export class BounceTitle extends LitElement {
 
       sketch.background(114, 180, 174, 60)
 
-      sketch.textSize(sketch.width / 10)
+      sketch.textSize(
+        Math.min(
+          sketch.width /
+          (text.length - 1) * 0.67,
+          80
+        ) * sketch.pixelDensity()
+      )
       sketch.textFont(font)
 
       const startX = (

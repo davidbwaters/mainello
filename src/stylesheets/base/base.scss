@@ -43,6 +43,18 @@ main {
   width: 100%;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-large-2);
+  font-weight: var(--font-weight-normal);
+  margin-bottom: .5em;
+  margin-top: 0;
+}
+
 a {
   color: inherit;
   cursor: pointer;

@@ -5,14 +5,16 @@
 import '../stylesheets/app.scss'
 import '../stylesheets/home.scss'
 
+import 'intersection-observer'
 import ASScroll from '@ashthornton/asscroll'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import barba from '@barba/core'
 import barbaPrefetch from '@barba/prefetch'
 
-import Cursor from './lib/cursor'
+import Cursor from './lib/Cursor'
 import ButtonControl from './lib/buttonControl'
+
 
 declare global {
   interface Window {
@@ -132,15 +134,6 @@ function cursorSetup() {
   const cursor = new Cursor(
     document.querySelector('.c-cursor')
   )
-  const buttonEls = document.querySelectorAll('c-button')
-  buttonEls.forEach(buttonEl => {
-
-    const button = new ButtonControl(buttonEl)
-
-    button.on('enter', () => cursor.enter())
-    button.on('leave', () => cursor.leave())
-
-  })
 
 }
 
@@ -163,9 +156,13 @@ function barbaSetup() {
 
       ScrollTrigger.refresh()
 
-      cursorSetup()
+      setTimeout(() => {
 
-    }, 400)
+        cursorSetup()
+
+      }, 400)
+
+    }, 800)
 
 
   })

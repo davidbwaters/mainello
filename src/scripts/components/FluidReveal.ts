@@ -197,20 +197,21 @@ export class FluidReveal extends LitElement {
 
     this.items.forEach((item, index) => {
 
-      const a = document.createElement('a')
       const button = document.createElement('c-button')
 
-      a.setAttribute(
-        'href', '/work/' + item.slug + '.html'
+      button.setAttribute(
+        'link', '/work/' + item.slug + '.html'
       )
 
-      a.innerText = 'view project'
+      button.setAttribute(
+        'text', 'view project'
+      )
+
 
       button.setAttribute(
         'slot', index.toString()
       )
 
-      button.appendChild(a)
       this.appendChild(button)
 
     })

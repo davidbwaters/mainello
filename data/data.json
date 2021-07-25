@@ -48,7 +48,12 @@
     "footer_lower": "<p>all rights reserved.</p>",
     "logo_header": "https://admin.mainellomontage.com/assets/c9050f2a-53a1-4423-91fe-f1b79222a4a3",
     "logo_footer": "https://admin.mainellomontage.com/assets/2bf8c955-ff7f-4193-93b1-44910ef78959",
-    "work_header_text": "lorem ipsum dolor sit amet, consectetur adipiscing elit. tellus, commodo ornare aenean amet, mi sed accumsan. lectus vel volutpat id mi aenean at elit vitae dictum. a ac eu platea iaculis sagittis scelerisque semper blandit."
+    "work_header_text": "lorem ipsum dolor sit amet, consectetur adipiscing elit. tellus, commodo ornare aenean amet, mi sed accumsan. lectus vel volutpat id mi aenean at elit vitae dictum. a ac eu platea iaculis sagittis scelerisque semper blandit.",
+    "contact_heading": "let's collaborate",
+    "contact_phone": "000-000-0000",
+    "contact_form_success_heading": "success!",
+    "contact_form_success_text": "thanks for reaching out.  you'll hear from us shortly.",
+    "work_heading": "selected work"
   },
   "news": [
     {
@@ -100,7 +105,7 @@
       "status": "published",
       "sort": null,
       "date_created": "2021-07-04T19:41:25Z",
-      "date_updated": "2021-07-19T21:59:21Z",
+      "date_updated": "2021-07-25T00:11:25Z",
       "featured_image": "https://admin.mainellomontage.com/assets/64732256-4275-4248-8515-9ca2bdfeee7b",
       "heading": "a new take on outdoors",
       "title": "retrospec",
@@ -108,6 +113,9 @@
       "description_text": "<div>\n<div>lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>\n</div>",
       "slug": "retrospec",
       "cover_image": "https://admin.mainellomontage.com/assets/f34f5eaa-5ef0-43b7-9566-c7116fc5d55c",
+      "category": {
+        "branding": "branding"
+      },
       "content": [
         {
           "component": "featured_video",
@@ -147,7 +155,7 @@
       "status": "published",
       "sort": null,
       "date_created": "2021-07-04T16:54:25Z",
-      "date_updated": "2021-07-19T23:59:46Z",
+      "date_updated": "2021-07-25T00:11:25Z",
       "featured_image": "https://admin.mainellomontage.com/assets/33e8c999-76a5-493f-a028-6392726c69d0",
       "heading": "a modern look for a traditional industry",
       "title": "orion electric",
@@ -155,6 +163,9 @@
       "description_text": "<div>\n<div>lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>\n</div>",
       "slug": "orion-electric",
       "cover_image": "https://admin.mainellomontage.com/assets/9dccd662-23d8-475a-943f-3d860f0ed250",
+      "category": {
+        "branding": "branding"
+      },
       "content": [
         {
           "component": "featured_video",
@@ -256,7 +267,7 @@
       "status": "published",
       "sort": null,
       "date_created": "2021-06-30T05:11:22Z",
-      "date_updated": "2021-07-10T03:21:25Z",
+      "date_updated": "2021-07-25T00:11:25Z",
       "featured_image": "https://admin.mainellomontage.com/assets/2672fbd4-9dd6-4ce7-9a80-a9f56c48723e",
       "heading": "tracking your financial roadmap",
       "title": "fitbux",
@@ -264,6 +275,9 @@
       "description_text": "<p>lorem ipsum is simply dummy text of the printing and typesetting industry. lorem ipsum has been the industry&rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>",
       "slug": "fitbux",
       "cover_image": "https://admin.mainellomontage.com/assets/e3a88617-f110-47a6-9d8b-f92c16cf6475",
+      "category": {
+        "branding": "branding"
+      },
       "content": [
         {
           "component": "labeled_text",
@@ -341,21 +355,21 @@
   "home": {
     "id": 1,
     "hero_line_1": "bespoke",
-    "hero_line_2": "digital design",
+    "hero_line_2": "user experience",
     "hero_line_3": "agency",
-    "cta": "leading digital agency with solid design and development expertise. we build readymade websites, mobile applications, and elaborate online business services.",
+    "cta": "leading digital agency with solid design and development expertise. we specialize in defining the user ex and build readymade websites, mobile applications, and elaborate online business services.",
     "scrolling_tag_row_1": [
       {
-        "name": "branding"
+        "name": "brand strategy"
       },
       {
         "name": "identity"
       },
       {
-        "name": "interaction design"
+        "name": "product design"
       },
       {
-        "name": "ui + visual"
+        "name": "ui + ux"
       }
     ],
     "scrolling_tag_row_2": [

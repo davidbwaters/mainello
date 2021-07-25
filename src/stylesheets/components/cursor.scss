@@ -15,9 +15,10 @@
 		display: block;
 		pointer-events: none;
 	}
+
 	.c-cursor__inner {
-		fill: var(--cursor-fill);
-		stroke: var(--cursor-stroke);
+		fill: transparent;
+		stroke: var(--color-gray);
 		stroke-width: var(--cursor-stroke-width);
 	}
 

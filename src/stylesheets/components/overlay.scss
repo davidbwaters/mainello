@@ -1,0 +1,35 @@
+//
+// overlay
+//
+
+.c-overlay{
+  align-content: center;
+  backdrop-filter: blur(4rem);
+  background-color: rgba(255, 255, 255, 0.8);
+  display: grid;
+  height: 100vh;
+  justify-content: center;
+  justify-items: center;
+  left: 0;
+  position: fixed;
+  top: 0vh;
+  transition: transform 0.6s, opacity 0.3s .3s;
+  width: 100vw;
+  will-change: transform, opacity;
+  z-index: 10;
+}
+
+.c-overlay[data-hidden=true] {
+  opacity: 0;
+  pointer-events: none;
+  top: 100vh;
+  transform: translateY(100vh);
+}
+
+.c-overlay__figure {
+  height: 40vmin;
+  margin: 0;
+  max-height: 30rem;
+  max-width: 30rem;
+  width: 60vmin;
+}

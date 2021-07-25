@@ -101,10 +101,10 @@
               content='{{this.content}}'
               slug='{{this.slug}}'
             >
-              <c-button>
-                <a href='/news/{{this.slug}}.html'>
-                  read more
-                </a>
+              <c-button
+                link='/news/{{this.slug}}.html'
+                text='read more'
+              >
               </c-button>
             </c-blog-post>
           {{/each}}

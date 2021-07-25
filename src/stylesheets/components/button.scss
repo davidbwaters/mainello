@@ -2,6 +2,10 @@
 // button
 //
 
+c-button {
+  display: inline-block;
+}
+
 .c-button {
   background-color: white;
   border: solid 1px var(--color-opaque-dark-subtle);
@@ -11,6 +15,7 @@
   display: inline-block;
   font-family: var(--font-mono);
   font-size: var(--font-size-mono-normal);
+  overflow: hidden;
   padding-bottom: 1em;
   padding-left: 1.5em;
   padding-right: 1.5em;
@@ -21,13 +26,40 @@
 }
 
 .c-button:hover {
-  background-color: var(--color-eerie-black);
   border-color: var(--color-eerie-black);
   color: white !important;
 }
 
 .c-button::selection {
   background-color: transparent;
+}
+
+.c-button__filler {
+	background: var(--color-eerie-black);
+	border-radius: 50%;
+	height: 200%;
+	left: -25%;
+	position: absolute;
+	top: -50%;
+	transform: translate3d(0, 100%, 0);
+  transition: all .4s;
+	width: 150%;
+  will-change: transform;
+}
+
+
+.c-button:hover .c-button__filler {
+  transform: translate3d(0,0%,0);
+}
+
+.c-button__text,
+.c-button__text-inner {
+	align-items: center;
+	display: flex;
+	height: 100%;
+	justify-content: center;
+  position: relative;
+	width: 100%;
 }
 
 .c-button--large {

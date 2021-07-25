@@ -16,10 +16,14 @@ export default class Cursor {
   renderedStyles
   onMouseMove
 
-  constructor(el) {
+  constructor(el:HTMLElement) {
 
     this.DOM = { el: el }
     this.DOM.el.style.opacity = 0
+
+    this.DOM.el.style.setProperty(
+      '--cursor-stroke-width', '1'
+    )
 
     this.bounds = this.DOM.el.getBoundingClientRect()
 
@@ -38,12 +42,15 @@ export default class Cursor {
       this.renderedStyles.ty.previous =
         this.renderedStyles.ty.previous =
           mouse.y - this.bounds.height / 2
+
       gsap.to(this.DOM.el, {
         duration: 0.9,
         ease: 'Power3.easeOut',
         opacity: 1
       })
+
       requestAnimationFrame(() => this.render())
+
       window.removeEventListener(
         'mousemove',
         this.onMouseMove
@@ -53,22 +60,34 @@ export default class Cursor {
     window.addEventListener('mousemove', this.onMouseMove)
 
   }
+
   enter(): void {
 
     this.renderedStyles['scale'].current = 4
-    this.renderedStyles['opacity'].current = 0.2
+    this.renderedStyles['opacity'].current = 0.5
+
+    this.DOM.el.style.setProperty(
+      '--cursor-stroke-width', '0.25'
+    )
 
   }
+
   leave(): void {
 
     this.renderedStyles['scale'].current = 1
     this.renderedStyles['opacity'].current = 1
 
+    this.DOM.el.style.setProperty(
+      '--cursor-stroke-width', '1'
+    )
+
   }
+
   render(): void {
 
     this.renderedStyles['tx'].current =
       mouse.x - this.bounds.width / 2
+
     this.renderedStyles['ty'].current =
       mouse.y - this.bounds.height / 2
 
@@ -83,6 +102,7 @@ export default class Cursor {
     }
 
     this.DOM.el.style.transform = `translateX(${this.renderedStyles['tx'].previous}px) translateY(${this.renderedStyles['ty'].previous}px) scale(${this.renderedStyles['scale'].previous})`
+
     this.DOM.el.style.opacity =
       this.renderedStyles['opacity'].previous
 

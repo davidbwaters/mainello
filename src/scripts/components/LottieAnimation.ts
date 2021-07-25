@@ -50,13 +50,7 @@ export class LottieAnimation extends LitElement {
     type: String,
     attribute: true
   })
-  filename:string
-
-  @property({
-    type: Boolean,
-    attribute: true
-  })
-  open:boolean
+  name:string
 
   @property({
     type: Number,
@@ -80,7 +74,7 @@ export class LottieAnimation extends LitElement {
       renderer: 'canvas',
       loop: true,
       autoplay: true,
-      path: '/animations/' + this.filename + '.json',
+      path: '/animations/' + this.name + '.json',
       rendererSettings: {
         preserveAspectRatio: 'none'
       }

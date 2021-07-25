@@ -38,9 +38,9 @@ export default class ButtonControl extends EventEmitter {
 
     this.DOM = { el: el }
 
-    console.log(this.DOM.el)
     this.DOM.text =
       this.DOM.el.querySelector('.c-button__text')
+
     this.DOM.textinner = this.DOM.el.querySelector(
       '.c-button__text-inner'
     )
@@ -58,12 +58,15 @@ export default class ButtonControl extends EventEmitter {
     }
     // calculate size/position
     this.calculateSizePosition()
+
     // init events
     this.initEvents()
+
     // loop fn
     requestAnimationFrame(() => this.render())
 
   }
+
   calculateSizePosition():void {
 
     this.rect = this.DOM.el.getBoundingClientRect()
@@ -74,12 +77,22 @@ export default class ButtonControl extends EventEmitter {
     this.distanceToTrigger = this.rect.width * 0.7
 
   }
+
   initEvents():void {
 
-    this.onResize = () => this.calculateSizePosition()
+    this.onResize = () => {
+
+      setTimeout(() => {
+
+        this.calculateSizePosition()
+
+      }, 400)
+
+    }
     window.addEventListener('resize', this.onResize)
 
   }
+
   render():void {
 
     // calculate the distance from the mouse to the center
@@ -140,13 +153,12 @@ export default class ButtonControl extends EventEmitter {
     requestAnimationFrame(() => this.render())
 
   }
+
   enter():void {
 
-    this.emit('enter')
+    this.emit('mouseEnter')
     this.state.hover = true
     this.DOM.el.classList.add('c-button--hover')
-    document.body.classList.add('active')
-
     gsap.killTweensOf(this.DOM.filler)
     gsap.killTweensOf(this.DOM.textinner)
 
@@ -154,7 +166,7 @@ export default class ButtonControl extends EventEmitter {
       .timeline()
       .to(this.DOM.filler, 0.5, {
         ease: 'Power3.easeOut',
-        startAt: { y: '75%' },
+        startAt: { y: '100%' },
         y: '0%'
       })
       .to(
@@ -180,36 +192,36 @@ export default class ButtonControl extends EventEmitter {
       )
 
   }
+
   leave():void {
 
-    this.emit('leave')
+    this.emit('mouseLeave')
     this.state.hover = false
     this.DOM.el.classList.remove('c-button--hover')
-    document.body.classList.remove('active')
 
     gsap.killTweensOf(this.DOM.filler)
     gsap.killTweensOf(this.DOM.textinner)
 
     gsap
       .timeline()
-      .to(this.DOM.filler, 0.4, {
+      .to(this.DOM.filler, {
+        duration: 0.4,
         ease: 'Power3.easeOut',
-        y: '-75%'
+        y: '-100%'
       })
       .to(
         this.DOM.textinner,
-        0.1,
         {
+          duration: 0.4,
           ease: 'Power3.easeOut',
-          opacity: 0,
           y: '10%'
         },
         0
       )
       .to(
         this.DOM.textinner,
-        0.25,
         {
+          duration: 0.4,
           ease: 'Power3.easeOut',
           opacity: 1,
           startAt: { y: '-30%', opacity: 1 },

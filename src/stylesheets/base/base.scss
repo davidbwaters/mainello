@@ -10,7 +10,7 @@
 }
 
 body {
-  font-size: calc(var(--font-size-normal) * .7);
+  font-size: var(--font-size-normal);
   height: 100%;
   line-height: var(--line-height-normal);
   margin: 0;

@@ -155,6 +155,9 @@ export class Curves extends LitElement {
 
   firstUpdated(): void {
 
+    this.animateCanvas.bind(this)
+    this.resizeCanvas.bind(this)
+
     this._createWrapper()
     this._inViewort()
     this.resizeCanvas()
@@ -171,8 +174,6 @@ export class Curves extends LitElement {
       this.variators[i] = u
 
     }
-
-    this.animateCanvas.bind(this)
 
     this.animateCanvas()
 

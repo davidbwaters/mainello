@@ -141,7 +141,7 @@ export class FluidReveal extends LitElement {
 
       .c-fluid-reveal__heading {
         cursor: text;
-        font-size: var(--font-size-large-3);
+        font-size: var(--font-size-large-5);
       }
 
       .c-fluid-reveal__content p,
@@ -206,7 +206,6 @@ export class FluidReveal extends LitElement {
       button.setAttribute(
         'text', 'view project'
       )
-
 
       button.setAttribute(
         'slot', index.toString()

@@ -55,7 +55,7 @@ export class Footer extends LitElement {
     }
 
     .c-footer__inner {
-      align-content: space-between;
+      align-content: center;
       box-sizing: border-box;
       display: grid;
       grid-template-columns: 87.6vw;
@@ -68,6 +68,7 @@ export class Footer extends LitElement {
 
     .c-footer__contact {
       display: grid;
+      justify-content: center;
       margin: 0;
       padding-bottom: 21.7vh;
       padding-top: 21.7vh;
@@ -86,6 +87,7 @@ export class Footer extends LitElement {
     .c-footer__lower {
       display: grid;
       gap: 6.2vh;
+      grid-template-columns: 1fr 5fr 1fr;
       justify-content: space-between;
       padding-bottom: 6.2vh;
       padding-top: 6.2vh;
@@ -101,7 +103,7 @@ export class Footer extends LitElement {
     }
 
     .c-footer__logo {
-      width: 45px;
+      width: 5rem
     }
 
     .c-footer__nav {
@@ -116,7 +118,7 @@ export class Footer extends LitElement {
       .c-footer__nav {
         grid-column: span 2;
         grid-row: 1;
-        justify-content: space-between;
+        justify-content: centern;
       }
 
     }

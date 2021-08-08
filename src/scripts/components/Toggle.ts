@@ -85,7 +85,7 @@ export class Toggle extends LitElement {
       <input
         type='checkbox'
         id='${this.key}'
-        nane='${this.key}'
+        name='${this.key}'
         class='c-toggle__input'
       >
       <label for=${this.key} class='c-toggle__label'>

@@ -134,6 +134,20 @@ function scrollSetup() {
 
 function prepVideos() {
 
+  const videos = document.querySelectorAll('video')
+
+  if (videos) {
+
+
+    videos.forEach((vid:HTMLVideoElement) => {
+
+      console.log(vid)
+      vid.play()
+
+    })
+
+  }
+
   const slowVids = document.querySelectorAll('.js-video-slow')
 
   if (slowVids) {
@@ -141,18 +155,6 @@ function prepVideos() {
     slowVids.forEach((vid:HTMLVideoElement) => {
 
       vid.playbackRate = 0.5
-
-    })
-
-  }
-
-  const videos = document.querySelectorAll('video')
-
-  if (videos) {
-
-    videos.forEach((vid:HTMLVideoElement) => {
-
-      vid.play()
 
     })
 
@@ -194,6 +196,7 @@ function barbaSetup() {
       asscroll.resize()
 
       ScrollTrigger.refresh()
+      prepVideos()
 
     }, 1000)
 
@@ -216,7 +219,7 @@ function barbaSetup() {
     transitions: [
       {
         name: 'default-transition',
-        leave(data): any {
+        leave(data):any {
 
           if (navbarEl.open) {
 
@@ -236,7 +239,7 @@ function barbaSetup() {
           )
 
         },
-        enter(data): any {
+        enter(data):any {
 
           data.current.container.style.position = 'absolute'
 

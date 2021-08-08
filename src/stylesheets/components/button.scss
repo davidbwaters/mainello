@@ -22,7 +22,8 @@ c-button {
   padding-top: .9em;
   position: relative;
   text-decoration: none;
-  transition: all .4s;
+  transition: color .4s;
+  will-change: transform, color;
 }
 
 .c-button:hover {

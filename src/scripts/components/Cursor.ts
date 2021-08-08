@@ -353,7 +353,7 @@ export class Cursor extends LitElement {
           this._activeTarget, {
             x: magneticX,
             y: magneticY,
-            duration: 0.05
+            duration: 0.15
           }
         )
 

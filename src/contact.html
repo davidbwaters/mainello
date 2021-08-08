@@ -261,6 +261,8 @@
             '&' +
             serialize(theForm)
 
+          console.log(formData)
+
           const options = {
             method: 'POST',
             headers: {
@@ -272,6 +274,8 @@
 
           fetch('/', options)
             .then(function (response) {
+
+              console.log(response)
 
               handleConfirm()
 

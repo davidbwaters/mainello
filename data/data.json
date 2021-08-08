@@ -53,7 +53,41 @@
     "contact_phone": "000-000-0000",
     "contact_form_success_heading": "success!",
     "contact_form_success_text": "thanks for reaching out.  you'll hear from us shortly.",
-    "work_heading": "selected work"
+    "work_heading": "selected work",
+    "contact_project_types": [
+      {
+        "name": "branding"
+      },
+      {
+        "name": "app design"
+      },
+      {
+        "name": "web design"
+      },
+      {
+        "name": "mobile development"
+      },
+      {
+        "name": "app from scratch"
+      },
+      {
+        "name": "site from scratch"
+      }
+    ],
+    "contact_prices": [
+      {
+        "name": "$10k - $25k"
+      },
+      {
+        "name": "$25k - $50k"
+      },
+      {
+        "name": "$50k - $100k"
+      },
+      {
+        "name": "$100k+"
+      }
+    ]
   },
   "news": [
     {
@@ -123,6 +157,7 @@
           "media": "https://admin.mainellomontage.com/assets/dd1c266c-2455-4bdd-a15d-8fbc5c5e0c7c",
           "spacing": "none",
           "loop": true,
+          "background_color": "#ffffff",
           "type": "video/mp4"
         },
         {
@@ -146,6 +181,7 @@
           "media": "https://admin.mainellomontage.com/assets/d6f6ac7e-78e8-4cec-b79b-258e4a112843",
           "spacing": "none",
           "loop": true,
+          "background_color": "#ffffff",
           "type": "video/mp4"
         }
       ]
@@ -173,6 +209,7 @@
           "media": "https://admin.mainellomontage.com/assets/d2460a04-33a5-4b96-a303-6640f644cbf2",
           "spacing": "none",
           "loop": false,
+          "background_color": "#ffffff",
           "type": "video/mp4"
         },
         {
@@ -263,11 +300,29 @@
       ]
     },
     {
+      "id": 4,
+      "status": "published",
+      "sort": null,
+      "date_created": "2021-08-08T00:58:20Z",
+      "date_updated": "2021-08-08T00:59:38Z",
+      "featured_image": "https://admin.mainellomontage.com/assets/d9f80460-1aec-4634-849a-7de2ec0f4630",
+      "heading": "Heading for Item 4",
+      "title": "fourth Item",
+      "description_label": "the problem",
+      "description_text": "<p>Lorem ipsum.</p>",
+      "slug": "item-4",
+      "cover_image": "https://admin.mainellomontage.com/assets/64732256-4275-4248-8515-9ca2bdfeee7b",
+      "category": [
+        "branding"
+      ],
+      "content": []
+    },
+    {
       "id": 1,
       "status": "published",
       "sort": null,
       "date_created": "2021-06-30T05:11:22Z",
-      "date_updated": "2021-07-25T00:11:25Z",
+      "date_updated": "2021-08-08T01:01:59Z",
       "featured_image": "https://admin.mainellomontage.com/assets/2672fbd4-9dd6-4ce7-9a80-a9f56c48723e",
       "heading": "tracking your financial roadmap",
       "title": "fitbux",
@@ -280,23 +335,12 @@
       },
       "content": [
         {
-          "component": "labeled_text",
-          "id": 1,
-          "sort": null,
-          "text": [
-            {
-              "paragraph": "lorem ipsum dolor sit amet, consectetur adipiscing elit. tellus, commodo ornare aenean amet, mi sed accumsan. lectus vel volutpat id mi aenean at elit vitae dictum. a ac eu platea iaculis sagittis scelerisque semper blandit. ipsum adipiscing ullamcorper sit elementum. aliquam ultrices amet viverra enim. gravida nibh ullamcorper nec in. lorem at vel morbi turpis elementum interdum malesuada. sed lectus ac sit nulla. commodo semper ut venenatis neque. urna risus sit libero amet. nunc faucibus nec dolor tortor laoreet odio nunc dui aliquam."
-            }
-          ],
-          "label": "the problem",
-          "bottom_border": false
-        },
-        {
           "component": "featured_video",
           "id": 1,
           "media": "https://admin.mainellomontage.com/assets/3d102d99-7beb-4bdf-b720-726ba312243a",
           "spacing": "none",
           "loop": false,
+          "background_color": "#ffffff",
           "type": "video/mp4"
         },
         {

@@ -17,6 +17,7 @@
   position: relative;
 }
 
+.c-form__line-field,
 .c-form__field {
   font-family: var(--font-normal);
   font-size: var(--font-size-large-1);
@@ -27,11 +28,11 @@
   width: 100%;
 }
 
-.c-form__field::after {
+.c-form__line-field::after {
   background-image: url('/images/wave-line.svg');
-  background-position: 0% bottom;
+  background-position: 100% bottom;
   background-repeat: no-repeat;
-  background-size: 300% calc(1.5em + .6em + .6em);
+  background-size: 300% 100%;
   content: '';
   display: block;
   height: 100%;
@@ -40,17 +41,22 @@
   pointer-events: none;
   position: absolute;
   top: 0;
-  transition-duration: 0.8s;
+  transition-duration: 0.0s;
   width: 100%;
   will-change: opacity, background-position;
 }
 
-.c-form__field[data-focus=true]::after {
+.c-form__line-field[data-filled=true]::after,
+.c-form__line-field[data-focus=true]::after {
+  transition-duration: 1.0s;
+}
+
+.c-form__line-field[data-focus=true]::after {
   opacity: 1;
 }
 
-.c-form__field[data-filled=true]::after {
-  background-position: 100% bottom;
+.c-form__line-field[data-filled=true]::after {
+  background-position: 0% bottom;
 }
 
 .c-form input,
@@ -68,36 +74,50 @@
   line-height: 1.5;
   padding-bottom: .6em;
   padding-top: .6em;
-  transition-duration: 0.8s;
+  transition-duration: 1.6s;
   width: 100%;
 }
 
-
-.c-form [data-filled=true] input,
-.c-form [data-filled=true] textarea {
+.c-form input,
+.c-form textarea {
   outline: none;
   width: 100%;
 }
 
-.c-form label {
-  display: block;
-  font-family: var(--font-mono);;
+.c-form [data-filled=true] input,
+.c-form [data-filled=true] textarea,
+.c-form [data-focus=true] input,
+.c-form [data-focus=true] textarea{
+  outline: none;
+}
+
+.c-form__line-field label,
+.c-form__heading {
+  font-family: var(--font-mono);
   font-size: var(--font-size-large-1);
+}
+
+.c-form__line-field label {
+  display: block;
   line-height: 1.5;
   opacity: .25;
   pointer-events: none;
   position: absolute;
   top: calc(.6em);
   transform-origin: top left;
-  transition-duration: 0.3s ;
-  transition-delay: .1s;
+  transition-duration: 0.4s ;
+  transition-delay: .2s;
   will-change: transform, opacity;
+}
+
+.c-form__heading {
+  margin-bottom: var(--spacing-7);
+  margin-top: var(--spacing-9);
 }
 
 .c-form [data-filled=true] label {
   opacity: 1;
   transform: scale(.6) translateY(-2em);
-  transition-delay: .275s;
 }
 
 .c-form__grow-wrap {
@@ -120,5 +140,4 @@
 .c-form__grow-wrap::after {
   grid-area: 1 / 1 / 2 / 2;
   white-space: pre-wrap;
-
 }

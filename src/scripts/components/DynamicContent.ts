@@ -70,6 +70,7 @@ export class DynamicContent extends LitElement {
             loop=${block.loop}
             link=${block.media}
             spacing=${block.spacing}
+            color=${block.background_color}
           >
           </c-featured-video>
         `
@@ -146,6 +147,15 @@ export class DynamicContent extends LitElement {
             stats='${JSON.stringify(block.stats)}'
           >
           </c-stat-columns>
+        `
+
+      }
+
+
+      if (block.component === 'line_divider') {
+
+        this._blocks += `
+          <div class='c-line'></div>
         `
 
       }

@@ -24,6 +24,19 @@ const navbarEl = document.querySelector('c-navbar')
 
 async function onInit() {
 
+  Promise.all([
+    import('./components/ContactFab'),
+    import('./components/Cursor'),
+    import('./components/Footer'),
+    import('./components/Navbar'),
+    import('./components/Rings'),
+    import('./components/Intro'),
+    import('./components/BlogPost'),
+    import('./components/Button'),
+    import('./components/FluidReveal'),
+    import('./components/LottieAnimation')
+  ])
+
   setTimeout(() => {
 
     if (document.querySelector('c-intro') === null) {
@@ -34,35 +47,29 @@ async function onInit() {
 
   }, 1000)
 
-  await import('./components/BlogPost')
-  await import('./components/Button')
-  await import('./components/ContactFab')
-  await import('./components/Curves')
-  await import('./components/Cursor')
-  await import('./components/FluidReveal')
-  await import('./components/Footer')
-  await import('./components/Intro')
-  await import('./components/Navbar')
-  await import('./components/NavMenu')
-  await import('./components/PageHeader')
-  await import('./components/Rings')
-  await import('./components/ScrollingTags')
-  await import('./components/SectionTitle')
+  Promise.all([
+    import('./components/NavMenu'),
+    import('./components/PageHeader'),
+    import('./components/ScrollingTags'),
+    import('./components/SectionTitle'),
+    import('./components/Article'),
+    import('./components/BounceTitle'),
+    import('./components/FeaturedImage'),
+    import('./components/FeaturedVideo'),
+  ])
 
-  await import('./components/Article')
-  await import('./components/BounceTitle')
-  await import('./components/FeaturedImage')
-  await import('./components/FeaturedVideo')
-  await import('./components/ImageRow')
-  await import('./components/ImageText')
-  await import('./components/LabeledText')
-  await import('./components/LiquidTitle')
-  await import('./components/LottieAnimation')
-  await import('./components/OffsetColumns')
-  await import('./components/Pattern')
-  await import('./components/StatColumns')
-  await import('./components/WarpText')
-  await import('./components/DynamicContent')
+  Promise.all([
+    import('./components/ImageRow'),
+    import('./components/ImageText'),
+    import('./components/LabeledText'),
+    import('./components/LiquidTitle'),
+    import('./components/OffsetColumns'),
+    import('./components/Pattern'),
+    import('./components/StatColumns'),
+    import('./components/Toggle'),
+    import('./components/WarpText'),
+    import('./components/DynamicContent')
+  ])
 
 }
 
@@ -76,6 +83,8 @@ async function handlePageLoad() {
 
     asscroll.resize()
     ScrollTrigger.refresh()
+    wrapLinks()
+    prepVideos()
 
   }, 1000)
 
@@ -84,9 +93,6 @@ async function handlePageLoad() {
 function scrollSetup() {
 
   gsap.registerPlugin(ScrollTrigger)
-
-  // const isTouch =
-  //  'ontouchstart' in document.documentElement
 
   asscroll = new ASScroll({
     disableRaf: true
@@ -126,7 +132,47 @@ function scrollSetup() {
 
 }
 
-function cursorSetup() {
+function prepVideos() {
+
+  const slowVids = document.querySelectorAll('.js-video-slow')
+
+  if (slowVids) {
+
+    slowVids.forEach((vid:HTMLVideoElement) => {
+
+      vid.playbackRate = 0.5
+
+    })
+
+  }
+
+  const videos = document.querySelectorAll('video')
+
+  if (videos) {
+
+    videos.forEach((vid:HTMLVideoElement) => {
+
+      vid.play()
+
+    })
+
+  }
+
+}
+
+function wrapLinks() {
+
+  const links = document.querySelectorAll('a')
+
+  links.forEach(a => {
+
+    if (a.children.length === 0) {
+
+      a.dataset.text = a.innerText
+
+    }
+
+  })
 
 }
 
@@ -149,19 +195,14 @@ function barbaSetup() {
 
       ScrollTrigger.refresh()
 
-      setTimeout(() => {
-
-        cursorSetup()
-
-      }, 400)
-
-    }, 800)
+    }, 1000)
 
 
   })
 
   barba.init({
     debug: true,
+    timeout: 5000,
     views: [
       {
         namespace: 'home',

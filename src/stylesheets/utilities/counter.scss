@@ -1,0 +1,15 @@
+//
+// counter
+//
+
+.u-counter-reset {
+  counter-reset: counter;
+}
+
+.u-counter-increment {
+  counter-increment: counter;
+}
+
+.u-counter-item::before {
+  content: counter(counter, decimal-leading-zero) ' .';
+}

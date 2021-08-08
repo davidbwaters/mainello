@@ -143,7 +143,7 @@ export class LabeledText extends LitElement {
 
     super.connectedCallback()
 
-    const spacing = '6.2vw'
+    const spacing = ' calc(5vh + 3.75vw)'
 
     this.border = JSON.parse(
       this.getAttribute('border')

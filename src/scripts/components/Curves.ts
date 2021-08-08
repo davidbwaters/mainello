@@ -14,7 +14,7 @@ import {
 
 import inViewport from './../lib/inViewport'
 import ClassicalNoise from './../lib/ClassicalNoise'
-
+import { Noise } from 'noisejs'
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -34,20 +34,20 @@ export class Curves extends LitElement {
     }
   `
 
-  baseFrameRate = 40
-  frameRate = this.baseFrameRate
+  baseFrameRate = 20
+  frameRate = 1
   variation = 0.001
   amp = 200
-  perlin = new ClassicalNoise()
+  perlin = new Noise()
   variators = []
   isIntersecting = false
 
   canvas:HTMLCanvasElement
   ctx:CanvasRenderingContext2D
-  canvasWidth
-  canvasHeight
-  startY
-  maxLines
+  canvasWidth:number
+  canvasHeight:number
+  startY:number
+  maxLines:number
   animationInstance
 
   private _createWrapper() {
@@ -107,7 +107,7 @@ export class Curves extends LitElement {
 
       for (let x = 0; x <= this.canvasWidth; x++) {
 
-        y = this.perlin.noise(
+        y = this.perlin.perlin2(
           x * this.variation + this.variators[i],
           x * this.variation, 0
         )
@@ -179,17 +179,24 @@ export class Curves extends LitElement {
 
     const size = this.getBoundingClientRect()
 
-    this.canvasWidth = size.width
-    this.canvasHeight = size.height
+    this.canvasWidth = size.width *
+      Math.min(
+        window.devicePixelRatio, 1.5
+      )
+
+    this.canvasHeight = size.height *
+    Math.min(
+      window.devicePixelRatio, 1.5
+    )
 
     this.canvas.setAttribute(
       'width',
-      this.canvasWidth
+      this.canvasWidth.toString()
     )
 
     this.canvas.setAttribute(
       'height',
-      this.canvasHeight
+      this.canvasHeight.toString()
     )
 
     this.startY = this.canvasHeight / 2
@@ -204,10 +211,7 @@ export class Curves extends LitElement {
     this._createWrapper()
     this.resizeCanvas()
 
-    this.maxLines = (
-      navigator.userAgent.toLowerCase()
-        .indexOf('firefox') > -1
-    ) ? 25 : 40
+    this.maxLines = 25
 
     for (
       let i = 0, u = 0; i < this.maxLines; i++, u += 0.02
@@ -216,6 +220,8 @@ export class Curves extends LitElement {
       this.variators[i] = u
 
     }
+
+    this.canvas.style.maxWidth = '100%'
 
     this.start()
     this._inViewort()

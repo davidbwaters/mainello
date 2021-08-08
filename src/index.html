@@ -76,8 +76,16 @@
 
         </div>
 
-        <c-curves asscroll>
-        </c-curves>
+        <video
+          class='u-opaque-50 js-video-slow'
+          asscroll
+          muted
+          autoplay='true'
+          loop='true'
+        >
+          <source src='videos/jenga.mp4' type='video/mp4'>
+
+        </video>
 
         <section class='c-work u-z-index-2' asscroll>
           <c-section-title>
@@ -103,7 +111,6 @@
               slug='{{this.slug}}'
             >
               <c-button
-              class='js-cursor-target'
                 link='/news/{{this.slug}}.html'
                 text='read more'
               >

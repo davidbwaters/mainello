@@ -26,11 +26,15 @@ declare global {
   }
 }
 
-interface cursorPosition {
+interface CursorPosition {
   'cursorX': number,
   'cursorY': number,
   'currentX': number,
   'currentY': number
+}
+
+interface CursorTarget {
+  'element': Element
 }
 
 @customElement('c-cursor')
@@ -39,7 +43,7 @@ export class Cursor extends LitElement {
 
   static styles = css`
     :host {
-      --cursor-size: 1.5rem;
+      --cursor-size: 2.5rem;
 
       display: var(--cursor-display);
       height: var(--cursor-size);
@@ -52,13 +56,13 @@ export class Cursor extends LitElement {
     }
 
     .c-cursor__inner {
-      border: solid 2px var(--color-darker-gray);
+      background-color: var(--color-opaque-dark);
       border-radius: var(--cursor-size);
+      border-style: solid;
+      box-sizing: border-box;
       height: 100%;
-      opacity: 0.4;
-      transform: scale(1);
       width: 100%;
-      will-change: transform, opacity;
+      will-change: transform, background-color, border-color;
     }
   `
 
@@ -67,7 +71,7 @@ export class Cursor extends LitElement {
     attribute: true,
     reflect: true
   })
-  position:cursorPosition
+  position:CursorPosition
 
   @property({
     type: String,
@@ -80,19 +84,24 @@ export class Cursor extends LitElement {
 
   private _set = gsap.quickSetter(this, 'css')
   private _speed = 0.2
+  private _targets:Array<CursorTarget>
   private _delta:number
-  private _targets:NodeList
+  private _activeTarget:HTMLElement
 
   private _enterStyles = {
-    duration: 0.8,
-    scale: 1.5,
-    opacity: 0.5
+    backgroundColor: 'rgba(160,160,160,0.2)',
+    borderColor: 'rgba(80,80,80,0.3)',
+    duration: 0.4,
+    scale: 1
   }
 
   private _leaveStyles = {
-    duration: 0.8,
-    scale: 1,
-    opacity: 1
+    backgroundColor: 'rgba(80,80,80,0.8)',
+    borderColor: 'rgba(80,80,80,0.3)',
+    borderWidth: '1px',
+    duration: 0.4,
+    scale: 0.35,
+    opacity: 1.0
   }
 
   setViewport():void {
@@ -109,6 +118,8 @@ export class Cursor extends LitElement {
       this._enterStyles
     )
 
+    this._activeTarget = e.target
+
   }
 
   handleLeave(e):void {
@@ -118,6 +129,15 @@ export class Cursor extends LitElement {
       this._leaveStyles
     )
 
+    gsap.to(
+      e.target, {
+        x: 0,
+        y: 0
+      }
+    )
+
+    this._activeTarget = null
+
   }
 
   refresh():void {
@@ -126,11 +146,11 @@ export class Cursor extends LitElement {
 
       this._targets.forEach(el => {
 
-        el.removeEventListener(
+        el.element.removeEventListener(
           'mouseenter', this.handleEnter
         )
 
-        el.removeEventListener(
+        el.element.removeEventListener(
           'mouseleave', this.handleLeave
         )
 
@@ -138,19 +158,49 @@ export class Cursor extends LitElement {
 
     }
 
-    this._targets = document.querySelectorAll(
-      '.js-cursor-target'
+    this._targets = []
+
+    const magneticTargetEls:Array<HTMLElement> = Array.from(
+      document.querySelectorAll(
+        'c-button, c-toggle, [data-cursor-magnetic="true"]'
+      )
     )
+
+    const normalTargetEls = Array.from(
+      document.querySelectorAll(
+        'a, button, [data-cursor-target]'
+      )
+    )
+
+    magneticTargetEls.forEach(el => {
+
+      el.dataset.cursorMagnetic = 'true'
+
+    })
+
+    const targetEls = [
+      ...magneticTargetEls, ...normalTargetEls
+    ]
+
+    targetEls.forEach(el => {
+
+      this._targets = this._targets.concat(
+        [{
+          'element': el
+        }]
+      )
+
+    })
 
     if (this._targets) {
 
       this._targets.forEach(el => {
 
-        el.addEventListener(
+        el.element.addEventListener(
           'mouseenter', this.handleEnter.bind(this)
         )
 
-        el.addEventListener(
+        el.element.addEventListener(
           'mouseleave', this.handleLeave.bind(this)
         )
 
@@ -183,7 +233,12 @@ export class Cursor extends LitElement {
     window.addEventListener(
       'resize', () => {
 
-        this.setViewport()
+        setTimeout(() => {
+
+          this.setViewport()
+          this.refresh()
+
+        }, 4000)
 
       }
     )
@@ -238,15 +293,85 @@ export class Cursor extends LitElement {
         y: this.position.currentY
       })
 
+      if (
+        this._activeTarget &&
+        (this._activeTarget.dataset.cursorMagnetic === 'true' ||
+        this._activeTarget.parentElement.dataset.cursorMagnetic === 'true')
+      ) {
+
+        const rect = this._activeTarget
+          .getBoundingClientRect()
+
+        let magneticX =
+          (
+            (
+              rect.x +
+              (rect.width / 2) -
+              this.position.cursorX
+            )
+          ) / -2
+
+        if (magneticX > 0) {
+
+          magneticX = Math.min(
+            magneticX, 15
+          )
+
+        }
+        else {
+
+          magneticX = Math.max(
+            magneticX, -15
+          )
+
+        }
+
+        let magneticY =
+          (
+            (
+              rect.y +
+              (rect.height / 2) -
+              this.position.cursorY
+            )
+          ) / -2
+
+        if (magneticY > 0) {
+
+          magneticY = Math.min(
+            magneticY, 15
+          )
+
+        }
+        else {
+
+          magneticY = Math.max(
+            magneticY, -15
+          )
+
+        }
+        gsap.to(
+          this._activeTarget, {
+            x: magneticX,
+            y: magneticY,
+            duration: 0.15
+          }
+        )
+
+      }
+
     })
 
 
-    this.refresh()
-
-    gsap.set(
+    gsap.to(
       this.innerEl.value,
-      { scale: 1 }
+      this._leaveStyles
     )
+
+    setTimeout(() => {
+
+      this.refresh()
+
+    }, 2000)
 
   }
 

@@ -33,10 +33,10 @@ export class FeaturedVideo extends LitElement {
 
   static styles = css`
     :host {
-      border-bottom: solid 1px var(
-        --color-opaque-dark-subtle
-      );
+      background-color: var(--featured-video-background);
       display: block;
+      margin-bottom: calc(5vh + 3.75vw);
+      margin-top: calc(5vh + 3.75vw);
     }
     .c-featured-video__video {
       display: block;
@@ -80,11 +80,22 @@ export class FeaturedVideo extends LitElement {
   })
   type:string
 
+  @property({
+    type: String,
+    attribute: true
+  })
+  color:string
+
   private _wrapperClass:string
 
   connectedCallback():void {
 
     super.connectedCallback()
+
+    this.style.setProperty(
+      '--featured-video-background',
+      this.color
+    )
 
     this.loop = JSON.parse(
       this.getAttribute('loop')

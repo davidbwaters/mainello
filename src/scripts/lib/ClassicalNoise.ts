@@ -18,7 +18,9 @@ const ClassicalNoise = function(r?) {
     [0, 1, -1],
     [0, -1, -1]
   ]
+
   this.p = []
+
   for (let i = 0; i < 256; i++) {
 
     this.p[i] = Math.floor(r.random() * 256)

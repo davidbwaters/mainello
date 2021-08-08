@@ -5,7 +5,7 @@
 .u-link-opaque-hover {
   display: inline-block;
   transition: opacity .4s;
-  will-change: opacity;
+  will-change: opacity transform;
 }
 
 .u-link-opaque-hover:hover {
@@ -13,20 +13,65 @@
 }
 
 .u-link-reverse-outline {
+  display: block;
+  overflow: hidden;
+  position: relative;
   transition: all .8s;
+  will-change: color;
+}
+
+.u-link-reverse-outline::before {
+  background-color: var(--color-main-text);
+  content: attr(data-text);
+  display: block;
+  height: 100%;
+  position: absolute;
+  transform: translateY(150%) translateX(-10%) skew(40deg);
+  transition: all .8s;
+  width: 100%;
+  will-change: transform, color, background-color;
+  z-index: 0;
 }
 
 .u-link-reverse-outline:hover {
-  color: currentcolor;
+  color: var(--color-main-background);
   -webkit-text-stroke: 1px transparent;
-  -webkit-text-fill-color: rgba(0,0,0,1);
+  -webkit-text-fill-color: var(--color-main-background);
 }
+
+.u-link-reverse-outline:hover::after {
+  color: var(--color-main-background);
+}
+
+.u-link-reverse-outline:hover::before {
+  transform: translateY(0%);
+}
+
+.u-link-reverse-outline [data-inner] {
+  padding-left: .95em;
+  padding-right: .16em;
+  position: relative;
+  will-change: color, background-color;
+}
+
+.u-link-reverse-outline [data-counter] {
+  left: .4em;
+  top: 1.6em;
+  font-size: .4em;
+  font-weight: var(--font-weight-semibold);
+  position: absolute;
+  will-change: color, background-color;
+  -webkit-text-stroke: 1px currentColor;
+  -webkit-text-fill-color: var(--color-main-background);
+}
+
 
 .u-link-fake-underline::after {
   background-color: currentcolor;
-  content: "";
+  content: '';
   height: 1px;
   display: block;
   position: relative;
   top: -0.2em;
+  transition: all .8s;
 }

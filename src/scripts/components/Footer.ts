@@ -98,7 +98,7 @@ export class Footer extends LitElement {
       .c-footer__lower {
         gap: var(--spacing-6);
         grid-auto-flow: column;
-        grid-template-columns: 1fr 5fr 1fr;
+        grid-template-columns: 1fr 5fr;
       }
 
     }
@@ -108,7 +108,7 @@ export class Footer extends LitElement {
     }
 
     .c-footer__nav {
-      display: grid;
+      display: none;
       gap: var(--spacing-4);
       grid-auto-flow: column;
       justify-content: center;

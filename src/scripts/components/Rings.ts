@@ -29,6 +29,8 @@ export class Rings extends LitElement {
 
   instance
 
+  private _background:string
+  private _foreground:string
   private _speed = 0.08
   private _time = 0
   private _nPoints = 10
@@ -119,7 +121,6 @@ export class Rings extends LitElement {
       setSize()
 
       this._minRadius = 0
-      sketch.background(255)
 
     }
 
@@ -127,7 +128,7 @@ export class Rings extends LitElement {
 
       sketch.frameRate(this.frameRate)
       sketch.noStroke()
-      sketch.fill(255, 80)
+      sketch.fill(this._background)
       sketch.rect(0, 0, sketch.width, sketch.height)
 
       sketch.translate(
@@ -204,6 +205,11 @@ export class Rings extends LitElement {
   }
 
   firstUpdated(): void {
+
+    this._background =
+      getComputedStyle(document.documentElement)
+        .getPropertyValue('--color-main-background')
+
 
     this._createWrapper()
     this._inViewort()

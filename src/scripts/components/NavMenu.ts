@@ -13,7 +13,7 @@ import {
   property
 } from 'lit/decorators.js'
 
-import lottie from 'lottie-web'
+import gsap from 'gsap'
 
 import {
   createRef,
@@ -33,61 +33,116 @@ interface NavLinks {
   active: boolean;
 }
 
+interface SocialLinks {
+  type: string;
+  link: string;
+}
+
 @customElement('c-nav-menu')
 
 export class NavMenu extends LitElement {
 
   static styles = css`
-
-    .c-nav-menu__animation {
-      height: 100%;
-      pointer-events: none;
+    :host,
+    .c-nav-menu__wrapper
+     {
       position: fixed;
-      right: 0;
+      height: 100%;
+      left: 0;
       top: 0;
       width: 100%;
-      z-index: 9;
+      z-index: 1;
     }
 
-    .c-nav-menu__inner {
+    :host {
+      display: block;
+      overflow-x: hidden;
+      pointer-events: none;
+    }
+
+    .c-nav-menu__wrapper {
       align-content: center;
       display: grid;
-      height: 100%;
       justify-content: center;
-      left: 0;
       opacity: 0;
       pointer-events: none;
       position: fixed;
-      top: 0;
-      transition: opacity .8s;
-      width: 100%;
+      transition: all .4s;
       will-change: opacity;
       z-index: 9;
     }
 
-    .c-nav-menu.is-active .c-nav-menu__inner {
+    .c-nav-menu__wrapper.is-active {
       opacity: 1;
-      pointer-events: all;
+      pointer-events: initial;
     }
 
-    .c-nav-menu__background {
-      background-color: white;
+    .c-nav-menu__animation-stripe {
+      display: block;
       height: 100%;
-      left: 0;
-      pointer-events: none;
       position: absolute;
       top: 0;
       width: 100%;
+      will-change: transform;
+    }
+
+    .c-nav-menu__animation-stripe {
+      left: -100vw;
+    }
+
+    .c-nav-menu__animation-stripe:nth-child(1) {
+      background-color: var(--color-green-sheen-shade-2);
+      z-index: 6;
+    }
+
+    .c-nav-menu__animation-stripe:nth-child(2) {
+      background-color: var(--color-green-sheen-shade-1);
+      z-index: 5;
+    }
+
+    .c-nav-menu__animation-stripe:nth-child(3) {
+      background-color: var(--color-green-sheen);
+      z-index: 4;
+    }
+
+    .c-nav-menu__animation-stripe:nth-child(4) {
+      background-color: var(--color-green-sheen-tint-1);
+      z-index: 3;
+    }
+
+    .c-nav-menu__animation-stripe:nth-child(5) {
+      background-color: var(--color-green-sheen-tint-2);
+      z-index: 2;
+    }
+
+    .c-nav-menu__inner {
+      background-color: var(--color-main-background);
+      display: grid;
+      height: 100%;
+      left: -200%;
+      position: absolute;
+      width: 200%;
+      will-change: transform;
+      z-index: 1;
     }
 
     .c-nav-menu__nav {
+      align-content: center;
       display: grid;
+      gap: 2vmin;
+      justify-content: center;
       justify-items: start;
+      left: 0%;
+      position: relative;
+      width: 100vw;
+      will-change: transform;
     }
 
     ::slotted(*) {
       color: inherit;
-      font-size: var(--font-size-large-4);
+      font-size: var(--font-size-large-8);
+      font-size: 10vmin;
+      left: 0vw;
       position: relative;
       text-decoration: none;
       -webkit-text-stroke: 1px currentColor;
@@ -108,12 +163,12 @@ export class NavMenu extends LitElement {
   })
   open:boolean
 
-  private _speed = 1.5
+  private _duration = 0.8
+  private _stagger = this._duration / 5
   private _menuAnimation
   private _navLinkEls
 
   menuEl = createRef<HTMLDivElement>()
-  menuAnimationEl = createRef<HTMLDivElement>()
 
   handleToggle = ():void => {
 
@@ -121,37 +176,24 @@ export class NavMenu extends LitElement {
 
       this.open = true
 
-      lottie.setSpeed(this._speed)
+      this._menuAnimation.play()
 
-      this._menuAnimation.setDirection(1)
-      this._menuAnimation.goToAndPlay(1, true)
-
-      setTimeout(() => {
-
-        this.menuEl.value.classList.toggle(
-          'is-active'
-        )
-
-      }, 200)
+      this.menuEl.value.classList.toggle(
+        'is-active'
+      )
 
     }
     else {
 
       this.open = false
 
-      lottie.setSpeed(this._speed)
-
-      this._menuAnimation.setDirection(-1)
-      this._menuAnimation.goToAndPlay(
-        this._menuAnimation.lastFrame,
-        true
-      )
+      this._menuAnimation.reverse()
 
       setTimeout(() => {
 
         this.menuEl.value.classList.toggle('is-active')
 
-      }, 1200)
+      }, 2000)
 
     }
 
@@ -159,31 +201,35 @@ export class NavMenu extends LitElement {
 
   firstUpdated(): void {
 
-    this._menuAnimation = lottie.loadAnimation({
-      container: this.menuAnimationEl.value,
-      renderer: 'canvas',
-      loop: false,
-      autoplay: false,
-      path: '/animations/stripes-alt-2.json',
-      rendererSettings: {
-        preserveAspectRatio: 'none'
-      }
-    })
-
     window.addEventListener(
       'toggleNavMenu', this.handleToggle
     )
 
     const current = window.location.pathname
 
-    this.navLinks.forEach(i => {
+    this.navLinks.forEach((i, index) => {
 
       const link = document.createElement('a')
+      const inner = document.createElement('span')
+      const counter = document.createElement('span')
+
+      inner.dataset.inner = ''
+      inner.innerText = i.title
+
+      counter.dataset.counter = ''
+      counter.classList.add('u-counter-item')
 
       link.href = i.link
-      link.innerText = i.title
       link.classList.add(
         'u-link-reverse-outline'
+      )
+
+      link.classList.add(
+        'u-counter-increment'
+      )
+
+      link.classList.add(
+        'js-animation-stripe'
       )
 
       if (i.link === current) {
@@ -194,11 +240,48 @@ export class NavMenu extends LitElement {
 
       }
 
+      link.appendChild(counter)
+      link.appendChild(inner)
+
       this.appendChild(link)
 
     })
 
-    this._navLinkEls = this.querySelectorAll('a')
+    this._navLinkEls = Array.from(
+      this.querySelectorAll('a')
+    )
+
+    this._navLinkEls[0].classList.add(
+      'u-counter-reset'
+    )
+
+    const stripes = Array.from(this.menuEl.value
+      .querySelectorAll('.js-animation-stripe')
+    )
+
+    this._menuAnimation = gsap.timeline()
+
+    this._menuAnimation.to(
+      stripes,
+      {
+        x: '200vw',
+        duration: this._duration,
+        stagger: this._stagger,
+        ease: 'power2'
+      }
+    )
+    this._menuAnimation.from(
+      this._navLinkEls,
+      {
+        x: '-100vw',
+        duration: this._duration,
+        stagger: this._stagger,
+        ease: 'power2'
+      }, 0
+    )
+
+    this._menuAnimation.pause()
+
 
   }
 
@@ -255,25 +338,54 @@ export class NavMenu extends LitElement {
     return html`
       <div
         ${ref(this.menuEl)}
-        class='c-nav-menu'
+        class='c-nav-menu__wrapper'
       >
-        <div
-          class='c-nav-menu__animation'
-          ${ref(this.menuAnimationEl)}
-        >
-        </div>
 
-        <div class='c-nav-menu__inner'>
-          <div class='c-nav-menu__background'>
+          <div class='
+            c-nav-menu__animation-stripe
+            js-animation-stripe
+          '>
           </div>
 
-          <nav class='c-nav-menu__nav'>
+          <div class='
+            c-nav-menu__animation-stripe
+            js-animation-stripe
+          '>
+          </div>
 
-            <slot></slot>
+          <div class='
+            c-nav-menu__animation-stripe
+            js-animation-stripe
+          '>
+          </div>
 
-          </nav>
+          <div class='
+            c-nav-menu__animation-stripe
+            js-animation-stripe
+          '>
+          </div>
+
+          <div class='
+            c-nav-menu__animation-stripe
+            js-animation-stripe
+          '>
+          </div>
+
+          <div class='
+            c-nav-menu__inner
+            js-animation-stripe
+          '>
+
+              <nav class='
+                c-nav-menu__nav
+              '>
+
+                <slot></slot>
+
+              </nav>
 
         </div>
+
       </div>
 
     `

@@ -10,6 +10,12 @@
     <title>{{site.title}}</title>
     <link rel='icon' href='/images/favicon.png' />
     <script type='module' src='/scripts/main.ts'></script>
+
+    <style>
+      .c-contact-layout {
+
+      }
+    </style>
   </head>
   <body style='opacity: 0' data-barba='wrapper'>
 
@@ -30,56 +36,109 @@
         asscroll
       >
 
+        <!--
         <c-bounce-title
           class='u-margin-navbar-top'
           text='{{site.contact_heading}}'
         >
         </c-bounce-title>
+        -->
 
-        <form
-          class='c-form js-contact-form'
-          name='contact'
-          method='POST'
-          data-netlify='true'
-          autocomplete='off'
-        >
+        <section class='c-contact'>
 
-          <div class='c-form__field'>
-            <input
-              class='js-input'
-              type='text'
-              name='name'
-              autocomplete='new-password'
-            />
-            <label>your name</label>
+          <div class='c-contact__info'>
+
           </div>
 
-          <div class='c-form__field'>
-            <input
-              class='js-input'
-              type='email'
-              name='email'
-              autocomplete='new-password'
-            />
-            <label>your email</label>
-          </div>
+          <form
+            class='c-form js-contact-form'
+            name='contact'
+            method='POST'
+            data-netlify='true'
+            autocomplete='off'
+          >
 
-          <div class='c-form__field'>
-            <div class='c-form__grow-wrap'>
-              <textarea
-                class='js-input'
-                onInput='this.parentNode.dataset.replicatedValue = this.value'
-                name='message'
-                rows='1'
-              ></textarea>
-              <label>your message</label>
+            <h2 class='
+              u-heading-huge
+              u-margin-9-bottom
+            '>
+              {{site.contact_heading}}
+            </h2>
+
+            <h2 class='
+              c-form__heading
+            '>
+              i'm interested in ...
+            </h2>
+
+            <div class='c-form__field'>
+              {{#each site.contact_project_types}}
+                <c-toggle
+                  class='u-margin-2-bottom u-margin-2-right'
+                  text='{{this.name}}'
+                  key='type{{@index}}'
+                >
+                </c-toggle>
+              {{/each}}
             </div>
-          </div>
 
-          <c-button text='send' type='submit' large>
-          </c-button>
+            <div class='c-form__line-field'>
+              <input
+                class='js-input'
+                type='text'
+                name='name'
+                required
+              />
+              <label>your name</label>
+            </div>
 
-        </form>
+            <div class='c-form__line-field'>
+              <input
+                class='js-input'
+                type='email'
+                name='email'
+                required
+              />
+              <label>your email</label>
+            </div>
+
+            <div class='c-form__line-field'>
+              <div class='c-form__grow-wrap'>
+                <textarea
+                  class='js-input'
+                  onInput='this.parentNode.dataset.replicatedValue = this.value'
+                  name='message'
+                  rows='1'
+                  required
+                ></textarea>
+                <label>your message</label>
+              </div>
+            </div>
+
+
+            <h2 class='
+              c-form__heading
+            '>
+              project budget
+            </h2>
+
+            <div class='c-form__field u-margin-7-bottom'>
+              {{#each site.contact_prices}}
+                <c-toggle
+                  class='u-margin-2-bottom u-margin-2-right'
+                  text='{{this.name}}'
+                  key='price{{@index}}'
+                >
+                </c-toggle>
+              {{/each}}
+            </div>
+
+            <c-button text='send' type='submit' large>
+            </c-button>
+
+          </form>
+
+        </section>
 
       </main>
 
@@ -98,18 +157,15 @@
         <h3 class='
           c-overlay__heading
         '>
-          success!
+          {{site.contact_form_success_heading}}
         </h3>
-        <p>
-          thanks for reaching out.  you'll hear from us
-          shortly.
-        </p>
+        {{site.contact_form_success_text}}
       </div>
 
       <c-cursor>
       </c-cursor>
 
-      <svg xmlns='http://www.w3.org/2000/svg' version='1.1' class='svg-filters'>
+      <svg style="display: none" xmlns='http://www.w3.org/2000/svg' version='1.1' class='svg-filters'>
         <defs>
           <filter id="filter-goo-4">
             <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur" x="0" />
@@ -230,8 +286,6 @@
 
       }
 
-      function handleConfirm() {
-
         const confirmOverlayEl = document.querySelector(
           '.js-confirm-overlay'
         )
@@ -251,6 +305,8 @@
           }
         })
 
+      function handleConfirm() {
+
         confirmOverlayEl.dataset.hidden = false
 
         confirmAnimation.goToAndPlay(1, true)
@@ -260,6 +316,7 @@
           setTimeout(() => {
 
             confirmOverlayEl.dataset.hidden = true
+            contactForm.reset()
 
           }, 5000)
 
@@ -267,7 +324,7 @@
 
       }
 
-      ;[].slice
+      [].slice
         .call(
           document.querySelectorAll('.js-input')
         )

@@ -2,6 +2,18 @@
 // margin
 //
 
+
+.u-margin-0-bottom {
+  margin-bottom: 0;
+}
+.u-margin-0-top {
+  margin-top: 0;
+}
+.u-margin-0-vertical {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
 @for $i from 1 through 9 {
 
   .u-margin-#{$i}-vertical {
@@ -13,6 +25,12 @@
   }
   .u-margin-#{$i}-bottom {
     margin-bottom: var(--spacing-#{$i});
+  }
+  .u-margin-#{$i}-left {
+    margin-left: var(--spacing-#{$i});
+  }
+  .u-margin-#{$i}-right {
+    margin-right: var(--spacing-#{$i});
   }
 
 }

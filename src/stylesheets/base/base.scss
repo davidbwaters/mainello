@@ -10,6 +10,8 @@
 }
 
 body {
+  background-color: var(--color-main-background);
+  color: var(--color-main-text);
   font-size: var(--font-size-normal);
   height: 100%;
   line-height: var(--line-height-normal);
@@ -57,7 +59,8 @@ small {
   font-size: var(--line-height-tiny);
 }
 
-img {
+img,
+video {
   height: auto;
   width: 100%;
 }

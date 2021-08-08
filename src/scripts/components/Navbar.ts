@@ -35,7 +35,7 @@ export class Navbar extends LitElement {
       box-sizing: border-box;
       padding-bottom: var(--spacing-2);
       padding-left: 6.2vw;
-      padding-right: 6.2vw;
+      padding-right: 0;
       padding-top: var(--spacing-2);
       position: fixed;
       top: 0;
@@ -48,18 +48,7 @@ export class Navbar extends LitElement {
 
       :host {
         padding-left: var(--spacing-4);
-        padding-right: var(--spacing-4);
-      }
-
-    }
-
-    @media (min-width: 480px) {
-
-      :host {
-        padding-bottom: var(--spacing-4);
-        padding-left: var(--spacing-4);
-        padding-right: var(--spacing-4);
-        padding-top: var(--spacing-4);
+        padding-right: 0;
       }
 
     }
@@ -86,15 +75,21 @@ export class Navbar extends LitElement {
 
     }
 
-    .c-navbar__menu-button {
+    ::slotted([slot='button']) {
+      background-color: transparent;
+      box-sizing: content-box;
+      border: none;
+      border-radius: 5rem;
       cursor: pointer;
       display: grid;
+      padding: 6.2vw;
       width: 1rem;
     }
 
     @media (min-width: 320px) {
 
-      .c-navbar__menu-button {
+      ::slotted([slot='button']) {
+        padding: var(--spacing-4);
         width: 1.25rem;
       }
 
@@ -103,15 +98,29 @@ export class Navbar extends LitElement {
 
   `
 
-  menuToggleEl = createRef<HTMLDivElement>()
+  menuToggleEl:HTMLElement
   open = false
 
   private _menuButtonAnimation
 
   firstUpdated():void {
 
+    const button = document.createElement('button')
+
+    button.classList.add(
+      'c-navbar__menu-button',
+      'js-navbar-button'
+    )
+
+    button.setAttribute('slot', 'button')
+    button.dataset.cursorMagnetic = 'true'
+
+    this.appendChild(button)
+
+    this.menuToggleEl = button
+
     this._menuButtonAnimation = lottie.loadAnimation({
-      container: this.menuToggleEl.value,
+      container: this.menuToggleEl,
       renderer: 'svg',
       loop: false,
       autoplay: false,
@@ -159,12 +168,11 @@ export class Navbar extends LitElement {
           <div class='c-navbar__branding'>
             <slot></slot>
           </div>
-          <a
-            class='c-navbar__menu-button js-navbar-button'
+          <slot
+            name='button'
             @click=${this.handleToggle}
-            ${ref(this.menuToggleEl)}
           >
-          </a>
+          </slot>
         </div>
       </header>
     `

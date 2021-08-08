@@ -72,14 +72,31 @@
             </h2>
 
             <div class='c-form__field'>
+
               {{#each site.contact_project_types}}
-                <c-toggle
-                  class='u-margin-2-bottom u-margin-2-right'
-                  text='{{this.name}}'
-                  key='type{{@index}}'
+
+                <input
+                  type='checkbox'
+                  id='type{{@index}}'
+                  name='type{{@index}}'
+                  class='c-toggle__input'
                 >
-                </c-toggle>
+                <label for='type{{@index}}' class='c-toggle__label'>
+
+                  <div class='c-toggle__filler'></div>
+
+                  <span class='c-toggle__text'>
+
+                    <span class='c-toggle__text-inner'>
+                      {{this.name}}
+                    </span>
+
+                  </span>
+
+                </label>
+
               {{/each}}
+
             </div>
 
             <div class='c-form__line-field'>
@@ -123,13 +140,29 @@
             </h2>
 
             <div class='c-form__field u-margin-7-bottom'>
-              {{#each site.contact_prices}}
-                <c-toggle
-                  class='u-margin-2-bottom u-margin-2-right'
-                  text='{{this.name}}'
-                  key='price{{@index}}'
+
+              {{#each  site.contact_prices}}
+
+                <input
+                  type='checkbox'
+                  id='price{{@index}}'
+                  name='price{{@index}}'
+                  class='c-toggle__input'
                 >
-                </c-toggle>
+                <label for='price{{@index}}' class='c-toggle__label'>
+
+                  <div class='c-toggle__filler'></div>
+
+                  <span class='c-toggle__text'>
+
+                    <span class='c-toggle__text-inner'>
+                      {{this.name}}
+                    </span>
+
+                  </span>
+
+                </label>
+
               {{/each}}
             </div>
 

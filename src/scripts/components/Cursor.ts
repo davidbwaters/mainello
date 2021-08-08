@@ -162,7 +162,7 @@ export class Cursor extends LitElement {
 
     const magneticTargetEls:Array<HTMLElement> = Array.from(
       document.querySelectorAll(
-        'c-button, c-toggle, [data-cursor-magnetic="true"]'
+        '.c-button, .c-toggle__label, [data-cursor-magnetic="true"]'
       )
     )
 
@@ -353,7 +353,7 @@ export class Cursor extends LitElement {
           this._activeTarget, {
             x: magneticX,
             y: magneticY,
-            duration: 0.15
+            duration: 0.05
           }
         )
 

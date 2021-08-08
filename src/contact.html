@@ -81,7 +81,11 @@
                   name='type{{@index}}'
                   class='c-toggle__input'
                 >
-                <label for='type{{@index}}' class='c-toggle__label'>
+
+                <label
+                  for='type{{@index}}'
+                  class='c-toggle__label u-margin-2-right u-margin-2-bottom'
+                >
 
                   <div class='c-toggle__filler'></div>
 
@@ -149,7 +153,7 @@
                   name='price{{@index}}'
                   class='c-toggle__input'
                 >
-                <label for='price{{@index}}' class='c-toggle__label'>
+                <label for='price{{@index}}' class='c-toggle__label u-margin-2-right u-margin-2-bottom'>
 
                   <div class='c-toggle__filler'></div>
 
@@ -178,7 +182,7 @@
 
               </span>
 
-            </button>`
+            </button>
 
           </form>
 
@@ -301,7 +305,7 @@
 
           const formData =
             'form-name=' +
-            theForm.name +
+            e.target.getAttribute('name') +
             '&' +
             serialize(theForm)
 

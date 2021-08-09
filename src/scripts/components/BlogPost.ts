@@ -28,10 +28,10 @@ export class BlogPost extends LitElement {
       border-top: 1px solid var(--color-opaque-dark-subtle);
       display: block;
       list-style-type: none;
-      padding-bottom: var(--spacing-6);
+      padding-bottom: var(--spacing-8);
       padding-left: var(--spacing-5);
       padding-right: var(--spacing-5);
-      padding-top: var(--spacing-5);
+      padding-top: var(--spacing-8);
     }
 
     .c-blog-post__item {

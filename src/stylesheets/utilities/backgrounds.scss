@@ -4,7 +4,29 @@
 
 .u-bg-blur-primary-1 {
   background-image: url(/images/bg-blur-primary-circle-1.svg);
-  background-position: left bottom;
+  background-position: left center;
   background-repeat: no-repeat;
-  background-size: 40% 100%;
+  background-size: 50% 100%;
+}
+
+.u-bg-blur-primary-2 {
+  background-image: url(/images/bg-blur-primary-circle-2.svg);
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.u-bg-blur-primary-3 {
+  background-image: url(/images/bg-blur-primary-circle-2.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+.u-bg-blur-multi-1 {
+  background-image: url(/images/bg-blur-multi-1.svg);
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }

@@ -128,7 +128,6 @@ export class FluidReveal extends LitElement {
 
       .c-fluid-reveal__content {
         align-content: center;
-        background: white;
         box-sizing: border-box;
         display: grid;
         gap: var(--spacing-2);

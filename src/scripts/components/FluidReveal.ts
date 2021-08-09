@@ -362,24 +362,27 @@ export class FluidReveal extends LitElement {
         ${this.items.map((item, index) =>
           html`
             <div class="c-fluid-reveal__item">
-              <svg class="c-fluid-reveal__item-media" viewBox="0 0 1000 1000">
-                <image
-                  opacity="1"
-                  mask="url('#mask-${index}')"
-                  preserveAspectRatio="xMidYMid slice"
-                  href=${item.image}
-                  height="100%"
-                  width="100%"
-                />
 
-                <mask id="mask-${index}">
-                  <path
-                    id="wobble-${index}"
-                    d="M53.48-414.83C-36.82-373-33.76-278.17-19.91-194c12.17,74,66.56,136.46,2.05,205.61s-109.6,66-153.69,147.16,31,143.15-55,230.15-274,14.62-267,206S-750.66,726.14-680.2,819.76c75,99.68,487.9,207.62,632,282.55,342.19,177.9,764,148.24,902.86-42.68C994.14,867.89,1031.26,327.21,819.11-35.12,647.45-328.3,300.19-406.44,276.48-428.27,223.48-477.07,92.55-432.94,53.48-414.83Z"
-                    fill="white"
+              <a href='${'/work/' + item.slug + '.html'}'>
+                <svg class="c-fluid-reveal__item-media" viewBox="0 0 1000 1000">
+                  <image
+                    opacity="1"
+                    mask="url('#mask-${index}')"
+                    preserveAspectRatio="xMidYMid slice"
+                    href=${item.image}
+                    height="100%"
+                    width="100%"
                   />
-                </mask>
-              </svg>
+
+                  <mask id="mask-${index}">
+                    <path
+                      id="wobble-${index}"
+                      d="M53.48-414.83C-36.82-373-33.76-278.17-19.91-194c12.17,74,66.56,136.46,2.05,205.61s-109.6,66-153.69,147.16,31,143.15-55,230.15-274,14.62-267,206S-750.66,726.14-680.2,819.76c75,99.68,487.9,207.62,632,282.55,342.19,177.9,764,148.24,902.86-42.68C994.14,867.89,1031.26,327.21,819.11-35.12,647.45-328.3,300.19-406.44,276.48-428.27,223.48-477.07,92.55-432.94,53.48-414.83Z"
+                      fill="white"
+                    />
+                  </mask>
+                </svg>
+              </a>
               <div class="c-fluid-reveal__content">
                 <h3 class="c-fluid-reveal__heading">
                   ${item.heading}

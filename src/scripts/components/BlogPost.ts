@@ -58,13 +58,13 @@ export class BlogPost extends LitElement {
 
     .c-blog-post__item-date {
       font-size: var(--font-size-small);
-      margin-top: 0.3rem;
+      margin-top: 0.9rem;
     }
 
     .c-blog-post__item-title {
-      font-size: var(--font-size-large-1);
+      font-size: var(--font-size-large-4);
       font-weight: var(--font-weight-semibold);
-      margin-bottom: 1.5em;
+      margin-bottom: 0.8em;
       margin-top: 0;
     }
 

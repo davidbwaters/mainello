@@ -64,6 +64,15 @@ export class Cursor extends LitElement {
       width: 100%;
       will-change: transform, background-color, border-color;
     }
+
+    @media (max-width: 768px) {
+
+      :host {
+        display: none;
+      }
+
+    }
+
   `
 
   @property({

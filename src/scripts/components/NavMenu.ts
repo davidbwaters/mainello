@@ -80,14 +80,11 @@ export class NavMenu extends LitElement {
     .c-nav-menu__animation-stripe {
       display: block;
       height: 100%;
+      transform: translateX(100vw);
       position: absolute;
       top: 0;
       width: 100%;
       will-change: transform;
-    }
-
-    .c-nav-menu__animation-stripe {
-      left: -100vw;
     }
 
     .c-nav-menu__animation-stripe:nth-child(1) {
@@ -119,9 +116,8 @@ export class NavMenu extends LitElement {
       background-color: var(--color-main-background);
       display: grid;
       height: 100%;
-      left: -200%;
       position: absolute;
-      width: 200%;
+      width: 100%;
       will-change: transform;
       z-index: 1;
     }
@@ -132,7 +128,6 @@ export class NavMenu extends LitElement {
       gap: 2vmin;
       justify-content: center;
       justify-items: start;
-      left: 0%;
       position: relative;
       width: 100vw;
       will-change: transform;
@@ -163,9 +158,10 @@ export class NavMenu extends LitElement {
   })
   open:boolean
 
-  private _duration = 0.8
-  private _stagger = this._duration / 5
+  private _duration = 0.6
+  private _stagger = this._duration / 6
   private _menuAnimation
+  private _menuAnimationClose
   private _navLinkEls
 
   menuEl = createRef<HTMLDivElement>()
@@ -176,6 +172,7 @@ export class NavMenu extends LitElement {
 
       this.open = true
 
+      this._menuAnimation.progress(0)
       this._menuAnimation.play()
 
       this.menuEl.value.classList.toggle(
@@ -187,7 +184,8 @@ export class NavMenu extends LitElement {
 
       this.open = false
 
-      this._menuAnimation.reverse()
+      this._menuAnimationClose.progress(0)
+      this._menuAnimationClose.play()
 
       setTimeout(() => {
 
@@ -229,7 +227,7 @@ export class NavMenu extends LitElement {
       )
 
       link.classList.add(
-        'js-animation-stripe'
+        'js-animation-link'
       )
 
       if (i.link === current) {
@@ -242,13 +240,12 @@ export class NavMenu extends LitElement {
 
       link.appendChild(counter)
       link.appendChild(inner)
-
       this.appendChild(link)
 
     })
 
     this._navLinkEls = Array.from(
-      this.querySelectorAll('a')
+      this.querySelectorAll('.js-animation-link')
     )
 
     this._navLinkEls[0].classList.add(
@@ -259,28 +256,82 @@ export class NavMenu extends LitElement {
       .querySelectorAll('.js-animation-stripe')
     )
 
+    const navEl = this.menuEl.value
+      .querySelector('.js-animation-nav')
+
     this._menuAnimation = gsap.timeline()
 
-    this._menuAnimation.to(
-      stripes,
-      {
-        x: '200vw',
-        duration: this._duration,
-        stagger: this._stagger,
-        ease: 'power2'
-      }
-    )
-    this._menuAnimation.from(
-      this._navLinkEls,
+    this._menuAnimation.fromTo(
+      [...stripes],
       {
         x: '-100vw',
         duration: this._duration,
         stagger: this._stagger,
-        ease: 'power2'
-      }, 0
+        ease: 'pawer3'
+      },
+      {
+        x: '100vw',
+        stagger: this._stagger,
+        ease: 'pawer3'
+      }
+    )
+    this._menuAnimation.from(
+      [navEl, ...this._navLinkEls],
+      {
+        x: '-100vw',
+        duration: this._duration,
+        stagger: this._stagger,
+        ease: 'pawer3'
+      }, '>-1.2'
     )
 
-    this._menuAnimation.pause()
+
+    this._menuAnimationClose = gsap.timeline()
+
+    this._menuAnimationClose.fromTo(
+      [...this._navLinkEls],
+      {
+        x: '0vw',
+        duration: this._duration,
+        stagger: this._stagger,
+        ease: 'power3'
+      }, {
+        x: '-4000',
+        stagger: this._stagger,
+        ease: 'power3'
+      }
+    )
+
+    this._menuAnimationClose.fromTo(
+      [navEl],
+      {
+        x: '0vw',
+        duration: this._duration / 2,
+        stagger: this._stagger,
+        ease: 'power3'
+      }, {
+        x: '-100vw',
+        stagger: this._stagger,
+        ease: 'power3'
+      }
+    )
+
+
+    this._menuAnimationClose.fromTo(
+      [...stripes],
+      {
+        x: '100vw',
+        duration: this._duration,
+        stagger: this._stagger,
+        ease: 'pawer3'
+      },
+      {
+        x: '-100vw',
+        duration: this._duration,
+        stagger: this._stagger,
+        ease: 'pawer3'
+      }, '>-.8'
+    )
 
 
   }
@@ -373,7 +424,7 @@ export class NavMenu extends LitElement {
 
           <div class='
             c-nav-menu__inner
-            js-animation-stripe
+            js-animation-nav
           '>
 
               <nav class='

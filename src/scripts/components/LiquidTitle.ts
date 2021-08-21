@@ -108,8 +108,8 @@ export class LiquidTitle extends LitElement {
       )
 
       shader = sketch.loadShader(
-        '/scripts/shaders/liquid.vert',
-        '/scripts/shaders/liquid.frag'
+        '/shaders/liquid.vert',
+        '/shaders/liquid.frag'
       )
 
     }

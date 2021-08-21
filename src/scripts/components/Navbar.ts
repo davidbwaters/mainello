@@ -33,10 +33,6 @@ export class Navbar extends LitElement {
   static styles = css`
     :host {
       box-sizing: border-box;
-      padding-bottom: var(--spacing-2);
-      padding-left: 6.2vw;
-      padding-right: 0;
-      padding-top: var(--spacing-2);
       position: fixed;
       top: 0;
       transition: all .8s;
@@ -53,17 +49,32 @@ export class Navbar extends LitElement {
 
     }
 
+    .c-navbar {
+      left: 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+
     .c-navbar__inner {
       align-items: center;
       display: grid;
       grid-auto-columns: min-content;
       grid-auto-flow: column;
       justify-content: space-between;
+      padding-bottom: var(--spacing-4);
+      padding-left: 6.2vw;
+      padding-right: 6.2vw;
+      padding-top: var(--spacing-4);
+      top: 0;
     }
 
     .c-navbar__branding {
       display: inline-block;
+      height: auto;
+      max-height: 1.5rem;
       width: 4rem;
+
     }
 
 
@@ -89,8 +100,9 @@ export class Navbar extends LitElement {
     @media (min-width: 320px) {
 
       ::slotted([slot='button']) {
+        height: 0.25rem;
         padding: var(--spacing-4);
-        width: 1.25rem;
+        width: auto;
       }
 
     }
@@ -105,6 +117,16 @@ export class Navbar extends LitElement {
 
   firstUpdated():void {
 
+    const link = document.createElement('a')
+
+    link.innerText = 'contact'
+    link.href = '/contact.html'
+    link.setAttribute('slot', 'nav')
+
+    this.appendChild(link)
+
+
+    /*
     const button = document.createElement('button')
 
     button.classList.add(
@@ -126,6 +148,7 @@ export class Navbar extends LitElement {
       autoplay: false,
       path: '/animations/nav-button.json'
     })
+    */
 
   }
 
@@ -168,11 +191,17 @@ export class Navbar extends LitElement {
           <div class='c-navbar__branding'>
             <slot></slot>
           </div>
-          <slot
-            name='button'
-            @click=${this.handleToggle}
-          >
-          </slot>
+          <!--
+            <slot
+              name='button'
+              @click=${this.handleToggle}
+            >
+            </slot>
+          -->
+            <slot
+              name='nav'
+            >
+            </slot>
         </div>
       </header>
     `

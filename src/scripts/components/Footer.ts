@@ -16,6 +16,7 @@ import {
 import inViewport from './../lib/inViewport'
 import { ContactFab } from './ContactFab'
 import { Navbar } from './Navbar'
+import 'shader-doodle'
 
 
 declare global {
@@ -156,7 +157,7 @@ export class Footer extends LitElement {
       width: 20px;
     }
 
-    ::slotted([slot="background"]) {
+    .c-footer__background {
       opacity: 0.4;
       height: 100%;
       left: 0;
@@ -278,8 +279,8 @@ export class Footer extends LitElement {
     sketch.preload = () => {
 
       shader = sketch.loadShader(
-        '/scripts/shaders/fabric.vert',
-        '/scripts/shaders/fabric.frag'
+        '/shaders/fabric.vert',
+        '/shaders/fabric.frag'
       )
 
     }
@@ -333,7 +334,7 @@ export class Footer extends LitElement {
   firstUpdated(): void {
 
     this._createWrapper()
-    this._inViewort()
+    // this._inViewort()
 
     this.instance = new window.p5(this.sketch)
 
@@ -342,8 +343,41 @@ export class Footer extends LitElement {
   protected render():TemplateSpecification {
 
     return html`
-      <slot name='background'>
-      </slot>
+      <shader-doodle class='c-footer__background'>
+
+        <script type="x-shader/x-fragment" />#ifdef GL_ES
+      precision mediump float;
+      #endif
+      uniform sampler2D backbuffer;
+
+      void main() {
+          vec2 st = (2.*gl_FragCoord.xy-u_resolution)/min(u_resolution.x,u_resolution.y)*1.1;
+          vec2 coord = st;
+
+          float len;
+
+          for (int i = 0; i < 3; i++) {
+              len = length(vec2(coord.x, coord.y));
+
+              coord.x +=  sin(coord.y + u_time * 0.3)*1.;
+              coord.y +=  cos(coord.x + u_time * 0.1 + cos(len * 1.0))*6.;
+          }
+
+          vec3 color = vec3(0.);
+
+          color = mix(color, vec3(cos(len)), 1.0);
+
+          gl_FragColor = vec4(0.7*color,1.);
+
+          //vec4 c = vec4(9.*color,1.);
+
+          //float alpha = 0.07;
+
+          //gl_FragColor = c*alpha + texture2D( backbuffer, st )*(1.0-alpha);
+      }
+
+          </script>
+      </shader-doodle>
 
       <div class='c-footer__inner'>
         <div class='c-footer__contact'>

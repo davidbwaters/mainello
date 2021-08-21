@@ -3,6 +3,7 @@
 //
 
 @use './base/variables.scss';
+@use './base/vendor.scss';
 @use './base/base.scss';
 
 @use './objects/container.scss';
@@ -30,6 +31,7 @@
 @use './utilities/text.scss';
 @use './utilities/transparency.scss';
 @use './utilities/wrapper.scss';
+@use './utilities/will-change.scss';
 @use './utilities/z-index.scss';
 
 @font-face {

@@ -6,11 +6,12 @@ import '../stylesheets/app.scss'
 import '../stylesheets/home.scss'
 
 import 'intersection-observer'
-import ASScroll from '@ashthornton/asscroll'
+import LocomotiveScroll from 'locomotive-scroll'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import barba from '@barba/core'
 import barbaPrefetch from '@barba/prefetch'
+import 'shader-doodle'
 
 declare global {
   interface Window {
@@ -18,7 +19,7 @@ declare global {
   }
 }
 
-let asscroll
+let scroller
 
 const navbarEl = document.querySelector('c-navbar')
 
@@ -29,7 +30,7 @@ async function onInit() {
     import('./components/Cursor'),
     import('./components/Footer'),
     import('./components/Navbar'),
-    import('./components/Rings'),
+    // import('./components/Rings'),
     import('./components/Intro'),
     import('./components/BlogPost'),
     import('./components/Button'),
@@ -55,7 +56,7 @@ async function onInit() {
     import('./components/Article'),
     import('./components/BounceTitle'),
     import('./components/FeaturedImage'),
-    import('./components/FeaturedVideo'),
+    import('./components/FeaturedVideo')
   ])
 
   Promise.all([
@@ -81,8 +82,8 @@ async function handlePageLoad() {
 
   setTimeout(() => {
 
-    asscroll.resize()
-    ScrollTrigger.refresh()
+    // asscroll.resize()
+
     wrapLinks()
     prepVideos()
 
@@ -92,43 +93,48 @@ async function handlePageLoad() {
 
 function scrollSetup() {
 
+  scroller = new LocomotiveScroll({
+    el: document.querySelector('[data-scroll-container]'),
+    smooth: true,
+    tablet: { smooth: true },
+    smartphone: { smooth: true }
+  })
+
   gsap.registerPlugin(ScrollTrigger)
 
-  asscroll = new ASScroll({
-    disableRaf: true
-  })
 
-  gsap.ticker.add(asscroll.update)
+  scroller.on('scroll', ScrollTrigger.update)
 
-  ScrollTrigger.defaults({
-    scroller: asscroll.containerElement
-  })
+  ScrollTrigger.scrollerProxy(
+    '[data-scroll-container]', {
+      scrollTop(value) {
 
-  ScrollTrigger.scrollerProxy(asscroll.containerElement, {
-    scrollTop(value) {
+        return arguments.length
+          ? scroller.scrollTo(value, 0, 0)
+          : scroller.scroll.instance.scroll.y
 
-      return arguments.length
-        ? (asscroll.currentPos = value)
-        : asscroll.currentPos
+      },
+      getBoundingClientRect() {
 
-    },
-    getBoundingClientRect() {
+        return {
+          left: 0,
+          top: 0,
+          width: window.innerWidth,
+          height: window.innerHeight
+        }
 
-      return {
-        top: 0,
-        left: 0,
-        width: window.innerWidth,
-        height: window.innerHeight
       }
-
     }
-  })
+  )
 
-  asscroll.on('update', ScrollTrigger.update)
 
-  ScrollTrigger.addEventListener('refresh', asscroll.resize)
+  ScrollTrigger.addEventListener(
+    'refresh',
+    () => scroller.update()
+  )
 
-  asscroll.enable()
+
+  ScrollTrigger.refresh()
 
 }
 
@@ -184,18 +190,15 @@ function barbaSetup() {
   barba.hooks.afterEnter(data => {
 
     console.log('after enter all')
-    asscroll.disable()
 
     setTimeout(() => {
 
-      asscroll.enable({
-        newScrollElements:
-          document.querySelectorAll('[asscroll]'),
-        reset: true
-      })
-      asscroll.resize()
+      scroller.update()
 
       ScrollTrigger.refresh()
+
+      scroller.update()
+
       prepVideos()
 
     }, 1000)

@@ -215,9 +215,6 @@ export class FluidReveal extends LitElement {
 
     })
 
-
-    gsap.registerPlugin(ScrollTrigger)
-
     const fluidRevealEls:Array<HTMLDivElement> =
       Array.from(
         this._fluidRevealEls
@@ -250,11 +247,12 @@ export class FluidReveal extends LitElement {
           ease: 'none',
           scrollTrigger: {
             trigger: this.wrapper.value,
+            scroller: '[data-scroll-container]',
             start: 'top top ',
             pin: true,
             pinSpacing: true,
             end: 'bottom bottom',
-            scrub: 0.2
+            scrub: true
             //markers: true
           }
         })
@@ -347,7 +345,9 @@ export class FluidReveal extends LitElement {
 
         count = 0
 
+
       }
+
     })
 
   }

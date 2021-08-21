@@ -25,6 +25,7 @@ export class ContactFab extends LitElement {
       bottom: 0rem;
       display: none;
       height: 6rem;
+      overflow: hidden;
       position: fixed;
       right: 0rem;
       transition: opacity .8s;

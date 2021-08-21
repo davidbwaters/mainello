@@ -144,6 +144,7 @@ export class ScrollingTags extends LitElement {
       ease: 'none',
       scrollTrigger: {
         trigger: this,
+        scroller: '[data-scroll-container]',
         invalidateOnRefresh: true,
         scrub: 0.1,
         start: () => 'top 100%',

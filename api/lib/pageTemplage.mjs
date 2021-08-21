@@ -28,9 +28,9 @@ export function buildPageTemplate(title, content) {
         >
         </c-nav-menu>
 
-        <div asscroll-container>
+        <div data-scroll-container class="u-will-change-transform-opacity">
 
-          <main data-barba='container' asscroll>
+          <main data-barba='container'>
 
             <c-page-header>
               <div>${title}</div>
@@ -51,7 +51,7 @@ export function buildPageTemplate(title, content) {
             socialLinks='{{site.social_links}}'
             navLinks='{{site.menu_items}}'
             logo='{{site.logo_footer}}'
-            asscroll>
+          >
             <div slot='heading' class='u-heading-huge-fluid'>
               {{{site.footer_heading}}}
             </div>

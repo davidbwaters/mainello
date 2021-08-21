@@ -109,8 +109,8 @@ export class WarpText extends LitElement {
       )
 
       shader = sketch.loadShader(
-        '/scripts/shaders/warp.vert',
-        '/scripts/shaders/warp.frag'
+        '/shaders/warp.vert',
+        '/shaders/warp.frag'
       )
 
     }

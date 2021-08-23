@@ -74,22 +74,6 @@ async function onInit() {
 
 }
 
-async function handlePageLoad() {
-
-  scrollSetup()
-
-  await onInit()
-
-  setTimeout(() => {
-
-    // asscroll.resize()
-
-    wrapLinks()
-    prepVideos()
-
-  }, 1000)
-
-}
 
 function scrollSetup() {
 
@@ -102,8 +86,18 @@ function scrollSetup() {
 
   gsap.registerPlugin(ScrollTrigger)
 
-
   scroller.on('scroll', ScrollTrigger.update)
+  scroller.on('scroll', () => {
+
+    const scrollerEl:HTMLDivElement = document
+      .querySelector(
+        '[data-scroll-container]'
+      )
+
+    scrollerEl.dataset.scrollY = scroller
+      .scroll.instance.scroll.y
+
+  })
 
   ScrollTrigger.scrollerProxy(
     '[data-scroll-container]', {
@@ -181,6 +175,22 @@ function wrapLinks() {
     }
 
   })
+
+}
+
+
+async function handlePageLoad() {
+
+  scrollSetup()
+
+  await onInit()
+
+  setTimeout(() => {
+
+    wrapLinks()
+    prepVideos()
+
+  }, 1000)
 
 }
 

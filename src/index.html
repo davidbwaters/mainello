@@ -67,7 +67,6 @@
               return 130.0 * dot(m, g);
             }
 
-            // https://github.com/hughsk/glsl-hsv2rgb
             vec3 hsv2rgb(vec3 c) {
               vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
               vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
@@ -87,27 +86,27 @@
             }
 
             void main() {
-              vec2 distortion = vec2(snoise(gl_FragCoord.xy / 150.0 + vec2(u_time * .3, u_time * .4)), snoise(gl_FragCoord.xy / 150.0 + vec2(3. + u_time * .4, 4. + u_time * .3)));
-              vec2 distorted = gl_FragCoord.xy / 600. + distortion * 0.2;
+              vec2 distortion = vec2(snoise(gl_FragCoord.xy / 300.0 + vec2(u_time * .4, u_time * .4)), snoise(gl_FragCoord.xy / 300.0 + vec2(3. + u_time * .4, 4. + u_time * .3)));
+              vec2 distorted = gl_FragCoord.xy / 800. + distortion * 0.1;
               vec2 distortion_2 = vec2(snoise(distorted + vec2(u_time * -.01, u_time * -.02)), snoise(distorted + vec2(3. + u_time * -.02, 4. + u_time * -.3)));
-              vec2 distorted_2 = gl_FragCoord.xy / 600. + distortion_2 * 0.2;
+              vec2 distorted_2 = gl_FragCoord.xy / 800. + distortion_2 * 0.2;
               float noiseValue = (snoise(distorted_2 + vec2(u_time * -0.05, u_time * 0.05)) + 1.) / 2.;
 
-              const float h0_min = 237.;
-              const float s0_min = 0.;
-              const float v0_min = 100.;
+              const float h0_min = 175.;
+              const float s0_min = 2.;
+              const float v0_min = 98.;
 
-              const float h0_max = 170.;
-              const float s0_max = 12.;
-              const float v0_max = 92.;
+              const float h0_max = 216.;
+              const float s0_max = 25.;
+              const float v0_max = 99.;
 
-              const float h1_max = 237.;
-              const float s1_max = 18.;
-              const float v1_max = 88.;
-
-              const float h1_min = 237.;
+              const float h1_min = 216.;
               const float s1_min = 0.;
-              const float v1_min = 98.;
+              const float v1_min = 100.;
+
+              const float h1_max = 216.;
+              const float s1_max = 25.;
+              const float v1_max = 99.9;
 
               float d = constrain(1. - distance(gl_FragCoord.xy + ((distorted - vec2(1., 1.)) / 2.) * 1000., u_resolution / 2.) / sqrt(u_resolution.x * u_resolution.x * 0.5 + u_resolution.y * u_resolution.y * 0.5), 0., 1.);
 
@@ -140,7 +139,7 @@
           </h2>
         </div>
 
-        <div class='o-gc-grid o-gc-grid--columns u-bg-blur-primary-2' asscroll>
+        <div class='o-gc-grid o-gc-grid--columns u-bg-blur-primary-2'>
           <div class='c-line-title c-line-title--inverse u-text-label'>
             {{home.services_title}}
           </div>
@@ -170,7 +169,6 @@
 
         <video
           class='u-opaque-50 u-glow-1 js-video-slow'
-          asscroll
           muted
           autoplay='true'
           loop='true'
@@ -178,7 +176,7 @@
           <source src='videos/jenga.mp4' type='video/mp4'>
         </video>
 
-        <section class='c-work u-z-index-2 ' asscroll>
+        <section class='c-work u-z-index-2 '>
           <c-section-title>
             {{home.work_heading}}
           </c-section-title>
@@ -190,7 +188,7 @@
 
         </section>
 
-        <section class='c-news u-bg-blur-multi-1' asscroll>
+        <section class='c-news u-bg-blur-multi-1'>
           <c-section-title>
             latest news
           </c-section-title>
@@ -219,7 +217,7 @@
         socialLinks='{{site.social_links}}'
         navLinks='{{site.menu_items}}'
         logo='{{site.logo_footer}}'
-        asscroll>
+      >
         <div slot='heading' class='u-heading-huge-fluid'>
           {{{site.footer_heading}}}
         </div>

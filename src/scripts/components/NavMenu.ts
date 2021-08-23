@@ -88,27 +88,29 @@ export class NavMenu extends LitElement {
     }
 
     .c-nav-menu__animation-stripe:nth-child(1) {
-      background-color: var(--color-green-sheen-shade-2);
+      background-color: var(--color-primary);
+      opacity: 0.25;
       z-index: 6;
     }
 
     .c-nav-menu__animation-stripe:nth-child(2) {
-      background-color: var(--color-green-sheen-shade-1);
+      background-color: var(--color-primary);
+      opacity: 0.5;
       z-index: 5;
     }
 
     .c-nav-menu__animation-stripe:nth-child(3) {
-      background-color: var(--color-green-sheen);
+      background-color: var(--color-primary);
       z-index: 4;
     }
 
     .c-nav-menu__animation-stripe:nth-child(4) {
-      background-color: var(--color-green-sheen-tint-1);
+      background-color: var(--color-primary-tint-1);
       z-index: 3;
     }
 
     .c-nav-menu__animation-stripe:nth-child(5) {
-      background-color: var(--color-green-sheen-tint-2);
+      background-color: var(--color-primary-tint-2);
       z-index: 2;
     }
 

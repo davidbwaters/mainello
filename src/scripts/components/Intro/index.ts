@@ -45,7 +45,19 @@ export class Intro extends LitElement {
 
   firstUpdated(): void {
 
-    const navbar = document.querySelector('c-navbar')
+    const navbar = document
+      .querySelector('c-navbar')
+
+    const tagline = document
+      .querySelector(
+        '.c-hero__tagline'
+      )
+
+    const cta = document
+      .querySelector(
+        '.c-hero__cta'
+      )
+
 
     navbar.style.opacity = '0'
 
@@ -56,7 +68,6 @@ export class Intro extends LitElement {
       this.sketchEl.value
     ]
 
-
     const sketchAnimation:any = lottie.loadAnimation({
       container: this.sketchEl.value,
       renderer: 'canvas',
@@ -65,6 +76,7 @@ export class Intro extends LitElement {
       path: 'animations/sketch.json'
     })
 
+    /*
     const backgroundAnimation:any = lottie.loadAnimation({
       container: this.introBgEl.value,
       renderer: 'canvas',
@@ -75,7 +87,6 @@ export class Intro extends LitElement {
         preserveAspectRatio: 'none'
       }
     })
-
     backgroundAnimation.onComplete = () => {
 
       gsap.to(introEls, {
@@ -95,26 +106,49 @@ export class Intro extends LitElement {
       })
 
     }
+    */
+
+    lottie.setSpeed(1)
+
+    document.body.style.position = 'fixed'
+
+
+    gsap.to(introEls, {
+      duration: 0.4,
+      x: '0%',
+      onComplete: () => {
+
+        lottie.setSpeed(2)
+
+        setTimeout(() => {
+
+          sketchAnimation.play()
+
+        }, 400)
+
+      }
+    })
 
     sketchAnimation.onComplete = () => {
 
-      gsap.to(introEls, {
-        duration: 0.4,
+      const timeline = gsap.timeline()
+
+      timeline.to(introEls, {
+        duration: 0.6,
         y: '-110%'
       })
 
-      gsap.to(this, {
-        duration: 0.2,
+      timeline.to(this, {
+        duration: 0.6,
         opacity: 0,
         onComplete: () => {
 
-          this.style.height = '0'
+          this.style.opacity = '0'
 
         }
       })
 
-      gsap.to(navbar, {
-
+      timeline.to(navbar, {
         duration: 0.2,
         opacity: 1
       })
@@ -125,15 +159,12 @@ export class Intro extends LitElement {
 
       }, 1200)
 
-
       document.body.style.position = ''
 
     }
 
-    lottie.setSpeed(2)
 
-    document.body.style.position = 'fixed'
-    backgroundAnimation.play()
+    sketchAnimation.play()
 
   }
 

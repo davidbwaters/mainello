@@ -89,6 +89,7 @@ export class ContactFab extends LitElement {
     const clamp = gsap.utils.clamp(-50, 50)
 
     ScrollTrigger.create({
+      scroller: '[data-scroll-container]',
       onUpdate: self => {
 
         scrollTop =

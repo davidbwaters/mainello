@@ -100,7 +100,8 @@ function scrollSetup() {
 
   asscroll = new ASScroll({
     disableRaf: true,
-    containerElement: scrollContainer
+    containerElement: scrollContainer,
+    scrollElements: '[data-scroll]'
   })
 
   gsap.ticker.add(asscroll.update)

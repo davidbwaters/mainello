@@ -80,13 +80,27 @@ export class DynamicContent extends LitElement {
       if (block.component === 'labeled_text') {
 
         this._blocks += `
-          <c-labeled-text
+          <c-labeled-content
             label='${block.label}'
             text='${JSON.stringify(block.text)}'
             spacing=true
             border=${block.bottom_border}
           >
-          </c-labeled-text>
+          </c-labeled-content>
+        `
+
+      }
+
+      if (block.component === 'labeled_image') {
+
+        this._blocks += `
+          <c-labeled-content
+            label='${block.label}'
+            image='${block.image}'
+            spacing=true
+            border=${block.bottom_border}
+          >
+          </c-labeled-content>
         `
 
       }

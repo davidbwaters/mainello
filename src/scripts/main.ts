@@ -62,7 +62,7 @@ async function onInit() {
   Promise.all([
     import('./components/ImageRow'),
     import('./components/ImageText'),
-    import('./components/LabeledText'),
+    import('./components/LabeledContent'),
     import('./components/LiquidTitle'),
     import('./components/OffsetColumns'),
     import('./components/Pattern'),
@@ -93,9 +93,6 @@ function scrollSetup() {
       .querySelector(
         '[data-scroll-container]'
       )
-
-    scrollerEl.dataset.scrollY = scroller
-      .scroll.instance.scroll.y
 
   })
 

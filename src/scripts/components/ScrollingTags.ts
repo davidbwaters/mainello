@@ -132,8 +132,6 @@ export class ScrollingTags extends LitElement {
 
     }
 
-    gsap.registerPlugin(ScrollTrigger)
-
     gsap.fromTo(this, {
       x: 0
     }, {

@@ -41,8 +41,8 @@ export class Article extends LitElement {
       margin-right: auto;
       max-width: var(--wrapper-width);
       padding-bottom: 20vh;
-      padding-left: 12.55vw;
-      padding-right: 12.55vw;
+      padding-left: 6.4%;
+      padding-right: 6.4%;
       padding-top: 20vh;
     }
 

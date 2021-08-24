@@ -16,11 +16,11 @@ import {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'c-labeled-text': LabeledText
+    'c-labeled-content': LabeledText
   }
 }
 
-@customElement('c-labeled-text')
+@customElement('c-labeled-content')
 
 export class LabeledText extends LitElement {
 
@@ -39,8 +39,8 @@ export class LabeledText extends LitElement {
       :host {
         grid-column: 2 / span 8;
         grid-template-columns: 100%;
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 6.4%;
+        padding-right: 6.4%;
       }
     }
 
@@ -57,35 +57,27 @@ export class LabeledText extends LitElement {
       }
     }
 
-    .c-labeled-text__inner {
+    .c-labeled-content__inner {
       align-content: center;
       display: grid;
       grid-auto-flow: row;
-      grid-template-columns: 87.6%;
+      grid-template-columns: 1fr;
       justify-content: center;
       margin-left: auto;
       margin-right: auto;
       max-width: var(--wrapper-width);
     }
 
-    @media (min-width: 320px) {
-
-      .c-labeled-text__inner {
-        grid-template-columns: 1fr;
-      }
-
-    }
-
     @media (min-width: 768px) {
 
-      .c-labeled-text__inner {
+      .c-labeled-content__inner {
         grid-auto-flow: column;
-        grid-template-columns: 1fr 4fr;
+        grid-template-columns: 1fr 3fr;
       }
 
     }
 
-    .c-labeled-text__label {
+    .c-labeled-content__label {
       font-size: var(--font-size-small);
       font-weight: var(--font-weight-semibold);
       letter-spacing: var(--title-normal-spacing);
@@ -94,13 +86,19 @@ export class LabeledText extends LitElement {
 
     @media (min-width: 480px) {
 
-      .c-labeled-text__label {
+      .c-labeled-content__label {
         font-size:  var(--font-size-large-1);
       }
 
     }
 
-    .c-labeled-text__text p {
+
+    .c-labeled-content__content img {
+      height: auto;
+      width: 100%;
+    }
+
+    .c-labeled-content__content p {
       line-height: var(--line-height-normal-spaced);
       margin-bottom: 1.4em;
       margin-top: 0;
@@ -108,7 +106,7 @@ export class LabeledText extends LitElement {
 
     @media (min-width: 768px) {
 
-      .c-labeled-text__text p {
+      .c-labeled-content__content p {
         font-size:  var(--font-size-large-1);
       }
 
@@ -120,6 +118,12 @@ export class LabeledText extends LitElement {
     attribute: true
   })
   label:string
+
+  @property({
+    type: String,
+    attribute: true
+  })
+  image:string
 
   @property({
     type: Array,
@@ -193,16 +197,29 @@ export class LabeledText extends LitElement {
 
     return html`
 
-      <div class="c-labeled-text__inner">
+      <div class="c-labeled-content__inner">
 
-        <div class="c-labeled-text__label">
+        <div class="c-labeled-content__label">
           ${this.label}
         </div>
 
-        <div class="c-labeled-text__text">
-          ${this.text.map(item => html`
-            <p>${item.paragraph}</p>
-          `)}
+        <div class="c-labeled-content__content">
+          ${this.text
+            ? html`
+              ${this.text.map(item => html`
+                <p>${item.paragraph}</p>
+              `)}
+            `
+            : ``
+          }
+          ${this.image
+            ? html`
+              <img src='${this.image}' alt=''>
+            `
+            : ``
+          }
+
+
         </div>
 
       </div>

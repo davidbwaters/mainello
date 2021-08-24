@@ -11,6 +11,7 @@ import { createRef, ref } from 'lit/directives/ref'
 import { gsap } from 'gsap'
 
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { getEventListener } from 'events'
 
 
 @customElement('c-contact-fab')
@@ -18,18 +19,18 @@ export class ContactFab extends LitElement {
 
   static styles = css`
     :host {
-      background-image: url('/icons/mail.svg');
+      background-image: url('/images/globe.svg');
       background-position: center;
       background-repeat: no-repeat;
       background-size: 1.33rem;
       bottom: 0rem;
       display: none;
-      height: 6rem;
+      height: 8rem;
       overflow: hidden;
       position: fixed;
       right: 0rem;
       transition: opacity .8s;
-      width: 6rem;
+      width: 8rem;
       will-change: opacity;
       z-index: 9;
     }
@@ -46,8 +47,8 @@ export class ContactFab extends LitElement {
 
       :host {
         display: block;
-        height: 6.75rem;
-        width: 6.75rem;
+        height: 8rem;
+        width: 8rem;
       }
 
     }
@@ -55,9 +56,9 @@ export class ContactFab extends LitElement {
     .c-contact-fab__spinning {
       border-radius: 100rem;
       fill: var(--color-eerie-black);
-      font-family: var(--font-mono);
-      font-size: 2.8rem;
-      letter-spacing: .6rem;
+      font-family: var(--font-normal);
+      font-size: 2.2rem;
+      letter-spacing: .55rem;
       will-change: transform;
     }
   `
@@ -66,55 +67,38 @@ export class ContactFab extends LitElement {
 
   firstUpdated(): void {
 
+    document.body.appendChild(this)
+
     gsap.registerPlugin(ScrollTrigger)
 
     const rotateDuration = 16
 
-    const rotate = gsap.to(this.rotateEl.value, {
-      rotation: 360,
-      duration: rotateDuration,
-      onReverseComplete() {
+    const rotate = gsap.to(
+      this.rotateEl.value,
+      {
+        rotation: 360,
+        duration: rotateDuration,
+        onReverseComplete() {
 
-        this.totalTime(rotateDuration * 100)
+          this.totalTime(rotateDuration * 100)
 
-      },
-      repeat: -1,
-      ease: 'linear'
-    })
+        },
+        repeat: -1,
+        ease: 'linear'
+      })
 
-    let scrollTop
-    let contentHeight
-    let progress = 0
-    let rounds = 0
     const clamp = gsap.utils.clamp(-50, 50)
 
     ScrollTrigger.create({
+
+      trigger: '[data-scroll-container]',
       scroller: '[data-scroll-container]',
       onUpdate: self => {
 
-        scrollTop =
-          window.pageYOffset ||
-          document.documentElement.scrollTop
-
-        contentHeight =
-          Math.max(
-            document.body.scrollHeight,
-            document.body.offsetHeight,
-            document.documentElement.clientHeight,
-            document.documentElement.scrollHeight,
-            document.documentElement.offsetHeight
-          ) - window.innerHeight
-
-        rounds = Math.floor(
-          contentHeight / window.innerHeight
-        )
-        progress =
-          Math.floor((scrollTop / contentHeight) * 100) *
-          rounds
-
+        console.log('sss')
         rotate.timeScale(clamp(self.getVelocity() / 100))
         gsap.to(rotate, {
-          timeScale: self.direction,
+          timeScale: 1,
           duration: 0.3,
           overwrite: true,
           ease: 'power1.inOut'
@@ -149,7 +133,7 @@ export class ContactFab extends LitElement {
         </defs>
         <text dy="70" textLength="1240">
           <textPath xlink:href="#textcircle">
-            start a project — get in touch —
+            contact — get in touch — contact — get in touch —
           </textPath>
         </text>
       </svg>

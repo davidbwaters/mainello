@@ -334,7 +334,7 @@ export class Footer extends LitElement {
   firstUpdated(): void {
 
     this._createWrapper()
-    // this._inViewort()
+    this._inViewort()
 
     this.instance = new window.p5(this.sketch)
 

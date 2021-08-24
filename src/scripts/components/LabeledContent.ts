@@ -12,7 +12,6 @@ import {
   customElement,
   property
 } from 'lit/decorators.js'
-import { threadId } from 'worker_threads'
 
 
 declare global {
@@ -32,16 +31,16 @@ export class LabeledText extends LitElement {
       );
       display: block;
       grid-column: 1 / span 2;
-      padding-bottom: var(--labeled-text-spacing);
-      padding-top: var(--labeled-text-spacing);
+      padding-bottom: 6rem;
+      padding-top: 6rem;
     }
 
     @media (min-width: 320px) {
       :host {
         grid-column: 2 / span 8;
         grid-template-columns: 100%;
-        padding-left: 6.4%;
-        padding-right: 6.4%;
+        padding-left: 0;
+        padding-right: 0;
       }
     }
 
@@ -62,18 +61,26 @@ export class LabeledText extends LitElement {
       align-content: center;
       display: grid;
       grid-auto-flow: row;
-      grid-template-columns: 1fr;
+      grid-template-columns: 87.6%;
       justify-content: center;
       margin-left: auto;
       margin-right: auto;
       max-width: var(--wrapper-width);
     }
 
+    @media (min-width: 320px) {
+
+      .c-labeled-content__inner {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
     @media (min-width: 768px) {
 
       .c-labeled-content__inner {
         grid-auto-flow: column;
-        grid-template-columns: 1fr 3fr;
+        grid-template-columns: 1fr 4fr;
       }
 
     }
@@ -96,7 +103,6 @@ export class LabeledText extends LitElement {
 
     .c-labeled-content__content img {
       height: auto;
-      margin-bottom: var(--spacing-9);
       width: 100%;
     }
 
@@ -121,17 +127,18 @@ export class LabeledText extends LitElement {
   })
   label:string
 
-  @property({
-    type: String,
-    attribute: true
-  })
-  image:string
 
   @property({
     type: Array,
     attribute: true
   })
   text:Array<Record<string, unknown>>
+
+  @property({
+    type: String,
+    attribute: true
+  })
+  image:string
 
   @property({
     type: Boolean,
@@ -145,65 +152,7 @@ export class LabeledText extends LitElement {
   })
   border:boolean
 
-  connectedCallback():void {
-
-    super.connectedCallback()
-
-    const spacing = ' calc(5vh + 3.75vw)'
-
-    if (
-      this.hasAttribute('border') &&
-      this.getAttribute('border') !==
-      'undefined'
-    ) {
-
-      this.border = JSON.parse(
-        this.getAttribute('border')
-      )
-
-    }
-
-    if (this.hasAttribute('spacing')) {
-
-      this.spacing = JSON.parse(
-        this.getAttribute('spacing')
-      )
-
-    }
-
-    if (this.spacing) {
-
-      this.style.setProperty(
-        '--labeled-text-spacing',
-        spacing
-      )
-
-    }
-    else {
-
-      this.style.setProperty(
-        '--labeled-text-spacing',
-        '0'
-      )
-
-    }
-
-    if (this.border) {
-
-      this.style.setProperty(
-        '--labeled-text-border',
-        '1px'
-      )
-
-    }
-    else {
-
-      this.style.setProperty(
-        '--labeled-text-border',
-        '0'
-      )
-
-    }
+  firstUpdated() {
 
   }
 
@@ -218,6 +167,7 @@ export class LabeledText extends LitElement {
         </div>
 
         <div class="c-labeled-content__content">
+          <slot></slot>
           ${this.text
             ? html`
               ${this.text.map(item => html`

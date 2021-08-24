@@ -142,13 +142,16 @@ const addParallax = () => {
   let parallaxEls = Array.from(document.querySelectorAll(
     '[data-parallax-mask]')
   )
-  parallaxEls = [...parallaxEls, ...Array.from(
-    document.querySelector(
-      'c-dynamic-content'
-    ).shadowRoot
-      .querySelectorAll('[data-parallax-mask]')
-  )]
+  const dyn = document.querySelector('c-dynamic-content')
 
+  if (dyn) {
+
+    parallaxEls = [...parallaxEls, ...Array.from(
+      dyn.shadowRoot
+        .querySelectorAll('[data-parallax-mask]')
+    )]
+
+  }
   console.log(parallaxEls)
   parallaxEls.forEach(el => {
 

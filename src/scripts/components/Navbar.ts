@@ -62,9 +62,11 @@ export class Navbar extends LitElement {
       grid-auto-columns: min-content;
       grid-auto-flow: column;
       justify-content: space-between;
+      margin: auto;
+      max-width: var(wrapper-width);
       padding-bottom: var(--spacing-4);
-      padding-left: 6.2vw;
-      padding-right: 6.2vw;
+      padding-left: 6.5vw;
+      padding-right: 6.5vw;
       padding-top: var(--spacing-4);
       top: 0;
     }

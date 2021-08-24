@@ -2,6 +2,9 @@
 // hero
 //
 
+.c-hero {
+  perspective: 100rem;
+}
 
 .c-hero__background {
   height: 100vh;
@@ -24,22 +27,22 @@
 }
 
 .c-hero__tagline {
-  align-content: center;
+  align-content: end;
   display: grid;
-  grid-column: 1 / span 2;
-  grid-row: 3 / span 2;
-  grid-template-columns: calc(
-    100% - (var(--spacing-2)) * 2
-  );
+  font-size: var(--font-size-large-5);
+  grid-column: 1/span 2;
+  grid-row: 1/span 3;
+  grid-template-columns: calc( 100% - (var(--spacing-2)) * 2 );
   justify-content: center;
   margin: 0;
   position: relative;
+  transform-origin: bottom left;
 }
 
 @media (min-width: 320px) {
   .c-hero__tagline {
     align-content: center;
-    grid-column: 2/span 6;
+    grid-column: 2/span 8;
     grid-row: 3/span 2;
     grid-template-columns: 1fr;
   }
@@ -47,16 +50,19 @@
 
 @media (min-width: 480px) {
   .c-hero__tagline {
-    align-content: end;
-    grid-column: 2/span 6;
-    grid-row: 2/span 3;
+    align-content: center;
+    font-size: var(--font-size-display-0);
+    grid-column: 2/span 8;
+    grid-row: 2/span 4;
   }
 }
 
 @media (min-width: 768px) {
   .c-hero__tagline {
     align-content: center;
-    grid-column: 3/span 9;
+    font-size: var(--font-size-display-0);
+    line-height: var(--line-height-display-0);
+    grid-column: 3/span 8;
     grid-row: 2/span 4;
   }
 }
@@ -70,22 +76,22 @@
 
 
 .c-hero__cta {
+  align-content: center;
   display: grid;
   font-size: var(--font-size-normal);
   font-weight: 400;
-  grid-column: 1 / span 2;
-  grid-row: 5 / span 2;
-  grid-template-columns: calc(
-    100% - (var(--spacing-2)) * 2
-  );
+  grid-column: 1/span 2;
+  grid-row: 4/span 3;
+  grid-template-columns: calc( 100% - (var(--spacing-2)) * 2 );
   justify-content: center;
   line-height: var(--line-height-normal-spaced);
   margin: 0;
+  transform-origin: bottom center;
 }
 
 @media (min-width: 320px) {
   .c-hero__cta {
-    font-size: var(--font-size-large-1);
+    align-content: start;
     grid-column: 2 / span 8;
     grid-row: 6 / span 2;
     grid-template-columns: 100%;
@@ -94,17 +100,18 @@
 
 @media (min-width: 480px) {
   .c-hero__cta {
-    align-content: center;
-    grid-column: 2 / span 8;
-    grid-row: 5 / span 3;
+    align-content: start;
+    grid-column: 2/span 6;
+    grid-row: 6/span 3;
   }
 }
 
 @media (min-width: 768px) {
   .c-hero__cta {
-    align-content: start;
-    grid-column: 3/span 9;
-    grid-row: 6 / span 3;
+    align-content: center;
+    // font-size: var(--font-size-large-1);
+    grid-column: 3/span 7;
+    grid-row: 6/span 2;
   }
 }
 

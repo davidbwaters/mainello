@@ -42,15 +42,16 @@ export class PageHeader extends LitElement {
     }
 
     ::slotted(*) {
-      font-size: var(--font-size-large-4);
+      font-size: var(--font-size-normal);
       margin-bottom: var(--spacing-3);
       margin-top: 0;
     }
 
     ::slotted([slot="subtitle"]) {
-      font-family: var(--font-mono);
-      font-size: var(--font-size-normal);
+      font-size: var(--font-size-large-6);
+      line-height: var(--line-height-large-6);
       margin-bottom: 0;
+      margin-right: 40%;
       margin-top: 0;
     }
   `

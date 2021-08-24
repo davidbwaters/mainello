@@ -45,21 +45,6 @@ export class Intro extends LitElement {
 
   firstUpdated(): void {
 
-    const navbar = document
-      .querySelector('c-navbar')
-
-    const tagline = document
-      .querySelector(
-        '.c-hero__tagline'
-      )
-
-    const cta = document
-      .querySelector(
-        '.c-hero__cta'
-      )
-
-
-    navbar.style.opacity = '0'
 
     document.body.style.opacity = '1'
 
@@ -68,9 +53,10 @@ export class Intro extends LitElement {
       this.sketchEl.value
     ]
 
+
     const sketchAnimation:any = lottie.loadAnimation({
       container: this.sketchEl.value,
-      renderer: 'canvas',
+      renderer: 'svg',
       loop: false,
       autoplay: false,
       path: 'animations/sketch.json'
@@ -129,6 +115,46 @@ export class Intro extends LitElement {
       }
     })
 
+    const navbar = document
+      .querySelector('c-navbar')
+
+    const hero = document
+      .querySelector(
+        '.c-hero__inner'
+      )
+
+    const tagline = document
+      .querySelector(
+        '.c-hero__tagline'
+      )
+
+    const lines = tagline.querySelectorAll('span')
+    const cta = document
+      .querySelector(
+        '.c-hero__cta'
+      )
+
+    gsap.set(navbar, {
+      opacity: 0
+    })
+
+    gsap.set(lines, {
+      opacity: 0,
+      y: '20%',
+      rotateX: '-60deg',
+      rotateY: '0deg',
+      scale: 0.8
+    })
+
+    gsap.set(cta, {
+      opacity: 0,
+      y: '80%',
+      rotateX: '-60deg',
+      rotateY: '0deg',
+      scale: 0.8
+    })
+
+
     sketchAnimation.onComplete = () => {
 
       const timeline = gsap.timeline()
@@ -139,19 +165,40 @@ export class Intro extends LitElement {
       })
 
       timeline.to(this, {
-        duration: 0.6,
+        duration: 0.8,
         opacity: 0,
         onComplete: () => {
 
           this.style.opacity = '0'
 
         }
-      })
+      }, 0.3)
 
       timeline.to(navbar, {
         duration: 0.2,
         opacity: 1
       })
+
+      timeline.to(lines, {
+        y: '0%',
+        x: '0%',
+        opacity: 1,
+        rotateX: '0deg',
+        rotateY: '0deg',
+        scale: 1,
+        stagger: 0.15,
+        duration: 1.2,
+        ease: 'power2'
+      }, 0.6)
+
+      timeline.to(cta, {
+        y: '0%',
+        rotateX: '0deg',
+        opacity: 1,
+        duration: 1.2,
+        scale: 1,
+        ease: 'power3'
+      }, 1.0)
 
       setTimeout(() => {
 

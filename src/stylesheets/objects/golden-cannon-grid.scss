@@ -13,6 +13,8 @@
     0.165fr
     0.135fr
     0.2fr;
+  margin: auto;
+  // max-width: var(--wrapper-width);
   min-height: 100vh;
   overflow-x: hidden;
   width: 100%;
@@ -92,6 +94,8 @@
 
 .o-gc-grid--columns {
   grid-template-rows: auto;
+  margin: auto;
+  // max-width: var(--wrapper-width);
   height: auto;
   min-height: 0;
 }

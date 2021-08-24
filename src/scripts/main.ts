@@ -194,7 +194,22 @@ async function handlePageLoad() {
 function barbaSetup() {
 
   barba.use(barbaPrefetch)
+
+  barba.hooks.beforeEnter(data => {
+
+    scroller.scrollTo('top', {duration: 0})
+
+  })
+
   barba.hooks.afterEnter(data => {
+
+
+    scroller.scrollTo('top', {
+      duration: 0,
+      disableLerp: true
+    })
+
+    scroller.update()
 
     console.log('after enter all')
 

@@ -137,7 +137,7 @@ export class NavMenu extends LitElement {
 
     ::slotted(*) {
       color: inherit;
-      font-size: var(--font-size-large-8);
+      font-size: var(--font-size-display-1);
       font-size: 10vmin;
       left: 0vw;
       position: relative;

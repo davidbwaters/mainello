@@ -19,7 +19,7 @@ export default css`
 
   .c-intro {
     align-content: center;
-    background-color: var(--color-platinum);
+    background-color: var(--color-opaque-light);
     display: grid;
     height: 100%;
     justify-content: center;
@@ -251,8 +251,7 @@ export default css`
       grid-column: 5 / span 6;
     }
     .c-intro__block:nth-child(6) {
-      grid-row: 1 / span 4;
-      grid-column: 7 / span 4;
+      display: none;
     }
     .c-intro__block:nth-child(7) {
       grid-row: 1 / span 3;

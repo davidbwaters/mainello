@@ -30,9 +30,8 @@
 
         <c-intro></c-intro>
 
-        <div
-          class='c-hero u-margin-20vh-bottom o-gc-grid'
-        >
+
+        <div class='c-hero'>
 
           <shader-doodle class='c-hero__background'>
 
@@ -126,17 +125,24 @@
             }
             </script>
           </shader-doodle>
-          <h1 class='c-hero__tagline u-heading-huge-fluid'>
-            <span>{{home.hero_line_1}}</span>
-            <span class='u-text-outline'>
-              {{home.hero_line_2}}
-            </span>
-            <span>{{home.hero_line_3}}</span>
-          </h1>
 
-          <h2 class='c-hero__cta'>
-            {{home.cta}}
-          </h2>
+          <div
+            class='c-hero__inner u-margin-20vh-bottom o-gc-grid'
+          >
+
+            <h1 class='c-hero__tagline'>
+              <span>{{home.hero_line_1}}</span>
+              <span class='u-text-outline'>
+                {{home.hero_line_2}}
+              </span>
+              <span>{{home.hero_line_3}}</span>
+            </h1>
+
+            <h2 class='c-hero__cta'>
+              {{home.cta}}
+            </h2>
+          </div>
+
         </div>
 
         <div class='o-gc-grid o-gc-grid--columns u-bg-blur-primary-2'>
@@ -219,7 +225,7 @@
         navLinks='{{site.menu_items}}'
         logo='{{site.logo_footer}}'
       >
-        <div slot='heading' class='u-heading-huge-fluid'>
+        <div slot='heading' class='u-heading-huge'>
           {{{site.footer_heading}}}
         </div>
       </c-footer>

@@ -95,6 +95,7 @@ export class LabeledText extends LitElement {
 
     .c-labeled-content__content img {
       height: auto;
+      margin-bottom: var(--spacing-9);
       width: 100%;
     }
 

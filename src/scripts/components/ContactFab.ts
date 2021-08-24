@@ -67,7 +67,16 @@ export class ContactFab extends LitElement {
 
   firstUpdated(): void {
 
-    document.body.appendChild(this)
+    const addFab = document.querySelectorAll(
+      'c-contact-fab'
+    ).length === 1
+
+    if (addFab) {
+
+      document.body.appendChild(this)
+
+    }
+
 
     gsap.registerPlugin(ScrollTrigger)
 

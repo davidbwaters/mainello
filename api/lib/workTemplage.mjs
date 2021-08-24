@@ -75,7 +75,7 @@ export function buildWorkTemplate(
             navLinks='{{site.menu_items}}'
             logo='{{site.logo_footer}}'
           >
-            <div slot='heading' class='u-heading-huge-fluid'>
+            <div slot='heading' class='u-heading-huge'>
               {{{site.footer_heading}}}
             </div>
           </c-footer>

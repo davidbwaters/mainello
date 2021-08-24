@@ -12,6 +12,7 @@ import {
   customElement,
   property
 } from 'lit/decorators.js'
+import { threadId } from 'worker_threads'
 
 
 declare global {
@@ -150,13 +151,25 @@ export class LabeledText extends LitElement {
 
     const spacing = ' calc(5vh + 3.75vw)'
 
-    this.border = JSON.parse(
-      this.getAttribute('border')
-    )
+    if (
+      this.hasAttribute('border') &&
+      this.getAttribute('border') !==
+      'undefined'
+    ) {
 
-    this.spacing = JSON.parse(
-      this.getAttribute('spacing')
-    )
+      this.border = JSON.parse(
+        this.getAttribute('border')
+      )
+
+    }
+
+    if (this.hasAttribute('spacing')) {
+
+      this.spacing = JSON.parse(
+        this.getAttribute('spacing')
+      )
+
+    }
 
     if (this.spacing) {
 

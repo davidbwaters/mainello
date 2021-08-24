@@ -47,11 +47,12 @@ export class PageHeader extends LitElement {
       margin-top: 0;
     }
 
-    ::slotted([slot="subtitle"]) {
+    ::slotted([slot="subtitle"]),
+    ::slotted([slot="single"])  {
       font-size: var(--font-size-large-6);
       line-height: var(--line-height-large-6);
       margin-bottom: 0;
-      margin-right: 40%;
+      margin-right: 25%;
       margin-top: 0;
     }
   `
@@ -67,6 +68,8 @@ export class PageHeader extends LitElement {
 
     return html`
       <div class='c-page-header__inner'>
+
+        <slot name="single"></slot>
         <slot></slot>
         <slot name="subtitle"></slot>
       </div>

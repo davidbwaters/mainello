@@ -104,7 +104,6 @@ export class ContactFab extends LitElement {
       scroller: '[data-scroll-container]',
       onUpdate: self => {
 
-        console.log('sss')
         rotate.timeScale(clamp(self.getVelocity() / 100))
         gsap.to(rotate, {
           timeScale: 1,

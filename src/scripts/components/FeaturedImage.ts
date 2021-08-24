@@ -30,23 +30,35 @@ export class FeaturedImage extends LitElement {
         --color-opaque-dark-subtle
       );
       display: block;
+      height: 80vh;
+      overflow: hidden;
     }
-    .c-featured-image__image,
-    .c-featured-image__image-spaced-small,
-    .c-featured-image__image-spaced-large {
-      display: block;
-      max-width: 100%;
-    }
+    .c-featured-image__wrapper,
+    .c-featured-image__wrapper-spaced-small,
+    .c-featured-image__wrapper-spaced-large,
     .c-featured-image__image {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    .c-featured-image__wrapper {
+
+    display: grid;
+  }
       margin: auto;
     }
-    .c-featured-image__image-spaced-small {
+    .c-featured-image__wrapper-spaced-small {
       margin-left: 6.2vw;
       margin-right: 6.2vw;
     }
-    .c-featured-image__image-spaced-large {
+    .c-featured-image__wrapper-spaced-large {
       margin-left: 20vw;
       margin-right: 20vw;
+    }
+    ::slotted(*) {
+      background-size: cover;
+      background-position: center center;
+      will-change: transform;
     }
   `
 
@@ -76,30 +88,42 @@ export class FeaturedImage extends LitElement {
 
     if (this.spacing === 'small') {
 
-      this._wrapperClass = 'c-featured-image__image-spaced-small'
+      this._wrapperClass = 'c-featured-image__wrapper-spaced-small'
 
     }
     else if (this.spacing === 'large') {
 
-      this._wrapperClass = 'c-featured-image__image-spaced-large'
+      this._wrapperClass = 'c-featured-image__wrapper-spaced-large'
 
     }
     else {
 
-      this._wrapperClass = 'c-featured-image__image'
+      this._wrapperClass = 'c-featured-image__wrapper'
 
     }
+
+  }
+
+  firstUpdated() {
+
+    const el = document.createElement('div')
+    el.classList.add('c-featured-image__image')
+    el.dataset.parallaxMask = ''
+    this.appendChild(el)
+
+    el.style.backgroundImage = "url(" + this.link + ")"
 
   }
 
   protected render():TemplateSpecification {
 
     return html`
-      <img
-        src='${this.link}'
-        alt='${this.alt}'
+      <div
         class='${this._wrapperClass}'
       >
+        <slot></slot>
+
+      </div>
     `
 
   }

@@ -19,7 +19,11 @@ declare global {
   }
 }
 
-let scroller
+
+interface scrollerElType extends HTMLDivElement {
+  scroller: LocomotiveScroll,
+}
+
 
 const navbarEl = document.querySelector('c-navbar')
 
@@ -74,11 +78,15 @@ async function onInit() {
 
 }
 
+let scrollerEl:scrollerElType
 
 function scrollSetup() {
 
-  scroller = new LocomotiveScroll({
-    el: document.querySelector('[data-scroll-container]'),
+  scrollerEl = document.querySelector(
+    '[data-scroll-container]'
+  )
+  scrollerEl.scroller = new LocomotiveScroll({
+    el: scrollerEl,
     smooth: true,
     tablet: { smooth: true },
     smartphone: { smooth: true }
@@ -86,8 +94,8 @@ function scrollSetup() {
 
   gsap.registerPlugin(ScrollTrigger)
 
-  scroller.on('scroll', ScrollTrigger.update)
-  scroller.on('scroll', () => {
+  scrollerEl.scroller.on('scroll', ScrollTrigger.update)
+  scrollerEl.scroller.on('scroll', () => {
 
     const scrollerEl:HTMLDivElement = document
       .querySelector(
@@ -101,8 +109,8 @@ function scrollSetup() {
       scrollTop(value) {
 
         return arguments.length
-          ? scroller.scrollTo(value, 0, 0)
-          : scroller.scroll.instance.scroll.y
+          ? scrollerEl.scroller.scrollTo(value, 0, 0)
+          : scrollerEl.scroller.scroll.instance.scroll.y
 
       },
       getBoundingClientRect() {
@@ -121,7 +129,7 @@ function scrollSetup() {
 
   ScrollTrigger.addEventListener(
     'refresh',
-    () => scroller.update()
+    () => scrollerEl.scroller.update()
   )
 
 
@@ -129,6 +137,44 @@ function scrollSetup() {
 
 }
 
+const addParallax = () => {
+
+  let parallaxEls = Array.from(document.querySelectorAll(
+    '[data-parallax-mask]')
+  )
+  parallaxEls = [...parallaxEls, ...Array.from(
+    document.querySelector(
+      'c-dynamic-content'
+    ).shadowRoot
+      .querySelectorAll('[data-parallax-mask]')
+  )]
+
+  console.log(parallaxEls)
+  parallaxEls.forEach(el => {
+
+    gsap.set(el, {
+      scale: 1.4,
+      y: '-20%'
+    })
+    ScrollTrigger.create({
+      trigger: el,
+      scroller: scrollerEl,
+      start: 'top bottom',
+      end: '+80%',
+      animation: gsap.to(
+        el,
+        {
+          scale: 1,
+          y: '0%'
+        }
+      ),
+      scrub: 2
+      // markers: true
+    })
+
+  })
+
+}
 function prepVideos() {
 
   const videos = document.querySelectorAll('video')
@@ -138,7 +184,6 @@ function prepVideos() {
 
     videos.forEach((vid:HTMLVideoElement) => {
 
-      console.log(vid)
       vid.play()
 
     })
@@ -186,6 +231,7 @@ async function handlePageLoad() {
 
     wrapLinks()
     prepVideos()
+    addParallax()
 
   }, 1000)
 
@@ -197,29 +243,29 @@ function barbaSetup() {
 
   barba.hooks.beforeEnter(data => {
 
-    scroller.scrollTo('top', {duration: 0})
+    scrollerEl.scroller.scrollTo('top', { duration: 0 })
 
   })
 
   barba.hooks.afterEnter(data => {
 
 
-    scroller.scrollTo('top', {
+    scrollerEl.scroller.scrollTo('top', {
       duration: 0,
       disableLerp: true
     })
 
-    scroller.update()
+    scrollerEl.scroller.update()
 
     console.log('after enter all')
 
     setTimeout(() => {
 
-      scroller.update()
+      scrollerEl.scroller.update()
 
       ScrollTrigger.refresh()
 
-      scroller.update()
+      scrollerEl.scroller.update()
 
       prepVideos()
 

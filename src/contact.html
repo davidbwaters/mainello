@@ -28,7 +28,7 @@
     <c-nav-menu navLinks='{{site.menu_items}}'>
     </c-nav-menu>
 
-    <div data-scroll-container class="u-will-change-transform-opacity">
+    <div data-scroll-container>
 
       <main
         data-barba='container'
@@ -228,7 +228,7 @@
         logo='{{site.logo_footer}}'
         asscroll
       >
-        <div slot='heading' class='u-heading-huge'>
+        <div slot='heading' class='u-heading-huge-fluid'>
           {{{site.footer_heading}}}
         </div>
       </c-footer>
@@ -381,6 +381,7 @@
           document.querySelectorAll('.js-input')
         )
         .forEach(function (inputEl) {
+        console.log(inputEl)
           if (inputEl.value.trim() !== '') {
 
             if (

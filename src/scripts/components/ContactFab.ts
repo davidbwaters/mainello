@@ -22,7 +22,7 @@ export class ContactFab extends LitElement {
       background-image: url('/images/globe.svg');
       background-position: center;
       background-repeat: no-repeat;
-      background-size: 1.33rem;
+      background-size: 1.69rem;
       bottom: 0rem;
       display: none;
       height: 8rem;
@@ -47,8 +47,8 @@ export class ContactFab extends LitElement {
 
       :host {
         display: block;
-        height: 8rem;
-        width: 8rem;
+        height: 10rem;
+        width: 10rem;
       }
 
     }

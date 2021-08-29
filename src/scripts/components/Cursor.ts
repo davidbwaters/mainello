@@ -43,11 +43,12 @@ export class Cursor extends LitElement {
 
   static styles = css`
     :host {
-      --cursor-size: 2.5rem;
+      --cursor-size: 4.5rem;
 
       display: var(--cursor-display);
       height: var(--cursor-size);
       left: calc(var(--cursor-size) / 2 * -1);
+      mix-blend-mode: color-burn;
       pointer-events: none;
       position: fixed;
       top: calc(var(--cursor-size) / 2 * -1);
@@ -56,7 +57,7 @@ export class Cursor extends LitElement {
     }
 
     .c-cursor__inner {
-      background-color: var(--color-opaque-dark);
+      background-color: var(--color-opaque);
       border-radius: var(--cursor-size);
       border-style: solid;
       box-sizing: border-box;

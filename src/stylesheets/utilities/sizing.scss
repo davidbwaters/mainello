@@ -2,14 +2,27 @@
 // sizing
 //
 
+.u-width-fill {
+  width: 100%;
+}
+
+.u-width-100vw {
+  width: 100vw;
+}
+
 .u-height-fill {
-  height: 100vh;
+  height: 100%;
 }
 
-.u-height-half {
-  height: 50vh;
+.u-height-80vh-min {
+  min-height: 80vh;
 }
 
-.u-height-quarter {
-  height: 25vh;
+.u-height-90vh-min {
+  min-height: 90vh;
 }
+
+.u-height-100vh-min {
+  min-height: 100vh;
+}
+

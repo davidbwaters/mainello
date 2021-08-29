@@ -10,6 +10,12 @@
   </head>
   <body style='opacity: 0' data-barba='wrapper'>
 
+    <c-navbar>
+      <a href='/'>
+        <img src='{{site.logo_header}}'>
+      </a>
+    </c-navbar>
+
     <c-nav-menu
       navLinks='{{site.menu_items}}'
     >
@@ -17,11 +23,6 @@
 
     <div data-scroll-container class="u-will-change-transform-opacity">
 
-      <c-navbar>
-        <a href='/'>
-          <img src='{{site.logo_header}}'>
-        </a>
-      </c-navbar>
 
       <main
         data-barba='container'
@@ -166,7 +167,6 @@
 
           <c-labeled-content
             label='{{home.services_text_label}}'
-            text='[{"paragraph": "{{home.services_text}}"}]'
             spacing=true
           >
           <p>{{{home.services_text}}}</p>

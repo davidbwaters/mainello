@@ -18,7 +18,7 @@ import {
   createRef
 } from 'lit/directives/ref'
 
-import gsap from 'gsap'
+import { gsap } from 'gsap'
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -43,21 +43,26 @@ export class Cursor extends LitElement {
 
   static styles = css`
     :host {
-      --cursor-size: 4.5rem;
+      --cursor-size: 2.5rem;
 
+
+      backdrop-filter: brightness(0.9);
+      background-color: white;
+      border: solid 1px black;
+      border-radius: var(--cursor-size);
       display: var(--cursor-display);
       height: var(--cursor-size);
       left: calc(var(--cursor-size) / 2 * -1);
-      mix-blend-mode: color-burn;
+      mix-blend-mode: difference;
       pointer-events: none;
       position: fixed;
       top: calc(var(--cursor-size) / 2 * -1);
       width: var(--cursor-size);
       will-change: transform, opacity;
+      z-index: 99;
     }
 
     .c-cursor__inner {
-      background-color: var(--color-opaque);
       border-radius: var(--cursor-size);
       border-style: solid;
       box-sizing: border-box;
@@ -99,19 +104,15 @@ export class Cursor extends LitElement {
   private _activeTarget:HTMLElement
 
   private _enterStyles = {
-    backgroundColor: 'rgba(160,160,160,0.2)',
-    borderColor: 'rgba(80,80,80,0.3)',
+    borderWidth: '1px',
     duration: 0.4,
-    scale: 1
+    scale: 2
   }
 
   private _leaveStyles = {
-    backgroundColor: 'rgba(80,80,80,0.8)',
-    borderColor: 'rgba(80,80,80,0.3)',
-    borderWidth: '1px',
+    borderWidth: '2px',
     duration: 0.4,
-    scale: 0.35,
-    opacity: 1.0
+    scale: 1
   }
 
   setViewport():void {
@@ -124,7 +125,7 @@ export class Cursor extends LitElement {
   handleEnter(e):void {
 
     gsap.to(
-      this.innerEl.value,
+      this,
       this._enterStyles
     )
 
@@ -135,7 +136,7 @@ export class Cursor extends LitElement {
   handleLeave(e):void {
 
     gsap.to(
-      this.innerEl.value,
+      this,
       this._leaveStyles
     )
 
@@ -373,7 +374,7 @@ export class Cursor extends LitElement {
 
 
     gsap.to(
-      this.innerEl.value,
+      this,
       this._leaveStyles
     )
 
@@ -388,10 +389,6 @@ export class Cursor extends LitElement {
   protected render():TemplateSpecification {
 
     return html`
-      <div
-        class='c-cursor__inner'
-        ${ref(this.innerEl)}
-      ></div>
     `
 
   }

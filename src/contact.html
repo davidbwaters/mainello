@@ -28,7 +28,7 @@
     <c-nav-menu navLinks='{{site.menu_items}}'>
     </c-nav-menu>
 
-    <div data-scroll-container>
+    <div data-scroll-container class='u-bg-main'>
 
       <main
         data-barba='container'
@@ -36,13 +36,6 @@
         asscroll
       >
 
-        <!--
-        <c-bounce-title
-          class='u-margin-navbar-top'
-          text='{{site.contact_heading}}'
-        >
-        </c-bounce-title>
-        -->
 
         <section class='c-contact'>
 
@@ -188,30 +181,33 @@
 
         </section>
 
+        <div
+          class='
+            c-overlay
+            js-confirm-overlay
+          '
+          data-hidden=true
+        >
+          <figure class='
+            c-overlay__figure
+            js-confirm-animation
+          '>
+          </figure>
+          <h3 class='
+            c-overlay__heading
+          '>
+            {{site.contact_form_success_heading}}
+          </h3>
+          {{site.contact_form_success_text}}
+        </div>
+
+        <script type='module'>
+
+          import lottie from 'lottie-web'
+        </script>
+
       </main>
 
-      <div
-        class='
-          c-overlay
-          js-confirm-overlay
-        '
-        data-hidden=true
-      >
-        <figure class='
-          c-overlay__figure
-          js-confirm-animation
-        '>
-        </figure>
-        <h3 class='
-          c-overlay__heading
-        '>
-          {{site.contact_form_success_heading}}
-        </h3>
-        {{site.contact_form_success_text}}
-      </div>
-
-      <c-cursor>
-      </c-cursor>
 
       <svg style="display: none" xmlns='http://www.w3.org/2000/svg' version='1.1' class='svg-filters'>
         <defs>
@@ -235,236 +231,6 @@
 
     </div>
 
-    <script type='module'>
-
-      import lottie from 'lottie-web'
-
-      const contactForm = document.querySelector(
-        '.js-contact-form'
-      )
-
-      if (contactForm) {
-        const serialize = function (form) {
-          let field
-          let l
-          let s = []
-
-          if (
-            typeof form == 'object' &&
-            form.nodeName.toLowerCase() == 'form'
-          ) {
-
-            const len = form.elements.length
-
-            for (let i = 0; i < len; i++) {
-              field = form.elements[i]
-              if (
-                field.name &&
-                !field.disabled &&
-                field.type != 'button' &&
-                field.type != 'file' &&
-                field.type != 'hidden' &&
-                field.type != 'reset' &&
-                field.type != 'submit'
-              ) {
-                if (field.type == 'select-multiple') {
-                  l = form.elements[i].options.length
-
-                  for (let j = 0; j < l; j++) {
-                    if (field.options[j].selected) {
-                      s[s.length] =
-                        encodeURIComponent(field.name) +
-                        '=' +
-                        encodeURIComponent(
-                          field.options[j].value
-                        )
-                    }
-                  }
-                } else if (
-                  (field.type != 'checkbox' &&
-                    field.type != 'radio') ||
-                  field.checked
-                ) {
-                  s[s.length] =
-                    encodeURIComponent(field.name) +
-                    '=' +
-                    encodeURIComponent(field.value)
-                }
-              }
-            }
-          }
-          return s.join('&').replace(/%20/g, '+')
-
-        }
-
-        contactForm.addEventListener('submit', e => {
-
-          e.preventDefault()
-
-          const theForm = e.currentTarget
-
-          const formData =
-            'form-name=' +
-            e.target.getAttribute('name') +
-            '&' +
-            serialize(theForm)
-
-          console.log(formData)
-
-          const options = {
-            method: 'POST',
-            headers: {
-              'Content-Type':
-                'application/x-www-form-urlencoded'
-            },
-            body: formData
-          }
-
-          fetch('/', options)
-            .then(function (response) {
-
-              console.log(response)
-
-              handleConfirm()
-
-            })
-            .catch(function (error) {
-
-              console.log(error)
-
-            })
-
-        })
-
-      }
-
-        const confirmOverlayEl = document.querySelector(
-          '.js-confirm-overlay'
-        )
-
-        const confirmAnimationEl = document.querySelector(
-          '.js-confirm-animation'
-        )
-
-        const confirmAnimation = lottie.loadAnimation({
-          container: confirmAnimationEl,
-          renderer: 'canvas',
-          loop: false,
-          autoplay: false,
-          path: '/animations/mail.json',
-          rendererSettings: {
-            preserveAspectRatio: 'none'
-          }
-        })
-
-      function handleConfirm() {
-
-        confirmOverlayEl.dataset.hidden = false
-
-        confirmAnimation.goToAndPlay(1, true)
-
-        confirmAnimation.onComplete = () => {
-
-          setTimeout(() => {
-
-            confirmOverlayEl.dataset.hidden = true
-            contactForm.reset()
-
-          }, 5000)
-
-        }
-
-      }
-
-      [].slice
-        .call(
-          document.querySelectorAll('.js-input')
-        )
-        .forEach(function (inputEl) {
-        console.log(inputEl)
-          if (inputEl.value.trim() !== '') {
-
-            if (
-              inputEl.tagName.toLowerCase() === 'textarea'
-            ) {
-
-              inputEl.parentElement.parentElement
-                .dataset.filled = true
-
-            }
-            else {
-
-              inputEl.parentElement.dataset.filled = true
-
-            }
-
-          }
-
-          inputEl.addEventListener('focus', onInputFocus)
-          inputEl.addEventListener('blur', onInputBlur)
-        })
-
-      function onInputFocus(e) {
-
-        if (
-          e.target.tagName.toLowerCase() === 'textarea'
-        ) {
-
-          e.target.parentElement.parentElement
-            .dataset.focus = true
-          e.target.parentElement.parentElement
-            .dataset.filled = true
-
-        }
-        else {
-
-          e.target.parentElement.dataset.focus = true
-          e.target.parentElement.dataset.filled = true
-
-        }
-
-      }
-
-      function onInputBlur(e) {
-
-        if (
-          e.target.tagName.toLowerCase() === 'textarea'
-        ) {
-
-          e.target.parentElement.parentElement
-            .dataset.focus = false
-
-          if (e.target.value.trim() === '') {
-
-            e.target.parentElement.parentElement
-              .dataset.filled = false
-
-          }
-
-        }
-        else {
-
-          e.target.parentElement.dataset.focus = false
-
-          if (e.target.value.trim() === '') {
-
-            e.target.parentElement.dataset.filled = false
-
-          }
-
-        }
-
-
-      }
-
-    </script>
-
-    <script
-      src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.3/p5.min.js'
-      integrity='sha512-xrAcaPlDVY5TDNAKKsVPf040TnCatM3YFUi/AChhyBLJ1IVn+lbAKTiVDjhicrUFPqz/IvC0S2uVlbi7iF6I7w=='
-      crossorigin='anonymous'
-      referrerpolicy='no-referrer'
-    ></script>
 
   </body>
 </html>

@@ -15,7 +15,7 @@ c-toggle {
 
 .c-toggle__label {
   background-color: white;
-  border: solid 1px var(--color-opaque-dark-subtle);
+  border: solid 1px var(--color-opaque-dark);
   border-radius: 5rem;
   color: inherit;
   cursor: pointer;
@@ -29,7 +29,6 @@ c-toggle {
   padding-top: .9em;
   position: relative;
   text-decoration: none;
-  transition: all .4s;
 }
 
 .c-toggle__input:checked + .c-toggle__label {

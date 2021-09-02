@@ -132,7 +132,9 @@ async function getBlock(block) {
 
     )
 
-    items.text = textNew
+    item.text = textNew
+
+    //return item
 
   }
 

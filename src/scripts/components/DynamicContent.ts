@@ -2,6 +2,9 @@
 // component - dynamic content
 //
 
+
+import { escapeQuotes } from 'escape-quotes'
+
 import {
   LitElement,
   html,
@@ -55,7 +58,7 @@ export class DynamicContent extends LitElement {
         this._blocks += `
           <c-featured-image
             link=${block.media}
-            alt=${escape(JSON.stringify(block.title))}
+            alt=${escapeQuotes(JSON.stringify(block.title))}
             spacing=${block.spacing}
             size=${block['image-sizing']}
           >
@@ -82,8 +85,8 @@ export class DynamicContent extends LitElement {
 
         this._blocks += `
           <c-labeled-content
-            label='${escape(JSON.stringify(block.label))}'
-            text='${escape(JSON.stringify(block.text))}'
+            label='${escapeQuotes(JSON.stringify(block.label))}'
+            text='${escapeQuotes(JSON.stringify(block.text))}'
             spacing=true
             border=${block.bottom_border}
           >
@@ -96,7 +99,7 @@ export class DynamicContent extends LitElement {
 
         this._blocks += `
           <c-labeled-content
-            label='${escape(JSON.stringify(block.label))}'
+            label='${escapeQuotes(JSON.stringify(block.label))}'
             image='${block.image}'
             spacing=true
             border=${block.bottom_border}
@@ -146,7 +149,7 @@ export class DynamicContent extends LitElement {
         this._blocks += `
           <c-article
             heading='${block.heading}'
-            text='${escape(block.text)}'
+            text='${escapeQuotes(block.text)}'
             border=${block.bottom_border}
           >
           </c-article>

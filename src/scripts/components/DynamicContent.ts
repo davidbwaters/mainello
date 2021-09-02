@@ -146,7 +146,7 @@ export class DynamicContent extends LitElement {
         this._blocks += `
           <c-article
             heading='${block.heading}'
-            text='${escape(JSON.stringify(block.text))}'
+            text='${escape(block.text)}'
             border=${block.bottom_border}
           >
           </c-article>

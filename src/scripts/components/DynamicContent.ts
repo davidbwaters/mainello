@@ -55,8 +55,9 @@ export class DynamicContent extends LitElement {
         this._blocks += `
           <c-featured-image
             link=${block.media}
-            alt=${block.title}
+            alt=${escape(JSON.stringify(block.title))}
             spacing=${block.spacing}
+            size=${block['image-sizing']}
           >
           </c-featured-image>
         `
@@ -81,8 +82,8 @@ export class DynamicContent extends LitElement {
 
         this._blocks += `
           <c-labeled-content
-            label='${block.label}'
-            text='${JSON.stringify(block.text)}'
+            label='${escape(JSON.stringify(block.label))}'
+            text='${escape(JSON.stringify(block.text))}'
             spacing=true
             border=${block.bottom_border}
           >
@@ -95,7 +96,7 @@ export class DynamicContent extends LitElement {
 
         this._blocks += `
           <c-labeled-content
-            label='${block.label}'
+            label='${escape(JSON.stringify(block.label))}'
             image='${block.image}'
             spacing=true
             border=${block.bottom_border}
@@ -145,7 +146,7 @@ export class DynamicContent extends LitElement {
         this._blocks += `
           <c-article
             heading='${block.heading}'
-            text='${block.text}'
+            text='${escape(JSON.stringify(block.text))}'
             border=${block.bottom_border}
           >
           </c-article>

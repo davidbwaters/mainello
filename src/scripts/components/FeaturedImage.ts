@@ -42,18 +42,19 @@ export class FeaturedImage extends LitElement {
       width: 100%;
     }
     .c-featured-image__wrapper {
-
-    display: grid;
-  }
-      margin: auto;
+      display: grid;
     }
     .c-featured-image__wrapper-spaced-small {
+      margin-bottom: 6.2vw;
       margin-left: 6.2vw;
       margin-right: 6.2vw;
+      margin-top: 6.2vw;
     }
     .c-featured-image__wrapper-spaced-large {
-      margin-left: 20vw;
-      margin-right: 20vw;
+      margin-bottom: 18.6vw;
+      margin-left: 18.6vw;
+      margin-right: 18.6vw;
+      margin-top: 18.6vw;
     }
     ::slotted(*) {
       background-size: cover;
@@ -80,6 +81,13 @@ export class FeaturedImage extends LitElement {
   })
   spacing:string
 
+
+  @property({
+    type: String,
+    attribute: true
+  })
+  size:string;
+
   private _wrapperClass:string
 
   constructor() {
@@ -99,6 +107,17 @@ export class FeaturedImage extends LitElement {
     else {
 
       this._wrapperClass = 'c-featured-image__wrapper'
+
+    }
+
+    if (this.size === 'contain') {
+
+      this.style.setProperty(
+        '--featured-image-size',
+        this.size
+      )
+
+      this._wrapperClass = 'c-featured-image__wrapper-spaced-small'
 
     }
 

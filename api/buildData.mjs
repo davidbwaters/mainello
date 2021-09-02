@@ -107,13 +107,32 @@ async function getBlock(block) {
     )
 
     item.media = assetPath + item.media
-    item.title = fileInfo.title
+    item.title = escape(fileInfo.title)
 
   }
 
   if (block.collection === 'pattern') {
 
     item.image = assetPath + item.image
+
+  }
+
+  if (block.collection === 'labeled_text') {
+
+    const textNew = []
+
+    item.text.forEach(
+      item => {
+
+        textNew.concat(
+          { pargraph: escape(item.paragraph) }
+        )
+
+      }
+
+    )
+
+    items.text = textNew
 
   }
 
@@ -224,10 +243,10 @@ async function buildData() {
 
     i = {
       id: i.id,
-      heading: i.title,
+      heading: escape(i.title),
       image: i.cover_image,
       slug: i.slug,
-      text: i.description_text
+      text: escape(i.description_text)
     }
 
     data.home.work_preview[index] = i

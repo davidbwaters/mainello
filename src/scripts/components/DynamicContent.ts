@@ -3,7 +3,7 @@
 //
 
 
-import { escapeQuotes } from 'escape-quotes'
+import escapeQuotes from 'escape-quotes'
 
 import {
   LitElement,
@@ -58,7 +58,7 @@ export class DynamicContent extends LitElement {
         this._blocks += `
           <c-featured-image
             link=${block.media}
-            alt=${escapeQuotes(JSON.stringify(block.title))}
+            alt=$(block.title)}
             spacing=${block.spacing}
             size=${block['image-sizing']}
           >
@@ -85,11 +85,12 @@ export class DynamicContent extends LitElement {
 
         this._blocks += `
           <c-labeled-content
-            label='${escapeQuotes(JSON.stringify(block.label))}'
-            text='${escapeQuotes(JSON.stringify(block.text))}'
+            label='${block.label}'
+            text='${block.text}'
             spacing=true
             border=${block.bottom_border}
           >
+
           </c-labeled-content>
         `
 
@@ -99,7 +100,7 @@ export class DynamicContent extends LitElement {
 
         this._blocks += `
           <c-labeled-content
-            label='${escapeQuotes(JSON.stringify(block.label))}'
+            label='${block.label}'
             image='${block.image}'
             spacing=true
             border=${block.bottom_border}
@@ -114,7 +115,7 @@ export class DynamicContent extends LitElement {
         this._blocks += `
           <c-offset-columns
             reverse='${block.reverse}'
-            items='${JSON.stringify(block.items)}'
+            items='${block.items}'
           >
             ${block.items.map(item => `
               <img
@@ -149,7 +150,7 @@ export class DynamicContent extends LitElement {
         this._blocks += `
           <c-article
             heading='${block.heading}'
-            text='${escapeQuotes(block.text)}'
+            text='${block.text}'
             border=${block.bottom_border}
           >
           </c-article>

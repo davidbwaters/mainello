@@ -67,8 +67,6 @@ export function buildWorkTemplate(
             </div>
           </main>
 
-          <c-cursor>
-          </c-cursor>
 
           <c-footer
             socialLinks='{{site.social_links}}'

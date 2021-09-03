@@ -44,8 +44,6 @@ export function buildPageTemplate(title, content) {
 
           </main>
 
-          <c-cursor>
-          </c-cursor>
 
           <c-footer
             socialLinks='{{site.social_links}}'

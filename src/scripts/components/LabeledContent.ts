@@ -152,9 +152,7 @@ export class LabeledText extends LitElement {
   })
   border:boolean
 
-  firstUpdated() {
-
-  }
+  firstUpdated() {}
 
   protected render():TemplateSpecification {
 

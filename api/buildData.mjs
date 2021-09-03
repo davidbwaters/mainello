@@ -1,44 +1,36 @@
 //
 // build
 //
-
 import { writeFileSync } from 'fs'
 import date from 'date-and-time'
+
+import escapeQuotes from 'escape-quotes'
 
 import {
   buildPostTemplate
 } from './lib/postTemplage.mjs'
-
 import {
   buildPageTemplate
 } from './lib/pageTemplage.mjs'
-
 import {
   buildWorkTemplate
 } from './lib/workTemplage.mjs'
 
-
 import getData from './lib/getData.mjs'
 import config from '../config.mjs'
-
-
 const datePatternIn = 'YYYY-MM-DD[T]HH:mm:ss[Z]'
 const datePatternOut = 'MMMM D, YYYY'
 const assetPath = config.assets + '/'
-
 async function getFile(id, collection) {
 
   const file = await getData(
     'items/' + collection + '_directus_files' + '/' +
     id
   )
-
   const fileInfo = await getData(
     'files/' + file.directus_files_id
   )
-
   const sort = file.sort_item
-
   return {
     url: assetPath + file.directus_files_id,
     title: fileInfo.title,
@@ -46,13 +38,11 @@ async function getFile(id, collection) {
   }
 
 }
-
 async function getBlock(block) {
 
   let item = {
     component: block.collection
   }
-
   item = {
     ...item,
     ...await getData(
@@ -60,7 +50,6 @@ async function getBlock(block) {
       block.item
     )
   }
-
   if (block.collection === 'offset_columns') {
 
     for (
@@ -74,7 +63,6 @@ async function getBlock(block) {
     }
 
   }
-
   if (block.collection === 'image_row') {
 
     for (
@@ -88,53 +76,27 @@ async function getBlock(block) {
     }
 
   }
-
   if (block.collection === 'featured_video') {
 
     const fileInfo = await getData(
       'files/' + item.media
     )
-
     item.media = assetPath + item.media
     item.type = fileInfo.type
 
   }
-
   if (block.collection === 'featured_image') {
 
     const fileInfo = await getData(
       'files/' + item.media
     )
-
     item.media = assetPath + item.media
-    item.title = escape(fileInfo.title)
+    item.title = fileInfo.title
 
   }
-
   if (block.collection === 'pattern') {
 
     item.image = assetPath + item.image
-
-  }
-
-  if (block.collection === 'labeled_text') {
-
-    const textNew = []
-
-    item.text.forEach(
-      item => {
-
-        textNew.concat(
-          { pargraph: escape(item.paragraph) }
-        )
-
-      }
-
-    )
-
-    item.text = textNew
-
-    //return item
 
   }
 
@@ -148,32 +110,30 @@ async function getBlock(block) {
 
     item.image = assetPath + item.image
 
-  }
 
+  }
   return item
 
 }
 
 async function buildData() {
 
-  const data = {}
-
+  let data = {}
   data.site = await getData('items/site')
-
   data.news = await getData('items/posts')
-
   data.work = await getData('items/portfolio')
-
   data.home = await getData('items/home')
-
   data.services = await getData('items/services')
-
   data.agency = await getData('items/agency')
+
+  //console.log(data)
+
+  //console.log(data.news)
+
 
   const workContent = await getData(
     'items/portfolio_content'
   )
-
   const agencyContent = await getData(
     'items/agency_content'
   )
@@ -183,7 +143,6 @@ async function buildData() {
   ) {
 
     const content = []
-
     for (
       const [blockIndex, block] of item.content.entries()
     ) {
@@ -194,26 +153,21 @@ async function buildData() {
           return block === i.id
 
         })[0]
-
       content[blockIndex] = await getBlock(
-
         content[blockIndex]
-
       )
 
     }
-
     data.work[index].featured_image =
       assetPath + data.work[index].featured_image
-
     data.work[index].cover_image =
       assetPath + data.work[index].cover_image
-
     data.work[index].content = content
 
   }
 
   for (
+
     const [
       blockIndex, block
     ] of data.agency.content.entries()
@@ -225,15 +179,11 @@ async function buildData() {
         return block === i.id
 
       })[0]
-
     data.agency.content[blockIndex] = await getBlock(
-
       data.agency.content[blockIndex]
-
     )
 
   }
-
 
   data.home.work_preview.forEach((item, index) => {
 
@@ -242,15 +192,13 @@ async function buildData() {
       return j.id === item && j.status === 'published'
 
     })[0]
-
     i = {
       id: i.id,
-      heading: escape(i.title),
+      heading: i.title,
       image: i.cover_image,
       slug: i.slug,
-      text: escape(i.description_text)
+      text: i.description_text
     }
-
     data.home.work_preview[index] = i
 
   })
@@ -262,7 +210,6 @@ async function buildData() {
       return j.id === item && j.status === 'published'
 
     })[0]
-
     i.date = date.format(
       date.parse(
         i.date_created,
@@ -270,7 +217,6 @@ async function buildData() {
       ),
       datePatternOut
     )
-
     i = {
       id: i.id,
       date: i.date,
@@ -287,14 +233,20 @@ async function buildData() {
   data.site.logo_header = assetPath + data.site.logo_header
   data.site.logo_footer = assetPath + data.site.logo_footer
 
+
+  data = JSON.stringify(data).replace(/'/g, '&#39;')
+  //console.log(data)
+
+
   writeFileSync(
-    'data/data.json', JSON.stringify(data, null, 2)
+    'data/data.json', data
   )
+
+  data = JSON.parse(data)
 
   data.news.forEach((item) => {
 
     const post = buildPostTemplate(item.title, item.content)
-
     writeFileSync(
       'src/news/' + item.slug + '.html',
       post
@@ -302,9 +254,12 @@ async function buildData() {
 
   })
 
+
   data.work.forEach((item) => {
 
-    const post = buildWorkTemplate(
+    console.log(item.content)
+
+    const work = buildWorkTemplate(
       item.title,
       item.heading,
       item.featured_image,
@@ -313,9 +268,10 @@ async function buildData() {
       item.content
     )
 
+    //console.log(item.content)
     writeFileSync(
       'src/work/' + item.slug + '.html',
-      post
+      work
     )
 
   })

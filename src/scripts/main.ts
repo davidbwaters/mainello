@@ -544,12 +544,7 @@ function barbaSetup() {
 
     }, 1000)
 
-
     console.log('after enter all')
-
-
-
-    handleForma()
 
   })
 

@@ -39,13 +39,11 @@ export function buildPostTemplate(title, content) {
             </c-page-header>
 
             <div class='u-wrapper u-padding-grid-horizontal'>
-              ${content}
+              ${JSON.stringify(content)}
             </div>
 
           </main>
 
-          <c-cursor>
-          </c-cursor>
 
           <c-footer
             socialLinks='{{site.social_links}}'

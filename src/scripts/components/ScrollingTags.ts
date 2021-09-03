@@ -72,7 +72,6 @@ export class ScrollingTags extends LitElement {
     }
 
     .c-scrolling-tags__inner {
-      background-color: var(--color-main-background);
       display: grid;
       grid-auto-flow: column;
       gap: 4vw;

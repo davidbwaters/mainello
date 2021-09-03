@@ -34,9 +34,8 @@ export class FeaturedVideo extends LitElement {
   static styles = css`
     :host {
       background-color: var(--featured-video-background);
+      border-bottom: solid 1px var( --color-opaque-dark-subtle );
       display: block;
-      margin-bottom: calc(5vh + 3.75vw);
-      margin-top: calc(5vh + 3.75vw);
     }
     .c-featured-video__video {
       display: block;

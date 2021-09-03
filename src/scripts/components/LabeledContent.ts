@@ -26,6 +26,7 @@ export class LabeledText extends LitElement {
 
   static styles = css`
     :host {
+      background-color: var(--color-main-background);
       border-bottom: solid var(--labeled-text-border) var(
         --color-opaque-dark-subtle
       );
@@ -39,6 +40,7 @@ export class LabeledText extends LitElement {
       :host {
         grid-column: 2 / span 8;
         grid-template-columns: 100%;
+        margin: 0 6.4%;
         padding-left: 0;
         padding-right: 0;
       }
@@ -61,7 +63,6 @@ export class LabeledText extends LitElement {
       align-content: center;
       display: grid;
       grid-auto-flow: row;
-      grid-template-columns: 87.6%;
       justify-content: center;
       margin-left: auto;
       margin-right: auto;
@@ -80,14 +81,13 @@ export class LabeledText extends LitElement {
 
       .c-labeled-content__inner {
         grid-auto-flow: column;
-        grid-template-columns: 1fr 4fr;
+        grid-template-columns: 2fr 5fr;
       }
 
     }
 
     .c-labeled-content__label {
       font-size: var(--font-size-small);
-      font-weight: var(--font-weight-semibold);
       letter-spacing: var(--title-normal-spacing);
       padding-bottom: var(--spacing-4);
     }

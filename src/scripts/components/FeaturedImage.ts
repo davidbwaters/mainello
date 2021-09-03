@@ -26,6 +26,7 @@ export class FeaturedImage extends LitElement {
 
   static styles = css`
     :host {
+      background-color: white;
       border-bottom: solid 1px var(
         --color-opaque-dark-subtle
       );
@@ -57,7 +58,8 @@ export class FeaturedImage extends LitElement {
       margin-top: 18.6vw;
     }
     ::slotted(*) {
-      background-size: cover;
+      background-size: var(--featured-image-size);
+      background-repeat: no-repeat;
       background-position: center center;
       will-change: transform;
     }
@@ -110,14 +112,22 @@ export class FeaturedImage extends LitElement {
 
     }
 
-    if (this.size === 'contain') {
+    if (this.getAttribute('size') === 'contain') {
 
       this.style.setProperty(
         '--featured-image-size',
-        this.size
+        'contain'
       )
 
-      this._wrapperClass = 'c-featured-image__wrapper-spaced-small'
+    }
+
+
+    if (this.getAttribute('size') === 'cover') {
+
+      this.style.setProperty(
+        '--featured-image-size',
+        'cover'
+      )
 
     }
 

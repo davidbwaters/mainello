@@ -29,6 +29,7 @@ export class Article extends LitElement {
 
   static styles = css`
     :host {
+      background-color: var(--color-main-background);
       border-bottom: var(--article-border) solid var(
         --color-opaque-dark-subtle
       );

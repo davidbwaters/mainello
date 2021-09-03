@@ -3,8 +3,6 @@
 //
 
 
-import escapeQuotes from 'escape-quotes'
-
 import {
   LitElement,
   html,
@@ -60,7 +58,7 @@ export class DynamicContent extends LitElement {
             link=${block.media}
             alt=$(block.title)}
             spacing=${block.spacing}
-            size=${block['image-sizing']}
+            size=${block.image_size}
           >
           </c-featured-image>
         `
@@ -85,8 +83,15 @@ export class DynamicContent extends LitElement {
 
         this._blocks += `
           <c-labeled-content
-            label='${block.label}'
-            text='${JSON.stringify(block.text)}'
+            label='${JSON.stringify(
+              block.label
+            )
+              .replace(/'/g, '&#39;')
+              .replace(/"/g, "")}'
+            text='${
+              JSON.stringify(block.text)
+                .replace(/'/g, '&#39;')
+            }'
             spacing=true
             border=${block.bottom_border}
           >
@@ -100,7 +105,12 @@ export class DynamicContent extends LitElement {
 
         this._blocks += `
           <c-labeled-content
-            label='${block.label}'
+            label='${JSON.stringify(
+              block.label
+            )
+            .replace(/'/g, '&#39;')
+            .replace(/"/g, "")
+          }'
             image='${block.image}'
             spacing=true
             border=${block.bottom_border}
@@ -149,8 +159,15 @@ export class DynamicContent extends LitElement {
 
         this._blocks += `
           <c-article
-            heading='${block.heading}'
-            text='${block.text}'
+            heading='${JSON.stringify(
+              block.heading
+            )
+              .replace(/'/g, '&#39;')
+              .replace(/"/g, "")}'
+            text='${JSON.stringify(
+              block.text
+            ).replace(/'/g, '&#39;')
+          }'
             border=${block.bottom_border}
           >
           </c-article>
@@ -163,7 +180,10 @@ export class DynamicContent extends LitElement {
 
         this._blocks += `
           <c-stat-columns
-            stats='${JSON.stringify(block.stats)}'
+            stats='${JSON.stringify(
+              block.stats
+            ).replace(/'/g, '&#39;')
+          }'
           >
           </c-stat-columns>
         `

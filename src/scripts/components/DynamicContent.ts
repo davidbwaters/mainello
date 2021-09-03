@@ -86,7 +86,7 @@ export class DynamicContent extends LitElement {
         this._blocks += `
           <c-labeled-content
             label='${block.label}'
-            text='${block.text}'
+            text='${JSON.stringify(block.text)}'
             spacing=true
             border=${block.bottom_border}
           >

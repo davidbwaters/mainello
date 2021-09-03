@@ -234,7 +234,9 @@ async function buildData() {
   data.site.logo_footer = assetPath + data.site.logo_footer
 
 
-  data = JSON.stringify(data).replace(/'/g, '&#39;')
+  data = JSON.stringify(data)
+    .replace(/'/g, '&#39;')
+
   //console.log(data)
 
 

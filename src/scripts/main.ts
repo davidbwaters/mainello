@@ -179,6 +179,7 @@ const addParallax = () => {
   })
 
 }
+
 function prepVideos() {
 
   const videos = document.querySelectorAll('video')
@@ -210,6 +211,7 @@ function prepVideos() {
 
 function wrapLinks() {
 
+
   const links = document.querySelectorAll('a')
 
   links.forEach(a => {
@@ -224,7 +226,7 @@ function wrapLinks() {
 
 }
 
-function handleForma() {
+function handleForms() {
 
 
   const contactForm:HTMLFormElement = document
@@ -483,6 +485,7 @@ async function handlePageLoad() {
 
   setTimeout(() => {
 
+    handleForms()
     wrapLinks()
     prepVideos()
     addParallax()

@@ -23,6 +23,7 @@
 }
 
 .u-bg-blur-primary-3 {
+  background-color: var(--color-main-background);
   background-image: url(/images/bg-blur-primary-circle-2.svg);
   background-position: center center;
   background-repeat: no-repeat;
@@ -30,6 +31,7 @@
 }
 
 .u-bg-blur-multi-1 {
+  background-color: var(--color-main-background);
   background-image: url(/images/bg-blur-multi-1.svg);
   background-position: right center;
   background-repeat: no-repeat;

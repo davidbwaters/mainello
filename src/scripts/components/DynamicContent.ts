@@ -164,9 +164,10 @@ export class DynamicContent extends LitElement {
             )
               .replace(/'/g, '&#39;')
               .replace(/"/g, "")}'
-            text='${JSON.stringify(
+            text='${
               block.text
-            ).replace(/'/g, '&#39;')
+              .replace(/'/g, '&#39;')
+              .replace(/"/g, "")
           }'
             border=${block.bottom_border}
           >

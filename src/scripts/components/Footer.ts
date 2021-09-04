@@ -44,7 +44,7 @@ export class Footer extends LitElement {
       background: var(--color-eerie-black);
       color: white;
       display: block;
-      margin-top: 10vh;
+      //margin-top: 10vh;
       overflow: hidden;
       position: relative;
       top: 0;

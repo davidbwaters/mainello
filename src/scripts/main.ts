@@ -513,6 +513,17 @@ function barbaSetup() {
 
     scrollerEl.scroller.scrollTo('top', { duration: 0 })
 
+    const contactFab = document.querySelector('c-contact-fab')
+
+
+    if (contactFab) {
+
+      document.body.removeChild(
+        contactFab
+      )
+
+    }
+
   })
 
   barba.hooks.afterEnter(data => {

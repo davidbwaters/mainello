@@ -32,7 +32,7 @@ export class ContactFab extends LitElement {
       transition: opacity .8s;
       width: 8rem;
       will-change: opacity;
-      z-index: 9;
+      z-index: 99;
     }
 
     @media (min-width: 320px) {

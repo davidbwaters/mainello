@@ -77,6 +77,10 @@ export class ScrollingTags extends LitElement {
       gap: 4vw;
     }
 
+    .c-scrolling-tags__item {
+      background-color: var(--color-main-background);
+    }
+
     .c-scrolling-tags__item:nth-child(even) {
       -webkit-text-stroke: 1px currentColor;
       -webkit-text-fill-color: transparent;

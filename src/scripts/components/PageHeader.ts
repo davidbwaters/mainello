@@ -51,8 +51,8 @@ export class PageHeader extends LitElement {
 
     ::slotted([slot="subtitle"]),
     ::slotted([slot="single"])  {
-      font-size: var(--font-size-large-6);
-      line-height: var(--line-height-large-6);
+      font-size: var(--font-size-display-0);
+      line-height: var(--line-height-display-0);
       margin-bottom: 0;
       margin-right: 25%;
       margin-top: 0;

@@ -27,14 +27,6 @@
         data-barba='container'
         data-barba-namespace='agency'
       >
-        <c-page-header>
-          <div slot='single'>
-            {{{agency.heading}}}
-          </div>
-        </c-page-header>
-
-<<<<<<< Updated upstream
-=======
         <shader-doodle class="u-width-fill u-height-80vh-min
           u-position-absolute">
           <script type="x-shader/x-fragment">
@@ -96,9 +88,10 @@
         </shader-doodle>
 
         <c-page-header class="u-position-relative">
-          <div slot="single">agency</div>
+          <div slot="single">
+            {{{agency.heading}}}
+          </div>
         </c-page-header>
->>>>>>> Stashed changes
         <c-dynamic-content
           content='{{{agency.content}}}'
         >

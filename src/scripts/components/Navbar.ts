@@ -102,9 +102,9 @@ export class Navbar extends LitElement {
     @media (min-width: 320px) {
 
       ::slotted([slot='button']) {
-        height: 0.25rem;
+        height: 1.25rem;
         padding: var(--spacing-4);
-        width: auto;
+        width: 1.25rem;;
       }
 
     }
@@ -119,6 +119,7 @@ export class Navbar extends LitElement {
 
   firstUpdated():void {
 
+    /*
     const link = document.createElement('a')
 
     link.innerText = 'contact'
@@ -127,8 +128,8 @@ export class Navbar extends LitElement {
 
     this.appendChild(link)
 
+    */
 
-    /*
     const button = document.createElement('button')
 
     button.classList.add(
@@ -150,7 +151,6 @@ export class Navbar extends LitElement {
       autoplay: false,
       path: '/animations/nav-button.json'
     })
-    */
 
   }
 
@@ -193,13 +193,11 @@ export class Navbar extends LitElement {
           <div class='c-navbar__branding'>
             <slot></slot>
           </div>
-          <!--
             <slot
               name='button'
               @click=${this.handleToggle}
             >
             </slot>
-          -->
             <slot
               name='nav'
             >

@@ -78,6 +78,7 @@ export class NavMenu extends LitElement {
     }
 
     .c-nav-menu__animation-stripe {
+      background-color: var(--color-primary);
       display: block;
       height: 100%;
       transform: translateX(100vw);

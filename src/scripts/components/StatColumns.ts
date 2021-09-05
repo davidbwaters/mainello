@@ -35,6 +35,8 @@ export class StatColumns extends LitElement {
       display: grid;
       gap: var(--spacing-6);
       grid-auto-flow: column;
+      margin: auto;
+      max-width: var(--wrapper-width);
       padding-bottom: calc(var(--spacing-8) * 2);
       padding-left: 6.2vw;
       padding-right: 6.2vw;

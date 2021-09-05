@@ -53,7 +53,6 @@ export class Intro extends LitElement {
       this.sketchEl.value
     ]
 
-
     const sketchAnimation:any = lottie.loadAnimation({
       container: this.sketchEl.value,
       renderer: 'svg',

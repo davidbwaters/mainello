@@ -15,22 +15,11 @@
 }
 
 .u-heading-large {
-  font-size: var(--font-size-large-1);
+  font-size: var(--font-size-large-5);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-large-1);
 }
 
-@media (min-width: 320px) {
-  .u-heading-large {
-    font-size: var(--font-size-large-2);
-  }
-}
-
-@media (min-width: 768px) {
-  .u-heading-large {
-    font-size: var(--font-size-large-3);
-  }
-}
 
 .u-heading-huge,
 .u-heading-huge p {

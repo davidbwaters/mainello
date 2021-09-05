@@ -35,6 +35,7 @@ export class BlogPost extends LitElement {
     }
 
     .c-blog-post__item {
+      box-sizing: border-box;
       display: grid;
       gap: 6.2vw;
       margin: auto;

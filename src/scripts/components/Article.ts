@@ -37,6 +37,7 @@ export class Article extends LitElement {
     }
 
     .c-article__article {
+      box-sizing: border-box;
       display: block;
       margin-left: auto;
       margin-right: auto;
@@ -48,7 +49,7 @@ export class Article extends LitElement {
     }
 
     .c-article__heading {
-      font-size: var(--font-size-large-3);
+      font-size: var(--font-size-large-4);
       font-weight: var(--font-weight-normal);
       margin-bottom: var(--spacing-6);
       margin-top: 0;

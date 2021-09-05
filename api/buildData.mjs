@@ -43,6 +43,7 @@ async function getBlock(block) {
   let item = {
     component: block.collection
   }
+
   item = {
     ...item,
     ...await getData(
@@ -50,6 +51,7 @@ async function getBlock(block) {
       block.item
     )
   }
+
   if (block.collection === 'offset_columns') {
 
     for (
@@ -63,6 +65,7 @@ async function getBlock(block) {
     }
 
   }
+
   if (block.collection === 'image_row') {
 
     for (
@@ -134,9 +137,15 @@ async function buildData() {
   const workContent = await getData(
     'items/portfolio_content'
   )
+
   const agencyContent = await getData(
     'items/agency_content'
   )
+
+  const servicesContent = await getData(
+    'items/services_content'
+  )
+
 
   for (
     const [index, item] of data.work.entries()
@@ -167,7 +176,6 @@ async function buildData() {
   }
 
   for (
-
     const [
       blockIndex, block
     ] of data.agency.content.entries()
@@ -185,6 +193,27 @@ async function buildData() {
 
   }
 
+
+  for (
+    const [
+      blockIndex, block
+    ] of data.services.content.entries()
+  ) {
+
+    data.services.content[blockIndex] = servicesContent
+      .filter(i => {
+
+        return block === i.id
+
+      })[0]
+
+
+    data.services.content[blockIndex] = await getBlock(
+      data.services.content[blockIndex]
+    )
+
+  }
+
   data.home.work_preview.forEach((item, index) => {
 
     let i = data.work.filter(j => {
@@ -192,14 +221,19 @@ async function buildData() {
       return j.id === item && j.status === 'published'
 
     })[0]
-    i = {
-      id: i.id,
-      heading: i.title,
-      image: i.cover_image,
-      slug: i.slug,
-      text: i.description_text
+
+    if (i) {
+
+      i = {
+        id: i.id,
+        heading: i.title,
+        image: i.cover_image,
+        slug: i.slug,
+        text: i.description_text
+      }
+      data.home.work_preview[index] = i
+
     }
-    data.home.work_preview[index] = i
 
   })
 
@@ -236,9 +270,6 @@ async function buildData() {
 
   data = JSON.stringify(data)
     .replace(/'/g, '&#39;')
-
-  //console.log(data)
-
 
   writeFileSync(
     'data/data.json', data

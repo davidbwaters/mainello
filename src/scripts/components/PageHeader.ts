@@ -31,6 +31,7 @@ export class PageHeader extends LitElement {
     }
 
     .c-page-header__inner {
+      box-sizing: border-box;
       display: block;
       margin-left: auto;
       margin-right: auto;
@@ -56,13 +57,6 @@ export class PageHeader extends LitElement {
       margin-top: 0;
     }
   `
-
-
-  @property({
-    type: String,
-    attribute: true
-  })
-  link:string
 
   protected render():TemplateSpecification {
 

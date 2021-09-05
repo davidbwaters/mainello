@@ -31,15 +31,18 @@ export class OffsetColumns extends LitElement {
 
   static styles = css`
     :host {
+      box-sizing: border-box;
       display: grid;
       grid-auto-flow: row;
       grid-template-columns: 1fr;
-      gap: 12.4vw 6.2vw;
+      gap: 10vh 10vh;
       margin-bottom: calc(10vh + 5vw);
       margin-left: auto;
       margin-right: auto;
       margin-top: calc(10vh + 5vw);
       max-width: var(--wrapper-width);
+      padding-left: 6.4vw;
+      padding-right: 6.4vw;
       width: 87.6%;
     }
 
@@ -60,11 +63,15 @@ export class OffsetColumns extends LitElement {
     @media (min-width: 768px) {
 
       ::slotted(*:nth-child(odd)) {
+        margin-bottom: calc(var(--offset-columns-odd) * -1);
         margin-top: var(--offset-columns-odd);
+
       }
 
       ::slotted(*:nth-child(even)) {
+        margin-bottom: calc(var(--offset-columns-even) * -1);
         margin-top: var(--offset-columns-even);
+
       }
 
     }
@@ -91,7 +98,7 @@ export class OffsetColumns extends LitElement {
       this.getAttribute('reverse')
     )
 
-    const offset = '-30vh'
+    const offset = '-15vh'
 
     if (this.reverse) {
 

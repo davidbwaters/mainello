@@ -59,12 +59,12 @@ async function onInit() {
     import('./components/ScrollingTags'),
     import('./components/SectionTitle'),
     import('./components/Article'),
-    import('./components/BounceTitle'),
     import('./components/FeaturedImage'),
     import('./components/FeaturedVideo')
   ])
 
   Promise.all([
+    import('./components/Blockquote'),
     import('./components/ImageRow'),
     import('./components/ImageText'),
     import('./components/LabeledContent'),
@@ -74,6 +74,9 @@ async function onInit() {
     import('./components/StatColumns'),
     import('./components/Toggle'),
     import('./components/WarpText'),
+  ])
+
+  Promise.all([
     import('./components/DynamicContent')
   ])
 
@@ -512,6 +515,17 @@ function barbaSetup() {
     }
 
     scrollerEl.scroller.scrollTo('top', { duration: 0 })
+
+    const contactFab = document.querySelector('c-contact-fab')
+
+
+    if (contactFab) {
+
+      document.body.removeChild(
+        contactFab
+      )
+
+    }
 
   })
 

@@ -37,6 +37,7 @@ export class Article extends LitElement {
     }
 
     .c-article__article {
+      box-sizing: border-box;
       display: block;
       margin-left: auto;
       margin-right: auto;
@@ -48,9 +49,9 @@ export class Article extends LitElement {
     }
 
     .c-article__heading {
-      font-size: var(--font-size-large-3);
+      font-size: var(--font-size-large-4);
       font-weight: var(--font-weight-normal);
-      margin-bottom: var(--spacing-5);
+      margin-bottom: var(--spacing-6);
       margin-top: 0;
     }
 
@@ -111,9 +112,15 @@ export class Article extends LitElement {
 
     return html`
       <article class="c-article__article">
-        <h3 class="c-article__heading">
-          ${this.heading}
-        </h3>
+        ${
+          this.heading === 'null'
+            ? html``
+            : html`
+              <h3 class="c-article__heading">
+                ${this.heading}
+              </h3>
+            `
+        }
         <div class="c-article__text">
           ${unsafeHTML(this.text)}
         </div>

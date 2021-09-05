@@ -49,7 +49,7 @@ export class DynamicContent extends LitElement {
 
     for (const block of this.content) {
 
-      console.log(block)
+      //console.log(block)
 
       if (block.component === 'featured_image') {
 
@@ -88,14 +88,14 @@ export class DynamicContent extends LitElement {
             )
               .replace(/'/g, '&#39;')
               .replace(/"/g, "")}'
-            text='${
-              JSON.stringify(block.text)
-                .replace(/'/g, '&#39;')
+            text='${JSON.stringify(
+              block.text
+            )
+              .replace(/'/g, '&#39;')
             }'
             spacing=true
             border=${block.bottom_border}
           >
-
           </c-labeled-content>
         `
 
@@ -105,11 +105,8 @@ export class DynamicContent extends LitElement {
 
         this._blocks += `
           <c-labeled-content
-            label='${JSON.stringify(
-              block.label
-            )
-            .replace(/'/g, '&#39;')
-            .replace(/"/g, "")
+            label='${block.label
+              .replace(/'/g, '&#39;')
           }'
             image='${block.image}'
             spacing=true
@@ -139,6 +136,15 @@ export class DynamicContent extends LitElement {
 
       }
 
+      if (block.component === 'section_title') {
+
+        this._blocks += `
+          <c-section-title text='${block.text}'>
+          </c-section-title>
+        `
+
+      }
+
       if (block.component === 'pattern') {
 
         this._blocks += `
@@ -154,6 +160,18 @@ export class DynamicContent extends LitElement {
 
       }
 
+      if (block.component === 'blockquote') {
+
+        this._blocks += `
+          <c-blockquote
+            quote='${block.quote}'
+            citation='${block.citation}'
+          >
+          </c-blockquote>
+        `
+
+      }
+
       if (block.component === 'article') {
 
 
@@ -164,9 +182,9 @@ export class DynamicContent extends LitElement {
             )
               .replace(/'/g, '&#39;')
               .replace(/"/g, "")}'
-            text='${JSON.stringify(
+            text='${
               block.text
-            ).replace(/'/g, '&#39;')
+                .replace(/'/g, '&#39;')
           }'
             border=${block.bottom_border}
           >
@@ -180,10 +198,10 @@ export class DynamicContent extends LitElement {
 
         this._blocks += `
           <c-stat-columns
-            stats='${JSON.stringify(
-              block.stats
-            ).replace(/'/g, '&#39;')
-          }'
+          stats='${JSON.stringify(
+            block.stats
+          ).replace(/'/g, '&#39;')
+        }'
           >
           </c-stat-columns>
         `

@@ -23,6 +23,7 @@
 }
 
 .u-bg-blur-primary-3 {
+  background-color: var(--color-main-background);
   background-image: url(/images/bg-blur-primary-circle-2.svg);
   background-position: center center;
   background-repeat: no-repeat;
@@ -30,8 +31,23 @@
 }
 
 .u-bg-blur-multi-1 {
+  background-color: var(--color-main-background);
   background-image: url(/images/bg-blur-multi-1.svg);
   background-position: left top;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.u-gradient-fade-lower {
+  position: relative;
+
+}
+
+.u-gradient-fade-lower:after {
+  background-image: linear-gradient(0deg, var(--color-main-background), transparent);
+  bottom: 0;
+  content: '';
+  height: 6rem;
+  position: absolute;
+  width: 100%;
 }

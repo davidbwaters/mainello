@@ -252,7 +252,7 @@ async function buildData() {
       datePatternOut
     )
     i = {
-      id: i.id,
+      // id: i.id,
       date: i.date,
       title: i.title,
       text: i.preview_text,
@@ -290,7 +290,7 @@ async function buildData() {
 
   data.work.forEach((item) => {
 
-    console.log(item.content)
+    //console.log(item.content)
 
     const work = buildWorkTemplate(
       item.title,

@@ -317,7 +317,7 @@ async function buildData() {
       item.description_label,
       item.description_text,
       item.slug,
-      item.content
+      JSON.stringify(item.content)
     )
 
     //console.log(item.content)

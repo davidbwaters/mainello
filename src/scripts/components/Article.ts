@@ -122,7 +122,9 @@ export class Article extends LitElement {
             `
         }
         <div class="c-article__text">
-          ${unsafeHTML(this.text)}
+          ${unsafeHTML(this.text
+            .replace(/\\n/g, '')
+            .replace(/"/g, ''))}
         </div>
       </article>
     `

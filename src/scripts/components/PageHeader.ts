@@ -28,6 +28,7 @@ export class PageHeader extends LitElement {
     :host {
       display: block;
       border-bottom: solid 1px var(--color-opaque-dark-subtle);
+      pointer-events: none;
     }
 
     .c-page-header__inner {

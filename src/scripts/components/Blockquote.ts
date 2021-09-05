@@ -28,11 +28,11 @@ export class Blockquote extends LitElement {
     :host {
       box-sizing: border-box;
       display: block;
-      font-size: var(--font-size-large-1);
+      font-size: var(--font-size-normal);
       margin: auto;
       max-width: var(--wrapper-width);
       overflow: hidden;
-      padding: 6.4vw;
+      padding: 0vw 6.4vw;
     }
 
     .c-blockquote__quote {

@@ -73,7 +73,7 @@ export class FluidReveal extends LitElement {
       }
 
       .c-fluid-reveal__content {
-
+        background-color: var(---color-main-background);
         display: none;
         height: 0;
         opacity: 1 !important;
@@ -96,7 +96,6 @@ export class FluidReveal extends LitElement {
       }
 
       .c-fluid-reveal__inner {
-        background-color: var(--color-main-background);
         display: block;
         height: 100%;
         min-height: 100vh;

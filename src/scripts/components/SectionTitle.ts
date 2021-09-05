@@ -30,7 +30,7 @@ export class SectionTitle extends LitElement {
         --color-opaque-dark-subtle
       );
       display: block;
-      font-size: 10vw;
+      font-size: var(--font-size-large-6);
       padding-bottom: calc(10vh + 7.5vw);
       padding-top: calc(10vh + 7.5vw);
       text-align: center;
@@ -38,18 +38,6 @@ export class SectionTitle extends LitElement {
       -webkit-text-stroke: 1px var(--color-eerie-black);
     }
 
-    @media (min-width: 320px) {
-      :host {
-        font-size: 8vw;
-      }
-    }
-
-    @media (min-width: 768px) {
-      :host {
-        font-size: 7vw;
-        margin-top: calc(5vh + 3.75vw);
-      }
-    }
   `
 
 

@@ -112,9 +112,15 @@ export class Article extends LitElement {
 
     return html`
       <article class="c-article__article">
-        <h3 class="c-article__heading">
-          ${this.heading}
-        </h3>
+        ${
+          this.heading === 'null'
+            ? html``
+            : html`
+              <h3 class="c-article__heading">
+                ${this.heading}
+              </h3>
+            `
+        }
         <div class="c-article__text">
           ${unsafeHTML(this.text)}
         </div>

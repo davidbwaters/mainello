@@ -136,6 +136,15 @@ export class DynamicContent extends LitElement {
 
       }
 
+      if (block.component === 'section_title') {
+
+        this._blocks += `
+          <c-section-title text='${block.text}'>
+          </c-section-title>
+        `
+
+      }
+
       if (block.component === 'pattern') {
 
         this._blocks += `

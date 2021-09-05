@@ -62,7 +62,7 @@ export function buildWorkTemplate(
 
             <div class='c-page-body'>
               <c-dynamic-content
-                content='${JSON.stringify(content)}'>
+                content='${content}'>
               </c-dynamic-content>
             </div>
           </main>

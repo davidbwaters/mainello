@@ -26,21 +26,22 @@ export class PageHeader extends LitElement {
 
   static styles = css`
     :host {
-      display: block;
-      border-bottom: solid 1px var(--color-opaque-dark-subtle);
+      align-content: center;
+      box-sizing: border-box;
+      display: grid;
+      justify-content: center;
+      padding-left: 6.4vw;
+      padding-right: 6.4vw;
       pointer-events: none;
     }
 
     .c-page-header__inner {
+      justify-content: center;
       box-sizing: border-box;
-      display: block;
+      display: grid;
       margin-left: auto;
       margin-right: auto;
       max-width: var(--wrapper-width);
-      padding-bottom: calc(10vh + 7.5vw);
-      padding-left: 6.2vw;
-      padding-right: 6.2vw;
-      padding-top: calc(10vh + 7.5vw + 2.34375rem);
     }
 
     ::slotted(*) {

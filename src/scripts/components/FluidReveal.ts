@@ -375,7 +375,7 @@ export class FluidReveal extends LitElement {
           html`
             <div class="c-fluid-reveal__item">
 
-              <a href='${'/work/' + item.slug + '.html'}'>
+
                 <svg class="c-fluid-reveal__item-media" viewBox="0 0 1000 1000">
                   <image
                     opacity="1"
@@ -395,7 +395,7 @@ export class FluidReveal extends LitElement {
                     />
                   </mask>
                 </svg>
-              </a>
+
               <div class="c-fluid-reveal__content">
                 <h3 class="c-fluid-reveal__heading">
                   ${item.heading}

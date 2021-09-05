@@ -38,6 +38,7 @@ async function getFile(id, collection) {
   }
 
 }
+
 async function getBlock(block) {
 
   let item = {
@@ -214,40 +215,43 @@ async function buildData() {
 
   }
 
-  data.home.work_preview.forEach(async function(item, index) {
+  await Promise.all(
 
-    let workPreviewData = await getData(
-      'items/home_portfolio_1'
-    )
+    data.home.work_preview.map(async(item, index) => {
 
-    console.log(workPreviewData)
-    let j = workPreviewData.filter(k => {
+      let workPreviewData = await getData(
+        'items/home_portfolio_1'
+      )
 
-      return k.id === item.id && j.status === 'published'
+      let j = workPreviewData.filter(k => {
 
-    })[0]
+        return k.id === item
 
-    console.log(j.portfolio_id)
-    let i = data.work.filter(h => {
+      })[0]
 
-      return j.portfolio_id === item.portfolio_id && h.status === 'published'
+      let i = data.work.filter(h => {
 
-    })[0]
+        return j.portfolio_id === h.id
 
-    if (i) {
+      })[0]
 
-      i = {
-        id: i.id,
-        heading: i.title,
-        image: i.cover_image,
-        slug: i.slug,
-        text: JSON.stringify(i.description_text)
+      if (i) {
+
+        i = {
+          id: i.id,
+          heading: i.title,
+          image: i.cover_image,
+          slug: i.slug,
+          text: JSON.stringify(i.description_text)
+        }
+        data.home.work_preview[index] = i
+
       }
-      data.home.work_preview[index] = i
 
-    }
+    })
 
-  })
+  )
+
 
   data.home.news_post_list.forEach((item, index) => {
 
@@ -263,6 +267,7 @@ async function buildData() {
       ),
       datePatternOut
     )
+
     i = {
       id: i.id,
       date: i.date,
@@ -272,6 +277,7 @@ async function buildData() {
       slug: i.slug
     }
 
+    console.log(i)
     data.home.news_post_list[index] = i
 
   })
@@ -280,13 +286,15 @@ async function buildData() {
   data.site.logo_footer = assetPath + data.site.logo_footer
 
 
-  data = JSON.stringify(data.replace(/'/g, '&#39;'))
+  data = JSON.stringify(data).replace(/'/g, '&#39;')
+
 
   writeFileSync(
     'data/data.json', data
   )
 
-  //data = JSON.parse(data)
+
+  data = JSON.parse(data)
 
   data.news.forEach((item) => {
 

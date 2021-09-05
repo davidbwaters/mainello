@@ -214,11 +214,23 @@ async function buildData() {
 
   }
 
-  data.home.work_preview.forEach((item, index) => {
+  data.home.work_preview.forEach(async function(item, index) {
 
-    let i = data.work.filter(j => {
+    let workPreviewData = await getData(
+      'items/home_portfolio_1'
+    )
 
-      return j.id === item && j.status === 'published'
+    console.log(workPreviewData)
+    let j = workPreviewData.filter(k => {
+
+      return k.id === item.id && j.status === 'published'
+
+    })[0]
+
+    console.log(j.portfolio_id)
+    let i = data.work.filter(h => {
+
+      return j.portfolio_id === item.portfolio_id && h.status === 'published'
 
     })[0]
 
@@ -229,7 +241,7 @@ async function buildData() {
         heading: i.title,
         image: i.cover_image,
         slug: i.slug,
-        text: i.description_text
+        text: JSON.stringify(i.description_text)
       }
       data.home.work_preview[index] = i
 
@@ -255,7 +267,7 @@ async function buildData() {
       id: i.id,
       date: i.date,
       title: i.title,
-      text: i.preview_text,
+      text: i.description_text,
       content: i.content,
       slug: i.slug
     }
@@ -268,14 +280,13 @@ async function buildData() {
   data.site.logo_footer = assetPath + data.site.logo_footer
 
 
-  data = JSON.stringify(data)
-    .replace(/'/g, '&#39;')
+  data = JSON.stringify(data.replace(/'/g, '&#39;'))
 
   writeFileSync(
     'data/data.json', data
   )
 
-  data = JSON.parse(data)
+  //data = JSON.parse(data)
 
   data.news.forEach((item) => {
 
@@ -287,7 +298,6 @@ async function buildData() {
 
   })
 
-
   data.work.forEach((item) => {
 
     //console.log(item.content)
@@ -298,6 +308,7 @@ async function buildData() {
       item.featured_image,
       item.description_label,
       item.description_text,
+      item.slug,
       item.content
     )
 

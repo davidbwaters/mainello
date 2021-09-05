@@ -219,6 +219,12 @@ export class FluidReveal extends LitElement {
 
       this.appendChild(button)
 
+      this.items.forEach(item => {
+
+        console.log(item.text)
+
+      })
+
     })
 
     const fluidRevealEls:Array<HTMLDivElement> =
@@ -394,7 +400,10 @@ export class FluidReveal extends LitElement {
                 <h3 class="c-fluid-reveal__heading">
                   ${item.heading}
                 </h3>
-                ${unsafeHTML(item.text)}
+                ${item.text ? unsafeHTML(item.text
+                  .replace(/\\n/g, '')
+                  .replace(/"/g, '')
+                ) : ``}
                 <slot name="${index}"></slot>
               </div>
             </div>

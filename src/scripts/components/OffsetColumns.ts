@@ -43,7 +43,6 @@ export class OffsetColumns extends LitElement {
       max-width: var(--wrapper-width);
       padding-left: 6.4vw;
       padding-right: 6.4vw;
-      width: 87.6%;
     }
 
 

@@ -39,6 +39,8 @@ export class BlogPost extends LitElement {
       display: grid;
       gap: 6.2vw;
       margin: auto;
+      padding-left: 6.2vw;
+      padding-right: 6.2vw;
       max-width: var(--wrapper-width);
     }
 

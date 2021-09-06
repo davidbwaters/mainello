@@ -26,7 +26,7 @@ export class FeaturedImage extends LitElement {
 
   static styles = css`
     :host {
-      background-color: white;
+      background-color: white !important;
       border-bottom: solid 1px var(
         --color-opaque-dark-subtle
       );

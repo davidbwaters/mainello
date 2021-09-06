@@ -29,7 +29,9 @@ export class PageHeader extends LitElement {
       align-content: center;
       box-sizing: border-box;
       display: grid;
+      grid-template-columns: 1fr;
       justify-content: center;
+      min-height: 80vh;
       padding-left: 6.4vw;
       padding-right: 6.4vw;
       pointer-events: none;
@@ -39,9 +41,13 @@ export class PageHeader extends LitElement {
       justify-content: center;
       box-sizing: border-box;
       display: grid;
+      grid-template-columns: 1fr;
       margin-left: auto;
       margin-right: auto;
       max-width: var(--wrapper-width);
+      text-align: left;
+      width: 100%;
+
     }
 
     ::slotted(*) {
@@ -55,7 +61,7 @@ export class PageHeader extends LitElement {
       font-size: var(--font-size-display-0);
       line-height: var(--line-height-display-0);
       margin-bottom: 0;
-      margin-right: 25%;
+      //margin-right: 25%;
       margin-top: 0;
     }
   `

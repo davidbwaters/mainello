@@ -559,7 +559,7 @@ function barbaSetup() {
 
       prepVideos()
 
-    }, 1000)
+    }, 2000)
 
     console.log('after enter all')
 

@@ -134,6 +134,11 @@ async function buildData() {
 
   //console.log(data.news)
 
+  data.work = data.work.filter(item => {
+
+    return item.status === 'published'
+
+  })
 
   const workContent = await getData(
     'items/portfolio_content'
@@ -163,11 +168,13 @@ async function buildData() {
           return block === i.id
 
         })[0]
+
       content[blockIndex] = await getBlock(
         content[blockIndex]
       )
 
     }
+
     data.work[index].featured_image =
       assetPath + data.work[index].featured_image
     data.work[index].cover_image =

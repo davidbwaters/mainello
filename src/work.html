@@ -46,24 +46,25 @@
 
           {{#each work}}
 
-              <div class='c-labeled-image'>
-                <a
-                  href='/work/{{{this.slug}}}.html'
-                  class='
-                    u-text-decoration-none
-                    u-link-opaque-hover
-                  '
+            <div class='c-labeled-image'>
+              <a
+                href='/work/{{{this.slug}}}.html'
+                class='
+                  u-text-decoration-none
+                  u-link-opaque-hover
+                '
+              >
+                <img
+                  src='{{{this.cover_image}}}'
+                  alt='{{{this.title}}}'
                 >
-                  <img
-                    src='{{{this.cover_image}}}'
-                    alt='{{{this.title}}}'
-                  >
-                  <div class='u-margin-4-top u-text-align-center'>
-                    <strong>{{{this.title}}}</strong> –
-                    {{{this.heading}}}
-                  </div>
-                </a>
-              </div>
+                <div class='u-margin-4-top u-text-align-center'>
+                  <strong>{{{this.title}}}</strong> –
+                  {{{this.heading}}}
+                </div>
+              </a>
+            </div>
+
 
           {{/each}}
 

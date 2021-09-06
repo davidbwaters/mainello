@@ -54,11 +54,20 @@ export class Footer extends LitElement {
       color: inherit;
     }
 
+    .c-footer__inner,
+    .c-footer__line,
+    .c-footer__contact {
+      box-sizing: border-box;
+      max-width: var(--wrapper-width);
+      padding-left: 6.2vw;
+      padding-right: 6.2vw;
+    }
+
     .c-footer__inner {
       align-content: center;
       box-sizing: border-box;
       display: grid;
-      grid-template-columns: 87.6vw;
+      grid-template-columns: 1fr;
       justify-content: center;
       min-height: 60vh;
       position: relative;
@@ -243,6 +252,7 @@ export class Footer extends LitElement {
         if (contactFab) {
 
           contactFab.style.opacity = '0'
+          contactFab.style.pointerEvents = 'none'
 
         }
 
@@ -258,6 +268,7 @@ export class Footer extends LitElement {
           if (contactFab) {
 
             contactFab.style.opacity = '1'
+            contactFab.style.pointerEvents = 'normal'
 
           }
 

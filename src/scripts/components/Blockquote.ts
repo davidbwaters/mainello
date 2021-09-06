@@ -32,7 +32,7 @@ export class Blockquote extends LitElement {
       margin: auto;
       max-width: var(--wrapper-width);
       overflow: hidden;
-      padding: 0vw 6.4vw;
+      padding: 6.4vw 6.4vw;
     }
 
     .c-blockquote__quote {

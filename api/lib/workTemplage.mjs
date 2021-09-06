@@ -55,6 +55,7 @@ export function buildWorkTemplate(
             </c-featured-image>
 
             <c-article
+              class='u-bg-main-shade-1'
               heading='${descriptionLabel}'
               text='${description}'
             >

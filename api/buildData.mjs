@@ -183,6 +183,9 @@ async function buildData() {
 
   }
 
+  data.agency.featured_image =
+    assetPath + data.agency.featured_image
+
   for (
     const [
       blockIndex, block

@@ -31,15 +31,19 @@ export class OffsetColumns extends LitElement {
 
   static styles = css`
     :host {
+      display: block;
+    }
+
+    .c-offset-columns__inner {
       box-sizing: border-box;
       display: grid;
       grid-auto-flow: row;
       grid-template-columns: 1fr;
       gap: 10vh 10vh;
-      margin-bottom: calc(10vh + 5vw);
+      padding-bottom: calc(10vh + 5vw);
       margin-left: auto;
       margin-right: auto;
-      margin-top: calc(10vh + 5vw);
+      padding-top: calc(10vh + 5vw);
       max-width: var(--wrapper-width);
       padding-left: 6.4vw;
       padding-right: 6.4vw;
@@ -48,9 +52,9 @@ export class OffsetColumns extends LitElement {
 
     @media (min-width: 768px) {
 
-      :host {
+      .c-offset-columns__inner {
         grid-template-columns: 1fr 1fr;
-        margin-top: calc(10vh + 5vw + 30vh);
+        padding-top: calc(30vh);
       }
 
     }
@@ -62,7 +66,7 @@ export class OffsetColumns extends LitElement {
     @media (min-width: 768px) {
 
       ::slotted(*:nth-child(odd)) {
-        margin-bottom: calc(var(--offset-columns-odd) * -1);
+        margin-bottom: calc(var(--offset-columns-odd) / -1);
         margin-top: var(--offset-columns-odd);
 
       }
@@ -131,7 +135,9 @@ export class OffsetColumns extends LitElement {
   protected render():TemplateSpecification {
 
     return html`
-      <slot></slot>
+      <div class='c-offset-columns__inner'>
+        <slot></slot>
+      </div>
     `
 
   }

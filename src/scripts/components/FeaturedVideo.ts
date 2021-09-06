@@ -97,7 +97,7 @@ export class FeaturedVideo extends LitElement {
     )
 
     this.loop = JSON.parse(
-      this.getAttribute('loop')
+      this.loop
     )
 
     if (this.spacing === 'small') {

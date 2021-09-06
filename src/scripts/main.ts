@@ -60,7 +60,8 @@ async function onInit() {
     import('./components/SectionTitle'),
     import('./components/Article'),
     import('./components/FeaturedImage'),
-    import('./components/FeaturedVideo')
+    import('./components/FeaturedVideo'),
+    import('./components/Diagram')
   ])
 
   Promise.all([
@@ -133,7 +134,21 @@ function scrollSetup() {
 
   ScrollTrigger.addEventListener(
     'refresh',
-    () => scrollerEl.scroller.update()
+    () => {
+
+      scrollerEl.scroller.update()
+
+    }
+  )
+
+  ScrollTrigger.addEventListener(
+    'resize',
+    () => {
+
+      ScrollTrigger.refresh()
+
+    }
+
   )
 
 

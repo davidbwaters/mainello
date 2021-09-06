@@ -32,18 +32,16 @@ export function buildPostTemplate(title, content) {
 
           <main data-barba='container' data-barba-namespace='post'>
 
-            <c-page-header>
+
+            <div class='u-wrapper u-padding-grid-horizontal u-margin-20vh-bottom '>
               <div class='
                 u-heading-large
                 active
                 u-margin-20vh-bottom
-                u-margin-20vh-top
+                u-margin-30vh-top
               '>
                 ${title}
               </div>
-            </c-page-header>
-
-            <div class='u-wrapper u-padding-grid-horizontal u-margin-20vh-bottom '>
               ${JSON.stringify(content)
                 .replace(/\\n/g, '')
                 .replace(/"/g, '')

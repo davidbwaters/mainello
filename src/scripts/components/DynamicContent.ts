@@ -188,7 +188,7 @@ export class DynamicContent extends LitElement {
               block.text
                 .replace(/'/g, '&#39;')
           }'
-            border=${block.bottom_border}
+            border='${block.bottom_border}'
           >
           </c-article>
         `
@@ -215,6 +215,22 @@ export class DynamicContent extends LitElement {
 
         this._blocks += `
           <div class='c-line'></div>
+        `
+
+      }
+
+
+      if (block.component === 'image_with_text') {
+
+        this._blocks += `
+          <image-text
+            image='${block.image}'
+            heading='${block.heading}'
+            subheading='${block.subheading}'
+            text='${block.text}'
+          >
+
+          </image-text>
         `
 
       }

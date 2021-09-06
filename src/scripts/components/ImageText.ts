@@ -39,6 +39,11 @@ export class ImageText extends LitElement {
       font-weight: var(--font-weight-semibold);
       margin-bottom: var(--spacing-3);
     }
+    .c-article-subheading {
+      font-size: var(--font-size-large-1);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--spacing-3);
+    }
   `
 
 
@@ -52,6 +57,12 @@ export class ImageText extends LitElement {
     type: String,
     attribute: true
   })
+  subheading:string
+
+  @property({
+    type: String,
+    attribute: true
+  })
   text:string
 
   @property({
@@ -60,19 +71,46 @@ export class ImageText extends LitElement {
   })
   image:string
 
+  @property ({
+    type: Boolean,
+    attribute: true
+  })
+  reverse: boolean
+
   protected render():TemplateSpecification {
 
-    return html`
-      <img src="%{this.image}">
-      <article>
-        <h3 class="c-article-heading">
-          ${this.heading}
-        </h3>
-        <div>
-          ${unsafeHTML(this.text)}
-        </div>
-      </article>
-    `
+    if (!this.reverse) {
+
+      return html`
+        <img src="%{this.image}">
+        <article>
+          <h3 class="c-article-heading">
+            ${this.heading}
+          </h3>
+          <h4>${this.subheading}</h4>
+          <div>
+            ${unsafeHTML(this.text)}
+          </div>
+        </article>
+      `
+
+    }
+    else {
+
+      return html`
+        <article>
+          <h3 class="c-article-heading">
+            ${this.heading}
+          </h3>
+          <h4>${this.subheading}</h4>
+          <div>
+            ${unsafeHTML(this.text)}
+          </div>
+        </article>
+        <img src="%{this.image}">
+      `
+
+    }
 
   }
 

@@ -27,66 +27,6 @@
         data-barba='container'
         data-barba-namespace='agency'
       >
-        <shader-doodle class="u-width-fill u-height-80vh-min
-          u-position-absolute">
-          <script type="x-shader/x-fragment">
-            #define TAU 6.28318530718
-            vec2 polar(in vec2 st) {
-              vec2 c = vec2(.5) - st;
-              float angle = atan(c.y, c.x) / TAU + .5;
-              float radius = length(c) * 2.;
-              return vec2(angle, radius);
-            }
-
-            vec2 coverScreen(vec2 fragCoord, vec2 resolution, float aspect) {
-              vec2 uv = .5 * (2. * fragCoord - resolution);
-              if (resolution.x / resolution.y > aspect) {
-                uv = .5 - uv / vec2(resolution.x, -resolution.x / aspect);
-              } else {
-                uv = .5 - uv / vec2(resolution.y * aspect, -resolution.y);
-              }
-              return uv;
-            }
-
-            void main() {
-              vec2 st = coverScreen(gl_FragCoord.xy, u_resolution, 1.);
-              vec2 mouse = coverScreen(u_mouse.xy, u_resolution, 1.);
-
-              // grid sized based on resolution (to always have the same size grid squares)
-              float grid = max(u_resolution.x, u_resolution.y) * .03;
-
-              // fractional and integer st from grid
-              vec2 i_st = floor(st * grid);
-              vec2 f_st = fract(st * grid);
-
-              // diff mouse and int grid centerpoint
-              vec2 dm = mouse.xy - ((i_st + .5) / grid);
-
-              // angle of diff vector
-              float d = atan(dm.x, dm.y);
-
-              // polar coords
-              vec2 p_st = polar(f_st);
-
-              // swirl about radius (based on length of diff vector)
-              p_st.x = (p_st.x - p_st.y * (length(dm) - .4) * .5);
-
-              // rotate angle (basen on angle of diff vector)
-              p_st.x = mod(p_st.x + d / TAU + TAU, 1.);
-
-              p_st.x = smoothstep(.95, .96, p_st.x);
-              p_st.y = smoothstep(.975, 1., p_st.y);
-
-              vec3 color = vec3(1.);
-              color -= (1. - vec3(.61, .75, .93)) * p_st.x;
-              color += p_st.y;
-              color = clamp(color, 0., 1.);
-
-              gl_FragColor = vec4(color, 1.);
-            }
-          </script>
-        </shader-doodle>
-
         <c-page-header class="u-position-relative">
           <div slot="single">
             {{{agency.heading}}}

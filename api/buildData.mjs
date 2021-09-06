@@ -80,6 +80,7 @@ async function getBlock(block) {
     }
 
   }
+
   if (block.collection === 'featured_video') {
 
     const fileInfo = await getData(
@@ -116,6 +117,7 @@ async function getBlock(block) {
 
 
   }
+
   return item
 
 }

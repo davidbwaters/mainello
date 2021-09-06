@@ -126,25 +126,27 @@ export class ContactFab extends LitElement {
   protected render():TemplateSpecification {
 
     return html`
-      <svg
-        class="c-contact-fab__spinning"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 500 500"
-        ${ref(this.rotateEl)}
-      >
-        <defs>
-          <path
-            d="M50,250c0-110.5,89.5-200,200-200s200,89.5,200,200s-89.5,200-200,200S50,360.5,50,250"
-            id="textcircle"
-          ></path>
-        </defs>
-        <text dy="70" textLength="1240">
-          <textPath xlink:href="#textcircle">
-            contact — get in touch — contact — get in touch —
-          </textPath>
-        </text>
-      </svg>
+      <a href="/contact.html">
+        <svg
+          class="c-contact-fab__spinning"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 500 500"
+          ${ref(this.rotateEl)}
+        >
+          <defs>
+            <path
+              d="M50,250c0-110.5,89.5-200,200-200s200,89.5,200,200s-89.5,200-200,200S50,360.5,50,250"
+              id="textcircle"
+            ></path>
+          </defs>
+          <text dy="70" textLength="1240">
+            <textPath xlink:href="#textcircle">
+              contact — get in touch — contact — get in touch —
+            </textPath>
+          </text>
+        </svg>
+      </a>
     `
 
   }

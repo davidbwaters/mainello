@@ -117,6 +117,13 @@ async function getBlock(block) {
 
   }
 
+  if (block.collection === 'article') {
+
+    item.background_image =
+      assetPath + item.background_image
+
+  }
+
   return item
 
 }

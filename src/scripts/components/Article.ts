@@ -49,7 +49,7 @@ export class Article extends LitElement {
     }
 
     .c-article__heading {
-      font-size: var(--font-size-large-4);
+      font-size: var(--font-size-large-5);
       font-weight: var(--font-weight-normal);
       margin-bottom: var(--spacing-6);
       margin-top: 0;

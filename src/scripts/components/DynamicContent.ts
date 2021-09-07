@@ -40,7 +40,7 @@ export class DynamicContent extends LitElement {
       background-color: var(--color-main-background-shade-1);
     }
     :host(.dynamic-content--fill-alt) *:nth-child(even) {
-      background-color: var(--color-main-background);
+      background-color: var(--color-main-background-shade-2);
     }
   `
 

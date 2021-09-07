@@ -35,6 +35,13 @@ export class DynamicContent extends LitElement {
     :host *:nth-child(even) {
       background-color: var(--color-main-background-shade-1);
     }
+
+    :host(.dynamic-content--fill-alt) *:nth-child(odd) {
+      background-color: var(--color-main-background-shade-1);
+    }
+    :host(.dynamic-content--fill-alt) *:nth-child(even) {
+      background-color: var(--color-main-background);
+    }
   `
 
   @property({
@@ -97,6 +104,8 @@ export class DynamicContent extends LitElement {
             }'
             spacing=true
             border=${block.bottom_border}
+            small=${block.small}
+            split=${block.split_content}
           >
           </c-labeled-content>
         `
@@ -228,6 +237,7 @@ export class DynamicContent extends LitElement {
             heading='${block.heading}'
             subheading='${block.subheading}'
             text='${block.text}'
+            reverse='${block.reverse}'
           >
 
           </c-image-text>

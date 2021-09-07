@@ -22,6 +22,7 @@ declare global {
 
 @customElement('c-labeled-content')
 
+
 export class LabeledText extends LitElement {
 
   static styles = css`
@@ -55,7 +56,14 @@ export class LabeledText extends LitElement {
       }
     }
 
-    .c-labeled-content__inner {
+
+    :host(.c-labeled-content__small) {
+      display: inline-block;
+      width: 49%;
+    }
+
+    .c-labeled-content__inner,
+    .c-labeled-content__inner-small {
       align-content: center;
       box-sizing: border-box;
       display: grid;
@@ -82,13 +90,25 @@ export class LabeledText extends LitElement {
 
       .c-labeled-content__inner {
         grid-auto-flow: column;
-        grid-template-columns: 2fr 5fr;
+        grid-template-columns: 1fr 3fr;
       }
 
     }
 
+    :host(.c-labeled-content__small) .c-labeled-content__inner {
+      background-color: var(--color-main-background) !important;
+      gap: var(--spacing-4);
+      grid-auto-flow: row;
+      grid-template-columns: 1fr;
+      padding: 3rem 6.4vw;
+    }
+
+    :host(.c-labeled-content__split) .c-labeled-content__content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
     .c-labeled-content__label {
-      font-size: var(--font-size-small);
       letter-spacing: var(--title-normal-spacing);
       padding-bottom: var(--spacing-4);
     }
@@ -153,13 +173,46 @@ export class LabeledText extends LitElement {
   })
   border:boolean
 
-  firstUpdated() {}
+  @property({
+    type: Boolean,
+    attribute: true
+  })
+  small:boolean
+
+  @property({
+    type: Boolean,
+    attribute: true
+  })
+  split:boolean
+
+  firstUpdated():void {
+
+    this.small = JSON.parse(this.getAttribute(
+      'small'
+    ))
+
+    if (this.small) {
+
+      this.classList.add('c-labeled-content__small')
+
+    }
+
+    this.split = JSON.parse(this.getAttribute(
+      'split'
+    ))
+    if (this.split) {
+
+      this.classList.add('c-labeled-content__split')
+
+    }
+
+  }
 
   protected render():TemplateSpecification {
 
     return html`
 
-      <div class="c-labeled-content__inner">
+      <div class='c-labeled-content__inner'>
 
         <div class="c-labeled-content__label">
           ${this.label}

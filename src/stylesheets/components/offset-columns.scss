@@ -1,0 +1,27 @@
+//
+// offsets columns
+//
+
+.c-offset-columns {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr 1fr;
+  gap: 12.4vw 6.2vw;
+  margin-bottom: calc(var(--spacing-9) * 2);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: calc((var(--spacing-9) * 2) + 30vh);
+  width: 87.6%;
+}
+
+.c-offset-columns > :nth-child(odd) {
+  margin-top: -30vh;
+}
+
+.c-offset-columns--reverse > :nth-child(even) {
+  margin-top: -30vh;
+}
+
+.c-offset-columns--reverse > :nth-child(odd) {
+  margin-top: 0vh;
+}

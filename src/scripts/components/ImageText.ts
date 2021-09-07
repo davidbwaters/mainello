@@ -47,21 +47,22 @@ export class ImageText extends LitElement {
     }
 
     .c-article {
-      margin-bottom: var(--spacing-6);
+      margin-bottom: var(--spacing-8);
+      margin-top: var(--spacing-8);
     }
 
     .c-article-heading {
       font-size: var(--font-size-large-3);
       font-weight: var(--font-weight-semibold);
       margin-bottom: var(--spacing-1);
-      margin-top: var(--spacing-1);
+      margin-top: 0;
     }
 
     .c-article-subheading {
       font-size: var(--font-size-normal);
       font-weight: var(--font-weight-semibold);
-      margin-bottom: var(--spacing-5);
-      margin-top: var(--spacing-1);
+      margin-bottom: var(--spacing-6);
+      margin-top: 0;
     }
   `
 
@@ -96,6 +97,13 @@ export class ImageText extends LitElement {
   })
   reverse: boolean
 
+
+  firstUpdated():void {
+
+    this.reverse = JSON.parse(this.getAttribute('reverse'))
+
+  }
+
   protected render():TemplateSpecification {
 
     if (!this.reverse) {
@@ -119,7 +127,7 @@ export class ImageText extends LitElement {
     else {
 
       return html`
-        <article>
+        <article class="c-article">
           <h3 class="c-article-heading">
             ${this.heading}
           </h3>

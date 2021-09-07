@@ -268,7 +268,7 @@ export class Footer extends LitElement {
           if (contactFab) {
 
             contactFab.style.opacity = '1'
-            contactFab.style.pointerEvents = 'normal'
+            contactFab.style.pointerEvents = 'all'
 
           }
 

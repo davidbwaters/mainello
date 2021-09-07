@@ -115,7 +115,6 @@ async function getBlock(block) {
 
     item.image = assetPath + item.image
 
-
   }
 
   return item

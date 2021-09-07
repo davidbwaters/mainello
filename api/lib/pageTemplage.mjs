@@ -56,12 +56,13 @@ export function buildPageTemplate(title, content) {
           </c-footer>
         </div>
 
-        <script
-          src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.3/p5.min.js'
-          integrity='sha512-xrAcaPlDVY5TDNAKKsVPf040TnCatM3YFUi/AChhyBLJ1IVn+lbAKTiVDjhicrUFPqz/IvC0S2uVlbi7iF6I7w=='
-          crossorigin='anonymous'
-          referrerpolicy='no-referrer'
-        >
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEMW61VYHQ"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-DEMW61VYHQ');
         </script>
 
       </body>

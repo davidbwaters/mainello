@@ -29,20 +29,39 @@ export class ImageText extends LitElement {
 
   static styles = css`
     :host {
+      background-color: var(--color-main-background-shade-2);
       display: grid;
       gap: 6.2vw;
       grid-auto-flow: column;
       grid-template-columns: 1fr 1fr;
+      padding-left: var(--spacing-8);
+      padding-right: var(--spacing-8);
     }
+
+    :host img {
+      align-self: end;
+      display: block;
+      height: auto;
+      mix-blend-mode: luminosity;
+      width: 100%;
+    }
+
+    .c-article {
+      margin-bottom: var(--spacing-6);
+    }
+
     .c-article-heading {
       font-size: var(--font-size-large-3);
       font-weight: var(--font-weight-semibold);
-      margin-bottom: var(--spacing-3);
+      margin-bottom: var(--spacing-1);
+      margin-top: var(--spacing-1);
     }
+
     .c-article-subheading {
-      font-size: var(--font-size-large-1);
+      font-size: var(--font-size-normal);
       font-weight: var(--font-weight-semibold);
-      margin-bottom: var(--spacing-3);
+      margin-bottom: var(--spacing-5);
+      margin-top: var(--spacing-1);
     }
   `
 
@@ -82,12 +101,14 @@ export class ImageText extends LitElement {
     if (!this.reverse) {
 
       return html`
-        <img src="%{this.image}">
-        <article>
+        <img src="${this.image}">
+        <article class="c-article">
           <h3 class="c-article-heading">
             ${this.heading}
           </h3>
-          <h4>${this.subheading}</h4>
+          <h4 class="c-article-subheading">
+            ${this.subheading}
+          </h4>
           <div>
             ${unsafeHTML(this.text)}
           </div>
@@ -102,12 +123,14 @@ export class ImageText extends LitElement {
           <h3 class="c-article-heading">
             ${this.heading}
           </h3>
-          <h4>${this.subheading}</h4>
+          <h4 class="c-article-subheading">
+            ${this.subheading}
+          </h4>
           <div>
             ${unsafeHTML(this.text)}
           </div>
         </article>
-        <img src="%{this.image}">
+        <img src="${this.image}">
       `
 
     }

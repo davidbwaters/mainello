@@ -223,14 +223,14 @@ export class DynamicContent extends LitElement {
       if (block.component === 'image_with_text') {
 
         this._blocks += `
-          <image-text
-            image='${block.image}'
+          <c-image-text
+            image=${block.image}
             heading='${block.heading}'
             subheading='${block.subheading}'
             text='${block.text}'
           >
 
-          </image-text>
+          </c-image-text>
         `
 
       }

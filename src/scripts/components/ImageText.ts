@@ -110,8 +110,8 @@ export class ImageText extends LitElement {
 
 
     .c-image-text__heading {
-      font-size: var(--font-size-large-3);
-      font-weight: var(--font-weight-semibold);
+      font-size: var(--font-size-large-4);
+      font-weight: var(--font-weight-normal);
       margin-bottom: var(--spacing-1);
       margin-top: 0;
     }

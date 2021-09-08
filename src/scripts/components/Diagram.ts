@@ -57,6 +57,7 @@ export class Diagram extends LitElement {
       display: grid;
       height: var(--diagram-circle-size);
       left: calc(50% - var(--diagram-circle-size) / 2);
+      mix-blend-mode: multiply;
       position: absolute;
       top: calc(50% - var(--diagram-circle-size) / 2);
       transform-origin: center center;

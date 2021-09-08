@@ -62,8 +62,7 @@ export class LabeledText extends LitElement {
       width: 49%;
     }
 
-    .c-labeled-content__inner,
-    .c-labeled-content__inner-small {
+    .c-labeled-content__inner {
       align-content: center;
       box-sizing: border-box;
       display: grid;
@@ -72,10 +71,10 @@ export class LabeledText extends LitElement {
       justify-content: center;
       margin: auto;
       max-width: var(--wrapper-width);
-      padding-bottom: 6rem;
+      padding-bottom: 16vh;
       padding-left: 6.4vw;
       padding-right: 6.4vw;
-      padding-top: 6rem;
+      padding-top: 16vh;
     }
 
     @media (min-width: 320px) {
@@ -100,7 +99,10 @@ export class LabeledText extends LitElement {
       gap: var(--spacing-4);
       grid-auto-flow: row;
       grid-template-columns: 1fr;
-      padding: 3rem 6.4vw;
+      padding-bottom: 12vh;
+      padding-left: 6.4vw;
+      padding-right: 6.4vw;
+      padding-top: 12vh;
     }
 
     :host(.c-labeled-content__split) .c-labeled-content__content {
@@ -116,8 +118,8 @@ export class LabeledText extends LitElement {
     @media (min-width: 480px) {
 
       .c-labeled-content__label {
-        font-size:  var(--font-size-normal);
-        font-weight: var(--font-weight-semibold);
+        font-size:  var(--font-size-large-2);
+        font-weight: var(--font-weight-normal);
       }
 
     }

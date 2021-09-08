@@ -33,7 +33,7 @@ export class PageHeader extends LitElement {
       justify-content: center;
       min-height: 80vh;
       padding-left: 6.4vw;
-      padding-right: 6.4vw;
+      padding-right: 25.6vw;
       pointer-events: none;
     }
 

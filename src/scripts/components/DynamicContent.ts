@@ -196,8 +196,12 @@ export class DynamicContent extends LitElement {
             text='${
               block.text
                 .replace(/'/g, '&#39;')
-          }'
+            }'
+
+            background='${block.background_image}'
+            text-light='${block.text_light}'
             border='${block.bottom_border}'
+            split='${block.split}'
           >
           </c-article>
         `

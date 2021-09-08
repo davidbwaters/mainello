@@ -30,10 +30,23 @@ export class Article extends LitElement {
   static styles = css`
     :host {
       background-color: var(--color-main-background);
+      background-image: var(--article-background);
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: var(--article-color);
       border-bottom: var(--article-border) solid var(
         --color-opaque-dark-subtle
       );
       display: block;
+    }
+
+    @media (min-width: 768px) {
+
+      :host(.c-article--split) article {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
     }
 
     .c-article__article {
@@ -51,13 +64,14 @@ export class Article extends LitElement {
     .c-article__heading {
       font-size: var(--font-size-large-5);
       font-weight: var(--font-weight-normal);
+      line-height: var(--line-height-large-5);
       margin-bottom: var(--spacing-6);
       margin-top: 0;
     }
 
     .c-article__text p {
       line-height: var(--line-height-normal-spaced);
-      margin-bottom: 1.4em;
+      margin-bottom: 1em;
       margin-top: 0;
     }
   `
@@ -81,6 +95,24 @@ export class Article extends LitElement {
   })
   border:boolean
 
+  @property({
+    type: Boolean,
+    attribute: true
+  })
+  split:boolean
+
+  @property({
+    type: String,
+    attribute: true
+  })
+  background:string
+
+  @property({
+    type: Boolean,
+    attribute: true
+  })
+  textLight:boolean
+
   connectedCallback() {
 
     super.connectedCallback()
@@ -88,7 +120,6 @@ export class Article extends LitElement {
     this.border = JSON.parse(
       this.getAttribute('border')
     )
-
 
     if (this.border) {
 
@@ -107,7 +138,46 @@ export class Article extends LitElement {
 
     }
 
+    this.split = JSON.parse(this.getAttribute('split'))
+
+    if (this.split) {
+
+      this.classList.add('c-article--split')
+
+    }
+
   }
+
+  firstUpdated() {
+
+
+    this.textLight = JSON.parse(
+      this.getAttribute('text-light')
+    )
+    if (this['background']) {
+
+      this.style.setProperty(
+        '--article-background',
+        'url(' + this['background'] + ')'
+      )
+
+      if (this.textLight) {
+
+        this.style.setProperty(
+          '--article-color',
+          'white'
+        )
+
+      }
+
+      this.border = JSON.parse(
+        this.getAttribute('border')
+      )
+
+    }
+
+  }
+
   protected render():TemplateSpecification {
 
     return html`
@@ -117,7 +187,7 @@ export class Article extends LitElement {
             ? html``
             : html`
               <h3 class="c-article__heading">
-                ${this.heading}
+                ${unsafeHTML(this.heading)}
               </h3>
             `
         }

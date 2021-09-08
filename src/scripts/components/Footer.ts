@@ -143,7 +143,8 @@ export class Footer extends LitElement {
       text-decoration: underline;
     }
 
-    .c-footer__social {
+    .c-footer__social,
+    .c-footer__contact-link {
       align-content: end;
       display: grid;
       grid-auto-columns: min-content;
@@ -437,6 +438,9 @@ export class Footer extends LitElement {
 
             </div>
           -->
+          <a class="c-footer__contact-link" href="/contact.html">
+            contact
+          </a>
         </div>
       </div>
     `

@@ -32,9 +32,10 @@ export class ImageText extends LitElement {
       background-color: var(--color-main-background-shade-2);
       display: grid;
       gap: 6.2vw;
-      padding-bottom: var(--spacing-6);
       grid-template-columns: 1fr;
+      padding-bottom: var(--spacing-6);
       padding-left: var(--spacing-8);
+      padding-top: var(--spacing-6);
       padding-right: var(--spacing-8);
     }
 
@@ -118,8 +119,8 @@ export class ImageText extends LitElement {
     .c-image-text__subheading {
       font-size: var(--font-size-normal);
       font-weight: var(--font-weight-semibold);
+      margin-top: var(--spacing-1);
       margin-bottom: var(--spacing-6);
-      margin-top: 0;
     }
   `
 
@@ -173,7 +174,7 @@ export class ImageText extends LitElement {
           <h3 class="c-image-text__heading">
             ${this.heading}
           </h3>
-          <h4 class="c-image-text-article__subheading">
+          <h4 class="c-image-text__subheading">
             ${this.subheading}
           </h4>
           <div>

@@ -135,7 +135,7 @@ export class FluidReveal extends LitElement {
         grid-column: 2 / span 1;
         justify-items: start;
         height: 100vh;
-        padding-right: var(--spacing-8);
+        padding-right: 6.2vw;
         will-change: opacity, transform;
         z-index: 2;
       }

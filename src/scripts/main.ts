@@ -561,16 +561,12 @@ function barbaSetup() {
       disableLerp: true
     })
 
-    scrollerEl.scroller.update()
+    ScrollTrigger.refresh()
 
 
     setTimeout(() => {
 
-      scrollerEl.scroller.update()
-
       ScrollTrigger.refresh()
-
-      scrollerEl.scroller.update()
 
       prepVideos()
 

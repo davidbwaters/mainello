@@ -220,7 +220,7 @@ export class FluidReveal extends LitElement {
 
       this.items.forEach(item => {
 
-        console.log(item.text)
+        //console.log(item.text)
 
       })
 

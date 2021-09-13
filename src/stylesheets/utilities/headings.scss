@@ -41,7 +41,11 @@
 }
 
 .u-heading-image-inline {
-  max-width: 2em;
+  background-blend-mode: multiply;
+  background-color: var(--color-main-background);
+  background-size: contain;
+  height: 2em;
   mix-blend-mode: multiply;
   vertical-align: middle;
+  width: 2em;
 }

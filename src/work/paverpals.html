@@ -1,0 +1,82 @@
+
+    <!DOCTYPE html>
+    <html lang='en'>
+      <head>
+        <meta charset='UTF-8' />
+        <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <title>{{site.title}}</title>
+        <link rel='icon' href='/images/favicon.png' />
+        <script type='module' src='/scripts/main.ts'></script>
+      </head>
+      <body data-barba='wrapper' style='opacity: 0'>
+
+        <c-navbar>
+          <a href='/'>
+            <img src='{{site.logo_header}}'>
+          </a>
+        </c-navbar>
+
+        <c-nav-menu
+          navLinks='{{site.menu_items}}'
+        >
+        </c-nav-menu>
+
+        <div data-scroll-container class="u-will-change-transform-opacity">
+
+          <main data-barba='container'>
+
+            <c-page-header>
+              <div>
+                paverpals
+              </div>
+              <div slot='subtitle'>
+                an aesthetic solution for your covers
+              </div>
+            </c-page-header>
+
+            <c-featured-image
+              link='https://admin.mainellomontage.com/assets/bdc53678-bae1-46ea-85bd-3e1251802a49'
+              alt='paverpals'
+            >
+            </c-featured-image>
+
+            <c-article
+              class='u-bg-main-shade-1'
+              heading='standing out in a crowded market'
+              text='<p>paverpals are not just another cover for your backyard. it is a transformation. the first in its class for an aesthetic solution to an otherwise unappealing product. the cover to end all other (unaesthetic) covers. so with that, we wanted to give it a more modern feel like it deserves.&nbsp;</p>
+<p>*we purposely removed the text in the mockups at this product has not yet hit market</p>'
+            >
+            </c-article>
+
+            <div class='c-page-body'>
+              <c-dynamic-content
+                content='[{"component":"image_row","id":3,"images":[{"url":"https://admin.mainellomontage.com/assets/98bed121-a467-425f-ab06-69b2d70b9296","title":"2672fbd4 9dd6 4ce7 9a80 A9f56c48723e 2","sort":null},{"url":"https://admin.mainellomontage.com/assets/ec4a0f17-8989-46a4-a234-0bbd22da8f92","title":"2672fbd4 9dd6 4ce7 9a80 A9f56c48723e 3","sort":null}]},{"component":"featured_image","id":9,"media":"https://admin.mainellomontage.com/assets/30b64a7f-371f-4881-a03a-b1036714fef6","spacing":"none","image_size":"cover","title":"2672fbd4 9dd6 4ce7 9a80 A9f56c48723e 4"},{"component":"offset_columns","id":7,"reverse":false,"items":[{"url":"https://admin.mainellomontage.com/assets/5c2f68b5-db2b-4c39-9a62-3e4be5cea15c","title":"2672fbd4 9dd6 4ce7 9a80 A9f56c48723e 6","sort":null},{"url":"https://admin.mainellomontage.com/assets/01b3dfa9-b337-4a6d-9213-63cb1d306fc2","title":"2672fbd4 9dd6 4ce7 9a80 A9f56c48723e 7","sort":null},{"url":"https://admin.mainellomontage.com/assets/c828fd99-ae4b-462c-bdac-d3a2031156dd","title":"2672fbd4 9dd6 4ce7 9a80 A9f56c48723e 8","sort":null},{"url":"https://admin.mainellomontage.com/assets/4f2d6c66-5983-463f-841f-7523755ceb6e","title":"2672fbd4 9dd6 4ce7 9a80 A9f56c48723e 9","sort":null},{"url":"https://admin.mainellomontage.com/assets/5f336d68-3705-4b39-a1fe-cb00032acf4e","title":"2672fbd4 9dd6 4ce7 9a80 A9f56c48723e 10","sort":null},{"url":"https://admin.mainellomontage.com/assets/553d8413-c907-4f89-9fed-3728ffb3149d","title":"2672fbd4 9dd6 4ce7 9a80 A9f56c48723e 11","sort":null}]}]'>
+              </c-dynamic-content>
+            </div>
+          </main>
+
+
+          <c-footer
+            socialLinks='{{site.social_links}}'
+            navLinks='{{site.menu_items}}'
+            logo='{{site.logo_footer}}'
+          >
+            <div slot='heading' class='u-heading-huge'>
+              {{{site.footer_heading}}}
+            </div>
+          </c-footer>
+        </div>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEMW61VYHQ"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-DEMW61VYHQ');
+        </script>
+
+      </body>
+    </html>
+  

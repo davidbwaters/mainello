@@ -38,21 +38,21 @@ export class LabeledText extends LitElement {
 
     @media (min-width: 320px) {
       :host {
-        grid-column: 2 / span 8;
+        grid-column: 1 / span 10;
         grid-template-columns: 100%;
       }
     }
 
     @media (min-width: 768px) {
       :host {
-        grid-column: 3 / span 12;
+        grid-column: 1 / span 16;
       }
     }
 
 
     @media (min-width: 1080px) {
       :host {
-        grid-column: 2 / span 14;
+        grid-column: 1 / span 16;
       }
     }
 

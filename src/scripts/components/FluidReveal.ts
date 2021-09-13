@@ -72,6 +72,11 @@ export class FluidReveal extends LitElement {
         mask: none !important;
       }
 
+      .c-fluid-reveal__item a {
+        overflow: visible;
+        pointer-events: all;
+      }
+
       .c-fluid-reveal__content {
         background-color: var(---color-main-background);
         display: none;
@@ -116,13 +121,19 @@ export class FluidReveal extends LitElement {
         width: 100%;
       }
 
+
+      .c-fluid-reveal__item a {
+        overflow: visible;
+        pointer-events: none;
+      }
+
       .c-fluid-reveal__item-media {
         box-sizing: border-box;
         display: block;
         height: 100vh;
         overflow: hidden;
         padding-bottom: 10vh;
-        padding-top: 10vh;
+        padding-top: 14vh;
         top: 0;
         width: 100%;
       }
@@ -373,8 +384,7 @@ export class FluidReveal extends LitElement {
         ${this.items.map((item, index) =>
           html`
             <div class="c-fluid-reveal__item">
-
-
+              <a href="${'/work/' + item.slug + '.html'}">
                 <svg class="c-fluid-reveal__item-media" viewBox="0 0 1000 1000">
                   <image
                     opacity="1"
@@ -394,7 +404,7 @@ export class FluidReveal extends LitElement {
                     />
                   </mask>
                 </svg>
-
+              </a>
               <div class="c-fluid-reveal__content">
                 <h3 class="c-fluid-reveal__heading">
                   ${item.heading}

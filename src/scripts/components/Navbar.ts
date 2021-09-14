@@ -56,10 +56,22 @@ export class Navbar extends LitElement {
       width: 100%;
     }
 
+    .c-navbar__nav {
+      align-items: center;
+      display: grid;
+      gap: var(--spacing-3);
+      grid-auto-flow: column;
+    }
+
+
+    .c-navbar__nav a {
+      color: inherit;
+    }
+
     .c-navbar__inner {
       align-items: center;
       display: grid;
-      grid-auto-columns: min-content;
+      grid-auto-columns: auto;
       grid-auto-flow: column;
       justify-content: space-between;
       margin: auto;
@@ -193,6 +205,10 @@ export class Navbar extends LitElement {
           <div class='c-navbar__branding'>
             <slot></slot>
           </div>
+          <div class='c-navbar__nav'>
+            <a href='/ux-consulting.html'>
+              ux consulting
+            </a>
             <slot
               name='button'
               @click=${this.handleToggle}
@@ -202,6 +218,7 @@ export class Navbar extends LitElement {
               name='nav'
             >
             </slot>
+          </div>
         </div>
       </header>
     `

@@ -41,11 +41,18 @@
 }
 
 .u-heading-image-inline {
-  background-blend-mode: multiply;
+  background-blend-mode: normal;
   background-color: var(--color-main-background);
   background-size: contain;
   height: 2em;
-  mix-blend-mode: multiply;
+  // mix-blend-mode: multiply;
   vertical-align: middle;
   width: 2em;
+}
+
+@media (max-width: 768px) {
+
+  .u-heading-image-inline {
+    display: none;
+  }
 }

@@ -97,6 +97,7 @@ export class Footer extends LitElement {
       align-items: center;
       display: grid;
       gap: 6.2vh;
+      grid-auto-flow: column;
       justify-content: space-between;
       padding-bottom: 6.2vh;
       padding-top: 6.2vh;

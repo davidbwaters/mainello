@@ -106,6 +106,8 @@ export class DynamicContent extends LitElement {
             border=${block.bottom_border}
             small=${block.small}
             split=${block.split_content}
+            background=${block.background_image}
+            text-light=${block.text_light}
           >
           </c-labeled-content>
         `
@@ -245,6 +247,16 @@ export class DynamicContent extends LitElement {
           >
 
           </c-image-text>
+        `
+
+      }
+
+      if (block.component === 'services_lists') {
+
+        this._blocks += `
+          <c-services-lists list='${JSON.stringify(
+            block.list
+          )}'></c-services-lists>
         `
 
       }

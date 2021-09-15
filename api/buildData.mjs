@@ -111,6 +111,14 @@ async function getBlock(block) {
 
   }
 
+
+  if (block.collection === 'labeled_text') {
+
+    item.background_image =
+      assetPath + item.background_image
+
+  }
+
   if (block.collection === 'image_with_text') {
 
     item.image = assetPath + item.image

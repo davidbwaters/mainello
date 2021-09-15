@@ -28,10 +28,14 @@ export class LabeledText extends LitElement {
   static styles = css`
     :host {
       background-color: var(--color-main-background);
+      background-image: var(--labeled-text-background);
+      background-repeat: no-repeat;
+      background-size: cover;
       border-bottom: solid var(--labeled-text-border) var(
         --color-opaque-dark-subtle
       );
       box-sizing: border-box;
+      color: var(--labeled-text-color);
       display: block;
       grid-column: 1 / span 2;
     }
@@ -57,7 +61,7 @@ export class LabeledText extends LitElement {
     }
 
 
-    :host(.c-labeled-content__small) {
+    :host(.c-labeled-content--small) {
       display: inline-block;
       width: 49%;
     }
@@ -94,7 +98,7 @@ export class LabeledText extends LitElement {
 
     }
 
-    :host(.c-labeled-content__small) .c-labeled-content__inner {
+    :host(.c-labeled-content--small) .c-labeled-content__inner {
       background-color: var(--color-main-background) !important;
       gap: var(--spacing-4);
       grid-auto-flow: row;
@@ -187,6 +191,18 @@ export class LabeledText extends LitElement {
   })
   split:boolean
 
+  @property({
+    type: Boolean,
+    attribute: true
+  })
+  textLight:boolean
+
+  @property({
+    type: String,
+    attribute: true
+  })
+  background:string
+
   firstUpdated():void {
 
     this.small = JSON.parse(this.getAttribute(
@@ -195,7 +211,7 @@ export class LabeledText extends LitElement {
 
     if (this.small) {
 
-      this.classList.add('c-labeled-content__small')
+      this.classList.add('c-labeled-content--small')
 
     }
 
@@ -205,6 +221,37 @@ export class LabeledText extends LitElement {
     if (this.split) {
 
       this.classList.add('c-labeled-content__split')
+
+    }
+
+    this.textLight = JSON.parse(this.getAttribute(
+      'text-light'
+    ))
+
+    if (this.textLight) {
+
+      this.style.setProperty(
+        '--labeled-text-color',
+        'white'
+      )
+
+    }
+    else {
+
+      this.style.setProperty(
+        '--labeled-text-color',
+        'var(--color-main-text)'
+      )
+
+    }
+
+
+    if (this.background) {
+
+      this.style.setProperty(
+        '--labeled-text-background',
+        'url(' + this.background + ')'
+      )
 
     }
 

@@ -74,10 +74,11 @@ async function onInit() {
     import('./components/Pattern'),
     import('./components/StatColumns'),
     import('./components/Toggle'),
-    import('./components/WarpText'),
+    import('./components/WarpText')
   ])
 
   Promise.all([
+    import('./components/ServicesLists'),
     import('./components/DynamicContent')
   ])
 

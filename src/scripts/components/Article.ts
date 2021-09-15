@@ -29,6 +29,7 @@ export class Article extends LitElement {
 
   static styles = css`
     :host {
+      align-content: center;
       background-color: var(--color-main-background);
       background-image: var(--article-background);
       background-repeat: no-repeat;
@@ -37,13 +38,15 @@ export class Article extends LitElement {
       border-bottom: var(--article-border) solid var(
         --color-opaque-dark-subtle
       );
-      display: block;
+      display: grid;
+      min-height: 80vh;
     }
 
     @media (min-width: 768px) {
 
       :host(.c-article--split) article {
         display: grid;
+        gap: var(--spacing-6);
         grid-template-columns: 1fr 1fr;
       }
 

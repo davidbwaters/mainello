@@ -59,8 +59,8 @@ export class PageHeader extends LitElement {
 
     ::slotted(*) {
       font-size: var(--font-size-normal);
-      margin-bottom: var(--spacing-3);
-      margin-top: var(--spacing-3);
+      margin-bottom: var(--spacing-2);
+      margin-top: var(--spacing-2);
       pointer-events: auto;
     }
 
@@ -68,8 +68,6 @@ export class PageHeader extends LitElement {
     ::slotted([slot="single"])  {
       font-size: var(--font-size-display-0);
       line-height: var(--line-height-display-0);
-      margin-bottom: 0;
-      margin-top: 0;
     }
   `
 

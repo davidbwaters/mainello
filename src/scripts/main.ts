@@ -575,6 +575,8 @@ function barbaSetup() {
 
     console.log('after enter all')
 
+    handleForms()
+
   })
 
   barba.init({

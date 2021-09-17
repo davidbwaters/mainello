@@ -21,6 +21,7 @@ import config from '../config.mjs'
 const datePatternIn = 'YYYY-MM-DD[T]HH:mm:ss[Z]'
 const datePatternOut = 'MMMM D, YYYY'
 const assetPath = config.assets + '/'
+
 async function getFile(id, collection) {
 
   const file = await getData(
@@ -197,6 +198,15 @@ async function buildData() {
       assetPath + data.work[index].cover_image
     data.work[index].content = content
 
+    data.work[index].next = JSON.stringify(data.work
+      .filter(i => {
+
+        return data.work[index]
+          .next === i.id
+
+      })[0]
+    )
+
   }
 
   data.agency.featured_image =
@@ -342,7 +352,8 @@ async function buildData() {
       item.featured_image,
       item.description_label,
       item.description_text,
-      JSON.stringify(item.content)
+      JSON.stringify(item.content),
+      item.next
     )
 
     //console.log(item.content)

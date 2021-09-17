@@ -38,18 +38,21 @@
 
           {{#each work}}
 
-            <div class='c-labeled-image'>
+            <div>
               <a
                 href='/work/{{{this.slug}}}.html'
                 class='
                   u-text-decoration-none
                   u-link-opaque-hover
+                  u-width-fill
                 '
               >
-                <img
-                  src='{{{this.cover_image}}}'
+                <div
+                  class='c-background-image'
+                  style='background-image: url({{{this.cover_image}}});'
                   alt='{{{this.title}}}'
                 >
+                </div>
                 <div class='u-margin-4-top u-text-align-center'>
                   <strong>{{{this.title}}}</strong> –
                   {{{this.heading}}}

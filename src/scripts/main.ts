@@ -79,6 +79,8 @@ async function onInit() {
 
   Promise.all([
     import('./components/ServicesLists'),
+
+    import('./components/Next'),
     import('./components/DynamicContent')
   ])
 

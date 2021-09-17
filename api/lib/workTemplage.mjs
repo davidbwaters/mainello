@@ -8,7 +8,8 @@ export function buildWorkTemplate(
   featuredImage,
   descriptionLabel,
   description,
-  content
+  content,
+  next
 ) {
 
   return `
@@ -66,7 +67,11 @@ export function buildWorkTemplate(
                 content='${content}'>
               </c-dynamic-content>
             </div>
-          </main>
+
+            <c-next item='${next}'>
+            </c-next>
+
+            </main>
 
 
           <c-footer

@@ -419,26 +419,26 @@ export class Footer extends LitElement {
 
             )}
           </nav>
-          <!--
-            <div class='c-footer__social'>
 
-              ${this.socialLinks.map(item =>
+          <div class='c-footer__social'>
 
-                html`
-                  <a
-                    class='c-footer__social-link'
-                    href="${item.link}"
+            ${this.socialLinks.map(item =>
+
+              html`
+                <a
+                  class='c-footer__social-link'
+                  href="${item.link}"
+                >
+                  <img
+                    src='/icons/social/${item.service}.svg'
                   >
-                    <img
-                      src='/icons/social/${item.service}.svg'
-                    >
-                  </a>
-                `
+                </a>
+              `
 
-              )}
+            )}
 
-            </div>
-          -->
+          </div>
+
           <a class="c-footer__contact-link" href="/contact.html">
             contact
           </a>

@@ -37,6 +37,14 @@ export class PageHeader extends LitElement {
       pointer-events: none;
     }
 
+    :host(.u-text-align-center) {
+      padding-right: 6.4vw;
+    }
+
+    :host(.u-height-120vh-min) {
+      padding-bottom: 20vh;
+    }
+
     .c-page-header__inner {
       justify-content: center;
       box-sizing: border-box;
@@ -47,13 +55,13 @@ export class PageHeader extends LitElement {
       max-width: var(--wrapper-width);
       text-align: left;
       width: 100%;
-
     }
 
     ::slotted(*) {
       font-size: var(--font-size-normal);
       margin-bottom: var(--spacing-3);
-      margin-top: 0;
+      margin-top: var(--spacing-3);
+      pointer-events: auto;
     }
 
     ::slotted([slot="subtitle"]),
@@ -61,7 +69,6 @@ export class PageHeader extends LitElement {
       font-size: var(--font-size-display-0);
       line-height: var(--line-height-display-0);
       margin-bottom: 0;
-      //margin-right: 25%;
       margin-top: 0;
     }
   `

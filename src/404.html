@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>{{site.title}}</title>
+    <link rel='icon' href='/images/favicon.png' />
+    <script type='module' src='/scripts/main.ts'></script>
+  </head>
+  <body style='opacity: 0' data-barba='wrapper'>
+
+    <c-navbar>
+      <a href='/'>
+        <img src='{{site.logo_header}}'>
+      </a>
+    </c-navbar>
+
+    <c-nav-menu
+      navLinks='{{site.menu_items}}'
+    >
+    </c-nav-menu>
+
+    <div data-scroll-container>
+
+      <main
+        data-barba='container'
+        data-barba-namespace='agency'
+        class='u-bg-main'
+      >
+        <c-page-header class="u-position-relative u-text-align-center u-height-120vh-min">
+          <div slot="single" class="u-text-align-center">
+            whoops!
+          </div>
+          <div class="u-text-align-center">
+            page not found
+          </div>
+
+            <a href="/index.html" class="u-text-align-center">take me home</a>
+        </c-page-header>
+      </main>
+
+      <c-footer
+        socialLinks='{{site.social_links}}'
+        navLinks='{{site.menu_items}}'
+        logo='{{site.logo_footer}}'
+        asscroll>
+        <div slot='heading' class='u-heading-huge'>
+          {{{site.footer_heading}}}
+        </div>
+      </c-footer>
+    </div>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEMW61VYHQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DEMW61VYHQ');
+    </script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEMW61VYHQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DEMW61VYHQ');
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-206870340-1">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-206870340-1');
+    </script>
+
+  </body>
+</html>

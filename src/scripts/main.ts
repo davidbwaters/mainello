@@ -79,7 +79,6 @@ async function onInit() {
 
   Promise.all([
     import('./components/ServicesLists'),
-
     import('./components/Next'),
     import('./components/DynamicContent')
   ])
@@ -537,7 +536,7 @@ function barbaSetup() {
     const contactFab = document.querySelector('c-contact-fab')
 
 
-    if (contactFab) {
+    if (contactFab && window.location.pathname !== '/') {
 
       document.body.removeChild(
         contactFab

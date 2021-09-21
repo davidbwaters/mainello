@@ -13,6 +13,10 @@ import {
   property
 } from 'lit/decorators.js'
 
+import {
+  unsafeHTML
+} from 'lit/directives/unsafe-html'
+
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -265,7 +269,7 @@ export class LabeledText extends LitElement {
       <div class='c-labeled-content__inner'>
 
         <div class="c-labeled-content__label">
-          ${this.label}
+          ${unsafeHTML(this.label)}
         </div>
 
         <div class="c-labeled-content__content">

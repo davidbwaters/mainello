@@ -69,8 +69,6 @@ export class DynamicContent extends LitElement {
             spacing=${block.spacing}
             size=${block.image_size}
             background=${block.background_color}
-            data-scroll
-            data-scroll-offset="0%, 15%" data-scroll-repeat='true'
           >
           </c-featured-image>
         `

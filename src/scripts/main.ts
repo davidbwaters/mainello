@@ -169,7 +169,7 @@ const addParallax = () => {
   if (dyn) {
 
     parallaxEls = [...parallaxEls, ...Array.from(
-      dyn.shadowRoot
+      dyn
         .querySelectorAll('[data-parallax-mask]')
     )]
 

@@ -40,7 +40,11 @@ export function buildWorkTemplate(
 
           <main data-barba='container'>
 
-            <c-page-header>
+            <c-page-header
+              data-scroll
+              data-scroll-offset="0%, 15%"
+              data-scroll-repeat='true'
+            >
               <div>
                 ${title}
               </div>
@@ -59,6 +63,9 @@ export function buildWorkTemplate(
               class='u-bg-main-shade-1'
               heading='${descriptionLabel}'
               text='${description}'
+              data-scroll
+              data-scroll-offset="0%, 15%"
+              data-scroll-repeat='true'
             >
             </c-article>
 

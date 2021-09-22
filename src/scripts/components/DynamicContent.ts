@@ -68,6 +68,9 @@ export class DynamicContent extends LitElement {
             alt=$(block.title)}
             spacing=${block.spacing}
             size=${block.image_size}
+            background=${block.background_color}
+            data-scroll
+            data-scroll-offset="0%, 15%" data-scroll-repeat='true'
           >
           </c-featured-image>
         `
@@ -82,6 +85,8 @@ export class DynamicContent extends LitElement {
             link=${block.media}
             spacing=${block.spacing}
             color=${block.background_color}
+            data-scroll
+            data-scroll-offset="0%, 15%" data-scroll-repeat='true'
           >
           </c-featured-video>
         `
@@ -108,6 +113,8 @@ export class DynamicContent extends LitElement {
             split=${block.split_content}
             background=${block.background_image}
             text-light=${block.text_light}
+            data-scroll
+            data-scroll-offset="0%, 15%" data-scroll-repeat='true'
           >
           </c-labeled-content>
         `
@@ -124,6 +131,8 @@ export class DynamicContent extends LitElement {
             image='${block.image}'
             spacing=true
             border=${block.bottom_border}
+            data-scroll
+            data-scroll-offset="0%, 15%" data-scroll-repeat='true'
           >
           </c-labeled-content>
         `
@@ -142,6 +151,8 @@ export class DynamicContent extends LitElement {
                 class='c-offset-columns__item'
                 src='${item.url}'
                 alt='${item.title}'
+                data-scroll
+                data-scroll-offset="0%, 15%" data-scroll-repeat='true'
               >
             `).join('')}
           </c-offset-columns>
@@ -152,7 +163,11 @@ export class DynamicContent extends LitElement {
       if (block.component === 'section_title') {
 
         this._blocks += `
-          <c-section-title text='${block.text}'>
+          <c-section-title
+            text='${block.text}'
+            data-scroll
+            data-scroll-offset="0%, 15%" data-scroll-repeat='true'
+          >
           </c-section-title>
         `
 
@@ -167,6 +182,8 @@ export class DynamicContent extends LitElement {
             patternPosition='${block.pattern_position}'
             patternWidth='${block.pattern_width}'
             repeat='${block.repeat}'
+            data-scroll
+            data-scroll-offset="0%, 15%" data-scroll-repeat='true'
           >
           </c-pattern>
         `
@@ -179,6 +196,8 @@ export class DynamicContent extends LitElement {
           <c-blockquote
             quote='${block.quote}'
             citation='${block.citation}'
+            data-scroll
+            data-scroll-offset="0%, 15%" data-scroll-repeat='true'
           >
           </c-blockquote>
         `
@@ -204,6 +223,8 @@ export class DynamicContent extends LitElement {
             text-light='${block.text_light}'
             border='${block.bottom_border}'
             split='${block.split}'
+            data-scroll
+            data-scroll-offset="0%, 15%" data-scroll-repeat='true'
           >
           </c-article>
         `
@@ -215,10 +236,10 @@ export class DynamicContent extends LitElement {
 
         this._blocks += `
           <c-stat-columns
-          stats='${JSON.stringify(
-            block.stats
-          ).replace(/'/g, '&#39;')
-        }'
+            stats='${JSON.stringify(
+                block.stats
+              ).replace(/'/g, '&#39;')
+            }'
           >
           </c-stat-columns>
         `
@@ -244,6 +265,8 @@ export class DynamicContent extends LitElement {
             subheading='${block.subheading}'
             text='${block.text}'
             reverse='${block.reverse}'
+            data-scroll
+            data-scroll-offset="0%, 15%" data-scroll-repeat='true'
           >
 
           </c-image-text>
@@ -262,6 +285,12 @@ export class DynamicContent extends LitElement {
       }
 
     }
+
+  }
+
+  protected createRenderRoot():DynamicContent {
+
+    return this
 
   }
 

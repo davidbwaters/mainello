@@ -13,6 +13,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import barba from '@barba/core'
 import barbaPrefetch from '@barba/prefetch'
 import 'shader-doodle'
+import AOS from 'aos'
 
 declare global {
   interface Window {

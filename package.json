@@ -16,6 +16,7 @@
     "@ashthornton/asscroll": "^2.0.2",
     "@barba/core": "^2.9.7",
     "@barba/prefetch": "^2.1.10",
+    "aos": "^2.3.4",
     "escape-quotes": "^1.0.2",
     "events": "^3.3.0",
     "gsap": "npm:@gsap/shockingly@^3.7.1",

@@ -16,6 +16,7 @@
 @use './components/line.scss';
 @use './components/line-title.scss';
 @use './components/overlay.scss';
+@use './components/scroll.scss';
 @use './components/toggle.scss';
 
 @use './utilities/backgrounds.scss';
@@ -36,6 +37,8 @@
 @use './utilities/wrapper.scss';
 @use './utilities/will-change.scss';
 @use './utilities/z-index.scss';
+
+@import 'https://cdn.rawgit.com/michalsnik/aos/2.3.4/dist/aos.css';
 
 @font-face {
   font-family: 'Sohne';

@@ -1,0 +1,16 @@
+//
+// scroll
+//
+
+[data-scroll] {
+  opacity: 0;
+  transition-delay: 0.2s;
+  transition-duration: 0.8s, 0.4s;
+  transition-property: opacity,transform;
+  //transform: translate3d(0,100px,0)
+}
+
+[data-scroll].is-inview {
+  opacity: 1;
+  transform: translateZ(0)
+}

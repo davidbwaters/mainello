@@ -18,7 +18,7 @@ import gsap from 'gsap'
 import {
   createRef,
   ref
-} from 'lit/directives/ref'
+} from 'lit/directives/ref.js'
 
 
 declare global {

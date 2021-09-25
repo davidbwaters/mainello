@@ -15,7 +15,7 @@ import {
 
 import {
   unsafeHTML
-} from 'lit/directives/unsafe-html'
+} from 'lit/directives/unsafe-html.js'
 
 declare global {
   interface HTMLElementTagNameMap {

@@ -16,7 +16,7 @@ import {
 import {
   createRef,
   ref
-} from 'lit/directives/ref'
+} from 'lit/directives/ref.js'
 
 import inViewport from './../lib/inViewport'
 

@@ -6,7 +6,7 @@ import { LitElement, html, css } from 'lit'
 
 import { customElement } from 'lit/decorators.js'
 
-import { createRef, ref } from 'lit/directives/ref'
+import { createRef, ref } from 'lit/directives/ref.js'
 
 import { gsap } from 'gsap'
 

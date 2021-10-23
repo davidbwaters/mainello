@@ -13,7 +13,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import barba from '@barba/core'
 import barbaPrefetch from '@barba/prefetch'
 import 'shader-doodle'
-import AOS from 'aos'
 
 declare global {
   interface Window {
@@ -70,12 +69,10 @@ async function onInit() {
     import('./components/ImageRow'),
     import('./components/ImageText'),
     import('./components/LabeledContent'),
-    import('./components/LiquidTitle'),
     import('./components/OffsetColumns'),
     import('./components/Pattern'),
     import('./components/StatColumns'),
-    import('./components/Toggle'),
-    import('./components/WarpText')
+    import('./components/Toggle')
   ])
 
   Promise.all([

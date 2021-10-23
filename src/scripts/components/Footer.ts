@@ -348,8 +348,6 @@ export class Footer extends LitElement {
     this._createWrapper()
     this._inViewort()
 
-    //this.instance = new window.p5(this.sketch)
-
   }
 
   protected render():TemplateSpecification {

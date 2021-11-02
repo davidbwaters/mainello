@@ -39,7 +39,7 @@ export function buildNewsTemplate(news) {
               class="u-text-align-center"
             >
               <div slot="single" class="u-text-align-center">
-                News
+                News, Articles, and Stuff
               </div>
             </c-page-header>
             <div class='u-wrapper u-padding-grid-horizontal u-margin-20vh-bottom'>

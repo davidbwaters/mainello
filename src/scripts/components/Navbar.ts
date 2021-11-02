@@ -206,8 +206,8 @@ export class Navbar extends LitElement {
             <slot></slot>
           </div>
           <div class='c-navbar__nav'>
-            <a href='http://mainux.consulting'>
-              ux consulting
+            <a href='/work.html'>
+              work
             </a>
             <slot
               name='button'

@@ -2,7 +2,9 @@
 // post template
 //
 
-export function buildPostTemplate(title, content) {
+export function buildPostTemplate(
+  title, content, date, featuredImage
+) {
 
   return `
     <!DOCTYPE html>
@@ -30,22 +32,35 @@ export function buildPostTemplate(title, content) {
 
         <div data-scroll-container class="u-will-change-transform-opacity">
 
+
           <main data-barba='container' data-barba-namespace='post'>
 
 
-            <div class='u-wrapper u-padding-grid-horizontal u-margin-20vh-bottom '>
-              <div class='
-                u-heading-large
-                active
-                u-margin-20vh-bottom
-                u-margin-30vh-top
-              '>
+            <c-page-header
+              data-scroll
+              data-scroll-offset="0%, 15%"
+              data-scroll-repeat="true"
+            >
+
+              <div slot="subtitle">
                 ${title}
               </div>
+              <div>${date}</div>
+
+            </c-page-header>
+            ${
+              featuredImage
+              ? `<div style="background-image: url(${featuredImage}); background-position: center; background-size: cover; height: 60vw;"
+                alt="" class="u-margin-8-bottom"></div>`
+              : ``
+            }
+            <div class='u-wrapper u-padding-grid-horizontal u-margin-20vh-bottom '>
+
               ${JSON.stringify(content)
                 .replace(/\\n/g, '')
                 .replace(/"/g, '')
               }
+              <a class="c-button u-margin-6-top" href="/news.html">Back to News</a>
             </div>
 
           </main>

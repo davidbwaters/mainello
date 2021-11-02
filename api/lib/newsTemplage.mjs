@@ -1,8 +1,8 @@
 //
-// page template
+// post template
 //
 
-export function buildPageTemplate(title, content) {
+export function buildNewsTemplate(news) {
 
   return `
     <!DOCTYPE html>
@@ -30,16 +30,39 @@ export function buildPageTemplate(title, content) {
 
         <div data-scroll-container class="u-will-change-transform-opacity">
 
-          <main data-barba='container'>
+          <main data-barba='container' data-barba-namespace='news'>
 
-            <c-page-header>
-              <div slot="single">${title}</div>
+            <c-page-header
+              data-scroll
+              data-scroll-offset="0%, 15%"
+              data-scroll-repeat="true"
+              class="u-text-align-center"
+            >
+              <div slot="single" class="u-text-align-center">
+                News
+              </div>
             </c-page-header>
+            <div class='u-wrapper u-padding-grid-horizontal u-margin-20vh-bottom'>
 
-            <div class='c-page-body'>
-              <c-dynamic-content
-                content='${JSON.stringify(content)}'>
-              </c-dynamic-content>
+              {{#each news}}
+
+                <c-blog-post
+                  date='{{this.date}}'
+                  name='{{this.title}}'
+                  text='{{this.text}}'
+                  content='{{this.content}}'
+                  slug='{{this.slug}}'
+                  featuredImage='{{this.featured_image}}'
+                >
+                  <c-button
+                    link='/news/{{this.slug}}.html'
+                    text='read more'
+                  >
+                  </c-button>
+                </c-blog-post>
+
+              {{/each}}
+
             </div>
 
           </main>

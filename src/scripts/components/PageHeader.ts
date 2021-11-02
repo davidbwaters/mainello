@@ -32,8 +32,10 @@ export class PageHeader extends LitElement {
       grid-template-columns: 1fr;
       justify-content: center;
       min-height: 80vh;
+      padding-bottom: var(--spacing-8);
       padding-left: 6.4vw;
       padding-right: 32vw;
+      padding-top: var(--spacing-8);
       pointer-events: none;
     }
 

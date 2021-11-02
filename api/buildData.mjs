@@ -16,6 +16,10 @@ import {
   buildWorkTemplate
 } from './lib/workTemplage.mjs'
 
+import {
+  buildNewsTemplate
+} from './lib/newsTemplage.mjs'
+
 import getData from './lib/getData.mjs'
 import config from '../config.mjs'
 const datePatternIn = 'YYYY-MM-DD[T]HH:mm:ss[Z]'
@@ -288,14 +292,14 @@ async function buildData() {
 
   )
 
-
-  data.home.news_post_list.forEach((item, index) => {
+  data.news.forEach((item, index) => {
 
     let i = data.news.filter(j => {
 
-      return j.id === item && j.status === 'published'
+      return j.status === 'published' && j.id === item.id
 
     })[0]
+
     i.date = date.format(
       date.parse(
         i.date_created,
@@ -304,16 +308,45 @@ async function buildData() {
       datePatternOut
     )
 
+    i.featured_image = i.featured_image !== null
+      ? assetPath + i.featured_image
+      : ''
+
     i = {
       id: i.id,
       date: i.date,
       title: i.title,
       text: i.preview_text,
       content: i.content,
-      slug: i.slug
+      slug: i.slug,
+      status: i.status,
+      featured_image: i.featured_image
     }
 
-    console.log(i)
+
+    data.news[index] = i
+
+  })
+
+  data.home.news_post_list.forEach((item, index) => {
+
+    let i = data.news.filter(j => {
+
+      return j.id === item && j.status === 'published'
+
+    })[0]
+
+    i = {
+      id: i.id,
+      date: i.date,
+      title: i.title,
+      text: i.preview_text,
+      content: i.content,
+      slug: i.slug,
+      featured_image: i.featured_image
+    }
+
+    // console.log(i)
     data.home.news_post_list[index] = i
 
   })
@@ -332,9 +365,23 @@ async function buildData() {
 
   data = JSON.parse(data)
 
+  const newsTemplate = buildNewsTemplate(
+    data.news
+  )
+
+  writeFileSync(
+    'src/news.html',
+    newsTemplate
+  )
+
   data.news.forEach((item) => {
 
-    const post = buildPostTemplate(item.title, item.content)
+    const post = buildPostTemplate(
+      item.title,
+      item.content,
+      item.date,
+      item.featured_image
+    )
     writeFileSync(
       'src/news/' + item.slug + '.html',
       post

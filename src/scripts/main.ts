@@ -377,7 +377,7 @@ function handleForms() {
 
   const confirmAnimation = lottie.loadAnimation({
     container: confirmAnimationEl,
-    renderer: 'canvas',
+    renderer: 'svg',
     loop: false,
     autoplay: false,
     path: '/animations/mail.json',

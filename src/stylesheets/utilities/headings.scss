@@ -18,8 +18,7 @@
   font-size: var(--font-size-large-5);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-large-1);
-}
-
+}d
 
 .u-heading-huge,
 .u-heading-huge p {
@@ -39,4 +38,21 @@
 
 .u-heading-lighter {
   font-weight: var(--font-weight-normal);
+}
+
+.u-heading-image-inline {
+  background-blend-mode: normal;
+  background-color: var(--color-main-background);
+  background-size: contain;
+  height: 2em;
+  // mix-blend-mode: multiply;
+  vertical-align: middle;
+  width: 2em;
+}
+
+@media (max-width: 768px) {
+
+  .u-heading-image-inline {
+    display: none;
+  }
 }

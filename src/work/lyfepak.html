@@ -1,0 +1,93 @@
+
+    <!DOCTYPE html>
+    <html lang='en'>
+      <head>
+        <meta charset='UTF-8' />
+        <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta name="description" content="mainux digital agency work case-study">
+        <title>{{site.title}}</title>
+        <link rel='icon' href='/images/favicon.png' />
+        <script type='module' src='/scripts/main.ts'></script>
+      </head>
+      <body data-barba='wrapper' style='opacity: 0'>
+
+        <c-navbar>
+          <a href='/'>
+            <img src='{{site.logo_header}}'>
+          </a>
+        </c-navbar>
+
+        <c-nav-menu
+          navLinks='{{site.menu_items}}'
+        >
+        </c-nav-menu>
+
+        <div data-scroll-container class="u-will-change-transform-opacity">
+
+          <main data-barba='container'>
+
+            <c-page-header
+              data-scroll
+              data-scroll-offset="0%, 15%"
+              data-scroll-repeat='true'
+            >
+              <div>
+                lyfepak
+              </div>
+              <div slot='subtitle'>
+                lyfepack
+              </div>
+            </c-page-header>
+
+            <c-featured-image
+              link='https://admin.mainellomontage.com/assets/89b028b7-650f-490b-8673-cfc56f00e952'
+              alt='lyfepak'
+            >
+            </c-featured-image>
+
+            <c-article
+              class='u-bg-main-shade-1'
+              heading='standing out in a crowded market'
+              text='<p>lyfepak was created to stand out in a crowded space and focus on quality ingredients in both whey and plant proteins without the harmful fillers. we created a visual identity that supports an active lifestyle with the love of the outdoors.</p>'
+              data-scroll
+              data-scroll-offset="0%, 15%"
+              data-scroll-repeat='true'
+            >
+            </c-article>
+
+            <div class='c-page-body'>
+              <c-dynamic-content
+                content='[{"component":"featured_image","id":8,"media":"https://admin.mainellomontage.com/assets/885179d9-ea5b-4314-ac76-5824813df7d4","spacing":"none","image_size":"cover","background_color":null,"title":"Lyfepak Boxes"},{"component":"offset_columns","id":6,"reverse":false,"items":[{"url":"https://admin.mainellomontage.com/assets/fe3640a7-2075-47fd-a876-25ef1bcb00e1","title":"2672fbd4 9dd6 4ce7 9a80 A9f56c48723e 2","sort":null},{"url":"https://admin.mainellomontage.com/assets/1525bb8c-e4a1-4172-81ab-9275ddba384e","title":"2672fbd4 9dd6 4ce7 9a80 A9f56c48723e 6","sort":null},{"url":"https://admin.mainellomontage.com/assets/587800b4-c038-409a-9677-1bed435ab9bd","title":"2672fbd4 9dd6 4ce7 9a80 A9f56c48723e 5","sort":null},{"url":"https://admin.mainellomontage.com/assets/82acbbff-48f1-4759-b03b-7b520c4711b2","title":"2672fbd4 9dd6 4ce7 9a80 A9f56c48723e 8","sort":null},{"url":"https://admin.mainellomontage.com/assets/a2cfc910-5943-4497-b46d-a11e5e544c5c","title":"2672fbd4 9dd6 4ce7 9a80 A9f56c48723e 4","sort":null},{"url":"https://admin.mainellomontage.com/assets/ccfce475-19e2-4d50-a052-0ed30daa7203","title":"2672fbd4 9dd6 4ce7 9a80 A9f56c48723e 9","sort":null},{"url":"https://admin.mainellomontage.com/assets/e4ea4017-ad48-44eb-87f4-16fc60fb38ad","title":"2672fbd4 9dd6 4ce7 9a80 A9f56c48723e 7","sort":null}]}]'>
+              </c-dynamic-content>
+            </div>
+
+            <c-next item='{"id":6,"status":"published","sort":5,"date_created":"2021-09-12T22:53:22Z","date_updated":"2021-09-28T18:47:36Z","featured_image":"e1a74811-ec98-4c26-a68e-d9598b6df027","heading":"an aesthetic solution for your covers","title":"paverpals","description_label":"standing out in a crowded market","description_text":"<p>paverpals are not just another cover for your backyard. it is a transformation. the first in its class for an aesthetic solution to an otherwise unappealing product. the cover to end all other (unaesthetic) covers. so with that, we wanted to give it a more modern feel like it deserves.&nbsp;</p>\n<p>*we purposely removed the text in the mockups at this product has not yet hit market</p>","slug":"paverpals","cover_image":"ee283741-ccbc-4d97-b44b-4304688744d3","category":["branding"],"next":1,"content":[33,34,35]}'>
+            </c-next>
+
+            </main>
+
+
+          <c-footer
+            socialLinks='{{site.social_links}}'
+            navLinks='{{site.menu_items}}'
+            logo='{{site.logo_footer}}'
+          >
+            <div slot='heading' class='u-heading-huge'>
+              {{{site.footer_heading}}}
+            </div>
+          </c-footer>
+        </div>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEMW61VYHQ"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-DEMW61VYHQ');
+        </script>
+
+      </body>
+    </html>
+  

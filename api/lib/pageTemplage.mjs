@@ -11,6 +11,7 @@ export function buildPageTemplate(title, content) {
         <meta charset='UTF-8' />
         <meta http-equiv='X-UA-Compatible' content='IE=edge' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta name="description" content="mainux digital agency">
         <title>{{site.title}}</title>
         <link rel='icon' href='/images/favicon.png' />
         <script type='module' src='/scripts/main.ts'></script>
@@ -33,7 +34,7 @@ export function buildPageTemplate(title, content) {
           <main data-barba='container'>
 
             <c-page-header>
-              <div>${title}</div>
+              <div slot="single">${title}</div>
             </c-page-header>
 
             <div class='c-page-body'>
@@ -56,12 +57,13 @@ export function buildPageTemplate(title, content) {
           </c-footer>
         </div>
 
-        <script
-          src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.3/p5.min.js'
-          integrity='sha512-xrAcaPlDVY5TDNAKKsVPf040TnCatM3YFUi/AChhyBLJ1IVn+lbAKTiVDjhicrUFPqz/IvC0S2uVlbi7iF6I7w=='
-          crossorigin='anonymous'
-          referrerpolicy='no-referrer'
-        >
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEMW61VYHQ"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-DEMW61VYHQ');
         </script>
 
       </body>

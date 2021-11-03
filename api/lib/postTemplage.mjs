@@ -2,7 +2,9 @@
 // post template
 //
 
-export function buildPostTemplate(title, content) {
+export function buildPostTemplate(
+  title, content, date, featuredImage
+) {
 
   return `
     <!DOCTYPE html>
@@ -11,6 +13,7 @@ export function buildPostTemplate(title, content) {
         <meta charset='UTF-8' />
         <meta http-equiv='X-UA-Compatible' content='IE=edge' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta name="description" content="mainux digital agency news post">
         <title>{{site.title}}</title>
         <link rel='icon' href='/images/favicon.png' />
         <script type='module' src='/scripts/main.ts'></script>
@@ -30,16 +33,35 @@ export function buildPostTemplate(title, content) {
 
         <div data-scroll-container class="u-will-change-transform-opacity">
 
+
           <main data-barba='container' data-barba-namespace='post'>
 
-            <c-page-header>
-              <div>
+
+            <c-page-header
+              data-scroll
+              data-scroll-offset="0%, 15%"
+              data-scroll-repeat="true"
+            >
+
+              <div slot="subtitle">
                 ${title}
               </div>
-            </c-page-header>
+              <div>${date}</div>
 
-            <div class='u-wrapper u-padding-grid-horizontal'>
-              ${JSON.stringify(content)}
+            </c-page-header>
+            ${
+              featuredImage
+              ? `<div style="background-image: url(${featuredImage}); background-position: center; background-size: cover; height: 60vw;"
+                alt="" class="u-margin-8-bottom"></div>`
+              : ``
+            }
+            <div class='u-wrapper u-padding-grid-horizontal u-margin-20vh-bottom '>
+
+              ${JSON.stringify(content)
+                .replace(/\\n/g, '')
+                .replace(/"/g, '')
+              }
+              <a class="c-button u-margin-6-top" href="/news.html">Back to News</a>
             </div>
 
           </main>
@@ -56,12 +78,13 @@ export function buildPostTemplate(title, content) {
           </c-footer>
         </div>
 
-        <script
-          src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.3/p5.min.js'
-          integrity='sha512-xrAcaPlDVY5TDNAKKsVPf040TnCatM3YFUi/AChhyBLJ1IVn+lbAKTiVDjhicrUFPqz/IvC0S2uVlbi7iF6I7w=='
-          crossorigin='anonymous'
-          referrerpolicy='no-referrer'
-        >
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEMW61VYHQ"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-DEMW61VYHQ');
         </script>
 
       </body>

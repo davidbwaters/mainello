@@ -18,7 +18,7 @@ import lottie from 'lottie-web'
 import {
   createRef,
   ref
-} from 'lit/directives/ref'
+} from 'lit/directives/ref.js'
 
 
 declare global {

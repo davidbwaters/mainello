@@ -26,35 +26,50 @@ export class PageHeader extends LitElement {
 
   static styles = css`
     :host {
-      display: block;
-      border-bottom: solid 1px var(--color-opaque-dark-subtle);
+      align-content: center;
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-content: center;
+      min-height: 80vh;
+      padding-bottom: var(--spacing-8);
+      padding-left: 6.4vw;
+      padding-right: 32vw;
+      padding-top: var(--spacing-8);
+      pointer-events: none;
+    }
+
+    :host(.u-text-align-center) {
+      padding-right: 6.4vw;
+    }
+
+    :host(.u-height-120vh-min) {
+      padding-bottom: 20vh;
     }
 
     .c-page-header__inner {
+      justify-content: center;
       box-sizing: border-box;
-      display: block;
+      display: grid;
+      grid-template-columns: 1fr;
       margin-left: auto;
       margin-right: auto;
       max-width: var(--wrapper-width);
-      padding-bottom: calc(10vh + 7.5vw);
-      padding-left: 6.2vw;
-      padding-right: 6.2vw;
-      padding-top: calc(10vh + 7.5vw + 2.34375rem);
+      text-align: left;
+      width: 100%;
     }
 
     ::slotted(*) {
       font-size: var(--font-size-normal);
-      margin-bottom: var(--spacing-3);
-      margin-top: 0;
+      margin-bottom: var(--spacing-2);
+      margin-top: var(--spacing-2);
+      pointer-events: auto;
     }
 
     ::slotted([slot="subtitle"]),
     ::slotted([slot="single"])  {
-      font-size: var(--font-size-large-6);
-      line-height: var(--line-height-large-6);
-      margin-bottom: 0;
-      margin-right: 25%;
-      margin-top: 0;
+      font-size: var(--font-size-display-0);
+      line-height: var(--line-height-display-0);
     }
   `
 

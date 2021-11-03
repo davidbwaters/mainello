@@ -5,7 +5,7 @@
 .u-link-opaque-hover {
   display: inline-block;
   transition: opacity .4s;
-  will-change: opacity transform;
+  will-change: opacity, transform;
 }
 
 .u-link-opaque-hover:hover {

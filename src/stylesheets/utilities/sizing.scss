@@ -6,12 +6,20 @@
   width: 100%;
 }
 
+.u-width-50vw {
+  width: 50vw;
+}
+
 .u-width-100vw {
   width: 100vw;
 }
 
 .u-height-fill {
   height: 100%;
+}
+
+.u-height-80vh {
+  height: 80vh;
 }
 
 .u-height-80vh-min {
@@ -24,5 +32,9 @@
 
 .u-height-100vh-min {
   min-height: 100vh;
+}
+
+.u-height-120vh-min {
+  min-height: 120vh;
 }
 

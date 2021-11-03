@@ -4,9 +4,15 @@
     <meta charset='UTF-8' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta name="description" content="mainux digital agency services">
     <title>{{site.title}}</title>
     <link rel='icon' href='/images/favicon.png' />
+
     <script type='module' src='/scripts/main.ts'></script>
+
+    <style>
+
+    </style>
   </head>
   <body style='opacity: 0' data-barba='wrapper'>
 
@@ -25,86 +31,107 @@
 
       <main
         data-barba='container'
-        data-barba-namespace='services'
+        data-barba-namespace='agency'
+        class='u-bg-main'
       >
-        <div class='u-height-80vh-min u-gradient-fade-lower'>
+        <div class='u-height-90vh-min'>
           <shader-doodle class="
             u-position-absolute-top
             u-width-fill
-            u-height-80vh-min
+            u-height-90vh-min
           ">
             <script type="x-shader/x-fragment">
-              #define TAU 6.28318530718
-              vec2 polar(in vec2 st) {
-                vec2 c = vec2(.5) - st;
-                float angle = atan(c.y, c.x) / TAU + .5;
-                float radius = length(c) * 2.;
-                return vec2(angle, radius);
+
+            vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
+
+            float snoise(vec2 v) {
+              const vec4 C = vec4(0.211324865405187, 0.366025403784439,
+                      -0.577350269189626, 0.024390243902439);
+              vec2 i  = floor(v + dot(v, C.yy) );
+              vec2 x0 = v -   i + dot(i, C.xx);
+              vec2 i1;
+              i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+              vec4 x12 = x0.xyxy + C.xxzz;
+              x12.xy -= i1;
+              i = mod(i, 289.0);
+              vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 ))
+              + i.x + vec3(0.0, i1.x, 1.0 ));
+              vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy),
+                dot(x12.zw,x12.zw)), 0.0);
+              m = m*m ;
+              m = m*m ;
+              vec3 x = 2.0 * fract(p * C.www) - 1.0;
+              vec3 h = abs(x) - 0.5;
+              vec3 ox = floor(x + 0.5);
+              vec3 a0 = x - ox;
+              m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
+              vec3 g;
+              g.x  = a0.x  * x0.x  + h.x  * x0.y;
+              g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+              return 130.0 * dot(m, g);
+            }
+
+            float heightMap(vec2 vector) {
+              vec2 distortion = vec2(snoise(vector.xy / 150.0 + vec2(u_time * .3, u_time * .4)), snoise(vector.xy / 150.0 + vec2(3. + u_time * .4, 4. + u_time * .3)));
+              vec2 distorted = vector.xy / 600. + distortion * 0.2;
+              float noiseValue = (snoise(distorted + vec2(u_time * -0.05, u_time * 0.05)) + 1.) / 2.;
+              vec2 distortion_2 = vec2(snoise(distorted + vec2(u_time * -.01, u_time * -.02)), snoise(distorted + vec2(3. + u_time * -.02, 4. + u_time * -.3)));
+              vec2 distorted_2 = vector.xy / 600. + distortion_2 * 0.2;
+              float noiseValue2 = (snoise(distorted_2 + vec2(u_time * -0.05, u_time * 0.05)) + 1.) / 2.;
+
+              float add = snoise(vector.xy / 500.0 + vec2(u_time * -.1, u_time * -.075));
+              add *= 0.25;
+              add += 0.1;
+
+              float mult = snoise(vector.xy / 1000.0 + vec2(u_time * -.1, u_time * -.075));
+              mult *= 0.2;
+              mult += 0.8;
+
+              return mult * (abs(noiseValue - noiseValue2) * 2. + add);
+            }
+
+            vec2 getSlope(vec2 vector) {
+              const float d = 1.;
+              return vec2((heightMap(vector + vec2(d, 0.)) - heightMap(vector + vec2(-d, 0.))) / (d * 0.5),
+              (heightMap(vector + vec2(0., d)) - heightMap(vector + vec2(0., -d))) / (d * 0.5));
+            }
+
+            void main() {
+              vec4 baseColor = vec4(0.57, 0.79, 0.76, 1);
+
+              vec2 slope = getSlope(gl_FragCoord.xy);
+              vec2 shading = 5. / (1. + exp(-slope)) - 2.5;
+              if (shading.x > 0.) {
+                baseColor = baseColor * (1. - shading.x) + vec4(0.0, 0.0, 0.1, 1.0) * shading.x;
+              } else {
+                shading.x *= -1.;
+                baseColor = baseColor * (1. - shading.x) + vec4(0.9, 1.0, 1.0, 1.0) * shading.x;
               }
 
-              vec2 coverScreen(vec2 fragCoord, vec2 resolution, float aspect) {
-                vec2 uv = .5 * (2. * fragCoord - resolution);
-                if (resolution.x / resolution.y > aspect) {
-                  uv = .5 - uv / vec2(resolution.x, -resolution.x / aspect);
-                } else {
-                  uv = .5 - uv / vec2(resolution.y * aspect, -resolution.y);
-                }
-                return uv;
+              shading.y *= 0.4;
+              if (shading.y > 0.) {
+                baseColor = baseColor * (1. - shading.y) + vec4(0.0, 0.0, 0.1, 1.0) * shading.y;
+              } else {
+                shading.y *= -1.;
+                baseColor = baseColor * (1. - shading.y) + vec4(0.9, 1.0, 1.0, 1.0) * shading.y;
               }
 
-              void main() {
-                vec2 st = coverScreen(gl_FragCoord.xy, u_resolution, 1.);
-                vec2 mouse = coverScreen(u_mouse.xy, u_resolution, 1.);
-
-                // grid sized based on resolution (to always have the same size grid squares)
-                float grid = max(u_resolution.x, u_resolution.y) * .03;
-
-                // fractional and integer st from grid
-                vec2 i_st = floor(st * grid);
-                vec2 f_st = fract(st * grid);
-
-                // diff mouse and int grid centerpoint
-                vec2 dm = mouse.xy - ((i_st + .5) / grid);
-
-                // angle of diff vector
-                float d = atan(dm.x, dm.y);
-
-                // polar coords
-                vec2 p_st = polar(f_st);
-
-                // swirl about radius (based on length of diff vector)
-                p_st.x = (p_st.x - p_st.y * (length(dm) - .4) * .5);
-
-                // rotate angle (basen on angle of diff vector)
-                p_st.x = mod(p_st.x + d / TAU + TAU, 1.);
-
-                p_st.x = smoothstep(.95, .96, p_st.x);
-                p_st.y = smoothstep(.975, 1., p_st.y);
-
-                vec3 color = vec3(1.);
-                color -= (1. - vec3(.61, .75, .93)) * p_st.x;
-                color += p_st.y;
-                color = clamp(color, 0., 1.);
-
-                gl_FragColor = vec4(color, 1.);
-              }
+              gl_FragColor = baseColor;
+            }
             </script>
           </shader-doodle>
-          <h1 class="
-            u-heading-huge
-            u-position-absolute-top
-            u-height-80vh-min
-            u-grid-center
-            u-width-fill
-            u-pointer-events-none
-            u-text-align-center
-          ">
-            {{{services.heading}}}
-          </h1>
+          <c-page-header
+          class='u-position-relative'
+          >
+            <div slot='single'>
+              {{{services.heading}}}
+            </div>
+          </c-page-header>
         </div>
 
         <c-dynamic-content
-          content='{{services.content}}'
+          content='{{{services.content}}}'
+          class="u-position-relative dynamic-content--fill-alt"
         >
         </c-dynamic-content>
 
@@ -121,13 +148,30 @@
       </c-footer>
     </div>
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEMW61VYHQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DEMW61VYHQ');
+    </script>
 
-    <script
-      src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.3/p5.min.js'
-      integrity='sha512-xrAcaPlDVY5TDNAKKsVPf040TnCatM3YFUi/AChhyBLJ1IVn+lbAKTiVDjhicrUFPqz/IvC0S2uVlbi7iF6I7w=='
-      crossorigin='anonymous'
-      referrerpolicy='no-referrer'
-    >
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEMW61VYHQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DEMW61VYHQ');
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-206870340-1">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-206870340-1');
     </script>
 
   </body>

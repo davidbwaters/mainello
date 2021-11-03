@@ -6,6 +6,17 @@
   background-color: var(--color-main-background);
 }
 
+
+.u-bg-main-shade-1 {
+  background-color: var(--color-main-background-shade-1);
+}
+
+
+.u-bg-main-shade-2 {
+  background-color: var(--color-main-background-shade-1);
+}
+
+
 .u-bg-blur-primary-1 {
   background-color: var(--color-main-background);
   background-image: url(/images/bg-blur-primary-circle-1.svg);
@@ -33,9 +44,9 @@
 .u-bg-blur-multi-1 {
   background-color: var(--color-main-background);
   background-image: url(/images/bg-blur-multi-1.svg);
-  background-position: right center;
+  background-position: left top;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
 }
 
 .u-gradient-fade-lower {

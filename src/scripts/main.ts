@@ -60,7 +60,8 @@ async function onInit() {
     import('./components/SectionTitle'),
     import('./components/Article'),
     import('./components/FeaturedImage'),
-    import('./components/FeaturedVideo')
+    import('./components/FeaturedVideo'),
+    import('./components/Diagram')
   ])
 
   Promise.all([
@@ -68,15 +69,15 @@ async function onInit() {
     import('./components/ImageRow'),
     import('./components/ImageText'),
     import('./components/LabeledContent'),
-    import('./components/LiquidTitle'),
     import('./components/OffsetColumns'),
     import('./components/Pattern'),
     import('./components/StatColumns'),
-    import('./components/Toggle'),
-    import('./components/WarpText'),
+    import('./components/Toggle')
   ])
 
   Promise.all([
+    import('./components/ServicesLists'),
+    import('./components/Next'),
     import('./components/DynamicContent')
   ])
 
@@ -133,7 +134,21 @@ function scrollSetup() {
 
   ScrollTrigger.addEventListener(
     'refresh',
-    () => scrollerEl.scroller.update()
+    () => {
+
+      scrollerEl.scroller.update()
+
+    }
+  )
+
+  ScrollTrigger.addEventListener(
+    'resize',
+    () => {
+
+      ScrollTrigger.refresh()
+
+    }
+
   )
 
 
@@ -151,7 +166,7 @@ const addParallax = () => {
   if (dyn) {
 
     parallaxEls = [...parallaxEls, ...Array.from(
-      dyn.shadowRoot
+      dyn
         .querySelectorAll('[data-parallax-mask]')
     )]
 
@@ -192,6 +207,8 @@ function prepVideos() {
 
     videos.forEach((vid:HTMLVideoElement) => {
 
+      vid.muted = true
+      vid.autoplay = true
       vid.play()
 
     })
@@ -362,7 +379,7 @@ function handleForms() {
 
   const confirmAnimation = lottie.loadAnimation({
     container: confirmAnimationEl,
-    renderer: 'canvas',
+    renderer: 'svg',
     loop: false,
     autoplay: false,
     path: '/animations/mail.json',
@@ -519,7 +536,7 @@ function barbaSetup() {
     const contactFab = document.querySelector('c-contact-fab')
 
 
-    if (contactFab) {
+    if (contactFab && window.location.pathname !== '/') {
 
       document.body.removeChild(
         contactFab
@@ -546,22 +563,20 @@ function barbaSetup() {
       disableLerp: true
     })
 
-    scrollerEl.scroller.update()
+    ScrollTrigger.refresh()
 
 
     setTimeout(() => {
 
-      scrollerEl.scroller.update()
-
       ScrollTrigger.refresh()
-
-      scrollerEl.scroller.update()
 
       prepVideos()
 
-    }, 1000)
+    }, 2000)
 
     console.log('after enter all')
+
+    handleForms()
 
   })
 

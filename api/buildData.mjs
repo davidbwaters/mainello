@@ -16,11 +16,16 @@ import {
   buildWorkTemplate
 } from './lib/workTemplage.mjs'
 
+import {
+  buildNewsTemplate
+} from './lib/newsTemplage.mjs'
+
 import getData from './lib/getData.mjs'
 import config from '../config.mjs'
 const datePatternIn = 'YYYY-MM-DD[T]HH:mm:ss[Z]'
 const datePatternOut = 'MMMM D, YYYY'
 const assetPath = config.assets + '/'
+
 async function getFile(id, collection) {
 
   const file = await getData(
@@ -38,6 +43,7 @@ async function getFile(id, collection) {
   }
 
 }
+
 async function getBlock(block) {
 
   let item = {
@@ -79,6 +85,7 @@ async function getBlock(block) {
     }
 
   }
+
   if (block.collection === 'featured_video') {
 
     const fileInfo = await getData(
@@ -109,12 +116,27 @@ async function getBlock(block) {
 
   }
 
+
+  if (block.collection === 'labeled_text') {
+
+    item.background_image =
+      assetPath + item.background_image
+
+  }
+
   if (block.collection === 'image_with_text') {
 
     item.image = assetPath + item.image
 
+  }
+
+  if (block.collection === 'article') {
+
+    item.background_image =
+      assetPath + item.background_image
 
   }
+
   return item
 
 }
@@ -133,6 +155,11 @@ async function buildData() {
 
   //console.log(data.news)
 
+  data.work = data.work.filter(item => {
+
+    return item.status === 'published'
+
+  })
 
   const workContent = await getData(
     'items/portfolio_content'
@@ -162,18 +189,32 @@ async function buildData() {
           return block === i.id
 
         })[0]
+
       content[blockIndex] = await getBlock(
         content[blockIndex]
       )
 
     }
+
     data.work[index].featured_image =
       assetPath + data.work[index].featured_image
     data.work[index].cover_image =
       assetPath + data.work[index].cover_image
     data.work[index].content = content
 
+    data.work[index].next = JSON.stringify(data.work
+      .filter(i => {
+
+        return data.work[index]
+          .next === i.id
+
+      })[0]
+    )
+
   }
+
+  data.agency.featured_image =
+    assetPath + data.agency.featured_image
 
   for (
     const [
@@ -214,26 +255,76 @@ async function buildData() {
 
   }
 
-  data.home.work_preview.forEach((item, index) => {
+  await Promise.all(
 
-    let i = data.work.filter(j => {
+    data.home.work_preview.map(async(item, index) => {
 
-      return j.id === item && j.status === 'published'
+      let workPreviewData = await getData(
+        'items/home_portfolio_1'
+      )
+
+      let j = workPreviewData.filter(k => {
+
+        return k.id === item
+
+      })[0]
+
+      let i = data.work.filter(h => {
+
+        return j.portfolio_id === h.id
+
+      })[0]
+
+      if (i) {
+
+        i = {
+          id: i.id,
+          heading: i.title,
+          image: i.cover_image,
+          slug: i.slug,
+          text: JSON.stringify(i.description_text)
+        }
+        data.home.work_preview[index] = i
+
+      }
+
+    })
+
+  )
+
+  data.news.forEach((item, index) => {
+
+    let i = data.news.filter(j => {
+
+      return j.status === 'published' && j.id === item.id
 
     })[0]
 
-    if (i) {
+    i.date = date.format(
+      date.parse(
+        i.date_created,
+        datePatternIn
+      ),
+      datePatternOut
+    )
 
-      i = {
-        id: i.id,
-        heading: i.title,
-        image: i.cover_image,
-        slug: i.slug,
-        text: i.description_text
-      }
-      data.home.work_preview[index] = i
+    i.featured_image = i.featured_image !== null
+      ? assetPath + i.featured_image
+      : ''
 
+    i = {
+      id: i.id,
+      date: i.date,
+      title: i.title,
+      text: i.preview_text,
+      content: i.content,
+      slug: i.slug,
+      status: i.status,
+      featured_image: i.featured_image
     }
+
+
+    data.news[index] = i
 
   })
 
@@ -244,22 +335,18 @@ async function buildData() {
       return j.id === item && j.status === 'published'
 
     })[0]
-    i.date = date.format(
-      date.parse(
-        i.date_created,
-        datePatternIn
-      ),
-      datePatternOut
-    )
+
     i = {
-      // id: i.id,
+      id: i.id,
       date: i.date,
       title: i.title,
       text: i.preview_text,
       content: i.content,
-      slug: i.slug
+      slug: i.slug,
+      featured_image: i.featured_image
     }
 
+    // console.log(i)
     data.home.news_post_list[index] = i
 
   })
@@ -268,25 +355,39 @@ async function buildData() {
   data.site.logo_footer = assetPath + data.site.logo_footer
 
 
-  data = JSON.stringify(data)
-    .replace(/'/g, '&#39;')
+  data = JSON.stringify(data).replace(/'/g, '&#39;')
+
 
   writeFileSync(
     'data/data.json', data
   )
 
+
   data = JSON.parse(data)
+
+  const newsTemplate = buildNewsTemplate(
+    data.news
+  )
+
+  writeFileSync(
+    'src/news.html',
+    newsTemplate
+  )
 
   data.news.forEach((item) => {
 
-    const post = buildPostTemplate(item.title, item.content)
+    const post = buildPostTemplate(
+      item.title,
+      item.content,
+      item.date,
+      item.featured_image
+    )
     writeFileSync(
       'src/news/' + item.slug + '.html',
       post
     )
 
   })
-
 
   data.work.forEach((item) => {
 
@@ -298,7 +399,8 @@ async function buildData() {
       item.featured_image,
       item.description_label,
       item.description_text,
-      item.content
+      JSON.stringify(item.content),
+      item.next
     )
 
     //console.log(item.content)

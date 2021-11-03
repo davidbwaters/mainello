@@ -15,7 +15,7 @@ import {
 import {
   createRef,
   ref
-} from 'lit/directives/ref'
+} from 'lit/directives/ref.js'
 
 import lottie from 'lottie-web'
 
@@ -56,10 +56,22 @@ export class Navbar extends LitElement {
       width: 100%;
     }
 
+    .c-navbar__nav {
+      align-items: center;
+      display: grid;
+      gap: var(--spacing-3);
+      grid-auto-flow: column;
+    }
+
+
+    .c-navbar__nav a {
+      color: inherit;
+    }
+
     .c-navbar__inner {
       align-items: center;
       display: grid;
-      grid-auto-columns: min-content;
+      grid-auto-columns: auto;
       grid-auto-flow: column;
       justify-content: space-between;
       margin: auto;
@@ -102,9 +114,9 @@ export class Navbar extends LitElement {
     @media (min-width: 320px) {
 
       ::slotted([slot='button']) {
-        height: 0.25rem;
+        height: 1.25rem;
         padding: var(--spacing-4);
-        width: auto;
+        width: 1.25rem;;
       }
 
     }
@@ -119,6 +131,7 @@ export class Navbar extends LitElement {
 
   firstUpdated():void {
 
+    /*
     const link = document.createElement('a')
 
     link.innerText = 'contact'
@@ -127,8 +140,8 @@ export class Navbar extends LitElement {
 
     this.appendChild(link)
 
+    */
 
-    /*
     const button = document.createElement('button')
 
     button.classList.add(
@@ -150,7 +163,6 @@ export class Navbar extends LitElement {
       autoplay: false,
       path: '/animations/nav-button.json'
     })
-    */
 
   }
 
@@ -193,17 +205,20 @@ export class Navbar extends LitElement {
           <div class='c-navbar__branding'>
             <slot></slot>
           </div>
-          <!--
+          <div class='c-navbar__nav'>
+            <a href='/work.html'>
+              work
+            </a>
             <slot
               name='button'
               @click=${this.handleToggle}
             >
             </slot>
-          -->
             <slot
               name='nav'
             >
             </slot>
+          </div>
         </div>
       </header>
     `

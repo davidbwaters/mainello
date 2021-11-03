@@ -16,7 +16,7 @@ import {
 import {
   createRef,
   ref
-} from 'lit/directives/ref'
+} from 'lit/directives/ref.js'
 
 import inViewport from './../lib/inViewport'
 
@@ -96,9 +96,6 @@ export class FeaturedVideo extends LitElement {
       this.color
     )
 
-    this.loop = JSON.parse(
-      this.getAttribute('loop')
-    )
 
     if (this.spacing === 'small') {
 

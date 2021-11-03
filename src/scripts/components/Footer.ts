@@ -44,7 +44,6 @@ export class Footer extends LitElement {
       background: var(--color-eerie-black);
       color: white;
       display: block;
-      //margin-top: 10vh;
       overflow: hidden;
       position: relative;
       top: 0;
@@ -55,11 +54,20 @@ export class Footer extends LitElement {
       color: inherit;
     }
 
+    .c-footer__inner,
+    .c-footer__line,
+    .c-footer__contact {
+      box-sizing: border-box;
+      max-width: var(--wrapper-width);
+      padding-left: 6.2vw;
+      padding-right: 6.2vw;
+    }
+
     .c-footer__inner {
       align-content: center;
       box-sizing: border-box;
       display: grid;
-      grid-template-columns: 87.6vw;
+      grid-template-columns: 1fr;
       justify-content: center;
       min-height: 60vh;
       position: relative;
@@ -89,6 +97,7 @@ export class Footer extends LitElement {
       align-items: center;
       display: grid;
       gap: 6.2vh;
+      grid-auto-flow: column;
       justify-content: space-between;
       padding-bottom: 6.2vh;
       padding-top: 6.2vh;
@@ -135,7 +144,8 @@ export class Footer extends LitElement {
       text-decoration: underline;
     }
 
-    .c-footer__social {
+    .c-footer__social,
+    .c-footer__contact-link {
       align-content: end;
       display: grid;
       grid-auto-columns: min-content;
@@ -244,6 +254,7 @@ export class Footer extends LitElement {
         if (contactFab) {
 
           contactFab.style.opacity = '0'
+          contactFab.style.pointerEvents = 'none'
 
         }
 
@@ -259,6 +270,7 @@ export class Footer extends LitElement {
           if (contactFab) {
 
             contactFab.style.opacity = '1'
+            contactFab.style.pointerEvents = 'all'
 
           }
 
@@ -335,8 +347,6 @@ export class Footer extends LitElement {
 
     this._createWrapper()
     this._inViewort()
-
-    //this.instance = new window.p5(this.sketch)
 
   }
 
@@ -426,6 +436,10 @@ export class Footer extends LitElement {
             )}
 
           </div>
+
+          <a class="c-footer__contact-link" href="/contact.html">
+            contact
+          </a>
         </div>
       </div>
     `

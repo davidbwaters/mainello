@@ -16,7 +16,7 @@ import {
 import {
   ref,
   createRef
-} from 'lit/directives/ref'
+} from 'lit/directives/ref.js'
 
 import { gsap } from 'gsap'
 
@@ -46,7 +46,7 @@ export class Cursor extends LitElement {
       --cursor-size: 2.5rem;
 
 
-      backdrop-filter: brightness(0.9);
+      backdrop-filter: brightness(0.9) saturate(0);
       background-color: white;
       border: solid 1px black;
       border-radius: var(--cursor-size);

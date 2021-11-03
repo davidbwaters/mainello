@@ -207,6 +207,8 @@ function prepVideos() {
 
     videos.forEach((vid:HTMLVideoElement) => {
 
+      vid.muted = true
+      vid.autoplay = true
       vid.play()
 
     })

@@ -145,12 +145,12 @@ export class BlogPost extends LitElement {
 
     return html`
       <div class="
-      ${this.featuredImage.length
+      ${this.featuredImage && this.featuredImage.length
         ? `c-blog-post__image-item `
         : `c-blog-post__item `
       }">
 
-        ${this.featuredImage.length
+        ${this.featuredImage && this.featuredImage.length
           ? html`
             <a class="c-blog-post__featured-image"></a>
 

@@ -32,6 +32,10 @@ export class BlogPost extends LitElement {
       padding-top: var(--spacing-8);
     }
 
+    :host(:last-of-type) {
+      margin-bottom: var(--spacing-8);
+    }
+
     .c-blog-post__item,
     .c-blog-post__image-item {
       box-sizing: border-box;

@@ -535,7 +535,6 @@ function barbaSetup() {
 
     const contactFab = document.querySelector('c-contact-fab')
 
-
     if (contactFab && window.location.pathname !== '/') {
 
       document.body.removeChild(
@@ -577,6 +576,7 @@ function barbaSetup() {
     console.log('after enter all')
 
     handleForms()
+    addParallax()
 
   })
 

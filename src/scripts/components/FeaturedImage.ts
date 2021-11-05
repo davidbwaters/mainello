@@ -125,8 +125,7 @@ export class FeaturedImage extends LitElement {
       )
 
     }
-
-    if (this.getAttribute('size') === 'cover') {
+    else {
 
       this.style.setProperty(
         '--featured-image-size',

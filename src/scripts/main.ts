@@ -175,8 +175,8 @@ const addParallax = () => {
   parallaxEls.forEach(el => {
 
     gsap.set(el, {
-      scale: 1.4,
-      y: '-20%'
+      scale: 1.1,
+      y: '-10%'
     })
     ScrollTrigger.create({
       trigger: el,

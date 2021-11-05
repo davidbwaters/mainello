@@ -39,7 +39,7 @@ export class Article extends LitElement {
         --color-opaque-dark-subtle
       );
       display: grid;
-      min-height: 80vh;
+      min-height: 60vh;
     }
 
     @media (min-width: 768px) {
@@ -58,14 +58,14 @@ export class Article extends LitElement {
       margin-left: auto;
       margin-right: auto;
       max-width: var(--wrapper-width);
-      padding-bottom: 20vh;
+      padding-bottom: 10vh;
       padding-left: 6.4%;
       padding-right: 6.4%;
-      padding-top: 20vh;
+      padding-top: 10vh;
     }
 
     .c-article__heading {
-      font-size: var(--font-size-large-5);
+      font-size: var(--font-size-large-4);
       font-weight: var(--font-weight-normal);
       line-height: var(--line-height-large-5);
       margin-bottom: var(--spacing-6);

@@ -31,7 +31,7 @@ export class DynamicContent extends LitElement {
     :host {
       display: block;
     }
-
+    /*
     :host *:nth-child(even) {
       background-color: var(--color-main-background-shade-1);
     }
@@ -39,9 +39,12 @@ export class DynamicContent extends LitElement {
     :host(.dynamic-content--fill-alt) *:nth-child(odd) {
       background-color: var(--color-main-background-shade-1);
     }
+
     :host(.dynamic-content--fill-alt) *:nth-child(even) {
       background-color: var(--color-main-background-shade-2);
     }
+    */
+
   `
 
   @property({

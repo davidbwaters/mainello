@@ -79,11 +79,11 @@ export class LabeledText extends LitElement {
       justify-content: center;
       margin: auto;
       max-width: var(--wrapper-width);
-      min-height: 60vh;
-      padding-bottom: 10vh;
+      min-height: 40vh;
+      padding-bottom: 15vh;
       padding-left: 6.4vw;
       padding-right: 6.4vw;
-      padding-top: 10vh;
+      padding-top: 15vh;
     }
 
     @media (min-width: 320px) {

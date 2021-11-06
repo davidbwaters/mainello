@@ -58,14 +58,15 @@ export class Article extends LitElement {
       margin-left: auto;
       margin-right: auto;
       max-width: var(--wrapper-width);
-      padding-bottom: 10vh;
+      padding-bottom: 20vh;
       padding-left: 6.4%;
       padding-right: 6.4%;
-      padding-top: 10vh;
+      padding-top: 20vh;
+      width: 100%;
     }
 
     .c-article__heading {
-      font-size: var(--font-size-large-4);
+      font-size: var(--font-size-large-5);
       font-weight: var(--font-weight-normal);
       line-height: var(--line-height-large-5);
       margin-bottom: var(--spacing-6);

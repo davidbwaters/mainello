@@ -508,7 +508,7 @@ async function handlePageLoad() {
     handleForms()
     wrapLinks()
     prepVideos()
-    addParallax()
+    //addParallax()
 
   }, 1000)
 
@@ -576,7 +576,7 @@ function barbaSetup() {
     console.log('after enter all')
 
     handleForms()
-    addParallax()
+    //addParallax()
 
   })
 

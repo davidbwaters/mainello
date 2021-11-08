@@ -373,6 +373,8 @@ function handleForms() {
      '.js-confirm-overlay'
    )
 
+  document.body.appendChild(confirmOverlayEl)
+
   const confirmAnimationEl = document.querySelector(
     '.js-confirm-animation'
   )

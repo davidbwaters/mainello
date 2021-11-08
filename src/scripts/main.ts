@@ -373,7 +373,11 @@ function handleForms() {
      '.js-confirm-overlay'
    )
 
-  document.body.appendChild(confirmOverlayEl)
+  if (confirmOverlayEl) {
+
+    document.body.appendChild(confirmOverlayEl)
+
+  }
 
   const confirmAnimationEl = document.querySelector(
     '.js-confirm-animation'
@@ -381,7 +385,7 @@ function handleForms() {
 
   const confirmAnimation = lottie.loadAnimation({
     container: confirmAnimationEl,
-    renderer: 'svg',
+    renderer: 'canvas',
     loop: false,
     autoplay: false,
     path: '/animations/mail.json',
@@ -416,7 +420,7 @@ function handleForms() {
     )
     .forEach(function(inputEl) {
 
-      console.log(inputEl)
+      //console.log(inputEl)
 
       if (inputEl.value.trim() !== '') {
 

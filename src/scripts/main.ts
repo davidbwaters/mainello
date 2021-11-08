@@ -383,20 +383,24 @@ function handleForms() {
     '.js-confirm-animation'
   )
 
-  const confirmAnimation = lottie.loadAnimation({
-    container: confirmAnimationEl,
-    renderer: 'canvas',
-    loop: false,
-    autoplay: false,
-    path: '/animations/mail.json',
-    rendererSettings: {
-      preserveAspectRatio: 'none'
-    }
-  })
 
   function handleConfirm() {
 
     confirmOverlayEl.dataset.hidden = 'false'
+
+
+    const confirmAnimation = lottie.loadAnimation({
+      container: document.querySelector(
+        '.js-confirm-animation'
+      ),
+      renderer: 'canvas',
+      loop: false,
+      autoplay: false,
+      path: '/animations/mail.json',
+      rendererSettings: {
+        preserveAspectRatio: 'none'
+      }
+    })
 
     confirmAnimation.goToAndPlay(1, true)
 

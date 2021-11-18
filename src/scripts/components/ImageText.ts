@@ -110,17 +110,21 @@ export class ImageText extends LitElement {
 
 
     .c-image-text__heading {
-      font-size: var(--font-size-large-4);
+      font-size: var(--font-size-large-5);
       font-weight: var(--font-weight-normal);
       margin-bottom: var(--spacing-1);
       margin-top: 0;
     }
 
     .c-image-text__subheading {
-      font-size: var(--font-size-normal);
+      font-size: var(--font-size-large-1);
       font-weight: var(--font-weight-semibold);
       margin-top: var(--spacing-1);
       margin-bottom: var(--spacing-6);
+    }
+
+    .c-image-text__text {
+      font-size: var(--font-size-large-1);
     }
   `
 
@@ -177,7 +181,7 @@ export class ImageText extends LitElement {
           <h4 class="c-image-text__subheading">
             ${this.subheading}
           </h4>
-          <div>
+          <div class="c-image-text__text">
             ${unsafeHTML(this.text)}
           </div>
         </article>
@@ -194,7 +198,7 @@ export class ImageText extends LitElement {
           <h4 class="c-image-text__subheading">
             ${this.subheading}
           </h4>
-          <div>
+          <div class="c-image-text__text">
             ${unsafeHTML(this.text)}
           </div>
         </article>

@@ -48,10 +48,10 @@ export class PageHeader extends LitElement {
     }
 
     .c-page-header__inner {
-      justify-content: center;
       box-sizing: border-box;
       display: grid;
       grid-template-columns: 1fr;
+      justify-content: center;
       margin-left: auto;
       margin-right: auto;
       max-width: var(--wrapper-width);
@@ -60,7 +60,7 @@ export class PageHeader extends LitElement {
     }
 
     ::slotted(*) {
-      font-size: var(--font-size-normal);
+      font-size: var(--font-size-large-1);
       margin-bottom: var(--spacing-2);
       margin-top: var(--spacing-2);
       pointer-events: auto;

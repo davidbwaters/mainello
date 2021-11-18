@@ -28,7 +28,7 @@ export class Blockquote extends LitElement {
     :host {
       box-sizing: border-box;
       display: block;
-      font-size: var(--font-size-normal);
+      font-size: var(--font-size-large-1);
       margin: auto;
       max-width: var(--wrapper-width);
       overflow: hidden;

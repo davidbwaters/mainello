@@ -39,12 +39,12 @@ export class Article extends LitElement {
         --color-opaque-dark-subtle
       );
       display: grid;
-      min-height: 60vh;
+      min-height: 90vh;
     }
 
     @media (min-width: 768px) {
 
-      :host(.c-article--split) article {
+      :host(.c-article--split) .c-article__article {
         display: grid;
         gap: var(--spacing-6);
         grid-template-columns: 1fr 1fr;
@@ -52,12 +52,16 @@ export class Article extends LitElement {
 
     }
 
+    :host(:not(.c-article--split)) .c-article__article {
+      max-width: calc(var(--wrapper-width)*0.66);
+      text-align: center;
+    }
+
     .c-article__article {
       box-sizing: border-box;
       display: block;
       margin-left: auto;
       margin-right: auto;
-      max-width: var(--wrapper-width);
       padding-bottom: 20vh;
       padding-left: 6.4%;
       padding-right: 6.4%;
@@ -73,6 +77,17 @@ export class Article extends LitElement {
       margin-top: 0;
     }
 
+    :host(:not(.c-article--split)) .c-article__heading {
+      font-size: var(--font-size-large-6);
+      font-weight: var(--font-weight-normal);
+      line-height: var(--line-height-large-6);
+      margin-bottom: var(--spacing-6);
+      margin-top: 0;
+    }
+
+    .c-article__text {
+      font-size: var(--font-size-large-1);
+    }
     .c-article__text p {
       line-height: var(--line-height-normal-spaced);
       margin-bottom: 1em;

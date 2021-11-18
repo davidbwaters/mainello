@@ -120,17 +120,18 @@ export class LabeledText extends LitElement {
     }
 
     .c-labeled-content__label {
+      font-size:  var(--font-size-large-3);
+      font-weight: var(--font-weight-normal);
       letter-spacing: var(--title-normal-spacing);
       padding-bottom: var(--spacing-4);
     }
 
     @media (min-width: 480px) {
 
-      .c-labeled-content__label {
-        font-size:  var(--font-size-large-2);
-        font-weight: var(--font-weight-normal);
-      }
+    }
 
+    .c-labeled-content__content {
+      font-size: var(--font-size-large-1);
     }
 
     .c-labeled-content__content img {
@@ -145,10 +146,6 @@ export class LabeledText extends LitElement {
     }
 
     @media (min-width: 768px) {
-
-      .c-labeled-content__content p {
-        font-size:  var(--font-size-normal);
-      }
 
     }
   `

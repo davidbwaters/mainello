@@ -30,7 +30,7 @@ export class FeaturedImage extends LitElement {
         --color-opaque-dark-subtle
       );
       display: block;
-      height: 80vh;
+      height: 90vh;
       overflow: hidden;
     }
     .c-featured-image__wrapper,

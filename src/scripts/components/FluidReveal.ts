@@ -56,8 +56,11 @@ export class FluidReveal extends LitElement {
     }
 
     .c-fluid-reveal__heading {
+      font-size: var(--font-size-large-1);
       font-weight: var(--font-weight-normal);
-      margin: 0;
+      line-height: var(--line-height-large-5);
+      margin-bottom: 0.25em;
+      margin-top: 0;
     }
 
     @media (max-width: 768px) {
@@ -84,9 +87,6 @@ export class FluidReveal extends LitElement {
         opacity: 1 !important;
       }
 
-      .c-fluid-reveal__heading {
-        font-size: var(--font-size-large-1);
-      }
 
     }
 
